@@ -1,227 +1,40 @@
-Thu Oct 11 00:31:44 ART 2007  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
-Thu Oct 11 00:31:44 ART 2007   [info] ************************************************************** 
-Thu Oct 11 00:31:44 ART 2007   [info] Starting Jakarta Velocity v1.4
-Thu Oct 11 00:31:44 ART 2007   [info] RuntimeInstance initializing.
-Thu Oct 11 00:31:44 ART 2007   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-Thu Oct 11 00:31:44 ART 2007   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Thu Oct 11 00:31:44 ART 2007   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Thu Oct 11 00:31:44 ART 2007   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
-Thu Oct 11 00:31:44 ART 2007   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-Thu Oct 11 00:31:44 ART 2007   [info] ClasspathResourceLoader : initialization starting.
-Thu Oct 11 00:31:44 ART 2007   [info] ClasspathResourceLoader : initialization complete.
-Thu Oct 11 00:31:44 ART 2007   [info] Resource Loader Instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
-Thu Oct 11 00:31:44 ART 2007   [info] WebappLoader : initialization starting.
-Thu Oct 11 00:31:44 ART 2007   [info] WebappLoader : initialization complete.
-Thu Oct 11 00:31:44 ART 2007   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
-Thu Oct 11 00:31:44 ART 2007   [info] Default ResourceManager initialization complete.
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-Thu Oct 11 00:31:44 ART 2007   [info] Loaded User Directive: net.sf.navigator.displayer.LocalDirective
-Thu Oct 11 00:31:45 ART 2007   [info] Created: 20 parsers.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : initialization starting.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : adding VMs from VM library template : net/sf/navigator/displayer/globalMacros.vm
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : added new VM : #eval( _macro ) : source = net/sf/navigator/displayer/globalMacros.vm
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : added new VM : #displayMenu( menu level ) : source = net/sf/navigator/displayer/globalMacros.vm
-Thu Oct 11 00:31:45 ART 2007   [info] ResourceManager : found net/sf/navigator/displayer/globalMacros.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro :  VM library template macro registration complete.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : adding VMs from VM library template : menuMacros.vm
-Thu Oct 11 00:31:45 ART 2007  [error] ResourceManager : unable to find resource 'menuMacros.vm' in any resource loader.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : error using  VM library template menuMacros.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'menuMacros.vm'
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro :  VM library template macro registration complete.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : allowInlineToOverride = true : VMs defined inline may replace previous VM definitions
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : messages on  : VM system will output logging messages
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : autoload on  : VM system will automatically reload global library macros
-Thu Oct 11 00:31:45 ART 2007   [info] Velocimacro : initialization complete.
-Thu Oct 11 00:31:45 ART 2007   [info] Velocity successfully started.
-Thu Oct 11 00:35:28 ART 2007   [info] Velocimacro : added new VM : #displayCssMenu( menu ) : source = cssHorizontalMenu.vm
-Thu Oct 11 00:35:28 ART 2007  [error] VM #displayCssMenu: error : too few arguments to macro. Wanted 1 got 0
-Thu Oct 11 00:35:28 ART 2007   [info] ResourceManager : found cssHorizontalMenu.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:28 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:28 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:28 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:28 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:28 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:34 ART 2007   [info] Velocimacro : added new VM : #displayCssMenu( menu ) : source = cssVerticalMenu.vm
-Thu Oct 11 00:35:34 ART 2007   [info] ResourceManager : found cssVerticalMenu.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:34 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:34 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:34 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:34 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:34 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:35:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:35:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:47:40 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:47:40 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:47:40 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:47:40 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:47:40 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:49:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:49:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:10 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:10 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:10 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:10 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:10 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:27 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:27 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:27 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:27 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:27 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:36 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:36 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:36 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:53:36 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:53:36 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:25 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:25 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:25 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:25 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:25 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:32 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:32 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of addition operation has null value. Operation not possible. cssHorizontalMenu.vm [line 2, column 28]
-Thu Oct 11 00:54:41 ART 2007  [error] RHS of #set statement is null. Context will not be modified. cssHorizontalMenu.vm [line 2, column 1]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 9, column 23]
-Thu Oct 11 00:54:41 ART 2007  [error] Left side ($count) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. cssHorizontalMenu.vm [line 55, column 21]
+Thu Oct 11 20:37:42 ART 2007  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Thu Oct 11 20:37:42 ART 2007   [info] ************************************************************** 
+Thu Oct 11 20:37:42 ART 2007   [info] Starting Jakarta Velocity v1.4
+Thu Oct 11 20:37:42 ART 2007   [info] RuntimeInstance initializing.
+Thu Oct 11 20:37:42 ART 2007   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Thu Oct 11 20:37:42 ART 2007   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Thu Oct 11 20:37:42 ART 2007   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Thu Oct 11 20:37:42 ART 2007   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Thu Oct 11 20:37:42 ART 2007   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Thu Oct 11 20:37:42 ART 2007   [info] ClasspathResourceLoader : initialization starting.
+Thu Oct 11 20:37:42 ART 2007   [info] ClasspathResourceLoader : initialization complete.
+Thu Oct 11 20:37:42 ART 2007   [info] Resource Loader Instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+Thu Oct 11 20:37:42 ART 2007   [info] WebappLoader : initialization starting.
+Thu Oct 11 20:37:42 ART 2007   [info] WebappLoader : initialization complete.
+Thu Oct 11 20:37:43 ART 2007   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Thu Oct 11 20:37:43 ART 2007   [info] Default ResourceManager initialization complete.
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Thu Oct 11 20:37:43 ART 2007   [info] Loaded User Directive: net.sf.navigator.displayer.LocalDirective
+Thu Oct 11 20:37:43 ART 2007   [info] Created: 20 parsers.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : initialization starting.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : adding VMs from VM library template : net/sf/navigator/displayer/globalMacros.vm
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : added new VM : #eval( _macro ) : source = net/sf/navigator/displayer/globalMacros.vm
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : added new VM : #displayMenu( menu level ) : source = net/sf/navigator/displayer/globalMacros.vm
+Thu Oct 11 20:37:43 ART 2007   [info] ResourceManager : found net/sf/navigator/displayer/globalMacros.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro :  VM library template macro registration complete.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : adding VMs from VM library template : menuMacros.vm
+Thu Oct 11 20:37:43 ART 2007  [error] ResourceManager : unable to find resource 'menuMacros.vm' in any resource loader.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : error using  VM library template menuMacros.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'menuMacros.vm'
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro :  VM library template macro registration complete.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : allowInlineToOverride = true : VMs defined inline may replace previous VM definitions
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : messages on  : VM system will output logging messages
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : autoload on  : VM system will automatically reload global library macros
+Thu Oct 11 20:37:43 ART 2007   [info] Velocimacro : initialization complete.
+Thu Oct 11 20:37:43 ART 2007   [info] Velocity successfully started.
