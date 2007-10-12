@@ -4,7 +4,7 @@
 
 -- Started on 2007-10-08 18:59:19
 
-SET client_encoding = 'LATIN1';
+SET client_encoding = 'UTF8';
 SET standard_conforming_strings = off;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
@@ -23,11 +23,6 @@ COMMENT ON SCHEMA public IS 'Standard public schema';
 -- TOC entry 301 (class 2612 OID 16386)
 -- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: postgres
 --
-
-CREATE PROCEDURAL LANGUAGE plpgsql;
-
-
-ALTER PROCEDURAL LANGUAGE plpgsql OWNER TO postgres;
 
 SET search_path = public, pg_catalog;
 
@@ -879,7 +874,7 @@ SELECT pg_catalog.setval('turno_idturno_seq', 1, false);
 
 CREATE TABLE usuario (
     idusuario bigint NOT NULL,
-    userid character varying(30) NOT NULL,
+    username character varying(30) NOT NULL,
     passwd chkpass NOT NULL,
     cedula integer NOT NULL,
     nombre character varying(50) NOT NULL,
@@ -1352,10 +1347,10 @@ CREATE UNIQUE INDEX tipo_sangre_tipo_sangre_unique ON tiposangre USING btree (ti
 --
 -- TOC entry 1696 (class 1259 OID 19786)
 -- Dependencies: 1314
--- Name: usuario_userid_unique; Type: INDEX; Schema: public; Owner: webdr; Tablespace: 
+-- Name: usuario_username_unique; Type: INDEX; Schema: public; Owner: webdr; Tablespace: 
 --
 
-CREATE UNIQUE INDEX usuario_userid_unique ON usuario USING btree (userid);
+CREATE UNIQUE INDEX usuario_username_unique ON usuario USING btree (username);
 
 
 --
