@@ -57,5 +57,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.015" name="testGetHello"/>
+  <testcase time="0" name="testGetHello"/>
 </testsuite>
