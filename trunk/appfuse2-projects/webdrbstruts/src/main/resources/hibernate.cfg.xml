@@ -5,5 +5,7 @@
     <session-factory>
         <mapping class="com.webdrbstruts.app.model.User"/>
         <mapping class="com.webdrbstruts.app.model.Role"/>
+        <mapping class="com.webdrbstruts.app.model.Person"/>
+        <mapping class="com.webdrbstruts.app.model.TipoSangre"/>
     </session-factory>
 </hibernate-configuration>

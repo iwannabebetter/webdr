@@ -17,7 +17,7 @@ form ul {
 
 /* Fixes for forms around everything in JSF */
 form ul.glassList {
-    list-style: url(../images/aquadot.jpg) disc outside;
+    list-style: url(images/aquadot.jpg) disc outside;
     vertical-align: top;
     line-height: 1.2em;
     margin-left: 40px;
@@ -168,7 +168,7 @@ form .section p{
 }
 
 /* ----- FIELDS AND LABELS ----- */
-label.desc { 
+label.desc {
     margin: 4px 0 3px 0;
     border: 0;
     color: #444;
@@ -192,7 +192,7 @@ textarea.textarea, select.select{
     border-left: 1px solid #c3c3c3;
     border-right: 1px solid #c3c3c3;
     border-bottom: 1px solid #ddd;
-    background: #fff url(../images/fieldbg.gif) repeat-x top;
+    background: #fff url(images/fieldbg.gif) repeat-x top;
     color: #333;
 }
 
