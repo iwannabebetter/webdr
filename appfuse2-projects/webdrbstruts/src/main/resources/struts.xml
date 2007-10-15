@@ -64,6 +64,28 @@
             <exception-mapping exception="org.springframework.dao.DataAccessException" result="dataAccessFailure"/>
         </global-exception-mappings>
 
+		<action name="persons" class="com.webdrbstruts.app.webapp.action.PersonAction" method="list">
+    		<result>/WEB-INF/pages/personList.jsp</result>
+		</action>
+
+		<action name="editPerson" class="com.webdrbstruts.app.webapp.action.PersonAction" method="edit">
+    		<result>/WEB-INF/pages/personForm.jsp</result>
+    		<result name="error">/WEB-INF/pages/personList.jsp</result>
+		</action>
+
+		<action name="savePerson" class="com.webdrbstruts.app.webapp.action.PersonAction" method="save">
+    		<result name="input">/WEB-INF/pages/personForm.jsp</result>
+    		<result name="cancel" type="redirect">persons.html</result>
+    		<result name="delete" type="redirect">persons.html</result>
+    		<result name="success" type="redirect">persons.html</result>
+		</action>
+
+
+		<action name="tiposangres" class="com.webdrbstruts.app.webapp.action.TipoSangreAction" method="list">
+    		<result>/WEB-INF/pages/tiposangreList.jsp</result>
+		</action>
+
+
         <action name="mainMenu">
             <result name="success">/WEB-INF/pages/mainMenu.jsp</result>
         </action>
@@ -121,7 +143,7 @@
             <interceptor-ref name="adminCheck"/>
             <result name="success">/WEB-INF/pages/admin/flushCache.jsp</result>
         </action>
-        
+
         <action name="reload" class="com.webdrbstruts.app.webapp.action.ReloadAction">
             <interceptor-ref name="adminCheck"/>
             <!-- this should never be used, it's here to prevent warnings -->
