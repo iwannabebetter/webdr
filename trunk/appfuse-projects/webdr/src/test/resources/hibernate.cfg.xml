@@ -1,0 +1,11 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="edu.fpuna.model.User"/>
+        <mapping class="edu.fpuna.model.Role"/>
+        <mapping class="edu.fpuna.model.Especialidad"/>
+        <mapping class="edu.fpuna.model.Doctor"/>
+    </session-factory>
+</hibernate-configuration>
