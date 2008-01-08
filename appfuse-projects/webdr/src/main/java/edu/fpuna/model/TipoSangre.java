@@ -5,15 +5,20 @@
 
 package edu.fpuna.model;
 
+import javax.persistence.*;
+
 /**
- *
+ * Clase que representa un determinado tipo de sangre
  * @author ghuttemann
  */
+@Entity
+@Table(name="tipo_sangre")
 public class TipoSangre extends BaseObject {
     
     private Long id;
     private String nombre;      // required; unique
 
+    @Id @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -22,6 +27,7 @@ public class TipoSangre extends BaseObject {
         this.id = id;
     }
 
+    @Column(nullable=false,unique=true,updatable=false,length=5)
     public String getNombre() {
         return nombre;
     }
@@ -32,16 +38,27 @@ public class TipoSangre extends BaseObject {
     
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.nombre;
     }
 
     @Override
     public boolean equals(Object o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (!(o instanceof TipoSangre))
+            return false;
+        
+        final TipoSangre tipo = (TipoSangre) o;
+        
+        if (this.nombre.equalsIgnoreCase(tipo.getNombre()))
+            return true;
+        
+        return false;
     }
 
     @Override
     public int hashCode() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (this.nombre == null)
+            return 0;
+        
+        return this.nombre.hashCode();
     }
 }
