@@ -10,7 +10,7 @@ import java.util.HashSet;
 import javax.persistence.*;
 
 /**
- *
+ * Clase que representa a un doctor
  * @author ghuttemann
  */
 @Entity
@@ -27,7 +27,7 @@ public class Doctor extends User {
         this.especialidades.remove(especialidad);
     }
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
     @JoinTable(
         name = "doctor_especialidad",
         joinColumns = { @JoinColumn( name="doctor_id") },
