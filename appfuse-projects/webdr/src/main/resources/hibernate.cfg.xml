@@ -7,5 +7,7 @@
         <mapping class="edu.fpuna.model.Role"/>
         <mapping class="edu.fpuna.model.Especialidad"/>
         <mapping class="edu.fpuna.model.Doctor"/>
+        <mapping class="edu.fpuna.model.TipoSangre"/>
+        <mapping class="edu.fpuna.model.Paciente"/>
     </session-factory>
 </hibernate-configuration>
