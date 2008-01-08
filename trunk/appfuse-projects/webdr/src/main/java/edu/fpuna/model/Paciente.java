@@ -18,6 +18,7 @@ public class Paciente extends User {
     
     private TipoSangre tipoSangre;
     private Date fechaIngreso;
+    private Date fechaNacimiento;
 
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(
@@ -39,5 +40,14 @@ public class Paciente extends User {
 
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
+    }
+    
+    @Column(name="fechanac",nullable=false)
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+    
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }
