@@ -4,9 +4,6 @@
          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
     <!-- Add new DAOs here -->
-    <bean id="especialidadDao" class="edu.fpuna.dao.hibernate.EspecialidadDaoHibernate">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
 
     <!-- Add new Managers here -->
     <bean id="especialidadManager" class="edu.fpuna.service.impl.GenericManagerImpl">
@@ -15,8 +12,7 @@
                 <constructor-arg value="org.appfuse.tutorial.model.Person"/>
             </bean>
         </constructor-arg>
-    </bean>
-    
+    </bean>    
     
     <!-- Add new Actions here -->
 </beans>
