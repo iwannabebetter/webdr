@@ -22,7 +22,7 @@ public class Paciente extends User {
 
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(
-        name = "tipo_sangre",
+        name = "tiposangre",
         nullable = false
     )
     public TipoSangre getTipoSangre() {
