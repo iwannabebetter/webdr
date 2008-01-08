@@ -6,13 +6,10 @@
     <!-- Add new DAOs here -->
 
     <!-- Add new Managers here -->
-    <bean id="especialidadManager" class="edu.fpuna.service.impl.GenericManagerImpl">
-        <constructor-arg>
-            <bean class="org.appfuse.dao.hibernate.GenericDaoHibernate" autowire="byType">
-                <constructor-arg value="org.appfuse.tutorial.model.Person"/>
-            </bean>
-        </constructor-arg>
-    </bean>    
+    <bean id="especialidadManager" class="edu.fpuna.service.impl.EspecialidadManagerImpl">
+        <constructor-arg ref="especialidadDao"/>
+    </bean>
+    
     
     <!-- Add new Actions here -->
 </beans>
