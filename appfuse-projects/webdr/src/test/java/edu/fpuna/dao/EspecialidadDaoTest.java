@@ -8,7 +8,7 @@ package edu.fpuna.dao;
 import edu.fpuna.model.Especialidad;
 
 /**
- *
+ * Clase de prueba de EspecialidadDao
  * @author ghuttemann
  */
 public class EspecialidadDaoTest extends BaseDaoTestCase {
