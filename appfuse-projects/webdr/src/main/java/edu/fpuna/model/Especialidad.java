@@ -73,9 +73,9 @@ public class Especialidad extends BaseObject {
 
     @Override
     public int hashCode() {
-        if (nombre == null)
+        if (this.nombre == null)
             return 0;
         
-        return nombre.hashCode();
+        return this.nombre.hashCode();
     }
 }
