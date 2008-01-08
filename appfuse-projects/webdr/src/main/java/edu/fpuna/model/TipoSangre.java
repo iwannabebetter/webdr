@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @author ghuttemann
  */
 @Entity
-@Table(name="tipo_sangre")
+@Table(name="tiposangre")
 public class TipoSangre extends BaseObject {
     
     private Long id;
@@ -27,7 +27,7 @@ public class TipoSangre extends BaseObject {
         this.id = id;
     }
 
-    @Column(nullable=false,unique=true,updatable=false,length=5)
+    @Column(nullable=false,unique=true,length=3)
     public String getNombre() {
         return nombre;
     }
