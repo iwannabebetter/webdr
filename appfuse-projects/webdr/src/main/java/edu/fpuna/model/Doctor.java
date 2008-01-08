@@ -5,6 +5,7 @@
 
 package edu.fpuna.model;
 
+import java.sql.Date;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.*;
@@ -17,7 +18,17 @@ import javax.persistence.*;
 @Table(name="doctor")
 public class Doctor extends User {
     
+    private Date fechaNacimiento;
     private Set<Especialidad> especialidades = new HashSet<Especialidad>();
+    
+    @Column(name="fechanac",nullable=false)
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+    
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
     
     public void agregarEspecialidad(Especialidad especialidad) {
         this.especialidades.add(especialidad);
