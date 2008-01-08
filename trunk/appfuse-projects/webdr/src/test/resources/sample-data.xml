@@ -105,4 +105,16 @@
             <value description="descripcion"><![CDATA[Trata problemas de la piel]]></value>
         </row>
     </table>
+    <table name="tiposangre">
+        <column>id</column>
+        <column>nombre</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="nombre">O-</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="nombre">O+</value>
+        </row>
+    </table>
 </dataset>
