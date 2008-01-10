@@ -9,5 +9,6 @@
         <mapping class="edu.fpuna.model.Doctor"/>
         <mapping class="edu.fpuna.model.TipoSangre"/>
         <mapping class="edu.fpuna.model.Paciente"/>
+        <mapping class="edu.fpuna.model.Consulta"/>
     </session-factory>
 </hibernate-configuration>
