@@ -21,8 +21,8 @@ public class ConsultaDaoHibernate
     }
            
     //@Override
-    public List<Consulta> obtenerConsultasPaciente(String string) {
-        return null;
+    public List<Consulta> obtenerConsultasPaciente(Paciente paciente) {
+        super.getHibernateTemplate().find("from Consulta where paciente = ? ", paciente.getUsername());
     }
 
     //@Override
