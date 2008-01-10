@@ -63,5 +63,9 @@
     <bean id="especialidadDao" class="edu.fpuna.dao.hibernate.EspecialidadDaoHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
+    
+    <bean id="consultaDao" class="edu.fpuna.dao.hibernate.ConsultaDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
 </beans>
