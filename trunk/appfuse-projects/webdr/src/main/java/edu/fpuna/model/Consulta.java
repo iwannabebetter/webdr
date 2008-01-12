@@ -4,8 +4,7 @@
  */
 package edu.fpuna.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -18,8 +17,8 @@ public class Consulta extends BaseObject {
 
     private Long id;
     private Date fecha;
-    private Timestamp horaInicio;
-    private Timestamp horaFin;
+    private Date horaInicio;
+    private Date horaFin;
     private MedidasPaciente medidasPaciente;
     private Notas notas;
     private Doctor doctor;
@@ -35,6 +34,7 @@ public class Consulta extends BaseObject {
     }
 
     @Column(name="fecha",nullable=false)
+    @Temporal(TemporalType.DATE)
     public Date getFecha() {
         return fecha;
     }
@@ -44,20 +44,22 @@ public class Consulta extends BaseObject {
     }
 
     @Column(name="hora_inicio",nullable=false)
-    public Timestamp getHoraInicio() {
+    @Temporal(TemporalType.TIME)
+    public Date getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Timestamp horaInicio) {
+    public void setHoraInicio(Date horaInicio) {
         this.horaInicio = horaInicio;
     }
 
     @Column(name="hora_fin",nullable=false)
-    public Timestamp getHoraFin() {
+    @Temporal(TemporalType.TIME)
+    public Date getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Timestamp horaFin) {
+    public void setHoraFin(Date horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -79,7 +81,7 @@ public class Consulta extends BaseObject {
         this.notas = notas;
     }
     
-    @OneToOne(fetch=FetchType.LAZY,optional=false)
+    @ManyToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="doctor_id",nullable=false)
     public Doctor getDoctor() {
         return doctor;
@@ -89,7 +91,7 @@ public class Consulta extends BaseObject {
         this.doctor = doctor;
     }
     
-    @OneToOne(fetch=FetchType.LAZY,optional=false)
+    @ManyToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="paciente_id",nullable=false)
     public Paciente getPaciente() {
         return paciente;
