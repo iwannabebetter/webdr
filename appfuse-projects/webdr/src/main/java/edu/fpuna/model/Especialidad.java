@@ -8,7 +8,7 @@ package edu.fpuna.model;
 import javax.persistence.*;
 
 /**
- *
+ * Clase que representa la especialidad de un doctor
  * @author ghuttemann
  */
 @Entity
@@ -44,7 +44,7 @@ public class Especialidad extends BaseObject {
         this.nombre = nombre;
     }
 
-    @Column(nullable=false,unique=true,length=250)
+    @Lob
     public String getDescripcion() {
         return descripcion;
     }
