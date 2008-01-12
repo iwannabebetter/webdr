@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -22,7 +22,7 @@ public class Paciente extends User {
 
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(
-        name = "tiposangre",
+        name = "tiposangre_id",
         nullable = false
     )
     public TipoSangre getTipoSangre() {
@@ -34,6 +34,7 @@ public class Paciente extends User {
     }
 
     @Column(name="fecingreso",nullable=false)
+    @Temporal(TemporalType.DATE)
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
@@ -43,6 +44,7 @@ public class Paciente extends User {
     }
     
     @Column(name="fechanac",nullable=false)
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
