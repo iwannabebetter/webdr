@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.*;
@@ -20,8 +20,10 @@ public class Doctor extends User {
     
     private Date fechaNacimiento;
     private Set<Especialidad> especialidades = new HashSet<Especialidad>();
+    private Set<HorarioAtencion> horarios = new HashSet<HorarioAtencion>();
     
     @Column(name="fechanac",nullable=false)
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -42,7 +44,7 @@ public class Doctor extends User {
     @JoinTable(
         name = "doctor_especialidad",
         joinColumns = { @JoinColumn( name="doctor_id") },
-        inverseJoinColumns = @JoinColumn( name="especialidad_id")
+        inverseJoinColumns = @JoinColumn(name="especialidad_id")
     )
     public Set<Especialidad> getEspecialidades() {
         return especialidades;
@@ -50,5 +52,14 @@ public class Doctor extends User {
 
     public void setEspecialidades(Set<Especialidad> especialidades) {
         this.especialidades = especialidades;
+    }
+    
+    @OneToMany(fetch=FetchType.EAGER)
+    public Set<HorarioAtencion> getHorarios() {
+        return horarios;
+    }
+    
+    public void setHorarios(Set<HorarioAtencion> horarios) {
+        this.horarios = horarios;
     }
 }
