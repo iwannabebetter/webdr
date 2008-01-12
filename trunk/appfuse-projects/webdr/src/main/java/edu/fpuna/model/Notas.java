@@ -5,8 +5,7 @@
 
 package edu.fpuna.model;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 /**
  * Clase utilizada para representar datos de una consulta:
@@ -22,6 +21,7 @@ public class Notas {
     private String indicaciones;
     
     @Column(name="sintomas",nullable=false)
+    @Lob
     public String getSintomas() {
         return sintomas;
     }
@@ -31,6 +31,7 @@ public class Notas {
     }
 
     @Column(name="diagnostico",nullable=false)
+    @Lob
     public String getDiagnostico() {
         return diagnostico;
     }
@@ -40,6 +41,7 @@ public class Notas {
     }
 
     @Column(name="recetario")
+    @Lob
     public String getRecetario() {
         return recetario;
     }
@@ -49,6 +51,7 @@ public class Notas {
     }
 
     @Column(name="indicaciones")
+    @Lob
     public String getIndicaciones() {
         return indicaciones;
     }
