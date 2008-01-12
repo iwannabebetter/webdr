@@ -10,5 +10,8 @@
         <mapping class="edu.fpuna.model.TipoSangre"/>
         <mapping class="edu.fpuna.model.Paciente"/>
         <mapping class="edu.fpuna.model.Consulta"/>
+        <mapping class="edu.fpuna.model.HorarioAtencion"/>
+        <mapping class="edu.fpuna.model.Turno"/>
+        <mapping class="edu.fpuna.model.Reserva"/>
     </session-factory>
 </hibernate-configuration>
