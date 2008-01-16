@@ -117,4 +117,59 @@
             <value description="nombre">O+</value>
         </row>
     </table>
+    <table name="paciente">
+        <column>id</column>
+        <column>fechanac</column>
+        <column>fecingreso</column>
+        <column>tiposangre_id</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="fechanac">1984-05-05</value>
+            <value description="fecingreso">2005-06-05</value>
+            <value description="tiposangre_id">-1</value>
+        </row>
+    </table>
+    
+    <table name="doctor">
+        <column>id</column>
+        <column>fechanac</column>
+        <row>
+            <value description="id">-2</value>
+            <value description="fechanac">1984-05-08</value>
+        </row>
+    </table>
+    
+    <table name="consulta">
+        <column>id</column>
+        <column>fecha</column>
+        <column>hora_inicio</column>
+        <column>hora_fin</column>
+        <column>peso_actual</column>
+        <column>altura_actual</column>
+        <column>edad_actual</column>
+        <column>edad_meses</column>
+        <column>sintomas</column>
+        <column>diagnostico</column>
+        <column>recetario</column>
+        <column>indicaciones</column>
+        <column>paciente_id</column>
+        <column>doctor_id</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="fecha">1984-05-05</value>
+            <value description="hora_inicio">10:00:00</value>
+            <value description="hora_fin">12:00:00</value>
+            <value description="peso_actual">76</value>
+            <value description="altura_actual">178</value>
+            <value description="edad_actual">22</value>
+            <value description="edad_meses">0</value>
+            <value description="sintomas">Esta por morir</value>
+            <value description="diagnostico">murio</value>
+            <value description="recetario">cualquiera</value>
+            <value description="indicaciones">suicidate</value>
+            <value description="paciente_id">-1</value>
+            <value description="doctor_id">-2</value>
+        </row>
+    </table>
+    
 </dataset>
