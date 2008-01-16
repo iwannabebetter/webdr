@@ -12,18 +12,42 @@ import java.util.List;
 public class ConsultaDaoHibernate 
         extends GenericDaoHibernate<Consulta, Long> implements ConsultaDao {
 
+    /**
+     * Constructor
+     */
     public ConsultaDaoHibernate() {
         super(Consulta.class);
     }
 
     /**
-     * Metodo para obtener las Consultas de un Paciente.
+     * Metodo para obtener las Consultas por idConsulta.
+     * @params username id de consulta.
+     * @return List<Consultas> Lista de Consultas del Paciente.
+     */
+    public Consulta obtenerConsultaId(long id) {
+        String query = "from Consulta where id=?";
+        
+        log.debug("##Realizando consulta por id: " + id);
+        List result = super.getHibernateTemplate().find(query, id);
+        log.debug("##Consulta encontrada.");
+        
+        Consulta retorno = null;
+        if (result.size()>1)
+            log.debug("##ERROR## Consulta duplicada.");
+        else
+            retorno = (Consulta) result.get(0);
+    
+        return retorno;
+    }
+    
+    /**
+     * Metodo para obtener las Consultas de un Pacinete.
      * @params username Nombre del Paciente.
      * @return List<Consultas> Lista de Consultas del Paciente.
      */
     public List<Consulta> obtenerConsultasPaciente(String username) {
         long paciente_id = this.obtenerIdUsuario(username);
-        String query = "from Consulta where id=?";
+        String query = "from Consulta where paciente_id=?";
         
         log.debug("##Realizando consulta de paciente: " + paciente_id);
         List result = super.getHibernateTemplate().find(query, paciente_id);
@@ -63,18 +87,28 @@ public class ConsultaDaoHibernate
         return retorno;
     }
 
-    //@Override
+    /**
+     * Metodo para obtener las Consultas en una fecha dada.
+     * @param fecha fecha a consultar.
+     * @return List<Consulta> lista de consulta encontradas.
+     */
     public List<Consulta> obtenerConsultasFecha(Date fecha) {
-        String query = "from consulta where fecha=?";
+        String query = "from Consulta where fecha=?";
         return getHibernateTemplate().find(query, fecha);
     }
     
-    //@Override
+    /**
+     * Metodo para eliminar una Consulta.
+     * @param consulta a eliminar.
+     */
     public void eliminar(Consulta consulta) {
         super.remove(consulta.getId());
     }
 
-    //@Override
+    /**
+     * Metodo para Guardar una Consulta
+     * @param consulta consulta a guardar
+     */
     public void guardar(Consulta consulta) {
         super.save(consulta);
     }
