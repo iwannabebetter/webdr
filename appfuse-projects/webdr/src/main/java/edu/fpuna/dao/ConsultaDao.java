@@ -6,6 +6,7 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Consulta;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,9 +15,13 @@ import java.util.List;
  */
 public interface ConsultaDao extends GenericDao<Consulta, Long>  {
 
-    List<Consulta> obtenerConsultasPaciente(String string);
+    public List<Consulta> obtenerConsultasPaciente(String username);
     
-    List<Consulta> obtenerConsultasFecha();
+    public List<Consulta> obtenerConsultasDoctor(String username);
     
-    List<Consulta> obtenerConsultasDoctor(String user);
+    public List<Consulta> obtenerConsultasFecha(Date fecha);
+    
+    public void guardar(Consulta consulta);
+    
+    public void eliminar(Consulta consulta);
 }
