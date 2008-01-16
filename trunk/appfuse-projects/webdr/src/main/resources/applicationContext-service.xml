@@ -116,9 +116,14 @@
         <property name="roleDao" ref="roleDao"/>
     </bean>
     
+    <!-- Add new Managers here -->
+    
     <bean id="especialidadManager" class="edu.fpuna.service.impl.EspecialidadManagerImpl">
         <property name="especialidadDao" ref="especialidadDao"/>
     </bean>
-
-    <!-- Add new Managers here -->
+    
+    <bean id="consultaManager" class="edu.fpuna.service.impl.ConsultaManagerImpl">
+        <property name="consultaDao" ref="consultaDao"/>
+    </bean>
+    
 </beans>
