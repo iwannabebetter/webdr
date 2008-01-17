@@ -10,7 +10,7 @@
         <constructor-arg ref="especialidadDao"/>
     </bean>
 
-    <bean id="consultaManager" class="edu.fpuna.service.impl.consultaManagerImpl">
+    <bean id="consultaManager" class="edu.fpuna.service.impl.ConsultaManagerImpl">
         <constructor-arg ref="consultaDao"/>
     </bean>
 
