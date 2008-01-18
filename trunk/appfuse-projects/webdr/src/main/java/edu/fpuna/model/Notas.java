@@ -20,6 +20,18 @@ public class Notas {
     private String recetario;
     private String indicaciones;
     
+    public Notas() {
+        
+    }
+    
+    public Notas(String sintomas, String diagnostico, String recetario,
+            String indicaciones) {
+        this.sintomas = sintomas;
+        this.diagnostico = diagnostico;
+        this.recetario = recetario;
+        this.indicaciones = indicaciones;
+    }
+    
     @Column(name="sintomas",nullable=false)
     @Lob
     public String getSintomas() {
