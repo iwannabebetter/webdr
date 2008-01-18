@@ -14,32 +14,57 @@ public class ConsultaManagerImplTest extends BaseManagerMockTestCase {
     private Mock dao = null;
     private Consulta consulta = null;
     
+    /**
+     * Metodo para inicializar el dao y el manager.
+     * @throws java.lang.Exception
+     */
     protected void setUp() throws Exception {
         dao = new Mock(ConsultaDao.class);
         manager = new ConsultaManagerImpl((ConsultaDao) dao.proxy());
     }
     
+    /**
+     * Destructor
+     * @throws java.lang.Exception
+     */
     protected void tearDown() throws Exception {
         manager = null;
     }
     
-    public void testGetPerson() {
-        log.debug("testing getPerson");
+    /**
+     * Test de la función get()
+     */
+    public void testGet() {
+        log.debug("Testing Get...");
         Long id = Long.valueOf(""+ (-1) + "");
         consulta = new Consulta();
-        // set expected behavior on dao
+        
+        // Se establece el comportamiento del DAO
         dao.expects(once()).method("get").with(eq(id)).will(returnValue(consulta));
+        
+        // Se establece el procesamiento del Manager
         Consulta result = manager.get(id);
+        
+        // Se compara el funcionamiento del DAO con el Manager
         assertSame(consulta, result);
+        log.debug("Testing Get ha Finalizado.");
+        
     }
-    /*
+    
+    /**
+     * Test de la función getConsulta()
+     */
     public void testGetConsulta() {
-        log.debug("testing GetConsulta");
+        log.debug("Testing GetConsulta...");
         long id = -1;
         consulta = new Consulta();
-        // set expected behavior on dao
-        dao.expects(once()).method("get").with(eq(id)).will(returnValue(consulta));
+        // Se establece el comportamiento del DAO
+        dao.expects(once()).method("obtenerConsultaId").with(eq(id)).will(returnValue(consulta));
+        
+        // Se establece el procesamiento del Manager
         Consulta result = manager.getConsulta(id);
         assertSame(consulta, result);
-    } */ 
+        log.debug("Testing GetConsulta ha Finalizado.");
+    }
+    
 }
