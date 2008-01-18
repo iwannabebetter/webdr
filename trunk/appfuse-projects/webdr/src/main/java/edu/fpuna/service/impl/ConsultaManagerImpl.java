@@ -66,7 +66,7 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      * @param fecha
      * @return List lista de las Consultas.
      */
-    public List getConsultas(Date fecha) {
+    public List getConsultasFecha(Date fecha) {
         return dao.obtenerConsultasFecha(fecha);
     }    
 

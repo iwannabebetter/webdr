@@ -67,7 +67,8 @@ public class ConsultaActionTest extends BaseActionTestCase {
         log.debug("Probando el listado de consultas");
         assertEquals(action.list(), ActionSupport.SUCCESS);
         
-        log.debug("Recuperando consulta");
-        assertFalse(action.getConsulta((long)-1) == null);
+        log.debug("Recuperando consultas");
+        assertTrue(action.getConsultas().size() >= 1);
+        log.debug("Tamaño de consultas" + action.getConsultas().size());
     }
 }

@@ -17,11 +17,11 @@
 <c:out value="${buttons}" escapeXml="false" />
 
 <s:set name="consultas" value="consultas" scope="request"/>
-<display:table name="consultas" class="table" requestURI="" id="consultaList" export="true" pagesize="25">
+<display:table name="consultas" class="table" requestURI="" id="consultasList" export="true" pagesize="25">
     <display:column property="id" sortable="true" href="editConsulta.html" 
         paramId="id" paramProperty="id" titleKey="consulta.id"/>
-    <display:column property="paciente.username" sortable="true" titleKey="consulta.nombrepaciente"/>
-    <display:column property="doctor.username" sortable="true" titleKey="consulta.nombredoctor"/>
+    <!--display:column property="paciente.username" sortable="true" titleKey="consulta.nombrepaciente"/>
+    <!--display:column property="doctor.username" sortable="true" titleKey="consulta.nombredoctor"/>
 
     <display:setProperty name="paging.banner.item_name" value="person"/>
     <display:setProperty name="paging.banner.items_name" value="people"/>
@@ -34,5 +34,5 @@
 <c:out value="${buttons}" escapeXml="false" />
 
 <script type="text/javascript">
-    highlightTableRows("personList");
+    highlightTableRows("consultasList");
 </script>

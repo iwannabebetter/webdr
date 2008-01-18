@@ -134,7 +134,7 @@
         </action>
         
         <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
-            <result>/WEB-INF/pages/consultaList.jsp</result> 
+            <result>/WEB-INF/pages/consultasList.jsp</result> 
         </action>
     </package>
 </struts>
