@@ -41,11 +41,16 @@ public class ConsultaAction extends BaseAction{
         return SUCCESS;
     }  
     
-    public String getConsultas(Date fecha) {
-        consultas = this.manager.getConsultas(fecha);
+    public String getConsultasFecha(Date fecha) {
+        consultas = this.manager.getConsultasFecha(fecha);
         return SUCCESS;
     } 
+    
 
+    public List getConsultas() {
+        return consultas;
+    } 
+    
     public String list() {
         consultas = manager.getAll();
         return SUCCESS;

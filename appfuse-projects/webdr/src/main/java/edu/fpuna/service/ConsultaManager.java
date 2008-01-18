@@ -19,7 +19,7 @@ public interface ConsultaManager extends GenericManager<Consulta,Long>{
     
     public List getConsultasDoctor(String username);
 
-    public List getConsultas(Date fecha);
+    public List getConsultasFecha(Date fecha);
 
     public void saveConsulta(Consulta consulta);
 
