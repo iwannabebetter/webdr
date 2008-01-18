@@ -25,11 +25,12 @@ public class ConsultaDaoHibernate
      * @return List<Consultas> Lista de Consultas del Paciente.
      */
     public Consulta obtenerConsultaId(long id) {
+        log.debug("--> Buscando Consulta por Id: " + id+" ...");
+       
         String query = "from Consulta where id=?";
-        
-        log.debug("##Realizando consulta por id: " + id);
         List result = super.getHibernateTemplate().find(query, id);
-        log.debug("##Consulta encontrada.");
+        
+        log.debug("--> Busqueda Finalizada.");
         
         Consulta retorno = null;
         if (result.size()>1)
@@ -37,6 +38,7 @@ public class ConsultaDaoHibernate
         else
             retorno = (Consulta) result.get(0);
     
+        log.debug("--> Busqueda Finalizada."+retorno.getFecha().toString());
         return retorno;
     }
     
@@ -46,16 +48,16 @@ public class ConsultaDaoHibernate
      * @return List<Consultas> Lista de Consultas del Paciente.
      */
     public List<Consulta> obtenerConsultasPaciente(String username) {
+        log.debug("--> Buscando Consultas por Paciente: "+username+"...");
+        
         long paciente_id = this.obtenerIdUsuario(username);
         String query = "from Consulta where paciente_id=?";
-        
-        log.debug("##Realizando consulta de paciente: " + paciente_id);
         List result = super.getHibernateTemplate().find(query, paciente_id);
-        log.debug("##Consulta encontrada.");
+
+        log.debug("--> Busqueda Finalizada.");
         
         return result;
     }
-    
     
     /**
      * Metodo para obtener las Consultas de un Doctor.
@@ -63,17 +65,22 @@ public class ConsultaDaoHibernate
      * @return List<Consultas> Lista de Consultas del Doctor.
      */
     public List<Consulta> obtenerConsultasDoctor(String username) {
+        log.debug("--> Buscando Consultas por Doctor: "+username+"...");
+        
         long doctor_id = this.obtenerIdUsuario(username);
         String query = "from Consulta where doctor_id=?";
+        
+        log.debug("--> Busqueda Finalizada.");
         
         return getHibernateTemplate().find(query, doctor_id);
     }
     
     private long obtenerIdUsuario(String username) {
-        String query = "from User where username=?";
-        
         log.debug("EMPEZAMOS LA CONSULTA SOBRE APPUSER.....");
+        
+        String query = "from User where username=?";
         List<User> list = getHibernateTemplate().find(query, username);
+        
         log.debug("PASAMOS LA CONSULTA SOBRE APPUSER.....");
         
         long retorno = 0;
@@ -82,8 +89,6 @@ public class ConsultaDaoHibernate
         } else {
             retorno = list.get(0).getId();
         }
-        
-        log.debug("EL VALOR OBTENIDO DE APPUSER: "+retorno);
         return retorno;
     }
 
@@ -94,7 +99,9 @@ public class ConsultaDaoHibernate
      */
     public List<Consulta> obtenerConsultasFecha(Date fecha) {
         String query = "from Consulta where fecha=?";
-        return getHibernateTemplate().find(query, fecha);
+        //Date f = new Date(84, 5, 5);
+        log.debug("FECHA: "+fecha.toGMTString()+" && "+fecha.toString());
+        return getHibernateTemplate().find(query,fecha);
     }
     
     /**
