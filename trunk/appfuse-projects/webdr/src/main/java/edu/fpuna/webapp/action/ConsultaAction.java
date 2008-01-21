@@ -23,7 +23,7 @@ public class ConsultaAction extends BaseAction{
     private ConsultaManager manager;
     List<Consulta> consultas;
     
-    public Consulta getConsulta(long id) {
+    public Consulta getConsulta(Long id) {
         return manager.getConsulta(id);
     }
 
@@ -41,8 +41,8 @@ public class ConsultaAction extends BaseAction{
         return SUCCESS;
     }  
     
-    public String getConsultasFecha(Date fecha) {
-        consultas = this.manager.getConsultasFecha(fecha);
+    public String getConsultasFecha(Date fechaInicio, Date fechaFin) {
+        consultas = this.manager.getConsultasFecha(fechaInicio, fechaFin);
         return SUCCESS;
     } 
     
