@@ -24,7 +24,7 @@ public class ConsultaDaoHibernate
      * @params username id de consulta.
      * @return List<Consultas> Lista de Consultas del Paciente.
      */
-    public Consulta obtenerConsultaId(long id) {
+    public Consulta obtenerConsultaId(Long id) {
         log.debug("--> Buscando Consulta por Id: " + id+" ...");
        
         String query = "from Consulta where id=?";
