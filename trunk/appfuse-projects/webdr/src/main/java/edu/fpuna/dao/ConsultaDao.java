@@ -21,7 +21,7 @@ public interface ConsultaDao extends GenericDao<Consulta, Long>  {
     
     public List<Consulta> obtenerConsultasDoctor(String username);
     
-    public List<Consulta> obtenerConsultasFecha(Date fecha);
+    public List<Consulta> obtenerConsultasFecha(Date fechaInicio, Date fechaFin);
     
     public void guardar(Consulta consulta);
     
