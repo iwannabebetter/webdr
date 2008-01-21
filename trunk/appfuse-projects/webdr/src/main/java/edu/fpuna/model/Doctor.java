@@ -39,6 +39,14 @@ public class Doctor extends User {
     public void eliminarEspecialidad(Especialidad especialidad) {
         this.especialidades.remove(especialidad);
     }
+    
+    public void agregarHorario(HorarioAtencion horario) {
+        this.horarios.add(horario);
+    }
+    
+    public void eliminarHorario(HorarioAtencion horario) {
+        this.horarios.remove(horario);
+    }
 
     @ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
     @JoinTable(
