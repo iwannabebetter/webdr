@@ -48,6 +48,7 @@ public class ConsultaAction extends BaseAction{
     
 
     public List getConsultas() {
+        String resultado = this.list();
         return consultas;
     } 
     
