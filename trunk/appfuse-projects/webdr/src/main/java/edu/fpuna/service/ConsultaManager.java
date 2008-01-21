@@ -13,7 +13,7 @@ public interface ConsultaManager extends GenericManager<Consulta,Long>{
 
     public void setConsultaDao(ConsultaDao dao);
 
-    public Consulta getConsulta(long id);
+    public Consulta getConsulta(Long id);
 
     public List getConsultasPaciente(String username);
     
