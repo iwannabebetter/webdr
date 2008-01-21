@@ -27,15 +27,13 @@ public class EspecialidadManagerImplTest extends BaseManagerMockTestCase{
         manager = null;
     }
     
-    public void testGetPerson() {
-        log.debug("testing getPerson");
-        Long id = Long.valueOf(""+ (-1) + "");
+    public void testGetEspecialidad() {
+        log.debug("testing getEspecialidad");
+        Long id = -1L;
         especialidad = new Especialidad();
         // set expected behavior on dao
         dao.expects(once()).method("get").with(eq(id)).will(returnValue(especialidad));
         Especialidad result = manager.get(id);
         assertSame(especialidad, result);
-    }  
-  
-    
+    }
 }
