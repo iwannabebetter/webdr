@@ -19,12 +19,9 @@ public interface ConsultaManager extends GenericManager<Consulta,Long>{
     
     public List getConsultasDoctor(String username);
 
-    public List getConsultasFecha(Date fecha);
+    public List getConsultasFecha(Date fechaInicio, Date fechaFin);
 
     public void saveConsulta(Consulta consulta);
 
     public void removeConsulta(long id);
-    
-    public List<Consulta> getAll();
- 
 }
