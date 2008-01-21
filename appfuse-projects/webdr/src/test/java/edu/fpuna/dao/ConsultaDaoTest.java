@@ -23,7 +23,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     public void testObtenerConsultaId() throws Exception {
         log.debug("Testing(1) ObtenerConsultaId...");
 
-        Consulta consulta = consultaDao.obtenerConsultaId(-1);
+        Consulta consulta = consultaDao.obtenerConsultaId(-1L);
        
         assertTrue(consulta.getId() == -1);
         log.debug("Testing ObtenerConsultaId ha Finalizado.");
@@ -61,7 +61,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     public void testObtenerConsultasFecha() throws Exception { 
         log.debug("Testing(4) ObtenerConsultasFecha...");
         Date fecha = new Date(84, 5, 5, 0, 0, 0);
-        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha);
+        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha, fecha);
         log.debug("Cantidad de consultas del Doctor: " + consultas.size());
         assertTrue(consultas.isEmpty() != true);
 
