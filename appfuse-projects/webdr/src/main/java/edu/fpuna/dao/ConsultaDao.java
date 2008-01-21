@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ConsultaDao extends GenericDao<Consulta, Long>  {
 
-    public Consulta obtenerConsultaId(long id) ;
+    public Consulta obtenerConsultaId(Long id) ;
     
     public List<Consulta> obtenerConsultasPaciente(String username);
     
