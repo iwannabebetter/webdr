@@ -39,7 +39,7 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      * @param id
      * @return Consulta
      */
-    public Consulta getConsulta(long id) {
+    public Consulta getConsulta(Long id) {
         return dao.obtenerConsultaId(id);
     }
 
@@ -66,8 +66,8 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      * @param fecha
      * @return List lista de las Consultas.
      */
-    public List getConsultasFecha(Date fecha) {
-        return dao.obtenerConsultasFecha(fecha);
+    public List getConsultasFecha(Date fechaInicio, Date fechaFin) {
+        return dao.obtenerConsultasFecha(fechaInicio, fechaFin);
     }    
 
     /**
@@ -93,5 +93,4 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
     public List<Consulta> getAll() {
         return dao.getAll();
     }
-    
 }
