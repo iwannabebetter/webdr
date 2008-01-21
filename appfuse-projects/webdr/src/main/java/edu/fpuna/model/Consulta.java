@@ -81,7 +81,7 @@ public class Consulta extends BaseObject {
         this.notas = notas;
     }
     
-    @ManyToOne(fetch=FetchType.LAZY,optional=false)
+    @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(name="doctor_id",nullable=false)
     public Doctor getDoctor() {
         return doctor;
@@ -91,7 +91,7 @@ public class Consulta extends BaseObject {
         this.doctor = doctor;
     }
     
-    @ManyToOne(fetch=FetchType.LAZY,optional=false)
+    @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(name="paciente_id",nullable=false)
     public Paciente getPaciente() {
         return paciente;
