@@ -67,7 +67,7 @@ public class ConsultaDaoHibernate
     public List<Consulta> obtenerConsultasDoctor(String username) {
         log.debug("--> Buscando Consultas por Doctor: "+username+"...");
         
-        long doctor_id = this.obtenerIdUsuario(username);
+        Long doctor_id = this.obtenerIdUsuario(username);
         String query = "from Consulta where doctor_id=?";
         
         log.debug("--> Busqueda Finalizada.");
@@ -97,11 +97,12 @@ public class ConsultaDaoHibernate
      * @param fecha fecha a consultar.
      * @return List<Consulta> lista de consulta encontradas.
      */
-    public List<Consulta> obtenerConsultasFecha(Date fecha) {
-        String query = "from Consulta where fecha=?";
+    public List<Consulta> obtenerConsultasFecha(Date fechaInicio, Date fechaFin) {
+        String query = "from Consulta where fecha>=? and fecha<=?";
         //Date f = new Date(84, 5, 5);
-        log.debug("FECHA: "+fecha.toGMTString()+" && "+fecha.toString());
-        return getHibernateTemplate().find(query,fecha);
+        log.debug("FECHA: "+fechaInicio.toString()+" && "+fechaInicio.toString());
+        Date[] fechas = {fechaInicio, fechaFin};
+        return getHibernateTemplate().find(query, fechas);
     }
     
     /**
