@@ -16,7 +16,7 @@
 
 <c:out value="${buttons}" escapeXml="false" />
 
-<s:set name="consultas" value="consultas" scope="request"/>
+<s:set name="consultas" value="consultas.consultas" scope="request"/>
 <display:table name="consultas" class="table" requestURI="" id="consultasList" export="true" pagesize="25">
     <display:column property="id" sortable="true" href="editConsulta.html" 
         paramId="id" paramProperty="id" titleKey="consulta.id"/>
