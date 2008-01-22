@@ -19,6 +19,7 @@ public class Paciente extends User {
     private TipoSangre tipoSangre;
     private Date fechaIngreso;
     private Date fechaNacimiento;
+    private Integer cedula;
 
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(
@@ -51,5 +52,14 @@ public class Paciente extends User {
     
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    @Column(name="cedula",nullable=false)
+    public Integer getCedula() {
+        return cedula;
+    }
+    
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
     }
 }
