@@ -64,7 +64,7 @@ public class HorarioAtencion extends BaseObject {
         this.horaFin = horaFin;
     }
     
-    @ManyToOne(fetch=FetchType.LAZY,optional=false)
+    @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(name="doctor_id",nullable=false)
     public Doctor getDoctor() {
         return doctor;
@@ -76,6 +76,7 @@ public class HorarioAtencion extends BaseObject {
     
     @OneToMany(fetch=FetchType.EAGER)
     @JoinColumn(name="horario_id",nullable=false)
+    @OrderBy(value="hora")
     public Set<Turno> getTurnos() {
         return turnos;
     }
