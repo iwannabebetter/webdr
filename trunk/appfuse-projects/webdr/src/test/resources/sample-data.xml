@@ -122,20 +122,24 @@
         <column>fechanac</column>
         <column>fecingreso</column>
         <column>tiposangre_id</column>
+        <column>cedula</column>
         <row>
             <value description="id">-1</value>
             <value description="fechanac">1984-05-05</value>
             <value description="fecingreso">2005-06-05</value>
             <value description="tiposangre_id">-1</value>
+            <value description="cedula">1234567</value>
         </row>
     </table>
     
     <table name="doctor">
         <column>id</column>
         <column>fechanac</column>
+        <column>registro</column>
         <row>
             <value description="id">-2</value>
             <value description="fechanac">1984-05-08</value>
+            <value description="registro">1234</value>
         </row>
     </table>
     
