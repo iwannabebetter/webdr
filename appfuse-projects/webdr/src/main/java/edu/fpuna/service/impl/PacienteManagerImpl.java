@@ -31,36 +31,29 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
         this.dao = dao;
     }
 
-
-
     public Paciente getPaciente(Long id) {
         return dao.getPaciente(id);
     }
-
     
     public Paciente getPaciente(String username) {
         return dao.getPaciente(username);
     }
-
     
-    public boolean guardarPaciente(Paciente p) {
-        return dao.guardar(p);
+    public void guardarPaciente(Paciente p) {
+        dao.guardar(p);
     }
 
-
-    public boolean borrarPaciente(Paciente p) {
-        return  dao.borrar(p);
+    public void borrarPaciente(Paciente p) {
+        dao.borrar(p);
     }
-
 
     public boolean borrarPaciente(Long id) {
         dao.remove(id);
         Paciente res = dao.get(id);
-        if(res != null && res.getFirstName() !=null){
+        
+        if (res != null && res.getFirstName() != null)
             return false;
-        }else{
-            return true;
-        }
+        
+        return true;
     }
-    
 }
