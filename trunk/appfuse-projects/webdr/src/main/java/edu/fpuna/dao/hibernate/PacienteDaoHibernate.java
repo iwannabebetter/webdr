@@ -7,6 +7,7 @@ package edu.fpuna.dao.hibernate;
 
 import edu.fpuna.dao.PacienteDao;
 import edu.fpuna.model.Paciente;
+import java.util.List;
 
 
 /**
@@ -18,22 +19,28 @@ public class PacienteDaoHibernate
 
     
     public Paciente getPaciente(Long id) {
-        return null;
+        String query = "from Paciente where id=?";
+        List result = getHibernateTemplate().find(query, id);
+        
+        if (result.isEmpty())
+            return null;
+        
+        return (Paciente) result.get(0);
     }
 
     
     public Paciente getPaciente(String username) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("No implementamos todavia");
     }
 
     
     public boolean guardar(Paciente p) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        super.save(p);
     }
 
     
     public boolean borrar(Paciente p) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        super.remove(p.getId());
     }
 
 
