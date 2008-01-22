@@ -14,9 +14,9 @@ public interface PacienteManager extends GenericManager<Paciente,Long>{
 
     public Paciente getPaciente(String username);
     
-    public boolean guardarPaciente(Paciente p);
+    public void guardarPaciente(Paciente p);
     
-    public boolean borrarPaciente(Paciente p);
+    public void borrarPaciente(Paciente p);
 
     public boolean borrarPaciente(Long id);
 }
