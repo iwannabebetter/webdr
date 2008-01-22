@@ -19,6 +19,7 @@ import javax.persistence.*;
 public class Doctor extends User {
     
     private Date fechaNacimiento;
+    private Integer registro;
     private Set<Especialidad> especialidades = new HashSet<Especialidad>();
     private Set<HorarioAtencion> horarios = new HashSet<HorarioAtencion>();
     
@@ -30,6 +31,15 @@ public class Doctor extends User {
     
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    @Column(name="registro",nullable=false)
+    public Integer getRegistro() {
+        return registro;
+    }
+    
+    public void setRegistro(Integer registro) {
+        this.registro = registro;
     }
     
     public void agregarEspecialidad(Especialidad especialidad) {
@@ -54,6 +64,7 @@ public class Doctor extends User {
         joinColumns = { @JoinColumn( name="doctor_id") },
         inverseJoinColumns = @JoinColumn(name="especialidad_id")
     )
+    @OrderBy(value="nombre")
     public Set<Especialidad> getEspecialidades() {
         return especialidades;
     }
@@ -63,6 +74,7 @@ public class Doctor extends User {
     }
     
     @OneToMany(fetch=FetchType.EAGER)
+    @OrderBy(value="dia")
     public Set<HorarioAtencion> getHorarios() {
         return horarios;
     }
