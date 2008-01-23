@@ -174,6 +174,37 @@
             <value description="paciente_id">-1</value>
             <value description="doctor_id">-2</value>
         </row>
-    </table>
-    
+        <row>
+            <value description="id">1</value>
+            <value description="fecha">1998-11-23</value>
+            <value description="hora_inicio">07:00:00</value>
+            <value description="hora_fin">08:30:00</value>
+            <value description="peso_actual">80</value>
+            <value description="altura_actual">155</value>
+            <value description="edad_actual">27</value>
+            <value description="edad_meses">0</value>
+            <value description="sintomas">Jaqueca</value>
+            <value description="diagnostico">Chupo Mucho</value>
+            <value description="recetario">Aspirina</value>
+            <value description="indicaciones">Tomar dos pastilla por dia</value>
+            <value description="paciente_id">-1</value>
+            <value description="doctor_id">-2</value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="fecha">2000-10-09</value>
+            <value description="hora_inicio">09:00:00</value>
+            <value description="hora_fin">10:00:00</value>
+            <value description="peso_actual">72</value>
+            <value description="altura_actual">171</value>
+            <value description="edad_actual">21</value>
+            <value description="edad_meses">0</value>
+            <value description="sintomas">Dolor de Cabeza</value>
+            <value description="diagnostico">Intoxicacion</value>
+            <value description="recetario">Aspirina</value>
+            <value description="indicaciones">Tomar una pastilla por dia</value>
+            <value description="paciente_id">-1</value>
+            <value description="doctor_id">-2</value>
+        </row>
+    </table>  
 </dataset>
