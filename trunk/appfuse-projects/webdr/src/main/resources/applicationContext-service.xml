@@ -134,4 +134,8 @@
         </constructor-arg>
     </bean>
 
+    <bean id="pacienteManager" class="edu.fpuna.service.impl.PacienteManagerImpl">
+        <property name="pacienteDao" ref="pacienteDao"/>
+    </bean>
+    
 </beans>

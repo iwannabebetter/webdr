@@ -57,7 +57,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     
     /*
      * Test nº4. Prueba de busqueda de Consulta por Fecha
-     */
+     
     public void testObtenerConsultasFecha() throws Exception { 
         log.debug("Testing(4) ObtenerConsultasFecha...");
         Date fecha = new Date(84, 5, 5, 0, 0, 0);
@@ -66,7 +66,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         assertTrue(consultas.isEmpty() == true);
 
         log.debug("Testing ObtenerConsultasFecha ha Finalizado.");
-    }
+    }*/
 
     /*
      * Test nº5. Prueba de eliminar una consulta

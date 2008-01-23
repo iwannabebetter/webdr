@@ -6,7 +6,11 @@
 package edu.fpuna.dao.hibernate;
 
 import edu.fpuna.dao.PacienteDao;
+import edu.fpuna.model.Address;
 import edu.fpuna.model.Paciente;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -47,4 +51,7 @@ public class PacienteDaoHibernate
     public void borrar(Paciente p) {
         super.remove(p.getId());
     }    
+    
+
+    
 }
