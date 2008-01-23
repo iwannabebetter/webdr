@@ -32,17 +32,23 @@ public class PacienteActionTest extends BaseActionTestCase {
         action = new PacienteAction();
         action.setPacienteManager(pacienteManager);
         
-        // add a test person to the database
+        /** add a test person to the database
         log.debug("Agregando un Paciente");
-        Paciente paciente = pacienteManager.pacienteAleatorio();
-        pacienteManager.guardarPaciente(paciente);
+        Paciente paciente = pacienteManager.getPaciente(username)
+        log.debug("Paciente seteado");
+        pacienteManager.guardarPaciente(paciente);**/
     }
 
     public void testSearch() throws Exception {
-        log.debug("Probando el listado de especialidades");
+        log.debug("Probando el listado de pacientes");
         assertEquals(action.list(), ActionSupport.SUCCESS);
         
-        log.debug("Recuperando especialidad");
-        assertFalse(action.getPaciente("fmancia") == null);
+        log.debug("Recuperando pacientes ");
+        assertTrue(action.getPacientes().size() != 0);
+        log.debug("Fin Recuperando pacientes ");
+        
+        
+        action.guardar(action.getPacientes().get(0));
+        log.debug("Guardar paciente ");
     }
 }
