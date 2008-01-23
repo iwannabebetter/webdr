@@ -10,11 +10,8 @@ import edu.fpuna.model.Address;
 import edu.fpuna.model.Paciente;
 import edu.fpuna.model.Role;
 import edu.fpuna.model.TipoSangre;
-import edu.fpuna.model.User;
 import edu.fpuna.service.GenericManager;
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,7 +30,6 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         this.pacienteDao = pacienteDao;
     }
     
-
     public void setRoleDao(RoleDao roleDao) {
         this.roleDao = roleDao;
     }
@@ -42,18 +38,17 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         this.tipoSangreManager = tipoSangreManager;
     }
     
-    public void testObtenerPaciente()throws Exception {
+    public void testObtenerPaciente() throws Exception {
          log.debug("Iniciando Obtener Paciente...");
          Paciente res = pacienteDao.getPaciente(-1L);
          assertTrue(res != null && res.getId() == -1L );
          log.debug("Fin Obtener Paciente...");
     }
     
-    
     /*
      * Test nº1. 
      */
-   public void testGuardarPaciente() throws Exception {
+    public void testGuardarPaciente() throws Exception {
         log.debug("Iniciando Guardar paciente...");
 
         /* Datos de Usuario */
@@ -93,7 +88,6 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         nuevoPaciente.addRole(role);
         /*<--- Datos del paciente */
         
-        
         log.debug("Agregando el Tipo de Sangre ");
         TipoSangre tiposangre = tipoSangreManager.get(-1L);
         
@@ -111,8 +105,7 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         assertEquals("fmancia2", retornado.getPassword());
 
         log.debug("Guardar Confirmado...");
-        
-   }
+    }
     
     /*
      * Test nº2. Prueba de busqueda de Consulta por Paciente
@@ -127,7 +120,6 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         log.debug("Testing ObtenerConsultasPaciente ha Finalizado.");
     }
 
-    
      * Test nº3. Prueba de busqueda de Consulta por Doctor
      
     public void testObtenerConsultasDoctor() throws Exception { 
@@ -140,7 +132,6 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         log.debug("Testing ObtenerConsultasDoctor ha Finalizado.");
     }
 
-
     public void testEliminarConsulta() throws Exception { 
         log.debug("Testing(5) EliminarConsulta...");
         
@@ -148,5 +139,4 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         
         log.debug("Testing EliminarConsulta ha Finalizado.");
     }**/
-  
 }
