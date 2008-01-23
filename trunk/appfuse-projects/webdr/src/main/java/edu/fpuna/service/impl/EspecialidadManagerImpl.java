@@ -9,15 +9,14 @@ import edu.fpuna.dao.EspecialidadDao;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.*;
-import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Liz
  */
-public class EspecialidadManagerImpl extends GenericManagerImpl<Especialidad, Long> implements 
-        EspecialidadManager {
+public class EspecialidadManagerImpl 
+    extends GenericManagerImpl<Especialidad, Long> implements EspecialidadManager {
  
     private EspecialidadDao dao;
 
@@ -32,13 +31,6 @@ public class EspecialidadManagerImpl extends GenericManagerImpl<Especialidad, Lo
 
     public void setEspecialidadDao(EspecialidadDao dao) {
         this.dao = dao;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public List<Especialidad> getAll() {
-        return dao.getAll();
     }
 
     /**
@@ -62,8 +54,7 @@ public class EspecialidadManagerImpl extends GenericManagerImpl<Especialidad, Lo
         dao.eliminar(dao.obtenerPorNombre(name));
     }
 
-    public List getEspecialidades() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-   
+    public List<Especialidad> getEspecialidades() {
+        return dao.getAll();
+    }   
 }
