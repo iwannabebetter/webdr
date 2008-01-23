@@ -26,6 +26,7 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
     private PacienteDao dao;
     private RoleDao roleDao;
     private GenericManager<TipoSangre, Long> tipoSangreManager = null;
+    
     /**
      * Constructor
      * @param pacienteDao
