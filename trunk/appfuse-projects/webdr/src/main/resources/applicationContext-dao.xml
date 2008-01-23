@@ -68,4 +68,8 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <bean id="doctorDao" class="edu.fpuna.dao.hibernate.DoctorDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
 </beans>
