@@ -18,7 +18,7 @@ public interface EspecialidadManager extends GenericManager<Especialidad, Long> 
     /**
      * {@inheritDoc}
      */
-    List getEspecialidades();
+    List<Especialidad> getEspecialidades();
 
     /**
      * {@inheritDoc}
