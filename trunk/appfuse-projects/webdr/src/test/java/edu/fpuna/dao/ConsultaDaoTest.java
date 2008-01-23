@@ -63,7 +63,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         Date fecha = new Date(84, 5, 5, 0, 0, 0);
         List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha, fecha);
         log.debug("Cantidad de consultas del Doctor: " + consultas.size());
-        assertTrue(consultas.isEmpty() != true);
+        assertTrue(consultas.isEmpty() == true);
 
         log.debug("Testing ObtenerConsultasFecha ha Finalizado.");
     }
