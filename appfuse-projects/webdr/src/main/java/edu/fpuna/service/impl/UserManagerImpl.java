@@ -1,7 +1,6 @@
 package edu.fpuna.service.impl;
 
 import org.acegisecurity.providers.dao.DaoAuthenticationProvider;
-import org.acegisecurity.providers.dao.SaltSource;
 import org.acegisecurity.providers.encoding.PasswordEncoder;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
 import edu.fpuna.dao.UserDao;
@@ -103,7 +102,6 @@ public class UserManagerImpl extends UniversalManagerImpl implements UserManager
             }
         } else {
             log.warn("AuthenticationProvider not set, skipping password encryption...");
-
         }
         
         try {
