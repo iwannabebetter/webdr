@@ -9,7 +9,7 @@ import edu.fpuna.model.Especialidad;
 import java.util.List;
 
 /**
- *
+ * Implementación Hibernate del DAO correspondiente al manejo de Especialidad
  * @author ghuttemann
  */
 public class EspecialidadDaoHibernate 
@@ -19,7 +19,6 @@ public class EspecialidadDaoHibernate
         super(Especialidad.class);
     }
 
-    //@Override
     public Especialidad obtenerPorNombre(String nombre) {
         String query = "from Especialidad where nombre=?";
         List result = getHibernateTemplate().find(query, nombre);
@@ -30,12 +29,10 @@ public class EspecialidadDaoHibernate
         return (Especialidad) result.get(0);
     }
 
-    //@Override
     public void eliminar(Especialidad especialidad) {
         super.remove(especialidad.getId());
     }
 
-    //@Override
     public void guardar(Especialidad especialidad) {
         super.save(especialidad);
     }
