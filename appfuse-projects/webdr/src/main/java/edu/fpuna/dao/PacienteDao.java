@@ -17,7 +17,7 @@ public interface PacienteDao extends GenericDao<Paciente, Long> {
     
     public Paciente getPaciente(String username);
     
-    public void guardar(Paciente p);
+    public Paciente guardar(Paciente p);
     
     public void borrar(Paciente p);
 }
