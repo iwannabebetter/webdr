@@ -32,11 +32,16 @@ public class PacienteDaoHibernate
     }
     
     public Paciente getPaciente(String username) {
-        throw new UnsupportedOperationException("No implementamos todavia");
+        List result = super.getHibernateTemplate().find("from Paciente where username = ?", username);
+        
+        if (result.isEmpty())
+            return null;
+        
+        return (Paciente) result.get(0);
     }
 
-    public void guardar(Paciente p) {
-        super.save(p);
+    public Paciente guardar(Paciente p) {
+        return super.save(p);
     }
 
     public void borrar(Paciente p) {
