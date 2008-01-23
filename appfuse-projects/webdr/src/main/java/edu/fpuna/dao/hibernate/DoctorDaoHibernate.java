@@ -9,6 +9,7 @@ import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import java.util.List;
+import org.acegisecurity.userdetails.UsernameNotFoundException;
 
 /**
  * Implementación Hibernate del DAO correspondiente al manejo de Doctor
@@ -19,6 +20,16 @@ public class DoctorDaoHibernate
     
     public DoctorDaoHibernate() {
         super(Doctor.class);
+    }
+    
+    public Doctor obtenerPorNombre(String username) throws UsernameNotFoundException {
+        String query = "from Doctor doc where doc.username=?";
+        List result = super.getHibernateTemplate().find(query, username);
+        
+        if (result == null || result.isEmpty())
+            throw new UsernameNotFoundException("Doctor: '" + username + "' no encontrado...");
+        else
+            return (Doctor) result.get(0);
     }
 
     public List<Doctor> obtenerPorEspecialidad(Especialidad especialidad) {
