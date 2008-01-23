@@ -9,6 +9,7 @@ import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import java.util.List;
+import org.acegisecurity.userdetails.UsernameNotFoundException;
 
 /**
  * Interfaz Manager para Doctor
@@ -27,7 +28,7 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      * @param username El nombre de usuario del doctor a recuperar.
      * @return El objeto Doctor correspondiente al nombre de usuario.
      */
-    public Doctor obtenerDoctorPorNombre(String username);
+    public Doctor obtenerDoctorPorNombre(String username) throws UsernameNotFoundException;
     
     /**
      * Guarda o actualiza un determinado doctor.
@@ -47,12 +48,12 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      * Obtiene todos los doctores de la base de datos.
      * @return Una lista con los doctores recuperados.
      */
-    public List obtenerDoctores();
+    public List<Doctor> obtenerDoctores();
     
     /**
      * Obtiene los doctores de una determinada especialidad.
      * @param especialidad La especialidad buscada.
      * @return Una lista con los doctores recuperados.
      */
-    public List obtenerDoctoresPorEspecialidad(Especialidad especialidad);
+    public List<Doctor> obtenerDoctoresPorEspecialidad(Especialidad especialidad);
 }
