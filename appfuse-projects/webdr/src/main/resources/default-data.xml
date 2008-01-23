@@ -77,6 +77,16 @@
             <value description="name">ROLE_USER</value>
             <value description="description"><![CDATA[Default role for all Users]]></value>
         </row>
+        <row>
+            <value description="id">3</value>
+            <value description="name">ROLE_DOCTOR</value>
+            <value description="description"><![CDATA[Rol para los doctores]]></value>
+        </row>
+        <row>
+            <value description="id">4</value>
+            <value description="name">ROLE_PACIENTE</value>
+            <value description="description"><![CDATA[Rol para los pacientes]]></value>
+        </row>
     </table>
     <table name="user_role">
         <column>user_id</column>
