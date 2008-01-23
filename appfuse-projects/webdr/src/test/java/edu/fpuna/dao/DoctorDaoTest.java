@@ -28,7 +28,7 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         this.doctorDao = doctorDao;
     }
     
-    public void testObtenerPorEspecialidad() {
+    public void testObtenerPorEspecialidad() throws Exception {
         Address address = new Address();
         address.setCity("Asunción");
         address.setPostalCode("123456");
