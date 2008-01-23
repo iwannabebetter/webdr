@@ -24,11 +24,10 @@ public class DoctorDaoHibernate
     public List<Doctor> obtenerPorEspecialidad(Especialidad especialidad) {
         String query = "from Doctor as doc " +
                        "join doc.especialidades as esp " +
-                       "with esp.nombre=?";
+                       "with esp.nombre=? " +
+                       "order by upper(esp.nombre)";
         
-        List<Doctor> result = super.getHibernateTemplate()
-                                   .find(query, especialidad.getNombre());
-        
-        return result;
+        return super.getHibernateTemplate()
+                    .find(query, especialidad.getNombre());
     }
 }
