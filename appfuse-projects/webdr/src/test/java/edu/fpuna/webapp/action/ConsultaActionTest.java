@@ -18,6 +18,7 @@ import java.util.Date;
 import org.apache.struts2.ServletActionContext;
 import edu.fpuna.service.ConsultaManager;
 import edu.fpuna.model.Consulta;
+import edu.fpuna.model.Notas;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.webapp.action.BaseActionTestCase;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -71,4 +72,45 @@ public class ConsultaActionTest extends BaseActionTestCase {
         assertTrue(action.getConsultas().size() >= 1);
         log.debug("Tamaño de consultas" + action.getConsultas().size());
     }
+
+	
+	/* Pruebas Agregadas para Agregar, Editar y Borrar */
+	
+	public void testEdit() throws Exception {
+		log.debug("--> Testing edit...");
+		action.setId(1L);
+		assertNull(action.getConsulta());
+		assertEquals("success", action.edit());
+		assertNotNull(action.getConsulta());
+		assertFalse(action.hasActionErrors());
+	}
+	
+	public void testSave() throws Exception {
+		log.debug("--> Testing save...");
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		ServletActionContext.setRequest(request);
+		action.setId(1L);
+		assertEquals("success", action.edit());
+		assertNotNull(action.getConsulta());
+		// update last name and save
+		Notas notas = new Notas("01","02","03","04");
+		action.getConsulta().setNotas(notas); // VER
+		assertEquals("input", action.save());
+		assertEquals(notas, action.getConsulta().getNotas()); //VER
+		assertFalse(action.hasActionErrors());
+		assertFalse(action.hasFieldErrors());
+		assertNotNull(request.getSession().getAttribute("messages"));
+	}
+
+	public void testRemove() throws Exception {
+		log.debug("--> Testing remove...");
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		ServletActionContext.setRequest(request);
+		action.setDelete("");
+		Consulta consulta = new Consulta();
+		consulta.setId(2L);
+		action.setConsulta(consulta);
+		assertEquals("success", action.delete());
+		assertNotNull(request.getSession().getAttribute("messages"));
+	}
 }
