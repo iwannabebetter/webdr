@@ -8,12 +8,20 @@ package edu.fpuna.dao;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import java.util.List;
+import org.acegisecurity.userdetails.UsernameNotFoundException;
 
 /**
  * Interfaz DAO para Doctor.
  * @author ghuttemann
  */
 public interface DoctorDao extends GenericDao<Doctor, Long> {
+    
+    /**
+     * Obtiene un doctor por su nombre de usuario.
+     * @param username El nombre de usuario del doctor a recuperar.
+     * @return El objeto Doctor correspondiente al nombre de usuario.
+     */
+    public Doctor obtenerPorNombre(String username) throws UsernameNotFoundException;
     
     /**
      * Recupera los doctores con una determinada especialidad
