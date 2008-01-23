@@ -72,11 +72,11 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         log.debug("Recuperando doctores con especialidad \"" + esp + "\"...");
         List<Doctor> doctores = doctorDao.obtenerPorEspecialidad(esp);
         assertTrue(doctores.size() > 0);
-
+        /*
         log.debug(doctores.size() + " doctores recuperados con especialidad \"" + esp + "\"...");
         for (int i=0; i < doctores.size(); i++) {
             Doctor doc = doctores.get(i);
             log.debug("\t" + doc.getUsername());
-        }
+        }*/
     }
 }
