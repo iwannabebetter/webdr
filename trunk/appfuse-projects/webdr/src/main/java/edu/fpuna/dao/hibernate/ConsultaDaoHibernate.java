@@ -5,8 +5,9 @@ import edu.fpuna.model.Consulta;
 import edu.fpuna.model.User;
 import java.util.Date;
 import java.util.List;
+
 /**
- * Implementación del DAO correspondiente al manejo de Consultas
+ * Implementación Hibernate del DAO correspondiente al manejo de Consulta
  * @author mrodas
  */
 public class ConsultaDaoHibernate 
@@ -33,12 +34,12 @@ public class ConsultaDaoHibernate
         log.debug("--> Busqueda Finalizada.");
         
         Consulta retorno = null;
-        if (result.size()>1)
+        if (result.size() > 1)
             log.debug("##ERROR## Consulta duplicada.");
         else
             retorno = (Consulta) result.get(0);
     
-        log.debug("--> Busqueda Finalizada."+retorno.getFecha().toString());
+        log.debug("--> Busqueda Finalizada." + retorno.getFecha().toString());
         return retorno;
     }
     
@@ -48,7 +49,7 @@ public class ConsultaDaoHibernate
      * @return List<Consultas> Lista de Consultas del Paciente.
      */
     public List<Consulta> obtenerConsultasPaciente(String username) {
-        log.debug("--> Buscando Consultas por Paciente: "+username+"...");
+        log.debug("--> Buscando Consultas por Paciente: " + username + "...");
         
         long paciente_id = this.obtenerIdUsuario(username);
         String query = "from Consulta where paciente_id=?";
@@ -65,7 +66,7 @@ public class ConsultaDaoHibernate
      * @return List<Consultas> Lista de Consultas del Doctor.
      */
     public List<Consulta> obtenerConsultasDoctor(String username) {
-        log.debug("--> Buscando Consultas por Doctor: "+username+"...");
+        log.debug("--> Buscando Consultas por Doctor: " + username + "...");
         
         Long doctor_id = this.obtenerIdUsuario(username);
         String query = "from Consulta where doctor_id=?";
@@ -75,7 +76,7 @@ public class ConsultaDaoHibernate
         return getHibernateTemplate().find(query, doctor_id);
     }
     
-    private long obtenerIdUsuario(String username) {
+    private Long obtenerIdUsuario(String username) {
         log.debug("EMPEZAMOS LA CONSULTA SOBRE APPUSER.....");
         
         String query = "from User where username=?";
@@ -83,12 +84,12 @@ public class ConsultaDaoHibernate
         
         log.debug("PASAMOS LA CONSULTA SOBRE APPUSER.....");
         
-        long retorno = 0;
-        if (list.isEmpty()) {
-            log.debug("# "+username+" NO EXISTE EN APPUSER.");
-        } else {
+        Long retorno = 0L;
+        if (list.isEmpty())
+            log.debug("# " + username + " NO EXISTE EN APPUSER.");
+        else
             retorno = list.get(0).getId();
-        }
+        
         return retorno;
     }
 
@@ -100,7 +101,7 @@ public class ConsultaDaoHibernate
     public List<Consulta> obtenerConsultasFecha(Date fechaInicio, Date fechaFin) {
         String query = "from Consulta where fecha>=? and fecha<=?";
         //Date f = new Date(84, 5, 5);
-        log.debug("FECHA: "+fechaInicio.toString()+" && "+fechaInicio.toString());
+        log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
         Date[] fechas = {fechaInicio, fechaFin};
         return getHibernateTemplate().find(query, fechas);
     }
