@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implementación de la Logica de Negocios para la Consulta
+ * Interfaz Manager para Consulta
  * @author Administrador
  */
-public interface ConsultaManager extends GenericManager<Consulta,Long>{
+public interface ConsultaManager extends GenericManager<Consulta, Long> {
 
     public void setConsultaDao(ConsultaDao dao);
 
