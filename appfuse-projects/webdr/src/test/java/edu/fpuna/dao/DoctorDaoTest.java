@@ -41,7 +41,6 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         log.debug("Creando doctores...");
         Doctor[] doctores = new Doctor[CANT_DOC];
         for (int i=0; i < CANT_DOC; i++) {
-            log.debug("Creando doctor " + i + "...");
             doctores[i] = new Doctor();
             doctores[i].setUsername("user" + i);
             doctores[i].setEmail("user" + i + "@gmail.com");
@@ -55,11 +54,14 @@ public class DoctorDaoTest extends BaseDaoTestCase {
             doctores[i].setFechaNacimiento(new Date());
             doctores[i].setRegistro(1234);
             
-            log.debug("Agregando especialidad al doctor " + i + "...");
+            Especialidad esp;
             if (i % 2 == 0)
-                doctores[i].agregarEspecialidad(especialidades.get(0));
+                esp = especialidades.get(0);
             else
-                doctores[i].agregarEspecialidad(especialidades.get(1));
+                esp = especialidades.get(1);
+            
+            log.debug("Agregando especialidad \"" + esp + "\" al doctor " + i + "...");
+            doctores[i].agregarEspecialidad(esp);
             
             log.debug("Guardando doctor " + i + "...");
             doctorDao.save(doctores[i]);
@@ -71,9 +73,9 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         log.debug("Recuperando doctores con especialidad \"" + esp + "\"");
         List<Doctor> result = doctorDao.obtenerPorEspecialidad(esp);
         assertFalse(result.isEmpty());
-        log.debug("Doctores recuperados:");
+        log.debug(result.size() + " doctores recuperados con especialidad \"" + esp + "\"...");
         for (Doctor doc : result)
-            log.debug("\t" + doc.getUsername() + "(" + esp + ")");
+            log.debug("\t" + doc.getUsername());
         
         log.debug("Pruebas terminadas...");
     }
