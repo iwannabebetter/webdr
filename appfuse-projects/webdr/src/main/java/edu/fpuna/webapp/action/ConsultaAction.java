@@ -16,19 +16,34 @@ import java.util.List;
 
 /**
  *
- * @author Hugo Meyer
+ * @author Hugo Meyer, Marcelo Rodas
  */
 public class ConsultaAction extends BaseAction{
 
     private ConsultaManager manager;
+	private Consulta consulta;
     List<Consulta> consultas;
-    
-    public Consulta getConsulta(Long id) {
-        return manager.getConsulta(id);
-    }
+	private Long id;
+
 
     public void setConsultaManager(ConsultaManager consultaManager) {
         this.manager = consultaManager;
+    }
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Consulta getConsulta() {
+		return this.consulta;
+	}
+
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
+	}
+
+    public Consulta getConsulta(Long id) {
+        return manager.getConsulta(id);
     }
     
     public String getConsultasPaciente(String username) {
@@ -56,4 +71,40 @@ public class ConsultaAction extends BaseAction{
         consultas = manager.getAll();
         return SUCCESS;
     }
+
+	/* Delete, Editar, Guardar*/
+
+	public String delete() {
+		manager.remove(consulta.getId());
+		saveMessage(getText("consulta.deleted"));
+		return SUCCESS;
+	}
+	
+	public String edit() {
+		if (id != null) {
+			consulta = manager.getConsulta(id);
+		} else {
+			consulta = new Consulta();
+		}
+		return SUCCESS;
+	}
+	
+	public String save() throws Exception {
+		if (cancel != null) {
+			return "cancel";
+		}
+		if (delete != null) {
+			return delete();
+		}
+		boolean isNew = (consulta.getId() == null);
+		consulta = manager.save(consulta);
+		String key = (isNew) ? "consulta.added" : "consulta.updated";
+		saveMessage(getText(key));
+		if (!isNew) {
+			return INPUT;
+		} else {
+			return SUCCESS;
+		}
+	}
+
 }
