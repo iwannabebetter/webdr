@@ -10,12 +10,13 @@ import java.util.List;
 
 
 /**
- *
+ * Interfaz Manager para Especialidad
  * @author Liz
  */
-public interface EspecialidadManager extends GenericManager<Especialidad,Long>{
+public interface EspecialidadManager extends GenericManager<Especialidad, Long> {
 
-     /* {@inheritDoc}
+    /**
+     * {@inheritDoc}
      */
     List getEspecialidades();
 
