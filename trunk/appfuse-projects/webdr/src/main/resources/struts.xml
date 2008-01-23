@@ -112,6 +112,18 @@
         <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
             <result>/WEB-INF/pages/consultasList.jsp</result> 
         </action>
+
+		<action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
+			<result>/WEB-INF/pages/consultaForm.jsp</result>
+			<result name="error">/WEB-INF/pages/consultaList.jsp</result>
+		</action>
+		<action name="saveConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="save">
+			<result name="input">/WEB-INF/pages/consultaForm.jsp</result>
+			<result name="cancel" type="redirect">consultas.html</result>
+			<result name="delete" type="redirect">consultas.html</result>
+			<result name="success" type="redirect">consultas.html</result>
+		</action>
+
     </package>
 
     <!-- Actions in this package will be prefixed with /admin/ -->
