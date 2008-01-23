@@ -39,10 +39,10 @@ public class PacienteDaoTest extends BaseDaoTestCase {
     }
     
     public void testObtenerPaciente() throws Exception {
-         log.debug("Iniciando Obtener Paciente...");
-         Paciente res = pacienteDao.getPaciente(-1L);
-         assertTrue(res != null && res.getId() == -1L );
-         log.debug("Fin Obtener Paciente...");
+        log.debug("Iniciando Obtener Paciente...");
+        Paciente res = pacienteDao.getPaciente(-1L);
+        assertTrue(res != null && res.getId() == -1L);
+        log.debug("Fin Obtener Paciente...");
     }
     
     /*
@@ -80,18 +80,18 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
         Date fechaNacimiento = (Date)formatter.parse("01/29/02");
         nuevoPaciente.setFechaNacimiento(fechaNacimiento);
-            
-        log.debug("Agregando el Rol "+Constants.USER_ROLE+"...");        
+        
+        log.debug("Agregando el Rol " + Constants.USER_ROLE + "...");        
         Role role = roleDao.getRoleByName(Constants.USER_ROLE);
         assertNotNull(role.getId());
-        log.debug("---> role = "+role.getName());
+        log.debug("---> role = " + role.getName());
         nuevoPaciente.addRole(role);
         /*<--- Datos del paciente */
         
         log.debug("Agregando el Tipo de Sangre ");
         TipoSangre tiposangre = tipoSangreManager.get(-1L);
         
-        log.debug("---> tiposangre = "+tiposangre.getNombre());
+        log.debug("---> tiposangre = " + tiposangre.getNombre());
         nuevoPaciente.setTipoSangre(tiposangre);
         
         log.debug("Guardando el Paciente...");
@@ -106,37 +106,4 @@ public class PacienteDaoTest extends BaseDaoTestCase {
 
         log.debug("Guardar Confirmado...");
     }
-    
-    /*
-     * Test nº2. Prueba de busqueda de Consulta por Paciente
-     
-    public void testObtenerConsultasPaciente() throws Exception {
-        log.debug("Testing(2) ObtenerConsultasPaciente...");
-
-        List<Consulta> consultas = consultaDao.obtenerConsultasPaciente("nuevoPaciente");
-       
-        assertTrue(consultas.isEmpty() != true);
-        log.debug("Cantidad de consultas del Paciente: " + consultas.size());
-        log.debug("Testing ObtenerConsultasPaciente ha Finalizado.");
-    }
-
-     * Test nº3. Prueba de busqueda de Consulta por Doctor
-     
-    public void testObtenerConsultasDoctor() throws Exception { 
-        log.debug("Testing(3) ObtenerConsultasDoctor...");
-        
-        List<Consulta> consultas = consultaDao.obtenerConsultasDoctor("admin");
-        
-        assertTrue(consultas.isEmpty() != true);
-        log.debug("Cantidad de consultas del Doctor: " + consultas.size());
-        log.debug("Testing ObtenerConsultasDoctor ha Finalizado.");
-    }
-
-    public void testEliminarConsulta() throws Exception { 
-        log.debug("Testing(5) EliminarConsulta...");
-        
-        consultaDao.remove((long)-1);
-        
-        log.debug("Testing EliminarConsulta ha Finalizado.");
-    }**/
 }
