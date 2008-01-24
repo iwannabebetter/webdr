@@ -6,8 +6,19 @@
 
 <s:form id="consultaForm" action="saveConsulta" method="post" validate="true">
 	<s:hidden name="consulta.id" value="%{consulta.id}"/>
-	<s:textfield key="consulta.firstName" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.lastName" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.horaInicio" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.horaFin" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.medidasPaciente.pesoActual" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.medidasPaciente.alturaActual" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.medidasPaciente.edadActual" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.medidasPaciente.edadEnMeses" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.notas.sintomas" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.notas.diagnostico" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.notas.recetario" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.notas.indicaciones" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.paciente.username" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.doctor.username" required="true" cssClass="text medium"/>
 	<li class="buttonBar bottom">
 		<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
 		<c:if test="${not empty consulta.id}">
