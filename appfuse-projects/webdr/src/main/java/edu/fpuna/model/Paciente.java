@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.*;
 
 /**
@@ -35,7 +35,6 @@ public class Paciente extends User {
     }
 
     @Column(name="fecingreso",nullable=false)
-    @Temporal(TemporalType.DATE)
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
@@ -45,7 +44,6 @@ public class Paciente extends User {
     }
     
     @Column(name="fechanac",nullable=false)
-    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
