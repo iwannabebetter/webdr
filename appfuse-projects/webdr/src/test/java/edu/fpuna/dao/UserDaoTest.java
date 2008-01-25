@@ -6,7 +6,6 @@ import edu.fpuna.model.Role;
 import edu.fpuna.model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
-import junit.framework.Assert;
 
 public class UserDaoTest extends BaseDaoTestCase {
     private UserDao dao = null;
