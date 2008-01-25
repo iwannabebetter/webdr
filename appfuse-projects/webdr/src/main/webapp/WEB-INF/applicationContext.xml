@@ -18,5 +18,14 @@
         <constructor-arg ref="consultaDao"/>
     </bean>
 
+    
+    <bean id="tipoSangreManager" class="edu.fpuna.service.impl.GenericManagerImpl">
+        <constructor-arg>
+            <bean class="edu.fpuna.dao.hibernate.GenericDaoHibernate" autowire="byType">
+                <constructor-arg value="edu.fpuna.model.TipoSangre"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    
     <!-- Add new Actions here -->
 </beans>

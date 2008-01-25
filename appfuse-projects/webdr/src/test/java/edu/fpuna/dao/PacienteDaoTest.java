@@ -74,11 +74,11 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         /*---> Datos propios del Paciente */
         nuevoPaciente.setCedula(2059843);
         
-        Date fechaIngreso = new Date(System.currentTimeMillis());
+        java.sql.Date fechaIngreso = new java.sql.Date(System.currentTimeMillis());
         nuevoPaciente.setFechaIngreso(fechaIngreso);
         
         DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-        Date fechaNacimiento = (Date)formatter.parse("01/29/02");
+        java.sql.Date fechaNacimiento = (java.sql.Date)formatter.parse("01/29/02");
         nuevoPaciente.setFechaNacimiento(fechaNacimiento);
         
         log.debug("Agregando el Rol " + Constants.USER_ROLE + "...");        
