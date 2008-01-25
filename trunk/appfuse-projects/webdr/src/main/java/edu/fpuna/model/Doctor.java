@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.*;
@@ -24,7 +24,6 @@ public class Doctor extends User {
     private Set<HorarioAtencion> horarios = new HashSet<HorarioAtencion>();
     
     @Column(name="fechanac",nullable=false)
-    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
