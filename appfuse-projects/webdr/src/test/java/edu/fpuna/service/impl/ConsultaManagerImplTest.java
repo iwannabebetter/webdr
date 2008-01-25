@@ -48,7 +48,6 @@ public class ConsultaManagerImplTest extends BaseManagerMockTestCase {
         // Se compara el funcionamiento del DAO con el Manager
         assertSame(consulta, result);
         log.debug("Testing Get ha Finalizado.");
-        
     }
     
     /**
@@ -65,6 +64,5 @@ public class ConsultaManagerImplTest extends BaseManagerMockTestCase {
         Consulta result = manager.getConsulta(id);
         assertSame(consulta, result);
         log.debug("Testing GetConsulta ha Finalizado.");
-    }
-    
+    }   
 }
