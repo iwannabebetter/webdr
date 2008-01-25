@@ -8,7 +8,7 @@ package edu.fpuna.dao;
 import edu.fpuna.model.Address;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -50,7 +50,7 @@ public class DoctorDaoTest extends BaseDaoTestCase {
             doctor.setCredentialsExpired(false);
             doctor.setPassword(".cambiar.");
             doctor.setAddress(address);
-            doctor.setFechaNacimiento(new Date());
+            doctor.setFechaNacimiento(new java.sql.Date(System.currentTimeMillis()));
             doctor.setRegistro(1234);
             
             Especialidad esp;

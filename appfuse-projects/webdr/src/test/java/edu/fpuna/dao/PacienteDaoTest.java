@@ -77,8 +77,7 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         java.sql.Date fechaIngreso = new java.sql.Date(System.currentTimeMillis());
         nuevoPaciente.setFechaIngreso(fechaIngreso);
         
-        DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-        java.sql.Date fechaNacimiento = (java.sql.Date)formatter.parse("01/29/02");
+        java.sql.Date fechaNacimiento = new java.sql.Date(System.currentTimeMillis());
         nuevoPaciente.setFechaNacimiento(fechaNacimiento);
         
         log.debug("Agregando el Rol " + Constants.USER_ROLE + "...");        
