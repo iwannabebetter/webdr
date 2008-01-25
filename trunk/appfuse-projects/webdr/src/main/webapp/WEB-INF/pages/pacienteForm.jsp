@@ -7,18 +7,18 @@
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<s:form name="userForm" action="guardar" method="post" validate="true">
+<s:form name="pacienteForm" action="guardarPaciente" method="post" validate="true">
     <li style="display: none">
-        <s:hidden key="user.id"/>
-        <s:hidden key="user.version"/>
+        <s:hidden key="paciente.id"/>
+        <s:hidden key="paciente.version"/>
         <input type="hidden" name="from" value="${param.from}"/>
 
         <c:if test="${cookieLogin == 'true'}">
-            <s:hidden key="user.password"/>
-            <s:hidden key="user.confirmPassword"/>
+            <s:hidden key="paciente.password"/>
+            <s:hidden key="paciente.confirmPassword"/>
         </c:if>
 
-        <s:if test="user.version == null">
+        <s:if test="paciente.version == null">
             <input type="hidden" name="encryptPass" value="true" />
         </s:if>
     </li>
@@ -26,8 +26,8 @@
         <c:set var="buttons">
             <s:submit key="button.save" method="save" onclick="onFormSubmit(this.form)"/>
             
-        <c:if test="${param.from == 'list' and not empty user.id}">
-            <s:submit key="button.delete" method="delete" onclick="return confirmDelete('user')"/>
+        <c:if test="${param.from == 'list' and not empty paciente.id}">
+            <s:submit key="button.delete" method="delete" onclick="return confirmDelete('paciente')"/>
         </c:if>
         
             <s:submit key="button.cancel" method="cancel"/>
@@ -37,40 +37,60 @@
     <li class="info">
         <c:choose>
             <c:when test="${param.from == 'list'}">
-                <p><fmt:message key="userProfile.admin.message"/></p>
+                <p><fmt:message key="pacienteProfile.admin.message"/></p>
             </c:when>
             <c:otherwise>
-                <p><fmt:message key="userProfile.message"/></p>
+                <p><fmt:message key="pacienteProfile.message"/></p>
             </c:otherwise>
         </c:choose>
     </li>
 
-    <s:textfield key="user.username" cssClass="text large" required="true"/>
+    <s:textfield key="paciente.username" cssClass="text large" required="true"/>
+
+    <li>
+        <label class="desc">Datos Propios del Paciente</label>
+        <div class="group">
+            <div>
+                <s:textfield key="paciente.cedula" cssClass="text large" required="true"/>
+            </div>
+            <div>
+                Aca debe ir fecha de nacimiento<br>
+            </div>
+            <div>
+                Aca debe ir fecha de ingreso
+            </div>
+            <div>
+                <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
+                <s:select list="tipoSangres"  key="paciente.tipoSangre" />
+            </div>
+        </div>
+    </li>
+
 
     <c:if test="${cookieLogin != 'true'}">
     <li>
         <div>
             <div class="left">
-                <s:password key="user.password" showPassword="true" theme="xhtml" required="true" 
+                <s:password key="paciente.password" showPassword="true" theme="xhtml" required="true" 
                     cssClass="text medium" onchange="passwordChanged(this)"/>
             </div>
             <div>
-                <s:password key="user.confirmPassword" theme="xhtml" required="true" 
+                <s:password key="paciente.confirmPassword" theme="xhtml" required="true" 
                     showPassword="true" cssClass="text medium" onchange="passwordChanged(this)"/>
             </div>
         </div>
     </li>
     </c:if>
 
-    <s:textfield key="user.passwordHint" required="true" cssClass="text large"/>
+    <s:textfield key="paciente.passwordHint" required="true" cssClass="text large"/>
 
     <li>
         <div>
             <div class="left">
-                <s:textfield key="user.firstName" theme="xhtml" required="true" cssClass="text medium"/>
+                <s:textfield key="paciente.firstName" theme="xhtml" required="true" cssClass="text medium"/>
             </div>
             <div>
-                <s:textfield key="user.lastName" theme="xhtml" required="true" cssClass="text medium"/>
+                <s:textfield key="paciente.lastName" theme="xhtml" required="true" cssClass="text medium"/>
             </div>
         </div>
     </li>
@@ -78,40 +98,40 @@
     <li>
         <div>
             <div class="left">
-                <s:textfield key="user.email" theme="xhtml" required="true" cssClass="text medium"/>
+                <s:textfield key="paciente.email" theme="xhtml" required="true" cssClass="text medium"/>
             </div>
             <div>
-                <s:textfield key="user.phoneNumber" theme="xhtml" cssClass="text medium"/>
+                <s:textfield key="paciente.phoneNumber" theme="xhtml" cssClass="text medium"/>
             </div>
         </div>
     </li>
 
-    <s:textfield key="user.website" required="true" cssClass="text large"/>
+    <s:textfield key="paciente.website" required="true" cssClass="text large"/>
 
     <li>
-        <label class="desc"><fmt:message key="user.address.address"/></label>
+        <label class="desc"><fmt:message key="paciente.address.address"/></label>
         <div class="group">
             <div>
-                <s:textfield key="user.address.address" theme="xhtml" cssClass="text large" labelposition="bottom"/>
+                <s:textfield key="paciente.address.address" theme="xhtml" cssClass="text large" labelposition="bottom"/>
             </div>
             <div class="left">
-                <s:textfield key="user.address.city" theme="xhtml" required="true" cssClass="text medium" 
+                <s:textfield key="paciente.address.city" theme="xhtml" required="true" cssClass="text medium" 
                     labelposition="bottom"/>
             </div>
             <div>
-                <s:textfield key="user.address.province" theme="xhtml" required="true" cssClass="text state" 
+                <s:textfield key="paciente.address.province" theme="xhtml" required="true" cssClass="text state" 
                     labelposition="bottom"/>
             </div>
             <div class="left">
-                <s:textfield key="user.address.postalCode" theme="xhtml" required="true" cssClass="text medium" 
+                <s:textfield key="paciente.address.postalCode" theme="xhtml" required="true" cssClass="text medium" 
                     labelposition="bottom"/>
             </div>
             <div>
-                <s:set name="country" value="user.address.country" scope="page"/>
-                <appfuse:country name="user.address.country" prompt="" default="${country}"/>
+                <s:set name="country" value="paciente.address.country" scope="page"/>
+                <appfuse:country name="paciente.address.country" prompt="" default="${country}"/>
                 <p>
-                    <label for="user.address.country">
-                        <fmt:message key="user.address.country"/> <span class="req">*</span>
+                    <label for="paciente.address.country">
+                        <fmt:message key="paciente.address.country"/> <span class="req">*</span>
                     </label>
                 </p>
             </div>
@@ -121,39 +141,39 @@
     <c:when test="${param.from == 'list'}">
     <li>
         <fieldset>
-            <legend><fmt:message key="userProfile.accountSettings"/></legend>
-            <s:checkbox key="user.enabled" id="user.enabled" fieldValue="true" theme="simple"/>
-            <label for="user.enabled" class="choice"><fmt:message key="user.enabled"/></label>
+            <legend><fmt:message key="pacienteProfile.accountSettings"/></legend>
+            <s:checkbox key="paciente.enabled" id="paciente.enabled" fieldValue="true" theme="simple"/>
+            <label for="paciente.enabled" class="choice"><fmt:message key="paciente.enabled"/></label>
 
-            <s:checkbox key="user.accountExpired" id="user.accountExpired" fieldValue="true" theme="simple"/>
-            <label for="user.accountExpired" class="choice"><fmt:message key="user.accountExpired"/></label>
+            <s:checkbox key="paciente.accountExpired" id="paciente.accountExpired" fieldValue="true" theme="simple"/>
+            <label for="paciente.accountExpired" class="choice"><fmt:message key="paciente.accountExpired"/></label>
 
-            <s:checkbox key="user.accountLocked" id="user.accountLocked" fieldValue="true" theme="simple"/>
-            <label for="user.accountLocked" class="choice"><fmt:message key="user.accountLocked"/></label>
+            <s:checkbox key="paciente.accountLocked" id="paciente.accountLocked" fieldValue="true" theme="simple"/>
+            <label for="paciente.accountLocked" class="choice"><fmt:message key="paciente.accountLocked"/></label>
 
-            <s:checkbox key="user.credentialsExpired" id="user.credentialsExpired" fieldValue="true" theme="simple"/>
-            <label for="user.credentialsExpired" class="choice"><fmt:message key="user.credentialsExpired"/></label>
+            <s:checkbox key="paciente.credentialsExpired" id="paciente.credentialsExpired" fieldValue="true" theme="simple"/>
+            <label for="paciente.credentialsExpired" class="choice"><fmt:message key="paciente.credentialsExpired"/></label>
         </fieldset>
     </li>
     <li>
         <fieldset>
-            <legend><fmt:message key="userProfile.assignRoles"/></legend>
+            <legend><fmt:message key="pacienteProfile.assignRoles"/></legend>
             <table class="pickList">
                 <tr>
                     <th class="pickLabel">
-                        <label class="required"><fmt:message key="user.availableRoles"/></label>
+                        <label class="required"><fmt:message key="paciente.availableRoles"/></label>
                     </th>
                     <td></td>
                     <th class="pickLabel">
-                        <label class="required"><fmt:message key="user.roles"/></label>
+                        <label class="required"><fmt:message key="paciente.roles"/></label>
                     </th>
                 </tr>
                 <c:set var="leftList" value="${availableRoles}" scope="request"/>
-                <s:set name="rightList" value="user.roleList" scope="request"/>
+                <s:set name="rightList" value="paciente.roleList" scope="request"/>
                 <c:import url="/WEB-INF/pages/pickList.jsp">
                     <c:param name="listCount" value="1"/>
                     <c:param name="leftId" value="availableRoles"/>
-                    <c:param name="rightId" value="userRoles"/>
+                    <c:param name="rightId" value="pacienteRoles"/>
                 </c:import>
             </table>
         </fieldset>
@@ -161,15 +181,15 @@
     </c:when>
     <c:otherwise>
     <li>
-        <strong><fmt:message key="user.roles"/>:</strong>
+        <strong><fmt:message key="paciente.roles"/>:</strong>
         <s:iterator value="user.roleList" status="status">
           <s:property value="label"/><s:if test="!#status.last">,</s:if>
-          <input type="hidden" name="userRoles" value="<s:property value="value"/>"/>
+          <input type="hidden" name="pacienteRoles" value="<s:property value="value"/>"/>
         </s:iterator>
-        <s:hidden name="user.enabled" value="%{user.enabled}"/>
-        <s:hidden name="user.accountExpired" value="%{user.accountExpired}"/>
-        <s:hidden name="user.accountLocked" value="%{user.accountLocked}"/>
-        <s:hidden name="user.credentialsExpired" value="%{user.credentialsExpired}"/>
+        <s:hidden name="paciente.enabled" value="%{paciente.enabled}"/>
+        <s:hidden name="paciente.accountExpired" value="%{paciente.accountExpired}"/>
+        <s:hidden name="paciente.accountLocked" value="%{paciente.accountLocked}"/>
+        <s:hidden name="paciente.credentialsExpired" value="%{paciente.credentialsExpired}"/>
     </li>
     </c:otherwise>
 </c:choose>
