@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.util.Date;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -20,8 +20,8 @@ public class HorarioAtencion extends BaseObject {
     
     private Long id;
     private DiaDeSemana dia;
-    private Date horaInicio;
-    private Date horaFin;
+    private Time horaInicio;
+    private Time horaFin;
     private Doctor doctor;
     private Set<Turno> turnos = new HashSet<Turno>();
 
@@ -45,22 +45,20 @@ public class HorarioAtencion extends BaseObject {
     }
 
     @Column(name="hora_inicio",nullable=false)
-    @Temporal(TemporalType.TIME)
-    public Date getHoraInicio() {
+    public Time getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Date horaInicio) {
+    public void setHoraInicio(Time horaInicio) {
         this.horaInicio = horaInicio;
     }
 
     @Column(name="hora_fin",nullable=false)
-    @Temporal(TemporalType.TIME)
-    public Date getHoraFin() {
+    public Time getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Date horaFin) {
+    public void setHoraFin(Time horaFin) {
         this.horaFin = horaFin;
     }
     
