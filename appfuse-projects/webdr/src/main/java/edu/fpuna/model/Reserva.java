@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.*;
 
 /**
@@ -35,7 +35,6 @@ public class Reserva extends BaseObject {
     }
 
     @Column(name="fecha_realizacion",nullable=false)
-    @Temporal(TemporalType.DATE)
     public Date getFechaRealizacion() {
         return fechaRealizacion;
     }
@@ -45,7 +44,6 @@ public class Reserva extends BaseObject {
     }
 
     @Column(name="fecha_reservada",nullable=false)
-    @Temporal(TemporalType.DATE)
     public Date getFechaReservada() {
         return fechaReservada;
     }
