@@ -107,6 +107,32 @@ public class ConsultaDaoHibernate
     }
     
     /**
+     * {@inheritDoc}
+     */
+    public Consulta saveConsulta(Consulta consulta) {
+        log.debug("user's id: " + consulta.getId());
+        super.getHibernateTemplate().saveOrUpdate(consulta);
+        // necessary to throw a DataIntegrityViolation and catch it in UserManager
+        //getHibernateTemplate().flush();
+        return consulta;
+    }
+
+    /**
+     * Overridden simply to call the saveUser method. This is happenening 
+     * because saveConsulta flushes the session and saveObject of BaseDaoHibernate 
+     * does not.
+     *
+     * @param consulta la consulta a guardar
+     * @return la consulta modificada (con un conjunto de la clave primaria si ellas son nuevas)
+     */
+    @Override
+    public Consulta save(Consulta consulta) {
+        return this.saveConsulta(consulta);
+    }
+
+	
+
+	/**
      * Metodo para eliminar una Consulta.
      * @param consulta a eliminar.
      */
@@ -114,11 +140,4 @@ public class ConsultaDaoHibernate
         super.remove(consulta.getId());
     }
 
-    /**
-     * Metodo para Guardar una Consulta
-     * @param consulta consulta a guardar
-     */
-    public void guardar(Consulta consulta) {
-        super.save(consulta);
-    }
 }
