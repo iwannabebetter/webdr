@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Cristhian Parra
  */
-public class EspecialidadAction extends BaseAction{
+public class EspecialidadAction extends BaseAction {
 
     private EspecialidadManager manager;
     List<Especialidad> especialidades;
