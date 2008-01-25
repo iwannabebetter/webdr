@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.util.Date;
+import java.sql.Time;
 import javax.persistence.*;
 
 /**
@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Turno extends BaseObject {
     
     private Long id;
-    private Date hora;
+    private Time hora;
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
@@ -30,12 +30,11 @@ public class Turno extends BaseObject {
     }
 
     @Column(name="hora",nullable=false)
-    @Temporal(TemporalType.TIME)
-    public Date getHora() {
+    public Time getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(Time hora) {
         this.hora = hora;
     }
 
