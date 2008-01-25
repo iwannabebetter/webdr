@@ -4,12 +4,26 @@
  */
 package edu.fpuna.webapp.action;
 
+import com.lowagie.text.pdf.codec.postscript.ParseException;
 import com.opensymphony.xwork2.ActionSupport;
+import edu.fpuna.Constants;
+import edu.fpuna.dao.RoleDao;
+import edu.fpuna.model.Address;
 import org.apache.struts2.ServletActionContext;
 import edu.fpuna.service.PacienteManager;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.Paciente;
+import edu.fpuna.model.Role;
+import edu.fpuna.model.TipoSangre;
+import edu.fpuna.service.GenericManager;
+import edu.fpuna.service.impl.PacienteManagerImpl;
 import edu.fpuna.webapp.action.BaseActionTestCase;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
@@ -19,36 +33,149 @@ import org.springframework.mock.web.MockHttpServletRequest;
 public class PacienteActionTest extends BaseActionTestCase {
 
     private PacienteAction action;
+    private RoleDao roleDao;
+    private GenericManager<TipoSangre, Long> tipoSangreManager;
 
     
     protected void onSetUpBeforeTransaction() throws Exception {
-        log.debug("Seteo antes de la transaccion");
+        log.debug("__SETUP__:Seteo antes de la transaccion");
         super.onSetUpBeforeTransaction();
         
-        log.debug("Recuperando el Manager");
+        log.debug("__SETUP__:Recuperando el Manager");
         PacienteManager pacienteManager = (PacienteManager) applicationContext.getBean("pacienteManager");
+        this.roleDao = (RoleDao) applicationContext.getBean("roleDao");
+        this.tipoSangreManager = (GenericManager<TipoSangre,Long>) applicationContext.getBean("tipoSangreManager");
         
-        log.debug("Estableciendo el Manager");
+        log.debug("__SETUP__:Estableciendo el Manager");
         action = new PacienteAction();
         action.setPacienteManager(pacienteManager);
         
-        /** add a test person to the database
-        log.debug("Agregando un Paciente");
-        Paciente paciente = pacienteManager.getPaciente(username)
-        log.debug("Paciente seteado");
-        pacienteManager.guardarPaciente(paciente);**/
     }
-
+    
     public void testSearch() throws Exception {
-        log.debug("Probando el listado de pacientes");
+        log.debug("__TESTSEARCH__:Probando el listado de pacientes");
         assertEquals(action.list(), ActionSupport.SUCCESS);
         
-        log.debug("Recuperando pacientes ");
+        log.debug("__TESTSEARCH__:Recuperando pacientes ");
         assertTrue(action.getPacientes().size() != 0);
-        log.debug("Fin Recuperando pacientes ");
-        
+        log.debug("__TESTSEARCH__:Fin Recuperando pacientes ");
         
         action.guardar(action.getPacientes().get(0));
-        log.debug("Guardar paciente ");
+        log.debug("__TESTSEARCH__:Guardar paciente ");
+    }
+    
+    public void testEdit() throws Exception {
+        log.debug("__TESTEDIT__:Testing edit...");
+        action.setId(-1L);
+        assertNull(action.getPaciente());
+        assertEquals("success", action.edit());
+        assertNotNull(action.getPaciente());
+        assertFalse(action.hasActionErrors());
+        log.debug("__TESTEDIT__:Testing Edit Finalizado... ");
+    }
+
+    public void testSave() throws Exception {
+        log.debug("__TESTSAVE__:Testing Save... ");
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        
+        log.debug("__TESTSAVE__:Llamamos al action edit para obtener el paciente -1... ");
+        action.setId(-1L);
+        assertEquals("success", action.edit());
+        assertNotNull(action.getPaciente());
+// update last name and save
+        
+        log.debug("__TESTSAVE__:Modificamos algunos campos, y luego hacemos save... ");
+        action.getPaciente().setLastName("Updated Last Name");
+        assertEquals("input", action.save());
+        
+        log.debug("__TESTSAVE__:Paciente saved. Verificaciones...");
+        assertEquals("Updated Last Name", action.getPaciente().getLastName());
+        assertFalse(action.hasActionErrors());
+        assertFalse(action.hasFieldErrors());
+        assertNotNull(request.getSession().getAttribute("messages"));
+        log.debug("__TESTSAVE__:Testing Save Finalizado... ");
+    }
+
+    public void testRemove() throws Exception {
+        log.debug("__TESTREMOVE__:Testing Remove... ");
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        
+        // creamos un nuevo paciente para luego borrarlo
+        log.debug("__TESTREMOVE__:Creamos un nuevo Paciente para luego guardarlo y borrarlo... ");
+        Paciente paciente = this.pacienteAleatorio();
+        action.setId(paciente.getId());
+        action.setPaciente(paciente);        
+        action.save();
+        
+        log.debug("__TESTREMOVE__:Nuevo Paciente Guardado... ");
+        
+        log.debug("__TESTREMOVE__:Borrando Nuevo Paciente Guardado... ");
+        action.setDelete("");
+        assertEquals("success", action.delete());
+        assertNotNull(request.getSession().getAttribute("messages"));
+        log.debug("__TESTREMOVE__:Test de Remove finalizado... ");
+    }
+    
+    public void testNuevoPaciente() throws Exception {
+        log.debug("__TESTNUEVO__:Agregando un nuevo Paciente");        
+        Paciente paciente = this.pacienteAleatorio();
+        log.debug("__TESTNUEVO__:Paciente seteado");
+        action.setPaciente(paciente);
+        action.save();
+        log.debug("__TESTNUEVO__:Paciente guardado");
+    }
+    
+    private Paciente pacienteAleatorio() {
+        try {
+
+            Paciente nuevoPaciente = new Paciente();
+            
+            Random r = new Random();
+            byte [] bytes = new byte[10];
+            r.nextBytes(bytes);
+            String username = bytes.toString();
+            
+            nuevoPaciente.setUsername(username);
+            nuevoPaciente.setPassword(username+"_PASSWORD");
+            nuevoPaciente.setFirstName(username+"_NAME");
+            nuevoPaciente.setLastName(username+"_LASTNAME");
+            Address address = new Address();
+            address.setCity("Asuncion");
+            address.setProvince("Central");
+            address.setCountry("PY");
+            address.setPostalCode("80210");
+            nuevoPaciente.setAddress(address);
+            nuevoPaciente.setEmail(username+"@appfuse.org");
+            nuevoPaciente.setWebsite("http://"+username+".raibledesigns.com");
+            nuevoPaciente.setAccountExpired(false);
+            nuevoPaciente.setAccountLocked(false);
+            nuevoPaciente.setCredentialsExpired(false);
+            nuevoPaciente.setEnabled(true);
+            /*<--- Datos del usuario */
+
+            /*---> Datos propios del Paciente */
+            nuevoPaciente.setCedula(r.nextInt(9999999));
+
+            Date fechaIngreso = new Date(System.currentTimeMillis());
+            nuevoPaciente.setFechaIngreso(fechaIngreso);
+
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+            Date fechaNacimiento = (Date) formatter.parse("01/29/02");
+            nuevoPaciente.setFechaNacimiento(fechaNacimiento);
+
+            Role role = roleDao.getRoleByName(Constants.USER_ROLE);
+            nuevoPaciente.addRole(role);
+            /*<--- Datos del paciente */
+
+            TipoSangre tiposangre = tipoSangreManager.get(-1L);
+            nuevoPaciente.setTipoSangre(tiposangre);
+            return nuevoPaciente;
+            
+        } catch (Exception ex) {
+            Logger.getLogger(PacienteManagerImpl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }
