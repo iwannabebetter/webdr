@@ -34,7 +34,7 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
         this.dao = dao;
     }
 
-    /**
+	/**
      * Metodo para la obtener una consulta a travez de su id.
      * @param id
      * @return Consulta
@@ -75,7 +75,10 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      * @param consulta consulta a guardar
      */
     public void saveConsulta(Consulta consulta) {
-        dao.guardar(consulta);
+		//daoDr.save(consulta.getDoctor());
+		log.debug("Guardando Consulta"+consulta.getId());
+        dao.saveConsulta(consulta);
+		log.debug("Guardando Consulta ha Terminado.");
     }
 
     /**
