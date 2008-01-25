@@ -5,12 +5,10 @@
 
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.Paciente;
-<<<<<<< .mine
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.EspecialidadManager;
-=======
->>>>>>> .r173
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.PacienteManager;
 import java.util.List;
@@ -111,3 +109,4 @@ public class PacienteAction extends BaseAction {
     
     
 }
+
