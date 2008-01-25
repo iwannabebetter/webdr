@@ -15,32 +15,32 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
+ * Action de la clase Consulta.
  * @author Hugo Meyer, Marcelo Rodas
  */
-public class ConsultaAction extends BaseAction{
+public class ConsultaAction extends BaseAction {
 
     private ConsultaManager manager;
-	private Consulta consulta;
+    private Consulta consulta;
     List<Consulta> consultas;
-	private Long id;
+    private Long id;
 
 
     public void setConsultaManager(ConsultaManager consultaManager) {
         this.manager = consultaManager;
     }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Consulta getConsulta() {
-		return this.consulta;
-	}
+    public Consulta getConsulta() {
+        return this.consulta;
+    }
 
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
-	}
+    public void setConsulta(Consulta consulta) {
+	this.consulta = consulta;
+    }
 
     public Consulta getConsulta(Long id) {
         return manager.getConsulta(id);
@@ -61,7 +61,6 @@ public class ConsultaAction extends BaseAction{
         return SUCCESS;
     } 
     
-
     public List getConsultas() {
         String resultado = this.list();
         return consultas;
@@ -72,39 +71,38 @@ public class ConsultaAction extends BaseAction{
         return SUCCESS;
     }
 
-	/* Delete, Editar, Guardar*/
+    /* Delete, Editar, Guardar*/
 
-	public String delete() {
-		manager.remove(consulta.getId());
-		saveMessage(getText("consulta.deleted"));
-		return SUCCESS;
-	}
+    public String delete() {
+        manager.remove(consulta.getId());
+        saveMessage(getText("consulta.deleted"));
+        return SUCCESS;
+    }
 	
-	public String edit() {
-		if (id != null) {
-			consulta = manager.getConsulta(id);
-		} else {
-			consulta = new Consulta();
-		}
-		return SUCCESS;
-	}
-	
-	public String save() throws Exception {
-		if (cancel != null) {
-			return "cancel";
-		}
-		if (delete != null) {
-			return delete();
-		}
-		boolean isNew = (consulta.getId() == null);
-		consulta = manager.save(consulta);
-		String key = (isNew) ? "consulta.added" : "consulta.updated";
-		saveMessage(getText(key));
-		if (!isNew) {
-			return INPUT;
-		} else {
-			return SUCCESS;
-		}
-	}
+    public String edit() {
+        if (id != null)
+            consulta = manager.getConsulta(id);
+        else
+            consulta = new Consulta();
 
+        return SUCCESS;
+    }
+	
+    public String save() throws Exception {
+        if (cancel != null)
+            return CANCEL;
+        
+        if (delete != null)
+            return delete();
+        
+        boolean isNew = (consulta.getId() == null);
+        consulta = manager.save(consulta);
+        String key = (isNew) ? "consulta.added" : "consulta.updated";
+        saveMessage(getText(key));
+        
+        if (!isNew)
+            return INPUT;
+        else
+            return SUCCESS;
+    }
 }
