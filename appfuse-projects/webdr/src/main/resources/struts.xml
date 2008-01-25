@@ -127,15 +127,15 @@
         <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="list"> 
             <result>/WEB-INF/pages/pacienteList.jsp</result> 
         </action>
-        <action name="editPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="guardar">
-            <result>/WEB-INF/pages/pacienteList.jsp</result>
+        <action name="editPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
+            <result>/WEB-INF/pages/pacienteForm.jsp</result>
             <result name="error">/WEB-INF/pages/pacienteList.jsp</result>
         </action>
-        <action name="guardarPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="guardar">
+        <action name="guardarPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="save">
             <result name="input">/WEB-INF/pages/pacienteForm.jsp</result>
-            <result name="cancel" type="redirect">paciente.html</result>
-            <result name="delete" type="redirect">paciente.html</result>
-            <result name="success" type="redirect">paciente.html</result>
+            <result name="cancel" type="redirect">pacientes.html</result>
+            <result name="delete" type="redirect">pacientes.html</result>
+            <result name="success" type="redirect">pacientes.html</result>
         </action>
         
         
