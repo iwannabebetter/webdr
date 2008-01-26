@@ -11,9 +11,7 @@ import edu.fpuna.model.Paciente;
 import edu.fpuna.model.Role;
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -74,10 +72,10 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         /*---> Datos propios del Paciente */
         nuevoPaciente.setCedula(2059843);
         
-        java.sql.Date fechaIngreso = new java.sql.Date(System.currentTimeMillis());
+        Date fechaIngreso = new Date(System.currentTimeMillis());
         nuevoPaciente.setFechaIngreso(fechaIngreso);
         
-        java.sql.Date fechaNacimiento = new java.sql.Date(System.currentTimeMillis());
+        Date fechaNacimiento = Date.valueOf("2002-01-29");
         nuevoPaciente.setFechaNacimiento(fechaNacimiento);
         
         log.debug("Agregando el Rol " + Constants.USER_ROLE + "...");        
