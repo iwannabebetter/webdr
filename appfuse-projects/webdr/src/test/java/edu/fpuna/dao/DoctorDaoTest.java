@@ -50,8 +50,8 @@ public class DoctorDaoTest extends BaseDaoTestCase {
             doctor.setCredentialsExpired(false);
             doctor.setPassword(".cambiar.");
             doctor.setAddress(address);
-            doctor.setFechaNacimiento(new java.sql.Date(System.currentTimeMillis()));
-            doctor.setRegistro(1234);
+            doctor.setFechaNacimiento(new Date(System.currentTimeMillis()));
+            doctor.setRegistro(1234000 + i);
             
             Especialidad esp;
             if (i % 2 == 0)
