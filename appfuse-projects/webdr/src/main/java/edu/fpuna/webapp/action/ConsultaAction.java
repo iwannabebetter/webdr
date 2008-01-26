@@ -59,8 +59,8 @@ public class ConsultaAction extends BaseAction {
         consultas = this.manager.getConsultasFecha(fechaInicio, fechaFin);
         return SUCCESS;
     }
+    
     public List getConsultas() {
-        String resultado = this.list();
         return consultas;
     }
 
@@ -81,25 +81,28 @@ public class ConsultaAction extends BaseAction {
             log.debug("EDITANDO...");
             consulta = manager.getConsulta(id);
             log.debug("Se obtuvo: " + consulta.getDoctor().getEmail());
-        } else {
+        } 
+        else {
             consulta = new Consulta();
         }
+
         return SUCCESS;
     }
 
     public String save() throws Exception {
-        if (cancel != null) {
-            return "cancel";
-        }
-        if (delete != null) {
+        if (cancel != null)
+            return CANCEL;
+
+        if (delete != null)
             return delete();
-        }
+
         boolean isNew = (consulta.getId() == null);
         
         this.setId(consulta.getId());
         
         log.debug("GUARDANDO...");
         log.debug("1-)Se obtuvo: " + consulta.getDoctor().getEmail());
+        
         /*
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
@@ -116,10 +119,10 @@ public class ConsultaAction extends BaseAction {
         
         String key = (isNew) ? "consulta.added" : "consulta.updated";
         saveMessage(getText(key));
-        if (!isNew) {
+        
+        if (!isNew)
             return INPUT;
-        } else {
+        else
             return SUCCESS;
-        }
     }
 }
