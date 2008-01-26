@@ -6,13 +6,8 @@
 package edu.fpuna.dao.hibernate;
 
 import edu.fpuna.dao.PacienteDao;
-import edu.fpuna.model.Address;
 import edu.fpuna.model.Paciente;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-
 
 /**
  * Implementación Hibernate de la interfaz DAO de Paciente.
@@ -48,10 +43,7 @@ public class PacienteDaoHibernate
         return super.save(p);
     }
 
-    public void borrar(Paciente p) {
+    public void eliminar(Paciente p) {
         super.remove(p.getId());
-    }    
-    
-
-    
+    }
 }
