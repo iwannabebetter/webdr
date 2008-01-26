@@ -32,7 +32,7 @@ public class Doctor extends User {
         this.fechaNacimiento = fechaNacimiento;
     }
     
-    @Column(name="registro",nullable=false)
+    @Column(name="registro",unique=true,nullable=false)
     public Integer getRegistro() {
         return registro;
     }
@@ -60,7 +60,7 @@ public class Doctor extends User {
     @ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
     @JoinTable(
         name = "doctor_especialidad",
-        joinColumns = { @JoinColumn( name="doctor_id") },
+        joinColumns = { @JoinColumn(name="doctor_id") },
         inverseJoinColumns = @JoinColumn(name="especialidad_id")
     )
     @OrderBy(value="nombre")
