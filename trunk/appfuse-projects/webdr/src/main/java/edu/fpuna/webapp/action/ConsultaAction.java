@@ -10,7 +10,7 @@ package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.Consulta;
 import edu.fpuna.service.ConsultaManager;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
