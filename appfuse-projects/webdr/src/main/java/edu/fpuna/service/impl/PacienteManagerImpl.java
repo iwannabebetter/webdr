@@ -16,7 +16,6 @@ import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  * @author fmancia
  */
@@ -64,11 +63,11 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
         return dao.guardar(p);
     }
 
-    public void borrarPaciente(Paciente p) {
-        dao.borrar(p);
+    public void eliminarPaciente(Paciente p) {
+        dao.eliminar(p);
     }
 
-    public boolean borrarPaciente(Long id) {
+    public boolean eliminarPaciente(Long id) {
         dao.remove(id);
         Paciente res = dao.get(id);
         
