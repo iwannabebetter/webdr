@@ -140,4 +140,8 @@
         <property name="tipoSangreManager" ref="tipoSangreManager"/>
     </bean>
     
+    <bean id="doctorManager" class="edu.fpuna.service.impl.DoctorManagerImpl">
+        <property name="doctorDao" ref="doctorDao"/>
+    </bean>
+    
 </beans>
