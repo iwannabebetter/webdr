@@ -5,10 +5,8 @@
 
 package edu.fpuna.webapp.action;
 
-import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.Paciente;
 import edu.fpuna.model.TipoSangre;
-import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.PacienteManager;
 import java.util.List;
@@ -52,8 +50,8 @@ public class PacienteAction extends BaseAction {
         manager.guardarPaciente(p);
     }
     
-    public void borrar(Paciente p){
-        manager.borrarPaciente(p);
+    public void eliminar(Paciente p){
+        manager.eliminarPaciente(p);
     }
 
     public String list() {
@@ -74,39 +72,37 @@ public class PacienteAction extends BaseAction {
     }
     
     public String delete() {
-        manager.borrarPaciente(paciente);
+        manager.eliminarPaciente(paciente);
         saveMessage(getText("paciente.deleted"));
         return SUCCESS;
     }
     
     public String edit() {
         tipoSangres = tipoSangreManager.getAll();
-        if (id != null) {
+        
+        if (id != null)
             paciente = manager.getPaciente(id);
-        } else {
+        else
             paciente = new Paciente();
-	}
+
         return SUCCESS;
     }
     
     public String save() throws Exception {
-        if (cancel != null) {
-            return "cancel";
-        }
-        if (delete != null) {
+        if (cancel != null)
+            return CANCEL;
+
+        if (delete != null)
             return delete();
-        }
+
         boolean isNew = (paciente.getId() == null);
         paciente = manager.guardarPaciente(paciente);
         String key = (isNew) ? "paciente.added" : "paciente.updated";
         saveMessage(getText(key));
-        if (!isNew) {
-            return INPUT;
-        } else {
-            return SUCCESS;
-        }
-    }
-    
-    
-}
 
+        if (!isNew)
+            return INPUT;
+        else
+            return SUCCESS;
+    }
+}
