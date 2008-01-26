@@ -169,6 +169,7 @@ public class PacienteActionTest extends BaseActionTestCase {
 
             Role role = roleDao.getRoleByName(Constants.USER_ROLE);
             nuevoPaciente.addRole(role);
+
             /*<--- Datos del paciente */
 
             TipoSangre tiposangre = tipoSangreManager.get(-1L);
