@@ -6,14 +6,11 @@ package edu.fpuna.webapp.action;
 
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.model.Especialidad;
-import edu.fpuna.webapp.action.BaseActionTestCase;
-import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
- *
+ * Prueba de la clase Action de Especialidad.
  * @author Cristhian Parra
  */
 public class EspecialidadActionTest extends BaseActionTestCase {
