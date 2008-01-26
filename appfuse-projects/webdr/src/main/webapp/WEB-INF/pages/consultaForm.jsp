@@ -18,7 +18,8 @@
 	<s:textfield key="consulta.notas.recetario" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.notas.indicaciones" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.paciente.username" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.doctor.username" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.doctor.username" required="true" cssClass="text medium"/>	
+
 	<li class="buttonBar bottom">
 		<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
 		<c:if test="${not empty consulta.id}">
