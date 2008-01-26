@@ -18,9 +18,9 @@ import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.impl.PacienteManagerImpl;
 import edu.fpuna.webapp.action.BaseActionTestCase;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,6 +68,7 @@ public class PacienteActionTest extends BaseActionTestCase {
     public void testEdit() throws Exception {
         log.debug("__TESTEDIT__:Testing edit...");
         action.setId(-1L);
+        assertNull(action.getPaciente());
         log.debug("__TESTEDIT__:Testing antes de edit()");
         assertEquals("success", action.edit());
         log.debug("__TESTEDIT__:Testing despues de edit()");
@@ -163,13 +164,12 @@ public class PacienteActionTest extends BaseActionTestCase {
             Date fechaIngreso = new Date(System.currentTimeMillis());
             nuevoPaciente.setFechaIngreso(fechaIngreso);
 
-            
-            Date fechaNacimiento = new Date(System.currentTimeMillis());
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+            Date fechaNacimiento = (Date) formatter.parse("01/29/02");
             nuevoPaciente.setFechaNacimiento(fechaNacimiento);
 
-            Role role = roleDao.getRoleByName(Constants.USER_ROLE);
+            Role role = roleDao.getRoleByName("ROLE_PACIENTE");
             nuevoPaciente.addRole(role);
-
             /*<--- Datos del paciente */
 
             TipoSangre tiposangre = tipoSangreManager.get(-1L);
