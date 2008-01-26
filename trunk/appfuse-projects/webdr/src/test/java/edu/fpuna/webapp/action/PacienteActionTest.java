@@ -4,30 +4,24 @@
  */
 package edu.fpuna.webapp.action;
 
-import com.lowagie.text.pdf.codec.postscript.ParseException;
 import com.opensymphony.xwork2.ActionSupport;
-import edu.fpuna.Constants;
 import edu.fpuna.dao.RoleDao;
 import edu.fpuna.model.Address;
-import org.apache.struts2.ServletActionContext;
-import edu.fpuna.service.PacienteManager;
-import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.Paciente;
+import edu.fpuna.service.PacienteManager;
 import edu.fpuna.model.Role;
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.impl.PacienteManagerImpl;
-import edu.fpuna.webapp.action.BaseActionTestCase;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
- *
+ * Clase de prueba del Action de Paciente.
  * @author Cristhian Parra
  */
 public class PacienteActionTest extends BaseActionTestCase {
@@ -36,7 +30,6 @@ public class PacienteActionTest extends BaseActionTestCase {
     private RoleDao roleDao;
     private GenericManager<TipoSangre, Long> tipoSangreManager;
 
-    
     protected void onSetUpBeforeTransaction() throws Exception {
         log.debug("__SETUP__:Seteo antes de la transaccion");
         super.onSetUpBeforeTransaction();
@@ -50,7 +43,6 @@ public class PacienteActionTest extends BaseActionTestCase {
         action = new PacienteAction();
         action.setPacienteManager(pacienteManager);
         action.setTipoSangreManager(this.tipoSangreManager);
-        
     }
     
     public void testSearch() throws Exception {
@@ -86,7 +78,8 @@ public class PacienteActionTest extends BaseActionTestCase {
         action.setId(-1L);
         assertEquals("success", action.edit());
         assertNotNull(action.getPaciente());
-// update last name and save
+        
+        // update last name and save
         
         log.debug("__TESTSAVE__:Modificamos algunos campos, y luego hacemos save... ");
         action.getPaciente().setLastName("Updated Last Name");
@@ -132,7 +125,6 @@ public class PacienteActionTest extends BaseActionTestCase {
     
     private Paciente pacienteAleatorio() {
         try {
-
             Paciente nuevoPaciente = new Paciente();
             
             Random r = new Random();
@@ -174,7 +166,8 @@ public class PacienteActionTest extends BaseActionTestCase {
             nuevoPaciente.setTipoSangre(tiposangre);
             return nuevoPaciente;
             
-        } catch (Exception ex) {
+        }
+        catch (Exception ex) {
             Logger.getLogger(PacienteManagerImpl.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
