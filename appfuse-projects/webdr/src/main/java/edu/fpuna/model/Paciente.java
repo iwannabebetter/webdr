@@ -53,6 +53,7 @@ public class Paciente extends User {
     }
     
     @Column(name="cedula",nullable=false)
+    @org.hibernate.annotations.Index(name="cedula_idx")
     public Integer getCedula() {
         return cedula;
     }
