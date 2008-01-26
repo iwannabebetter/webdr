@@ -61,7 +61,17 @@ public class Constants {
      * The name of the User role, as specified in web.xml
      */
     public static final String USER_ROLE = "ROLE_USER";
+    
+    /**
+     * The name of the Doctor role, as specified in web.xml
+     */
+    public static final String DOCTOR_ROLE = "ROLE_DOCTOR";
 
+    /**
+     * The name of the Paciente role, as specified in web.xml
+     */
+    public static final String PACIENTE_ROLE = "ROLE_DOCTOR";
+    
     /**
      * The name of the user's role list, a request-scoped attribute
      * when adding/editing a user.
