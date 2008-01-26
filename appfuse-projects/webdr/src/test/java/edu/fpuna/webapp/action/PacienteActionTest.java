@@ -20,7 +20,7 @@ import edu.fpuna.service.impl.PacienteManagerImpl;
 import edu.fpuna.webapp.action.BaseActionTestCase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -164,9 +164,7 @@ public class PacienteActionTest extends BaseActionTestCase {
             Date fechaIngreso = new Date(System.currentTimeMillis());
             nuevoPaciente.setFechaIngreso(fechaIngreso);
 
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-            Date fechaNacimiento = (Date) formatter.parse("01/29/02");
-            nuevoPaciente.setFechaNacimiento(fechaNacimiento);
+            nuevoPaciente.setFechaNacimiento(new Date(System.currentTimeMillis()));
 
             Role role = roleDao.getRoleByName("ROLE_PACIENTE");
             nuevoPaciente.addRole(role);
