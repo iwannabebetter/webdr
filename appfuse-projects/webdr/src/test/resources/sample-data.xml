@@ -193,7 +193,7 @@
             <value description="doctor_id">-2</value>
         </row>
         <row>
-            <value description="id">1</value>
+            <value description="id">-2</value>
             <value description="fecha">1998-11-23</value>
             <value description="hora_inicio">07:00:00</value>
             <value description="hora_fin">08:30:00</value>
@@ -209,7 +209,7 @@
             <value description="doctor_id">-2</value>
         </row>
         <row>
-            <value description="id">2</value>
+            <value description="id">-3</value>
             <value description="fecha">2000-10-09</value>
             <value description="hora_inicio">09:00:00</value>
             <value description="hora_fin">10:00:00</value>
