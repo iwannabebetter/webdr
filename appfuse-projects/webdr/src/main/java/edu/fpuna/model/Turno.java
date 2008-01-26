@@ -19,6 +19,7 @@ public class Turno extends BaseObject {
     
     private Long id;
     private Time hora;
+    private HorarioAtencion horario;
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
@@ -30,12 +31,23 @@ public class Turno extends BaseObject {
     }
 
     @Column(name="hora",nullable=false)
+    @org.hibernate.annotations.Index(name="hora_idx")
     public Time getHora() {
         return hora;
     }
 
     public void setHora(Time hora) {
         this.hora = hora;
+    }
+    
+    @ManyToOne(fetch=FetchType.EAGER,optional=false)
+    @JoinColumn(name="horario_id",nullable=false)
+    public HorarioAtencion getHorario() {
+        return horario;
+    }
+    
+    public void setHorario(HorarioAtencion horario) {
+        this.horario = horario;
     }
 
     @Override
