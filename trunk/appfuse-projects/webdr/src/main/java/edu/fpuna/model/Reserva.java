@@ -35,6 +35,7 @@ public class Reserva extends BaseObject {
     }
 
     @Column(name="fecha_realizacion",nullable=false)
+    @org.hibernate.annotations.Index(name="fec_realiz_idx")
     public Date getFechaRealizacion() {
         return fechaRealizacion;
     }
@@ -44,6 +45,7 @@ public class Reserva extends BaseObject {
     }
 
     @Column(name="fecha_reservada",nullable=false)
+    @org.hibernate.annotations.Index(name="fec_reserv_idx")
     public Date getFechaReservada() {
         return fechaReservada;
     }
