@@ -1,6 +1,8 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Consulta;
+import edu.fpuna.model.Notas;
+import edu.fpuna.model.MedidasPaciente;
 import java.util.Date;
 import java.util.List;
 /**
@@ -12,11 +14,21 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     
     // Objeto DAO de prueba
     private ConsultaDao consultaDao = null;
+	private DoctorDao doctorDao = null;
+	private PacienteDao pacienteDao = null;
     
     public void setConsultaDao(ConsultaDao consultaDao) {
         this.consultaDao = consultaDao;
     }
-    
+
+	public void setDoctorDao(DoctorDao doctorDao) {
+        this.doctorDao = doctorDao;
+    }
+
+	public void setPacienteDao(PacienteDao pacienteDao) {
+        this.pacienteDao = pacienteDao;
+    }
+
     /*
      * Test nº1. Prueba de busqueda de una Consulta por su id
      */
@@ -79,4 +91,26 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         log.debug("Testing EliminarConsulta ha Finalizado.");
     }
   
+      /*
+     * Test nº6. Prueba de guardar una consulta
+     */
+    public void testGuardarConsulta() throws Exception { 
+        log.debug("Testing(6) GuardarConsulta...");
+		
+		Consulta consulta = new Consulta();
+		consulta.setId(new Long(3));
+		consulta.setFecha(new Date(80-10-5-0-0-0));
+		consulta.setHoraInicio(new Date(0-0-0-11-30-00));
+		consulta.setHoraFin(new Date(0-0-0-12-30-00));
+		MedidasPaciente mpacientes =new MedidasPaciente(new Double(100),new Double(200),new Integer(30),new Boolean(false));
+		consulta.setMedidasPaciente(mpacientes);
+		consulta.setNotas(new Notas("Irritaciones","Alergia","Alergin 100gr","200ml cada 12hrs"));
+		consulta.setDoctor(doctorDao.obtenerPorNombre("admin"));
+		consulta.setPaciente(pacienteDao.getPaciente("user"));
+        
+		consulta = consultaDao.save(consulta);	
+        
+        log.debug("Testing GuardarConsulta ha Finalizado.");
+    }
+
 }
