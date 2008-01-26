@@ -136,6 +136,8 @@
 
     <bean id="pacienteManager" class="edu.fpuna.service.impl.PacienteManagerImpl">
         <property name="pacienteDao" ref="pacienteDao"/>
+        <property name="roleDao" ref="roleDao"/>
+        <property name="tipoSangreManager" ref="tipoSangreManager"/>
     </bean>
     
 </beans>
