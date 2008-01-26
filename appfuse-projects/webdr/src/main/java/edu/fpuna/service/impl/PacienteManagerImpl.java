@@ -78,6 +78,15 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
         return true;
     }
     
+    /* [cpara 25-01-2008]
+     * Por alguna razón, la definición del Bean de Paciente en el 
+     * applicationContext-service.xml no funciona cuando agregamos nuevos 
+     * propertys para hacer dependency injection del RoleDao y del TipoSangre Manager
+     * 
+     * Por esta razón, este método no funciona, sin embargo, lo dejamos aquí para 
+     * revisarlo posteriormente. 
+     * 
+     */
     public Paciente pacienteAleatorio() {
         try {
 
