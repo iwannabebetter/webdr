@@ -138,6 +138,9 @@
             <result name="success" type="redirect">pacientes.html</result>
         </action>
         
+        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
+            <result>/WEB-INF/pages/doctorList.jsp</result>
+        </action>
         
     </package>
 
