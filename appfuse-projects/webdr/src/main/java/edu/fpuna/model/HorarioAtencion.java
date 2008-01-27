@@ -73,7 +73,6 @@ public class HorarioAtencion extends BaseObject {
     }
     
     @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="horario_id",nullable=false)
     @OrderBy(value="hora")
     public Set<Turno> getTurnos() {
         return turnos;
