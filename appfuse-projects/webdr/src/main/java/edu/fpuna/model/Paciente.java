@@ -22,10 +22,7 @@ public class Paciente extends User {
     private Integer cedula;
 
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
-    @JoinColumn(
-        name = "tiposangre_id",
-        nullable = false
-    )
+    @JoinColumn(name="tiposangre_id",nullable=false)
     public TipoSangre getTipoSangre() {
         return tipoSangre;
     }
