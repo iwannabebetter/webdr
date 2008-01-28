@@ -79,7 +79,7 @@ public class Consulta extends BaseObject {
         this.notas = notas;
     }
     
-    @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,optional=false)
+    @ManyToOne(fetch=FetchType.EAGER,optional=false)
     @JoinColumn(name="doctor_id",nullable=false)
     public Doctor getDoctor() {
         return doctor;
