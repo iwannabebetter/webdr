@@ -10,7 +10,7 @@ package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.Consulta;
 import edu.fpuna.service.ConsultaManager;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,7 +37,8 @@ public class ConsultaAction extends BaseAction {
     }
 
     public void setConsulta(Consulta consulta) {
-        log.debug("EJECUTANDO... "+consulta.getId());
+        log.debug("EJECUTANDO 1... "+consulta);
+        log.debug("EJECUTANDO 2... "+this.consulta);
         this.consulta = consulta;
     }
 
@@ -101,16 +102,20 @@ public class ConsultaAction extends BaseAction {
         this.setId(consulta.getId());
         
         log.debug("GUARDANDO...");
-        log.debug("1-)Se obtuvo: " + consulta.getDoctor().getEmail());
+        log.debug("1.1-)Se obtuvo: " + consulta.getHoraInicio() + "--" +this.getRequest().getParameter("consulta.horaInicio"));
+        log.debug("1.2-)Se obtuvo: " + consulta.getHoraFin());
+        
         
         /*
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
          */
         Consulta oldConsulta = manager.getConsulta(consulta.getId());
-        log.debug("2-)Se obtuvo: " + oldConsulta.getDoctor().getEmail());
+        log.debug("2.1-)Se obtuvo: " + oldConsulta.getHoraInicio());
+        log.debug("2.1-)Se obtuvo: " + oldConsulta.getHoraFin());
         
         // Se actualizan los datos del Doctor y del Paciente.
+
         consulta.setDoctor(oldConsulta.getDoctor());
         consulta.setPaciente(oldConsulta.getPaciente());
 
