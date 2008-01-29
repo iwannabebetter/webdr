@@ -4,8 +4,8 @@
  */
 package edu.fpuna.model;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.sql.Timestamp;
 import javax.persistence.*;
 
 /**
@@ -18,8 +18,8 @@ public class Consulta extends BaseObject {
 
     private Long id;
     private Date fecha;
-    private Time horaInicio;
-    private Time horaFin;
+    private Timestamp horaInicio;
+    private Timestamp horaFin;
     private MedidasPaciente medidasPaciente;
     private Notas notas;
     private Doctor doctor;
@@ -44,20 +44,20 @@ public class Consulta extends BaseObject {
     }
 
     @Column(name="hora_inicio",nullable=false)
-    public Time getHoraInicio() {
+    public Timestamp getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Time horaInicio) {
+    public void setHoraInicio(Timestamp horaInicio) {
         this.horaInicio = horaInicio;
     }
 
     @Column(name="hora_fin",nullable=false)
-    public Time getHoraFin() {
+    public Timestamp getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Time horaFin) {
+    public void setHoraFin(Timestamp horaFin) {
         this.horaFin = horaFin;
     }
 
