@@ -99,7 +99,7 @@ public class ConsultaDaoHibernate
      * @return List<Consulta> lista de consulta encontradas.
      */
     public List<Consulta> obtenerConsultasFecha(Date fechaInicio, Date fechaFin) {
-        String query = "from Consulta where fecha>=? and fecha<=?";
+        String query = "from Consulta where cast(fecha as date) >= cast(? as date) and cast(fecha as date)<=cast(? as date)";
         //Date f = new Date(84, 5, 5);
         log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
         Date[] fechas = {fechaInicio, fechaFin};
