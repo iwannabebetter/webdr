@@ -3,8 +3,8 @@ package edu.fpuna.dao;
 import edu.fpuna.model.Consulta;
 import edu.fpuna.model.Notas;
 import edu.fpuna.model.MedidasPaciente;
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -71,14 +71,16 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
 
     /*
      * Test nº4. Prueba de busqueda de Consulta por Fecha
+     */
     public void testObtenerConsultasFecha() throws Exception { 
         log.debug("Testing(4) ObtenerConsultasFecha...");
-        Date fecha = new Date(84, 5, 5, 0, 0, 0);
-        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha, fecha);
-        log.debug("Cantidad de consultas del Doctor: " + consultas.size());
-        assertTrue(consultas.isEmpty() == true);
+        Date fecha = new Date(85, 5, 5, 0, 0, 0);
+        Date fecha2 = new Date(103, 5, 5, 0, 0, 0);
+        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha, fecha2);
+        log.debug("Cantidad de consultas del Doctor-fecha: " + consultas.size());
+        assertTrue(consultas.isEmpty() != true);
         log.debug("Testing ObtenerConsultasFecha ha Finalizado.");
-    }*/
+    }
 
     /*
      * Test nº5. Prueba de eliminar una consulta
@@ -100,8 +102,8 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         Consulta consulta = new Consulta();
         consulta.setId(new Long(3));
         consulta.setFecha(new Date(80, 10, 5));
-        consulta.setHoraInicio(new Time(11, 30, 00));
-        consulta.setHoraFin(new Time(12, 30, 00));
+        consulta.setHoraInicio(new Timestamp(0,0,0,11,30,00,00));
+        consulta.setHoraFin(new Timestamp(0,0,0,12,30,00,00));
         MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Double(200), new Integer(30), new Boolean(false));
         consulta.setMedidasPaciente(mpacientes);
         consulta.setNotas(new Notas("Irritaciones", "Alergia", "Alergin 100gr", "200ml cada 12hrs"));
