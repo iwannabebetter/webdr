@@ -179,8 +179,8 @@
         <row>
             <value description="id">-1</value>
             <value description="fecha">1984-05-05</value>
-            <value description="hora_inicio">10:00:00</value>
-            <value description="hora_fin">12:00:00</value>
+            <value description="hora_inicio">1984-05-05 10:00:00</value>
+            <value description="hora_fin">1984-05-05 12:00:00</value>
             <value description="peso_actual">76</value>
             <value description="altura_actual">178</value>
             <value description="edad_actual">22</value>
@@ -195,8 +195,8 @@
         <row>
             <value description="id">-2</value>
             <value description="fecha">1998-11-23</value>
-            <value description="hora_inicio">07:00:00</value>
-            <value description="hora_fin">08:30:00</value>
+            <value description="hora_inicio">1984-05-05 07:00:00</value>
+            <value description="hora_fin">1984-05-05 08:30:00</value>
             <value description="peso_actual">80</value>
             <value description="altura_actual">155</value>
             <value description="edad_actual">27</value>
@@ -211,8 +211,8 @@
         <row>
             <value description="id">-3</value>
             <value description="fecha">2000-10-09</value>
-            <value description="hora_inicio">09:00:00</value>
-            <value description="hora_fin">10:00:00</value>
+            <value description="hora_inicio">1984-05-05 09:00:00</value>
+            <value description="hora_fin">1984-05-05 10:00:00</value>
             <value description="peso_actual">72</value>
             <value description="altura_actual">171</value>
             <value description="edad_actual">21</value>
