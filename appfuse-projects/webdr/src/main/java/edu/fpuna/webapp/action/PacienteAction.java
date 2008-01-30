@@ -89,6 +89,7 @@ public class PacienteAction extends BaseAction {
     }
     
     public String save() throws Exception {
+        tipoSangres = tipoSangreManager.getAll();
         if (cancel != null)
             return CANCEL;
 
@@ -101,7 +102,6 @@ public class PacienteAction extends BaseAction {
         saveMessage(getText(key));
 
         if (!isNew){
-            tipoSangres = tipoSangreManager.getAll();
             return INPUT;
         }else{
             return SUCCESS;

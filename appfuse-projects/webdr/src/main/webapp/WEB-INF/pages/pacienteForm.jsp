@@ -59,6 +59,10 @@
             <div>
                 <s:textfield key="paciente.fechaIngreso" required="true" cssClass="text large"/><br>
             </div>
+            <div>
+                <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
+                <s:select key="paciente.tipoSangre.id" list="tipoSangres" listKey="id" listValue="nombre" />
+            </div>            
         </div>
     </li>
 
