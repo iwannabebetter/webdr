@@ -8,7 +8,7 @@ package edu.fpuna.dao;
 import edu.fpuna.model.Address;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
