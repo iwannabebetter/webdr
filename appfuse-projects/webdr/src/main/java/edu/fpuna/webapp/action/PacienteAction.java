@@ -100,9 +100,11 @@ public class PacienteAction extends BaseAction {
         String key = (isNew) ? "paciente.added" : "paciente.updated";
         saveMessage(getText(key));
 
-        if (!isNew)
+        if (!isNew){
+            tipoSangres = tipoSangreManager.getAll();
             return INPUT;
-        else
+        }else{
             return SUCCESS;
+        }
     }
 }
