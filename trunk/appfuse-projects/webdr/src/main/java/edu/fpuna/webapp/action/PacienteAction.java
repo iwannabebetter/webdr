@@ -80,11 +80,13 @@ public class PacienteAction extends BaseAction {
     public String edit() {
         tipoSangres = tipoSangreManager.getAll();
         
-        if (id != null)
+        if (id != null){
             paciente = manager.getPaciente(id);
-        else
+            paciente.setConfirmPassword(paciente.getPassword());
+        }
+        else{
             paciente = new Paciente();
-
+        }
         return SUCCESS;
     }
     
@@ -102,6 +104,7 @@ public class PacienteAction extends BaseAction {
         saveMessage(getText(key));
 
         if (!isNew){
+            paciente.setConfirmPassword(paciente.getPassword());
             return INPUT;
         }else{
             return SUCCESS;
