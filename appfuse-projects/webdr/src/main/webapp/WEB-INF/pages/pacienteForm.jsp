@@ -37,10 +37,10 @@
     <li class="info">
         <c:choose>
             <c:when test="${param.from == 'list'}">
-                <p><fmt:message key="pacienteProfile.admin.message"/></p>
+                <p><fmt:message key="userProfile.admin.message"/></p>
             </c:when>
             <c:otherwise>
-                <p><fmt:message key="pacienteProfile.message"/></p>
+                <p><fmt:message key="userProfile.message"/></p>
             </c:otherwise>
         </c:choose>
     </li>
@@ -141,7 +141,7 @@
     <c:when test="${param.from == 'list'}">
     <li>
         <fieldset>
-            <legend><fmt:message key="pacienteProfile.accountSettings"/></legend>
+            <legend><fmt:message key="userProfile.accountSettings"/></legend>
             <s:checkbox key="paciente.enabled" id="paciente.enabled" fieldValue="true" theme="simple"/>
             <label for="paciente.enabled" class="choice"><fmt:message key="paciente.enabled"/></label>
 
@@ -157,15 +157,15 @@
     </li>
     <li>
         <fieldset>
-            <legend><fmt:message key="pacienteProfile.assignRoles"/></legend>
+            <legend><fmt:message key="userProfile.assignRoles"/></legend>
             <table class="pickList">
                 <tr>
                     <th class="pickLabel">
-                        <label class="required"><fmt:message key="paciente.availableRoles"/></label>
+                        <label class="required"><fmt:message key="user.availableRoles"/></label>
                     </th>
                     <td></td>
                     <th class="pickLabel">
-                        <label class="required"><fmt:message key="paciente.roles"/></label>
+                        <label class="required"><fmt:message key="user.roles"/></label>
                     </th>
                 </tr>
                 <c:set var="leftList" value="${availableRoles}" scope="request"/>
@@ -181,7 +181,7 @@
     </c:when>
     <c:otherwise>
     <li>
-        <strong><fmt:message key="paciente.roles"/>:</strong>
+        <strong><fmt:message key="user.roles"/>:</strong>
         <s:iterator value="user.roleList" status="status">
           <s:property value="label"/><s:if test="!#status.last">,</s:if>
           <input type="hidden" name="pacienteRoles" value="<s:property value="value"/>"/>
