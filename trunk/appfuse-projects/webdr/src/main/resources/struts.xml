@@ -112,9 +112,8 @@
         <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
             <result>/WEB-INF/pages/consultasList.jsp</result> 
         </action>
-        
         <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
-            <result>/WEB-INF/pages/consultaForm.jsp</result>
+            <result name="success">/WEB-INF/pages/consultaForm.jsp</result>
             <result name="error">/WEB-INF/pages/consultaList.jsp</result>
         </action>
         <action name="saveConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="save">
@@ -128,7 +127,7 @@
             <result>/WEB-INF/pages/pacienteList.jsp</result> 
         </action>
         <action name="editPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
-            <result>/WEB-INF/pages/pacienteForm.jsp</result>
+            <result name="success">/WEB-INF/pages/pacienteForm.jsp</result>
             <result name="error">/WEB-INF/pages/pacienteList.jsp</result>
         </action>
         <action name="guardarPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="save">
@@ -139,7 +138,17 @@
         </action>
         
         <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
-            <result>/WEB-INF/pages/doctorList.jsp</result>
+            <result>/WEB-INF/pages/admin/doctorList.jsp</result>
+        </action>
+        <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
+            <result name="success">/WEB-INF/pages/admin/doctorForm.jsp</result>
+            <result name="error">/WEB-INF/pages/admin/doctorList.jsp</result>
+        </action>
+        <action name="saveDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="save">
+            <result name="input">/WEB-INF/pages/admin/doctorForm.jsp</result>
+            <result name="cancel" type="redirect">doctores.html</result>
+            <result name="delete" type="redirect">doctores.html</result>
+            <result name="success" type="redirect">doctores.html</result>
         </action>
         
     </package>
