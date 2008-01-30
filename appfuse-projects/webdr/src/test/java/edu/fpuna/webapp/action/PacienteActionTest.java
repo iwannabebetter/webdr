@@ -13,7 +13,7 @@ import edu.fpuna.model.Role;
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.impl.PacienteManagerImpl;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
