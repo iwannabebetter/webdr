@@ -5,7 +5,7 @@
 
 package edu.fpuna.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.*;
