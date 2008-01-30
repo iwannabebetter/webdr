@@ -130,7 +130,7 @@
             <result name="success">/WEB-INF/pages/pacienteForm.jsp</result>
             <result name="error">/WEB-INF/pages/pacienteList.jsp</result>
         </action>
-        <action name="guardarPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="save">
+        <action name="savePaciente" class="edu.fpuna.webapp.action.PacienteAction" method="save">
             <result name="input">/WEB-INF/pages/pacienteForm.jsp</result>
             <result name="cancel" type="redirect">pacientes.html</result>
             <result name="delete" type="redirect">pacientes.html</result>
