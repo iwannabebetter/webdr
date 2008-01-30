@@ -7,7 +7,7 @@
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<s:form name="pacienteForm" action="guardarPaciente" method="post" validate="true">
+<s:form name="pacienteForm" action="savePaciente" method="post" validate="true">
     <li style="display: none">
         <s:hidden key="paciente.id"/>
         <s:hidden key="paciente.version"/>
@@ -54,14 +54,10 @@
                 <s:textfield key="paciente.cedula" cssClass="text large" required="true"/>
             </div>
             <div>
-                Aca debe ir fecha de nacimiento<br>
+                <s:textfield key="paciente.fechaNacimiento" required="true" cssClass="text large"/><br>
             </div>
             <div>
-                Aca debe ir fecha de ingreso
-            </div>
-            <div>
-                <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
-                <s:select list="tipoSangres"  key="paciente.tipoSangre" />
+                <s:textfield key="paciente.fechaIngreso" required="true" cssClass="text large"/><br>
             </div>
         </div>
     </li>
