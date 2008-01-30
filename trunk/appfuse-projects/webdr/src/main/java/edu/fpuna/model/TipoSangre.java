@@ -27,7 +27,7 @@ public class TipoSangre extends BaseObject {
         this.id = id;
     }
 
-    @Column(nullable=false,unique=true,length=3)
+    @Column(nullable=false,unique=true,length=50)
     public String getNombre() {
         return nombre;
     }

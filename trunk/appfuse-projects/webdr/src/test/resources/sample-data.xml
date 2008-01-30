@@ -166,19 +166,19 @@
         <column>nombre</column>
         <row>
             <value description="id">-1</value>
-            <value description="nombre">(O-) O negativo</value>
+            <value description="nombre">O negativo</value>
         </row>
         <row>
             <value description="id">-2</value>
-            <value description="nombre">(O+) O Positivo</value>
+            <value description="nombre">O Positivo</value>
         </row>
         <row>
             <value description="id">-3</value>
-            <value description="nombre">(A-) A negativo</value>
+            <value description="nombre">A negativo</value>
         </row>
         <row>
             <value description="id">-4</value>
-            <value description="nombre">(A+) A positivo</value>
+            <value description="nombre">A positivo</value>
         </row>
     </table>
     <table name="paciente">
