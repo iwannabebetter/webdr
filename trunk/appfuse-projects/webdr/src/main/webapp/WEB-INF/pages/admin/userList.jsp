@@ -18,7 +18,7 @@
 <c:out value="${buttons}" escapeXml="false" />
 
 <display:table name="users" cellspacing="0" cellpadding="0" requestURI="" 
-    defaultsort="1" id="users" pagesize="25" class="table" export="true">
+    defaultsort="1" id="users" pagesize="15" class="table" export="true">
     <display:column property="username" escapeXml="true" sortable="true" titleKey="user.username" style="width: 25%"
         url="/editUser.html?from=list" paramId="id" paramProperty="id"/>
     <display:column property="fullName" escapeXml="true" sortable="true" titleKey="activeUsers.fullName" style="width: 34%"/>
@@ -29,8 +29,8 @@
     </display:column>
     <display:column property="enabled" titleKey="user.enabled" media="csv xml excel pdf"/>
 
-    <display:setProperty name="paging.banner.item_name" value="user"/>
-    <display:setProperty name="paging.banner.items_name" value="users"/>
+    <display:setProperty name="paging.banner.item_name" value="usuario"/>
+    <display:setProperty name="paging.banner.items_name" value="usuarios"/>
 
     <display:setProperty name="export.excel.filename" value="User List.xls"/>
     <display:setProperty name="export.csv.filename" value="User List.csv"/>
