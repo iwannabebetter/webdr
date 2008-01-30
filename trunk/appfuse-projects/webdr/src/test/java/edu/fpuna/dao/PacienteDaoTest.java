@@ -51,17 +51,17 @@ public class PacienteDaoTest extends BaseDaoTestCase {
 
         /* Datos de Usuario */
         Paciente nuevoPaciente = new Paciente();
-        nuevoPaciente.setUsername("fmancia");
-        nuevoPaciente.setPassword("fmancia2");
-        nuevoPaciente.setFirstName("Fernando");
-        nuevoPaciente.setLastName("Mancía");
+        nuevoPaciente.setUsername("usuario_nuevo");
+        nuevoPaciente.setPassword("usuario_nuevo");
+        nuevoPaciente.setFirstName("Usuario");
+        nuevoPaciente.setLastName("Nuevo");
         Address address = new Address();
-        address.setCity("Asuncion");
+        address.setCity("AS");
         address.setProvince("Central");
         address.setCountry("PY");
         address.setPostalCode("80210");
         nuevoPaciente.setAddress(address);
-        nuevoPaciente.setEmail("fmancia@appfuse.org");
+        nuevoPaciente.setEmail("usuario_nuevo@appfuse.org");
         nuevoPaciente.setWebsite("http://fmancia.raibledesigns.com");
         nuevoPaciente.setAccountExpired(false);
         nuevoPaciente.setAccountLocked(false);
@@ -70,7 +70,7 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         /*<--- Datos del usuario */
         
         /*---> Datos propios del Paciente */
-        nuevoPaciente.setCedula(2059843);
+        nuevoPaciente.setCedula(88112233);
         
         Date fechaIngreso = new Date(System.currentTimeMillis());
         nuevoPaciente.setFechaIngreso(fechaIngreso);
@@ -99,7 +99,7 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         
         assertNotNull(p.getId());
         Paciente retornado = pacienteDao.get(p.getId());
-        assertEquals("fmancia2", retornado.getPassword());
+        assertEquals("usuario_nuevo", retornado.getPassword());
 
         log.debug("Guardar Confirmado...");
     }
