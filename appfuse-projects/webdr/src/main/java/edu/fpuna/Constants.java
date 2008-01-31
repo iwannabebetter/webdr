@@ -88,4 +88,10 @@ public class Constants {
      * The name of the CSS Theme setting.
      */
     public static final String CSS_THEME = "csstheme";
+    
+
+    public static final Long ID_ADMIN_ROLE = -1L;
+    public static final Long ID_USER_ROLE = -2L;
+    public static final Long ID_DOCTOR_ROLE = -3L;
+    public static final Long ID_PACIENTE_ROLE = -4L;
 }
