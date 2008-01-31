@@ -6,9 +6,8 @@
 
 <s:form id="consultaForm" action="saveConsulta" method="post" validate="true">
 	<s:hidden name="consulta.id" value="%{consulta.id}"/>
-	<s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.horaInicio" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.horaFin" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.fechaInicio" required="true" cssClass="text medium"/>
+	<s:textfield key="consulta.fechaFin" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.medidasPaciente.pesoActual" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.medidasPaciente.alturaActual" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.medidasPaciente.edadActual" required="true" cssClass="text medium"/>
@@ -23,7 +22,7 @@
 	<li class="buttonBar bottom">
 		<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
 		<c:if test="${not empty consulta.id}">
-			<s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('consulta')" theme="simple"/>
+			<s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('esta consulta')" theme="simple"/>
 		</c:if>
 		<s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
 	</li>
