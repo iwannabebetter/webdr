@@ -1,7 +1,11 @@
 package edu.fpuna.dao.hibernate;
 
+import edu.fpuna.Constants;
 import edu.fpuna.dao.ConsultaDao;
 import edu.fpuna.model.Consulta;
+import edu.fpuna.model.Doctor;
+import edu.fpuna.model.Paciente;
+import edu.fpuna.model.Role;
 import edu.fpuna.model.User;
 import java.util.Date;
 import java.util.List;
@@ -73,10 +77,30 @@ public class ConsultaDaoHibernate
         return result;
     }
 
+    /*
+     * Dado un usuario, revisa los roles que tiene
+     * y retorna el rol si es Doctor o Paciente.
+     * En caso de no encontrar uno de estos roles,
+     * se retorna null.
+     * Se asume que no existen simultáneamente los 
+     * dos roles mencionados más arriba.
+     */
     private String obtenerRol(User usuario) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        String dRole = Constants.DOCTOR_ROLE;
+        String pRole = Constants.PACIENTE_ROLE;
+        
+        for (Role role : usuario.getRoles()) {
+            String rName = role.getName();
+            if (rName.equals(dRole) || rName.equals(pRole))
+                return rName;
+        }
+        
+        return null;
     }
     
+    /*
+     * Obtiene un usuario por el nombre de usuario
+     */
     private User obtenerUsuario(String username) {
         log.debug("EMPEZAMOS LA CONSULTA SOBRE APPUSER.....");
         
@@ -99,14 +123,53 @@ public class ConsultaDaoHibernate
      * {@inheritDoc}
      */
     public List<Consulta> obtenerConsultasFecha(String username, 
-                                            Date fechaInicio, Date fechaFin) {
-        String query = "from Consulta where cast(fecha as date) >= cast(? as date) and cast(fecha as date)<=cast(? as date)";
-        //Date f = new Date(84, 5, 5);
-        log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
-        Date[] fechas = {fechaInicio, fechaFin};
-        return getHibernateTemplate().find(query, fechas);
-    }
+                            Date fechaInicio, Date fechaFin) throws Exception {
         
+        User usuario = this.obtenerUsuario(username);
+        String rol   = obtenerRol(usuario);
+        String query = "from Consulta ";
+        
+        /* Construimos la consulta según el tipo de usuario */
+        if (rol == null) {
+            String mensaje = "El argumento 'usuario' debe ser " +
+                             "una instancia de '" + Doctor.class + 
+                             "' o '" + Paciente.class + "'";
+            
+            throw new Exception(mensaje);
+        }
+        else if (rol.equals(Constants.DOCTOR_ROLE))
+            query += "where doctor.id=? ";
+        else if (rol.equals(Constants.PACIENTE_ROLE))
+            query += "where paciente.id=? ";
+        
+        log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
+        
+        /* Si las dos fechas son nulas, se recuperan todas las consultas */
+        if (fechaInicio == null && fechaFin == null)
+            return getHibernateTemplate().find(query, usuario.getId());
+            
+        /* En caso contrario hay un rango válido */
+        query += "and cast(? as date) >= cast(fechaInicio as date) and " +
+                 "cast(? as date) <= cast(fechaFin as date)";
+        
+        /* Construimos el rango de fechas */
+        Object[] args = {usuario.getId(), null, null};
+        if (fechaInicio == null) {
+            args[1] = fechaFin;
+            args[2] = fechaFin;
+        }
+        else if (fechaFin == null) {
+            args[1] = fechaInicio;
+            args[2] = fechaInicio;
+        }
+        else {
+            args[1] = fechaInicio;
+            args[2] = fechaFin;
+        }
+        
+        return getHibernateTemplate().find(query, args);
+    }
+    
     /**
      * {@inheritDoc}
      */
