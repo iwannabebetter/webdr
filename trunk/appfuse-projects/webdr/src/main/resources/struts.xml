@@ -110,7 +110,7 @@
 
         <!-- Add additional actions here -->
         <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
-            <result>/WEB-INF/pages/consultasList.jsp</result> 
+            <result>/WEB-INF/pages/consultasList.jsp</result>
         </action>
         <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <result name="success">/WEB-INF/pages/consultaForm.jsp</result>
