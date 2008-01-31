@@ -24,6 +24,7 @@ public class Doctor extends User {
     private Set<HorarioAtencion> horarios = new HashSet<HorarioAtencion>();
     
     @Column(name="fechanac",nullable=false)
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
