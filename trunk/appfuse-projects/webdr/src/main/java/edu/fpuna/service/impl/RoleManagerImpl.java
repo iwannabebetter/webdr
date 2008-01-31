@@ -35,6 +35,13 @@ public class RoleManagerImpl extends UniversalManagerImpl implements RoleManager
     /**
      * {@inheritDoc}
      */
+    public Role getRole(Long id) {
+        return dao.get(id);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
     public Role saveRole(Role role) {
         return dao.save(role);
     }
