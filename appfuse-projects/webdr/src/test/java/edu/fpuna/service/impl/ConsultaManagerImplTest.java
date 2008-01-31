@@ -61,7 +61,7 @@ public class ConsultaManagerImplTest extends BaseManagerMockTestCase {
         dao.expects(once()).method("obtenerConsultaId").with(eq(id)).will(returnValue(consulta));
         
         // Se establece el procesamiento del Manager
-        Consulta result = manager.getConsulta(id);
+        Consulta result = manager.obtenerConsulta(id);
         assertSame(consulta, result);
         log.debug("Testing GetConsulta ha Finalizado.");
     }   
