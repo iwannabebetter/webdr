@@ -38,7 +38,7 @@ public interface ConsultaDao extends GenericDao<Consulta, Long>  {
     
     /**
      * Metodo para obtener las Consultas en una fecha dada.
-     * @param usuario Paciente o Doctor propietario de las consultas a recuperar.
+     * @param username Paciente o Doctor propietario de las consultas a recuperar.
      * @param fechaInicio Limite inferior del rango de fecha a consultar.
      * @param fechaFin Limite superior del rango de fecha a consultar.
      * @return List<Consulta> lista de consulta encontradas.
