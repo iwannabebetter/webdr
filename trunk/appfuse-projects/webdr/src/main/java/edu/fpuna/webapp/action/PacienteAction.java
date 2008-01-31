@@ -5,6 +5,7 @@
 
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.Constants;
 import edu.fpuna.model.Paciente;
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
@@ -19,7 +20,7 @@ public class PacienteAction extends BaseAction {
 
     private GenericManager<TipoSangre,Long> tipoSangreManager;
     List<TipoSangre> tipoSangres;
-    
+   
     private PacienteManager manager;
     List<Paciente> pacientes;
 
@@ -99,6 +100,10 @@ public class PacienteAction extends BaseAction {
             return delete();
 
         boolean isNew = (paciente.getId() == null);
+        paciente.getRoles().clear();
+        
+        paciente.addRole(roleManager.getRole(Constants.ID_USER_ROLE));
+        paciente.addRole(roleManager.getRole(Constants.ID_PACIENTE_ROLE));
         paciente = manager.guardarPaciente(paciente);
         String key = (isNew) ? "paciente.added" : "paciente.updated";
         saveMessage(getText(key));
