@@ -10,7 +10,7 @@ import edu.fpuna.model.Address;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.mock.web.MockHttpServletRequest;
