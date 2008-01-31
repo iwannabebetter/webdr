@@ -4,11 +4,16 @@
         <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
     </Displayers>
     <Menus>
-        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" roles="ROLE_ADMIN,ROLE_USER"/>
-        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.html" roles="ROLE_ADMIN,ROLE_USER"/>
-        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users.html">
-            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
-            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" width="110" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" width="110" page="/editProfile.html" roles="ROLE_ADMIN,ROLE_USER"/>
+        <!--Menu name="AdminUsuarioMenu" title="menu.usuario" roles="ROLE_ADMIN,ROLE_USER">
+            <Item name="ViewUsers" title="menu.usuario.users" page="/admin/users.html"/>
+            <Item name="ActiveUsers" title="menu.usuario.activeUsers" page="/admin/activeUsers.html"/>
+        </Menu-->
+        <Menu name="AdminDoctorMenu" title="menu.doctor" description="Admin Menu" width="110" roles="ROLE_ADMIN" page="/admin/users.html">
+            <Item name="VerDoctores" title="menu.doctor.doctores" page="/admin/doctores.html"/>
+            <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/admin/editDoctor.html"/>
+            
             <!-- Se saca esta parte del menu del administrador
             <Item name="ReloadContext" title="menu.admin.reload" page="/admin/reload.html"/>
             <Item name="FileUpload" title="menu.selectFile" page="/uploadFile.html"/>
@@ -16,7 +21,10 @@
             <Item name="Clickstream" title="menu.clickstream" page="/admin/clickstreams.jsp"/>
             -->
         </Menu>
-        <Menu name="DoctoresMenu" title="menu.verDoctores" roles="ROLE_ADMIN,ROLE_USER" page="/admin/doctores.html"/>
-        <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" width="110" roles="ROLE_ADMIN">
+            <Item name="VerPacientes" title="menu.paciente.pacientes" page="/admin/pacientes.html"/>
+            <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/admin/editPaciente.html"/>
+        </Menu>
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" width="80" roles="ROLE_ADMIN,ROLE_USER"/>
     </Menus>
 </MenuConfig>
