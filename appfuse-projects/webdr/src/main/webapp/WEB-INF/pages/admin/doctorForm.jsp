@@ -139,29 +139,6 @@
             <label for="doctor.credentialsExpired" class="choice"><fmt:message key="doctor.credentialsExpired"/></label>
         </fieldset>
     </li>
-    <li>
-        <fieldset>
-            <legend><fmt:message key="userProfile.assignRoles"/></legend>
-            <table class="pickList">
-                <tr>
-                    <th class="pickLabel">
-                        <label class="required"><fmt:message key="user.availableRoles"/></label>
-                    </th>
-                    <td></td>
-                    <th class="pickLabel">
-                        <label class="required"><fmt:message key="doctor.roles"/></label>
-                    </th>
-                </tr>
-                <c:set var="leftList" value="${availableRoles}" scope="request"/>
-                <s:set name="rightList" value="doctor.roleList" scope="request"/>
-                <c:import url="/WEB-INF/pages/pickList.jsp">
-                    <c:param name="listCount" value="1"/>
-                    <c:param name="leftId" value="availableRoles"/>
-                    <c:param name="rightId" value="userRoles"/>
-                </c:import>
-            </table>
-        </fieldset>
-    </li>
     </c:when>
     <c:otherwise>
     <li>
