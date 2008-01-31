@@ -6,7 +6,6 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Consulta;
-import edu.fpuna.model.User;
 import java.util.Date;
 import java.util.List;
 
