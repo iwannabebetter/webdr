@@ -12,8 +12,8 @@
 
 <s:form id="especialidadForm" action="saveEspecialidad" method="post" validate="true">
     <s:hidden name="especialidad.id" value="%{especialidad.id}"/>
-    <s:textfield key="especialidad.nombre" required="true" cssClass="text medium"/>
-    <s:textfield key="especialidad.descripcion" required="true" cssClass="text medium"/>
+    <s:textfield key="especialidad.nombre" required="true" cssClass="text large"/>
+    <s:textfield key="especialidad.descripcion" required="true" cssClass="text large"/>
     <li class="buttonBar bottom">
         <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
         <c:if test="${not empty especialidad.id}">
