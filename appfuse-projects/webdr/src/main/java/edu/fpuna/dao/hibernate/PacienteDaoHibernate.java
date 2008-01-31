@@ -38,6 +38,15 @@ public class PacienteDaoHibernate
         
         return (Paciente) result.get(0);
     }
+    
+    public List<Paciente> getAll() {
+        List result = super.getHibernateTemplate().find("from Paciente ");
+        
+        if (result.isEmpty())
+            return null;
+        
+        return result;
+    }
 
     public Paciente guardar(Paciente p) {
         return super.save(p);
