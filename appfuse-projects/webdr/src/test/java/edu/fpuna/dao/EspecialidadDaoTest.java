@@ -30,7 +30,7 @@ public class EspecialidadDaoTest extends BaseDaoTestCase {
         
         log.debug("Guardando especialidad...");
         especialidadDao.guardar(especialidad);
-        flush();
+
         
         log.debug("Recuperando especialidad...");
         especialidad = especialidadDao.obtenerPorNombre(especialidad.getNombre());

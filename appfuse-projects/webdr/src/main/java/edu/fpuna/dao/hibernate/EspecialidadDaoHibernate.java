@@ -28,12 +28,22 @@ public class EspecialidadDaoHibernate
         
         return (Especialidad) result.get(0);
     }
+    
+    public Especialidad obtenerPorId(Long id) {
+        String query = "from Especialidad where id=?";
+        List result = getHibernateTemplate().find(query, id);
+        
+        if (result.isEmpty())
+            return null;
+        
+        return (Especialidad) result.get(0);
+    }
 
     public void eliminar(Especialidad especialidad) {
         super.remove(especialidad.getId());
     }
 
-    public void guardar(Especialidad especialidad) {
-        super.save(especialidad);
+    public Especialidad guardar(Especialidad especialidad) {
+        return super.save(especialidad);
     }
 }

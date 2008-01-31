@@ -17,17 +17,73 @@ public class EspecialidadAction extends BaseAction {
 
     private EspecialidadManager manager;
     List<Especialidad> especialidades;
+    Especialidad especialidad;
+    Long id;
     
-    public Especialidad getEspecialidad(String nombre) {
-        return manager.getEspecialidad(nombre);
+    
+    
+    public Especialidad getEspecialidad() {
+        return this.especialidad;
+    }
+    
+    public List<Especialidad> getEspecialidades() {
+        return this.especialidades;
     }
 
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+    
     public void setEspecialidadManager(EspecialidadManager especialidadManager) {
         this.manager = especialidadManager;
     }
 
+    public Long getId(){
+        return id;
+    }
+    
+    public void setId(Long id){
+        this.id = id;
+    }
+    
     public String list() {
         especialidades = manager.getAll();
         return SUCCESS;
+    }
+    
+    public String delete() {
+        manager.removeEspecialidad(especialidad.getNombre());
+        saveMessage(getText("especialidad.deleted"));
+        return SUCCESS;
+    }
+    
+    public String edit() {
+       
+        if (id != null){
+            especialidad = manager.getEspecialidad(id);
+        }
+        else{
+            especialidad = new Especialidad();
+        }
+        return SUCCESS;
+    }
+
+    public String save() throws Exception {
+        if (cancel != null)
+            return CANCEL;
+
+        if (delete != null)
+            return delete();
+
+        boolean isNew = (especialidad.getId() == null);
+        especialidad = manager.saveEspecialidad(especialidad);
+        String key = (isNew) ? "especialidad.added" : "especialidad.updated";
+        saveMessage(getText(key));
+
+        if (!isNew){
+            return INPUT;
+        }else{
+            return SUCCESS;
+        }
     }
 }
