@@ -20,13 +20,13 @@ public class DateConverter extends StrutsTypeConverter {
         }
 
         try {
-			log.debug("Clases: "+arg2);
-			if (arg2 == Timestamp.class)
-            	return DateUtil.convertStringToDateTime(value[0]);
-			else if (arg2 == Date.class)
-            	return DateUtil.convertStringToDate(value[0]);
-			else
-				return null;
+            log.debug("Clases: "+arg2);
+            if (arg2 == Timestamp.class)
+                return DateUtil.convertStringToDateTime(value[0]);
+            else if (arg2 == Date.class)
+                return DateUtil.convertStringToDate(value[0]);
+            else
+                return null;
 
         } catch (ParseException pe) {
             pe.printStackTrace();
@@ -35,12 +35,12 @@ public class DateConverter extends StrutsTypeConverter {
     }
 
     public String convertToString(Map ctx, Object data) {
-			log.debug("Clases: "+ data.getClass());
-			if (data.getClass() == Timestamp.class)
-            	return DateUtil.convertDateTimeToString((Date) data);
-			else if (data.getClass() == Date.class)
-            	return DateUtil.convertDateToString((Date) data);
-			else
-				return null;
+        log.debug("Clases: "+ data.getClass());
+        if (data.getClass() == Timestamp.class)
+            return DateUtil.convertDateTimeToString((Date) data);
+        else if (data.getClass() == Date.class)
+            return DateUtil.convertDateToString((Date) data);
+        else
+            return null;
     }
 } 
