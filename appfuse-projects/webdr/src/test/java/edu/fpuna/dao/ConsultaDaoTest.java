@@ -1,10 +1,11 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Consulta;
+import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Notas;
 import edu.fpuna.model.MedidasPaciente;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,7 +77,13 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         log.debug("Testing(4) ObtenerConsultasFecha...");
         Date fecha = new Date(85, 5, 5, 0, 0, 0);
         Date fecha2 = new Date(103, 5, 5, 0, 0, 0);
-        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(fecha, fecha2);
+        
+        log.debug("Recuperando doctor(id = -2)...");
+        Doctor doctor = doctorDao.get(-2L);
+        
+        log.debug("Recuperando consultas del doctor(id = -2)...");
+        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(doctor.getUsername(), fecha, fecha2);
+        
         log.debug("Cantidad de consultas del Doctor-fecha: " + consultas.size());
         assertTrue(consultas.isEmpty() != true);
         log.debug("Testing ObtenerConsultasFecha ha Finalizado.");
@@ -101,9 +108,8 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
 
         Consulta consulta = new Consulta();
         consulta.setId(new Long(3));
-        consulta.setFecha(new Date(80, 10, 5));
-        consulta.setHoraInicio(new Timestamp(0,0,0,11,30,00,00));
-        consulta.setHoraFin(new Timestamp(0,0,0,12,30,00,00));
+        consulta.setFechaInicio(new Timestamp(80,10,5,11,30,0,0));
+        consulta.setFechaFin(new Timestamp(80,10,5,12,30,0,0));
         MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Double(200), new Integer(30), new Boolean(false));
         consulta.setMedidasPaciente(mpacientes);
         consulta.setNotas(new Notas("Irritaciones", "Alergia", "Alergin 100gr", "200ml cada 12hrs"));
