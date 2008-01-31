@@ -145,6 +145,10 @@
             <value description="user_id">-3</value>
             <value description="role_id">-1</value>
         </row>
+        <row>
+            <value description="user_id">-4</value>
+            <value description="role_id">-4</value>
+        </row>
     </table>
     <table name="especialidad">
         <column>id</column>
