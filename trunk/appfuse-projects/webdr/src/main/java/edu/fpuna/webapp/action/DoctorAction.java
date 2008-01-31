@@ -5,6 +5,7 @@
 
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.Constants;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
@@ -58,11 +59,12 @@ public class DoctorAction extends BaseAction {
     }
 
     public String edit() {
-        if (id != null)
+        if (id != null){
             doctor = doctorManager.get(id);
-        else
+            doctor.setConfirmPassword(doctor.getPassword());
+        }else{
             doctor = new Doctor();
-
+        }
         return SUCCESS;
     }
 
@@ -74,13 +76,19 @@ public class DoctorAction extends BaseAction {
             return delete();
         
         boolean isNew = (doctor.getId() == null);
+        
+        doctor.getRoles().clear();
+        doctor.addRole(roleManager.getRole(Constants.ID_USER_ROLE));
+        doctor.addRole(roleManager.getRole(Constants.ID_DOCTOR_ROLE));
         doctor = doctorManager.guardarDoctor(doctor);
         String key = (isNew) ? "doctor.added" : "doctor.updated";
         saveMessage(getText(key));
         
-        if (!isNew)
+        if (!isNew){
+            doctor.setConfirmPassword(doctor.getPassword());
             return INPUT;
-        else
+        }else{
             return SUCCESS;
+        }
     }
 }

@@ -4,6 +4,7 @@ import edu.fpuna.dao.PacienteDao;
 import edu.fpuna.dao.RoleDao;
 import edu.fpuna.model.Paciente;
 import edu.fpuna.model.TipoSangre;
+import java.util.List;
 
 /**
  * @author fmancia
@@ -25,6 +26,8 @@ public interface PacienteManager extends GenericManager<Paciente,Long>{
     public void eliminarPaciente(Paciente p);
 
     public boolean eliminarPaciente(Long id);
+    
+    public List<Paciente> obtenerTodos();
     
     public Paciente pacienteAleatorio();
 }

@@ -41,4 +41,14 @@ public class DoctorDaoHibernate
         return super.getHibernateTemplate()
                     .find(query, especialidad.getNombre());
     }
+    
+    public List<Doctor> getAll(){
+        String query = "from Doctor ";
+        List result = super.getHibernateTemplate().find(query);
+        
+        if (result == null || result.isEmpty())
+            return null;
+        else
+            return result;
+    }
 }

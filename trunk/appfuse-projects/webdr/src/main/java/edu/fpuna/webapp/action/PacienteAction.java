@@ -56,7 +56,7 @@ public class PacienteAction extends BaseAction {
     }
 
     public String list() {
-        pacientes = manager.getAll();
+        pacientes = manager.obtenerTodos();
         return SUCCESS;
     }
     
