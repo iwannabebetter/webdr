@@ -12,6 +12,7 @@ import edu.fpuna.service.PacienteManager;
 import edu.fpuna.model.Role;
 import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
+import edu.fpuna.service.RoleManager;
 import edu.fpuna.service.impl.PacienteManagerImpl;
 import java.util.Date;
 import java.util.Random;
@@ -28,6 +29,7 @@ public class PacienteActionTest extends BaseActionTestCase {
 
     private PacienteAction action;
     private RoleDao roleDao;
+    private RoleManager roleManager;
     private GenericManager<TipoSangre, Long> tipoSangreManager;
 
     protected void onSetUpBeforeTransaction() throws Exception {
@@ -36,13 +38,16 @@ public class PacienteActionTest extends BaseActionTestCase {
         
         log.debug("__SETUP__:Recuperando el Manager");
         PacienteManager pacienteManager = (PacienteManager) applicationContext.getBean("pacienteManager");
+        
         this.roleDao = (RoleDao) applicationContext.getBean("roleDao");
         this.tipoSangreManager = (GenericManager<TipoSangre,Long>) applicationContext.getBean("tipoSangreManager");
-        
+        this.roleManager = (RoleManager) applicationContext.getBean("roleManager");
+                
         log.debug("__SETUP__:Estableciendo el Manager");
         action = new PacienteAction();
         action.setPacienteManager(pacienteManager);
         action.setTipoSangreManager(this.tipoSangreManager);
+        action.setRoleManager(roleManager);
     }
     
     public void testSearch() throws Exception {
