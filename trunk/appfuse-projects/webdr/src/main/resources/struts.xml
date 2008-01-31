@@ -153,6 +153,21 @@
             <result name="success" type="redirect">doctores.html</result>
         </action>
         
+        
+        <action name="especialidades" class="edu.fpuna.webapp.action.EspecialidadAction" method="list">
+            <result>/WEB-INF/pages/especialidadList.jsp</result>
+        </action>
+        <action name="editEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="edit">
+            <result name="success">/WEB-INF/pages/especialidadForm.jsp</result>
+            <result name="error">/WEB-INF/pages/especialidad/List.jsp</result>
+        </action>
+        <action name="saveEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="save">
+            <result name="input">/WEB-INF/pages/especialidadForm.jsp</result>
+            <result name="cancel" type="redirect">especialidades.html</result>
+            <result name="delete" type="redirect">especialidades.html</result>
+            <result name="success" type="redirect">especialidades.html</result>
+        </action>
+        
     </package>
 
     <!-- Actions in this package will be prefixed with /admin/ -->
