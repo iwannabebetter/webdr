@@ -20,6 +20,13 @@ public interface EspecialidadDao extends GenericDao<Especialidad, Long> {
     public Especialidad obtenerPorNombre(String nombre);
 
     /**
+     * Obtiene una especialidad por su nombre
+     * @param id El id de la especialidad
+     * @return El objeto especialidad recuperado
+     */    
+    public Especialidad obtenerPorId(Long id);
+    
+    /**
      * Elimina una especialidad dada
      * @param especialidad La especialidad a ser eliminada
      */
@@ -29,5 +36,5 @@ public interface EspecialidadDao extends GenericDao<Especialidad, Long> {
      * Guarda la información de una especialidad
      * @param especialidad
      */
-    public void guardar(Especialidad especialidad);
+    public Especialidad guardar(Especialidad especialidad);
 }

@@ -35,6 +35,7 @@ public class EspecialidadActionTest extends BaseActionTestCase {
         especialidad.setNombre("Pediatria");
         especialidad.setDescripcion("Especialidad enfocada al tratamiento de niños");
         especialidadManager.saveEspecialidad(especialidad);
+        log.debug("Especialidad agregada");
     }
 
     public void testSearch() throws Exception {
@@ -42,6 +43,6 @@ public class EspecialidadActionTest extends BaseActionTestCase {
         assertEquals(action.list(), ActionSupport.SUCCESS);
         
         log.debug("Recuperando especialidad");
-        assertFalse(action.getEspecialidad("Pediatria") == null);
+        assertFalse(action.getEspecialidades().size() == 0);
     }
 }

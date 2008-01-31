@@ -43,8 +43,16 @@ public class EspecialidadManagerImpl
     /**
      * {@inheritDoc}
      */
-    public void saveEspecialidad(Especialidad esp) {
-        dao.guardar(esp);
+    public Especialidad getEspecialidad(Long id) {
+        return dao.obtenerPorId(id);
+    }
+    
+    
+    /**
+     * {@inheritDoc}
+     */
+    public Especialidad saveEspecialidad(Especialidad esp) {
+        return dao.guardar(esp);
     }
 
     /**
