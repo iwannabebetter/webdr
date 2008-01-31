@@ -15,7 +15,7 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
         implements ConsultaManager {
  
     // DAO Consulta
-    private ConsultaDao dao;
+    private ConsultaDao consultaDao;
 
     /**
      * Constructor
@@ -23,70 +23,60 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      */
     public ConsultaManagerImpl(ConsultaDao consultaDao) {
         super(consultaDao);
-        this.dao = consultaDao;
+        this.consultaDao = consultaDao;
     }
 
     /**
-     * Inicializador del atributo DAO
-     * @param dao
+     * {@inheritDoc}
      */
-    public void setConsultaDao(ConsultaDao dao) {
-        this.dao = dao;
-    }
-
-	/**
-     * Metodo para la obtener una consulta a travez de su id.
-     * @param id
-     * @return Consulta
-     */
-    public Consulta getConsulta(Long id) {
-        return dao.obtenerConsultaId(id);
+    public void setConsultaDao(ConsultaDao consultaDao) {
+        this.consultaDao = consultaDao;
     }
 
     /**
-     * Metodo para obtener las Consultas de un Paciente.
-     * @param username
-     * @return List lista de las Consultas.
+     * {@inheritDoc}
      */
-    public List getConsultasPaciente(String username) {
-        return dao.obtenerConsultasPaciente(username);
+    public Consulta obtenerConsulta(Long id) {
+        return consultaDao.obtenerConsultaId(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List obtenerConsultasPaciente(String username) {
+        return consultaDao.obtenerConsultasPaciente(username);
     }
     
     /**
-     * Metodo para obtener las Consultas de un Doctor.
-     * @param username
-     * @return List lista de las Consultas
+     * {@inheritDoc}
      */
-    public List getConsultasDoctor(String username) {
-        return dao.obtenerConsultasDoctor(username);
+    public List obtenerConsultasDoctor(String username) {
+        return consultaDao.obtenerConsultasDoctor(username);
     }    
 
     /**
-     * Metodo para obtener las Consultas en una fecha.
-     * @param fecha
-     * @return List lista de las Consultas.
+     * {@inheritDoc}
      */
-    public List getConsultasFecha(Date fechaInicio, Date fechaFin) {
-        return dao.obtenerConsultasFecha(fechaInicio, fechaFin);
+    public List obtenerConsultasFecha(String username, 
+                            Date fechaInicio, Date fechaFin) throws Exception {
+        
+        return consultaDao.obtenerConsultasFecha(username, fechaInicio, fechaFin);
     }    
 
     /**
-     * Metodo para Guardar una Consulta
-     * @param consulta consulta a guardar
+     * {@inheritDoc}
      */
-    public void saveConsulta(Consulta consulta) {
-		//daoDr.save(consulta.getDoctor());
-		log.debug("Guardando Consulta"+consulta.getId());
-        dao.saveConsulta(consulta);
-		log.debug("Guardando Consulta ha Terminado.");
+    public void guardarConsulta(Consulta consulta) {
+        log.debug("Guardando Consulta"+consulta.getId());
+        consultaDao.guardar(consulta);
+        log.debug("Guardando Consulta ha Terminado.");
     }
 
     /**
-     * Metodo para eliminar una Consulta.
-     * @param id id de Consulta a eliminar.
+     * {@inheritDoc}
      */
-    public void removeConsulta(long id) {
-        dao.eliminar(dao.obtenerConsultaId(id));
+    public void eliminarConsulta(Long id) {
+        consultaDao.eliminar(consultaDao.obtenerConsultaId(id));
     }
     
     /**
@@ -94,6 +84,6 @@ public class ConsultaManagerImpl extends GenericManagerImpl<Consulta, Long>
      * @return List<Consulta> lista de todas las Consultas
      */
     public List<Consulta> getAll() {
-        return dao.getAll();
+        return consultaDao.getAll();
     }
 }
