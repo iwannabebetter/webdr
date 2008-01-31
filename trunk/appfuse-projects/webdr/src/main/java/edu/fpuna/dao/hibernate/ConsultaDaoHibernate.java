@@ -21,9 +21,7 @@ public class ConsultaDaoHibernate
     }
 
     /**
-     * Metodo para obtener las Consultas por idConsulta.
-     * @params username id de consulta.
-     * @return List<Consultas> Lista de Consultas del Paciente.
+     * {@inheritDoc}
      */
     public Consulta obtenerConsultaId(Long id) {
         log.debug("--> Buscando Consulta por Id: " + id+" ...");
@@ -39,21 +37,20 @@ public class ConsultaDaoHibernate
         else
             retorno = (Consulta) result.get(0);
     
-        log.debug("--> Busqueda Finalizada." + retorno.getFecha().toString());
+        log.debug("--> Busqueda Finalizada." + retorno.getFechaInicio());
         return retorno;
     }
     
     /**
-     * Metodo para obtener las Consultas de un Pacinete.
-     * @params username Nombre del Paciente.
-     * @return List<Consultas> Lista de Consultas del Paciente.
+     * {@inheritDoc}
      */
     public List<Consulta> obtenerConsultasPaciente(String username) {
         log.debug("--> Buscando Consultas por Paciente: " + username + "...");
         
-        long paciente_id = this.obtenerIdUsuario(username);
-        String query = "from Consulta where paciente_id=?";
-        List result = super.getHibernateTemplate().find(query, paciente_id);
+        User paciente = this.obtenerUsuario(username);
+        String query = "from Consulta where paciente.id=?";
+        List<Consulta> result = super.getHibernateTemplate()
+                                     .find(query, paciente.getId());
 
         log.debug("--> Busqueda Finalizada.");
         
@@ -61,22 +58,26 @@ public class ConsultaDaoHibernate
     }
     
     /**
-     * Metodo para obtener las Consultas de un Doctor.
-     * @param username Nombre del Doctor.
-     * @return List<Consultas> Lista de Consultas del Doctor.
+     * {@inheritDoc}
      */
     public List<Consulta> obtenerConsultasDoctor(String username) {
         log.debug("--> Buscando Consultas por Doctor: " + username + "...");
         
-        Long doctor_id = this.obtenerIdUsuario(username);
-        String query = "from Consulta where doctor_id=?";
+        User doctor = this.obtenerUsuario(username);
+        String query = "from Consulta where doctor.id=?";
+        List<Consulta> result = super.getHibernateTemplate()
+                                     .find(query, doctor.getId());
         
         log.debug("--> Busqueda Finalizada.");
         
-        return getHibernateTemplate().find(query, doctor_id);
+        return result;
+    }
+
+    private String obtenerRol(User usuario) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
-    private Long obtenerIdUsuario(String username) {
+    private User obtenerUsuario(String username) {
         log.debug("EMPEZAMOS LA CONSULTA SOBRE APPUSER.....");
         
         String query = "from User where username=?";
@@ -84,32 +85,32 @@ public class ConsultaDaoHibernate
         
         log.debug("PASAMOS LA CONSULTA SOBRE APPUSER.....");
         
-        Long retorno = 0L;
-        if (list.isEmpty())
-            log.debug("# " + username + " NO EXISTE EN APPUSER.");
-        else
-            retorno = list.get(0).getId();
-        
-        return retorno;
+        if (list.isEmpty()) {
+            log.fatal("# " + username + " NO EXISTE EN APPUSER.");
+            return null;
+        }
+        else {
+            log.debug("# " + username + " recuperado...");
+            return list.get(0);
+        }
     }
 
     /**
-     * Metodo para obtener las Consultas en una fecha dada.
-     * @param fecha fecha a consultar.
-     * @return List<Consulta> lista de consulta encontradas.
+     * {@inheritDoc}
      */
-    public List<Consulta> obtenerConsultasFecha(Date fechaInicio, Date fechaFin) {
+    public List<Consulta> obtenerConsultasFecha(String username, 
+                                            Date fechaInicio, Date fechaFin) {
         String query = "from Consulta where cast(fecha as date) >= cast(? as date) and cast(fecha as date)<=cast(? as date)";
         //Date f = new Date(84, 5, 5);
         log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
         Date[] fechas = {fechaInicio, fechaFin};
         return getHibernateTemplate().find(query, fechas);
     }
-    
+        
     /**
      * {@inheritDoc}
      */
-    public Consulta saveConsulta(Consulta consulta) {
+    public Consulta guardar(Consulta consulta) {
         log.debug("user's id: " + consulta.getId());
         super.getHibernateTemplate().saveOrUpdate(consulta);
         // necessary to throw a DataIntegrityViolation and catch it in UserManager
@@ -127,17 +128,13 @@ public class ConsultaDaoHibernate
      */
     @Override
     public Consulta save(Consulta consulta) {
-        return this.saveConsulta(consulta);
+        return this.guardar(consulta);
     }
 
-	
-
-	/**
-     * Metodo para eliminar una Consulta.
-     * @param consulta a eliminar.
+    /**
+     * {@inheritDoc}
      */
     public void eliminar(Consulta consulta) {
         super.remove(consulta.getId());
     }
-
 }
