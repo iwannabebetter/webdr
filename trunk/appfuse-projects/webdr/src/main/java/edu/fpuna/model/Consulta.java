@@ -4,7 +4,6 @@
  */
 package edu.fpuna.model;
 
-import java.util.Date;
 import java.sql.Timestamp;
 import javax.persistence.*;
 
@@ -17,9 +16,8 @@ import javax.persistence.*;
 public class Consulta extends BaseObject {
 
     private Long id;
-    private Date fecha;
-    private Timestamp horaInicio;
-    private Timestamp horaFin;
+    private Timestamp fechaInicio;
+    private Timestamp fechaFin;
     private MedidasPaciente medidasPaciente;
     private Notas notas;
     private Doctor doctor;
@@ -34,31 +32,22 @@ public class Consulta extends BaseObject {
         this.id = id;
     }
 
-    @Column(name="fecha",nullable=false)
-    public Date getFecha() {
-        return fecha;
+    @Column(name="fecha_inicio",nullable=false)
+    public Timestamp getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Timestamp fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    @Column(name="hora_inicio",nullable=false)
-    public Timestamp getHoraInicio() {
-        return horaInicio;
+    @Column(name="fecha_fin",nullable=false)
+    public Timestamp getFechaFin() {
+        return fechaFin;
     }
 
-    public void setHoraInicio(Timestamp horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
-    @Column(name="hora_fin",nullable=false)
-    public Timestamp getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(Timestamp horaFin) {
-        this.horaFin = horaFin;
+    public void setFechaFin(Timestamp fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     @Embedded
