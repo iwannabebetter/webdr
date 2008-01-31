@@ -155,34 +155,11 @@
             <label for="paciente.credentialsExpired" class="choice"><fmt:message key="paciente.credentialsExpired"/></label>
         </fieldset>
     </li>
-    <li>
-        <fieldset>
-            <legend><fmt:message key="userProfile.assignRoles"/></legend>
-            <table class="pickList">
-                <tr>
-                    <th class="pickLabel">
-                        <label class="required"><fmt:message key="user.availableRoles"/></label>
-                    </th>
-                    <td></td>
-                    <th class="pickLabel">
-                        <label class="required"><fmt:message key="user.roles"/></label>
-                    </th>
-                </tr>
-                <c:set var="leftList" value="${availableRoles}" scope="request"/>
-                <s:set name="rightList" value="paciente.roleList" scope="request"/>
-                <c:import url="/WEB-INF/pages/pickList.jsp">
-                    <c:param name="listCount" value="1"/>
-                    <c:param name="leftId" value="availableRoles"/>
-                    <c:param name="rightId" value="pacienteRoles"/>
-                </c:import>
-            </table>
-        </fieldset>
-    </li>
     </c:when>
     <c:otherwise>
     <li>
         <strong><fmt:message key="user.roles"/>:</strong>
-        <s:iterator value="user.roleList" status="status">
+        <s:iterator value="paciente.roleList" status="status">
           <s:property value="label"/><s:if test="!#status.last">,</s:if>
           <input type="hidden" name="pacienteRoles" value="<s:property value="value"/>"/>
         </s:iterator>
