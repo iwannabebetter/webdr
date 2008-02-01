@@ -64,7 +64,7 @@ public class PacienteActionTest extends BaseActionTestCase {
     
     public void testEdit() throws Exception {
         log.debug("__TESTEDIT__:Testing edit...");
-        action.setId(-1L);
+        action.setId(-4L);
         assertNull(action.getPaciente());
         log.debug("__TESTEDIT__:Testing antes de edit()");
         assertEquals("success", action.edit());
@@ -80,7 +80,7 @@ public class PacienteActionTest extends BaseActionTestCase {
         ServletActionContext.setRequest(request);
         
         log.debug("__TESTSAVE__:Llamamos al action edit para obtener el paciente -1... ");
-        action.setId(-1L);
+        action.setId(-4L);
         assertEquals("success", action.edit());
         assertNotNull(action.getPaciente());
         
@@ -147,7 +147,7 @@ public class PacienteActionTest extends BaseActionTestCase {
             address.setCountry("PY");
             address.setPostalCode("80210");
             nuevoPaciente.setAddress(address);
-            nuevoPaciente.setEmail(username+"@appfuse.org");
+            nuevoPaciente.setEmail(username+"@apaspfuse.org");
             nuevoPaciente.setWebsite("http://"+username+".raibledesigns.com");
             nuevoPaciente.setAccountExpired(false);
             nuevoPaciente.setAccountLocked(false);
