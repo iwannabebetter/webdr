@@ -38,8 +38,8 @@ public class PacienteDaoTest extends BaseDaoTestCase {
     
     public void testObtenerPaciente() throws Exception {
         log.debug("Iniciando Obtener Paciente...");
-        Paciente res = pacienteDao.getPaciente(-1L);
-        assertTrue(res != null && res.getId() == -1L);
+        Paciente res = pacienteDao.getPaciente(-4L);
+        assertTrue(res != null && res.getId() == -4L);
         log.debug("Fin Obtener Paciente...");
     }
     
@@ -61,8 +61,8 @@ public class PacienteDaoTest extends BaseDaoTestCase {
         address.setCountry("PY");
         address.setPostalCode("80210");
         nuevoPaciente.setAddress(address);
-        nuevoPaciente.setEmail("usuario_nuevo@appfuse.org");
-        nuevoPaciente.setWebsite("http://fmancia.raibledesigns.com");
+        nuevoPaciente.setEmail("aausuario_nuevo@appfuse.org");
+        nuevoPaciente.setWebsite("http://fmancia.rasibledesigns.com");
         nuevoPaciente.setAccountExpired(false);
         nuevoPaciente.setAccountLocked(false);
         nuevoPaciente.setCredentialsExpired(false);
