@@ -19,6 +19,8 @@
         <interceptors>
             <!-- Interceptor to handle allowing only admins to certain actions -->
             <interceptor name="adminOnly" class="adminInterceptor"/>
+            <interceptor name="doctorOnly" class="doctorInterceptor"/>
+            <interceptor name="doctorAndAdmin" class="doctorAdminInterceptor"/>
             <!-- Copied from struts-default.xml and changed validation exclude methods -->
             <interceptor-stack name="defaultStack">
                 <interceptor-ref name="exception"/>
@@ -52,6 +54,14 @@
             <interceptor-stack name="adminCheck">
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="adminOnly"/>
+            </interceptor-stack>
+            <interceptor-stack name="doctorCheck">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="doctorOnly"/>
+            </interceptor-stack>
+            <interceptor-stack name="drAdminCheck">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="doctorAndAdmin"/>
             </interceptor-stack>
         </interceptors>
 
@@ -109,19 +119,6 @@
         </action>
 
         <!-- Add additional actions here -->
-        <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
-            <result>/WEB-INF/pages/consultasList.jsp</result>
-        </action>
-        <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
-            <result name="success">/WEB-INF/pages/consultaForm.jsp</result>
-            <result name="error">/WEB-INF/pages/consultaList.jsp</result>
-        </action>
-        <action name="saveConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="save">
-            <result name="input">/WEB-INF/pages/consultaForm.jsp</result>
-            <result name="cancel" type="redirect">consultas.html</result>
-            <result name="delete" type="redirect">consultas.html</result>
-            <result name="success" type="redirect">consultas.html</result>
-        </action>
 
         <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="list"> 
             <result>/WEB-INF/pages/pacienteList.jsp</result> 
@@ -137,23 +134,6 @@
             <result name="success" type="redirect">pacientes.html</result>
         </action>
         
-        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
-            <result>/WEB-INF/pages/admin/doctorList.jsp</result>
-        </action>
-        <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
-            <interceptor-ref name="adminCheck"/>
-            <result name="success">/WEB-INF/pages/admin/doctorForm.jsp</result>
-            <result name="error">/WEB-INF/pages/admin/doctorList.jsp</result>
-        </action>
-        <action name="saveDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="save">
-            <interceptor-ref name="adminCheck"/>
-            <result name="input">/WEB-INF/pages/admin/doctorForm.jsp</result>
-            <result name="cancel" type="redirect">doctores.html</result>
-            <result name="delete" type="redirect">doctores.html</result>
-            <result name="success" type="redirect">doctores.html</result>
-        </action>
-        
-        
         <action name="especialidades" class="edu.fpuna.webapp.action.EspecialidadAction" method="list">
             <result>/WEB-INF/pages/especialidadList.jsp</result>
         </action>
@@ -166,10 +146,45 @@
             <result name="cancel" type="redirect">especialidades.html</result>
             <result name="delete" type="redirect">especialidades.html</result>
             <result name="success" type="redirect">especialidades.html</result>
+        </action>     
+    </package>
+    
+    <!-- Actions in this package will be prefixed with /doctor/ -->
+    <package name="doctor" extends="default" namespace="/doctor">
+        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
+            <result>/WEB-INF/pages/doctor/doctorList.jsp</result>
+        </action>
+        <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
+            <interceptor-ref name="drAdminCheck"/>
+            <result name="success">/WEB-INF/pages/doctor/doctorForm.jsp</result>
+            <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
+        </action>
+        <action name="saveDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="save">
+            <interceptor-ref name="drAdminCheck"/>
+            <result name="input">/WEB-INF/pages/doctor/doctorForm.jsp</result>
+            <result name="cancel" type="redirect">doctores.html</result>
+            <result name="delete" type="redirect">doctores.html</result>
+            <result name="success" type="redirect">doctores.html</result>
         </action>
         
+        <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
+            <interceptor-ref name="doctorCheck"/>
+            <result>/WEB-INF/pages/doctor/consultasList.jsp</result>
+        </action>
+        <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
+            <interceptor-ref name="doctorCheck"/>
+            <result name="success">/WEB-INF/pages/doctor/consultaForm.jsp</result>
+            <result name="error">/WEB-INF/pages/doctor/consultaList.jsp</result>
+        </action>
+        <action name="saveConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="save">
+            <interceptor-ref name="doctorCheck"/>
+            <result name="input">/WEB-INF/pages/doctor/consultaForm.jsp</result>
+            <result name="cancel" type="redirect">consultas.html</result>
+            <result name="delete" type="redirect">consultas.html</result>
+            <result name="success" type="redirect">consultas.html</result>
+        </action>
     </package>
-
+    
     <!-- Actions in this package will be prefixed with /admin/ -->
     <package name="admin" extends="default" namespace="/admin">
         <action name="activeUsers" class="com.opensymphony.xwork2.ActionSupport">
