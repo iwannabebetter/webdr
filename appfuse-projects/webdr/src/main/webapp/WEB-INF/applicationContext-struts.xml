@@ -6,6 +6,14 @@
     <bean id="adminInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
         <property name="authorizedRoles" value="ROLE_ADMIN"/>
     </bean>
+
+    <bean id="doctorInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="ROLE_DOCTOR"/>
+    </bean>
+
+    <bean id="doctorAdminInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="ROLE_DOCTOR,ROLE_ADMIN"/>
+    </bean>
     
     <bean id="signupAction" class="edu.fpuna.webapp.action.SignupAction" scope="prototype">
         <property name="userManager" ref="userManager"/>
