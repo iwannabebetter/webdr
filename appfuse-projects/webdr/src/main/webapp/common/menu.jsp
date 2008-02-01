@@ -22,6 +22,9 @@
     <menu:displayMenu name="AdminConsultaMenu"/>
     <menu:displayMenu name="AdminPacienteMenu2"/>
     <!-- Menus exclusivos del Paciente -->
+    <menu:displayMenu name="UserMenu2"/>
+    <menu:displayMenu name="VerDoctores"/>
+    <menu:displayMenu name="ReservaMenu"/>
     <!-- Menu general para logout -->
     <menu:displayMenu name="Logout"/>
 </ul>
