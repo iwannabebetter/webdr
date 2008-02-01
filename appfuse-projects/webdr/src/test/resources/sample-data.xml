@@ -146,10 +146,6 @@
             <value description="role_id">-1</value>
         </row>
         <row>
-            <value description="user_id">-2</value>
-            <value description="role_id">-3</value>
-        </row>
-        <row>
             <value description="user_id">-3</value>
             <value description="role_id">-3</value>
         </row>
