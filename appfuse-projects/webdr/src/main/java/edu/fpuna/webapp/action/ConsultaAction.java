@@ -115,16 +115,14 @@ public class ConsultaAction extends BaseAction {
         boolean isNew = (consulta.getId() == null);
         
         log.debug("GUARDANDO...");
-        log.debug("1.1-)Se obtuvo: " + consulta.getFechaInicio() + "--" +this.getRequest().getParameter("consulta.fechaInicio"));
-        log.debug("1.2-)Se obtuvo: " + consulta.getFechaFin());
+        log.debug("1.1-)Se obtuvo: " + consulta.getFecha() + "--" +this.getRequest().getParameter("consulta.fechaInicio"));
         
         /*
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
          */
         Consulta oldConsulta = manager.obtenerConsulta(consulta.getId());
-        log.debug("2.1-)Se obtuvo: " + oldConsulta.getFechaInicio());
-        log.debug("2.1-)Se obtuvo: " + oldConsulta.getFechaFin());
+        log.debug("2.1-)Se obtuvo: " + oldConsulta.getFecha());
         
         // Se actualizan los datos del Doctor y del Paciente.
 
