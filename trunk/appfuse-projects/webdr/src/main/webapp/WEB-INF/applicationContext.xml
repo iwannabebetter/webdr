@@ -12,6 +12,7 @@
     
     <bean id="pacienteManager" class="edu.fpuna.service.impl.PacienteManagerImpl">
         <constructor-arg ref="pacienteDao"/>
+        <constructor-arg ref="daoAuthenticationProvider"/>
     </bean>
 
     <bean id="consultaManager" class="edu.fpuna.service.impl.ConsultaManagerImpl">
@@ -20,6 +21,7 @@
     
     <bean id="doctorManager" class="edu.fpuna.service.impl.DoctorManagerImpl">
         <constructor-arg ref="doctorDao"/>
+        <constructor-arg ref="daoAuthenticationProvider"/>
     </bean>
     
     <bean id="tipoSangreManager" class="edu.fpuna.service.impl.GenericManagerImpl">
