@@ -52,5 +52,3 @@
 </form>
 
 <%@ include file="/scripts/login.js"%>
-
-<p><fmt:message key="login.passwordHint"/></p>
