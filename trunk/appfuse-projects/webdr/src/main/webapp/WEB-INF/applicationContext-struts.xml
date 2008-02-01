@@ -11,6 +11,10 @@
         <property name="authorizedRoles" value="ROLE_DOCTOR"/>
     </bean>
 
+    <bean id="pacienteAdminInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="ROLE_PACIENTE,ROLE_ADMIN"/>
+    </bean>
+    
     <bean id="doctorAdminInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
         <property name="authorizedRoles" value="ROLE_DOCTOR,ROLE_ADMIN"/>
     </bean>
