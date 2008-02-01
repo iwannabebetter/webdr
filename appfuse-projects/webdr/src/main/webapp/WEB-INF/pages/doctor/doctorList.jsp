@@ -17,7 +17,7 @@
                     url="editDoctor.html?from=list" paramId="id" paramProperty="id"/>
     <display:column property="firstName" sortable="true" titleKey="doctor.firstName"/>
     <display:column property="lastName" sortable="true" titleKey="doctor.lastName"/>
-    <display:column property="fechaNacimiento" sortable="true" titleKey="doctor.fechaNacimiento"/>
+    <display:column property="fechaNacimientoString" sortable="true" titleKey="doctor.fechaNacimiento"/>
     
     <display:setProperty name="paging.banner.item_name" value="doctor"/>
     <display:setProperty name="paging.banner.items_name" value="doctores"/>

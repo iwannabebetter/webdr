@@ -41,6 +41,14 @@ public class Paciente extends User {
         this.fechaIngreso = fechaIngreso;
     }
     
+    /*
+     * Retorna la fechaIngreso en formato texto
+     */
+    @Transient
+    public String getFechaIngresoString() {
+        return super.formatearFecha(fechaIngreso, fechaIngreso.getClass());
+    }
+    
     @Column(name="fechanac",nullable=false)
     @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
@@ -49,6 +57,14 @@ public class Paciente extends User {
     
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    /*
+     * Retorna la fechaNacimiento en formato texto
+     */
+    @Transient
+    public String getFechaNacimientoString() {
+        return formatearFecha(fechaNacimiento, fechaNacimiento.getClass());
     }
     
     @Column(name="cedula",nullable=false)

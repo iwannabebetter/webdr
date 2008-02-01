@@ -33,6 +33,14 @@ public class Doctor extends User {
         this.fechaNacimiento = fechaNacimiento;
     }
     
+    /*
+     * Retorna la fechaNacimiento en formato texto
+     */
+    @Transient
+    public String getFechaNacimientoString() {
+        return super.formatearFecha(fechaNacimiento, fechaNacimiento.getClass());
+    }
+    
     @Column(name="registro",unique=true,nullable=false)
     public Integer getRegistro() {
         return registro;

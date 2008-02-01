@@ -19,7 +19,7 @@ pagesize="25">
 paramId="id" paramProperty="id" titleKey="paciente.cedula"/>
 <display:column property="firstName" sortable="true" titleKey="paciente.nombre"/>
 <display:column property="lastName" sortable="true" titleKey="paciente.apellido"/>
-<display:column property="fechaNacimiento" sortable="true" titleKey="paciente.fechaNacimiento"/>
+<display:column property="fechaNacimientoString" sortable="true" titleKey="paciente.fechaNacimiento"/>
 <display:column property="tipoSangre.nombre" sortable="true" titleKey="paciente.tipoSangre.nombre"/>
 
 <display:setProperty name="paging.banner.item_name" value="paciente"/>
