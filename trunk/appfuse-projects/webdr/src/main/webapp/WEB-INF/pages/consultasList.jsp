@@ -20,11 +20,12 @@
 <display:table name="consultas" class="table" requestURI="" id="consultasList" export="true" pagesize="25">
     <display:column property="id" sortable="true" href="editConsulta.html" 
         paramId="id" paramProperty="id" titleKey="consulta.id"/>
-    <display:column property="paciente.username" sortable="true" titleKey="consulta.nombrepaciente"/>
-    <display:column property="doctor.username" sortable="true" titleKey="consulta.nombredoctor"/>
+    <display:column property="paciente.fullName" sortable="true" titleKey="consulta.paciente"/>
+    <display:column property="doctor.fullName" sortable="true" titleKey="consulta.doctor"/>
+    <display:column property="fecha" sortable="true" titleKey="consulta.fecha"/>
 
-    <display:setProperty name="paging.banner.item_name" value="person"/>
-    <display:setProperty name="paging.banner.items_name" value="people"/>
+    <display:setProperty name="paging.banner.item_name" value="consulta"/>
+    <display:setProperty name="paging.banner.items_name" value="consultas"/>
 
     <display:setProperty name="export.excel.filename" value="Person List.xls"/>
     <display:setProperty name="export.csv.filename" value="Person List.csv"/>
