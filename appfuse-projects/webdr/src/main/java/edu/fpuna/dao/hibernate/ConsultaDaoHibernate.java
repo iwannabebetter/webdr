@@ -41,7 +41,7 @@ public class ConsultaDaoHibernate
         else
             retorno = (Consulta) result.get(0);
     
-        log.debug("--> Busqueda Finalizada." + retorno.getFechaInicio());
+        log.debug("--> Busqueda Finalizada." + retorno.getFecha());
         return retorno;
     }
     
@@ -125,8 +125,14 @@ public class ConsultaDaoHibernate
     public List<Consulta> obtenerConsultasFecha(String username, 
                             Date fechaInicio, Date fechaFin) throws Exception {
         
+        log.debug("__INICIO__ :: ConsultaDaoHibernate.obtenerConsultasFecha()");
+        
         User usuario = this.obtenerUsuario(username);
+        log.debug("\tUsuario recuperado: '" + usuario.getUsername() + "'");
+        
         String rol   = obtenerRol(usuario);
+        log.debug("\tRol recuperado: '" + rol + "'");
+        
         String query = "from Consulta ";
         
         /* Construimos la consulta según el tipo de usuario */
@@ -142,15 +148,17 @@ public class ConsultaDaoHibernate
         else if (rol.equals(Constants.PACIENTE_ROLE))
             query += "where paciente.id=? ";
         
-        log.debug("FECHA: " + fechaInicio.toString() + " && " + fechaInicio.toString());
+        log.debug("\tFechas: '" + fechaInicio.toString() + "' && '" + fechaInicio.toString() + "'");
         
         /* Si las dos fechas son nulas, se recuperan todas las consultas */
-        if (fechaInicio == null && fechaFin == null)
+        if (fechaInicio == null && fechaFin == null) {
+            log.debug("\tQuery: '" + query + "'");
             return getHibernateTemplate().find(query, usuario.getId());
+        }
             
         /* En caso contrario hay un rango válido */
-        query += "and cast(? as date) >= cast(fechaInicio as date) and " +
-                 "cast(? as date) <= cast(fechaFin as date)";
+        query += "and cast(? as date) <= cast(fecha as date) and " +
+                 "cast(? as date) >= cast(fecha as date)";
         
         /* Construimos el rango de fechas */
         Object[] args = {usuario.getId(), null, null};
@@ -167,6 +175,8 @@ public class ConsultaDaoHibernate
             args[2] = fechaFin;
         }
         
+        log.debug("\tQuery: '" + query + "'");
+        log.debug("__FIN__ :: ConsultaDaoHibernate.obtenerConsultasFecha()");
         return getHibernateTemplate().find(query, args);
     }
     
