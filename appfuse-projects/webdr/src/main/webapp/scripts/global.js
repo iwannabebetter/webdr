@@ -235,7 +235,7 @@ function createFormElement(element, type, name, id, value, parent) {
 }
 
 function confirmDelete(obj) {   
-    var msg = "¿Está seguro que desea borrar " + obj + "?";
+    var msg = "Â¿EstÃ¡ seguro que desea borrar " + obj + "?";
     ans = confirm(msg);
     if (ans) {
         return true;
