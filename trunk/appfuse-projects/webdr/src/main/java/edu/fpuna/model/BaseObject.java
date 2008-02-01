@@ -1,6 +1,7 @@
 package edu.fpuna.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 
 /**
@@ -32,4 +33,46 @@ public abstract class BaseObject implements Serializable {
      * @return hashCode
      */
     public abstract int hashCode();
+    
+    /**
+     * Convierte una fecha a su formato texto dependiendo
+     * del tipo de la fecha.
+     * @param fechaHora La fecha a ser convertida.
+     * @return La representación texto de la fecha.
+     */
+    public String formatearFecha(java.util.Date fechaHora, Class tipo) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fechaHora);
+        String[] valores = {
+            "" + cal.get(Calendar.DAY_OF_MONTH),
+            "" + ((cal.get(Calendar.MONTH)) + 1),
+            "" + cal.get(Calendar.YEAR),
+            "" + cal.get(Calendar.HOUR_OF_DAY),
+            "" + cal.get(Calendar.MINUTE)
+        };
+        
+        // Normalizamos los valores
+        for (int i=0; i < valores.length; i++)
+            if (valores[i].length() == 1)
+                valores[i] = "0" + valores[i];
+        
+        // Fecha en formato dd/MM/yyyy 
+        String fecha = valores[0] + "/" +
+                       valores[1] + "/" +
+                       valores[2];
+        
+        // Hora en formato HH:mm
+        String hora = valores[3] + ":" +
+                      valores[4];
+        
+        // Retornamos la cadena según el tipo de fecha
+        if (tipo == java.util.Date.class || tipo == java.sql.Timestamp.class)
+            return fecha + " " + hora;
+        else if (tipo == java.sql.Date.class)
+            return fecha;
+        else if (tipo == java.sql.Time.class)
+            return hora;
+        else
+            return null;
+    }
 }

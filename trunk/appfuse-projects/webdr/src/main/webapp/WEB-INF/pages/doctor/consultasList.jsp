@@ -22,7 +22,7 @@
         paramId="id" paramProperty="id" titleKey="consulta.id"/>
     <display:column property="paciente.fullName" sortable="true" titleKey="consulta.paciente"/>
     <display:column property="doctor.fullName" sortable="true" titleKey="consulta.doctor"/>
-    <display:column property="fecha" sortable="true" titleKey="consulta.fecha"/>
+    <display:column property="fechaString" sortable="true" titleKey="consulta.fecha"/>
 
     <display:setProperty name="paging.banner.item_name" value="consulta"/>
     <display:setProperty name="paging.banner.items_name" value="consultas"/>

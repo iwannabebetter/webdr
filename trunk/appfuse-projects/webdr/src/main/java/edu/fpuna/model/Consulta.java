@@ -39,6 +39,14 @@ public class Consulta extends BaseObject {
     public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
+    
+    /*
+     * Retorna la fecha en formato texto
+     */
+    @Transient
+    public String getFechaString() {
+        return super.formatearFecha(fecha, fecha.getClass());
+    }
 
     @Embedded
     public MedidasPaciente getMedidasPaciente() {
