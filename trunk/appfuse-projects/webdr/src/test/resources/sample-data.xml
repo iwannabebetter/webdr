@@ -241,8 +241,7 @@
     
     <table name="consulta">
         <column>id</column>
-        <column>fecha_inicio</column>
-        <column>fecha_fin</column>
+        <column>fecha</column>
         <column>peso_actual</column>
         <column>altura_actual</column>
         <column>edad_actual</column>
@@ -255,8 +254,7 @@
         <column>doctor_id</column>
         <row>
             <value description="id">-1</value>
-            <value description="fecha_inicio">1984-05-05 10:00:00</value>
-            <value description="fecha_fin">1984-05-05 12:00:00</value>
+            <value description="fecha">1984-05-05 10:00:00</value>
             <value description="peso_actual">76</value>
             <value description="altura_actual">178</value>
             <value description="edad_actual">22</value>
@@ -270,8 +268,7 @@
         </row>
         <row>
             <value description="id">-2</value>
-            <value description="fecha_inicio">1998-11-23 07:00:00</value>
-            <value description="fecha_fin">1998-11-23 08:30:00</value>
+            <value description="fecha">1998-11-23 07:00:00</value>
             <value description="peso_actual">80</value>
             <value description="altura_actual">155</value>
             <value description="edad_actual">27</value>
@@ -285,8 +282,7 @@
         </row>
         <row>
             <value description="id">-3</value>
-            <value description="fecha_inicio">2000-10-09 09:00:00</value>
-            <value description="fecha_fin">2000-10-09 10:00:00</value>
+            <value description="fecha">2000-10-09 09:00:00</value>
             <value description="peso_actual">72</value>
             <value description="altura_actual">171</value>
             <value description="edad_actual">21</value>
