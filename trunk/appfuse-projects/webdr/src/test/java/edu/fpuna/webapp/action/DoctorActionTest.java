@@ -76,7 +76,7 @@ public class DoctorActionTest extends BaseActionTestCase {
     
     public void testEdit() throws Exception {
         log.debug("Probando edit...");
-        action.setId(-2L);
+        action.setId(-3L);
         assertNull(action.getDoctor());
         assertEquals("success", action.edit());
         assertNotNull(action.getDoctor());
@@ -87,7 +87,7 @@ public class DoctorActionTest extends BaseActionTestCase {
         log.debug("Probando save...");
         MockHttpServletRequest request = new MockHttpServletRequest();
         ServletActionContext.setRequest(request);
-        action.setId(-2L);
+        action.setId(-3L);
         assertEquals("success", action.edit());
         assertNotNull(action.getDoctor());
         
@@ -106,7 +106,7 @@ public class DoctorActionTest extends BaseActionTestCase {
         ServletActionContext.setRequest(request);
         action.setDelete("");
         Doctor doctor = new Doctor();
-        doctor.setId(-2L);
+        doctor.setId(-3L);
         action.setDoctor(doctor);
         assertEquals("success", action.delete());
         assertNotNull(request.getSession().getAttribute("messages"));

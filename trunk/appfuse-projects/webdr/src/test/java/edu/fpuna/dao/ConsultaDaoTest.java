@@ -50,7 +50,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     public void testObtenerConsultasPaciente() throws Exception {
         log.debug("Testing(2) ObtenerConsultasPaciente...");
 
-        List<Consulta> consultas = consultaDao.obtenerConsultasPaciente("user");
+        List<Consulta> consultas = consultaDao.obtenerConsultasPaciente("fmancia");
 
         assertTrue(consultas.isEmpty() != true);
         log.debug("Cantidad de consultas del Paciente: " + consultas.size());
@@ -63,7 +63,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
     public void testObtenerConsultasDoctor() throws Exception {
         log.debug("Testing(3) ObtenerConsultasDoctor...");
 
-        List<Consulta> consultas = consultaDao.obtenerConsultasDoctor("admin");
+        List<Consulta> consultas = consultaDao.obtenerConsultasDoctor("ghuttemann");
 
         assertTrue(consultas.isEmpty() != true);
         log.debug("Cantidad de consultas del Doctor: " + consultas.size());
@@ -78,10 +78,10 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         Date fecha1 = new Date(1, 1, 1);
         Date fecha2 = new Date();
         
-        log.debug("Recuperando doctor(id = -2)...");
-        Doctor doctor = doctorDao.get(-2L);
+        log.debug("Recuperando doctor(id = -3)...");
+        Doctor doctor = doctorDao.get(-3L);
         
-        log.debug("Recuperando consultas del doctor(id = -2)...");
+        log.debug("Recuperando consultas del doctor(id = -3)...");
         List<Consulta> consultas = consultaDao.obtenerConsultasFecha(doctor.getUsername(), fecha1, fecha2);
         log.debug("Cantidad de consultas del doctor(" + doctor.getUsername() + "): " + consultas.size());
         
@@ -112,8 +112,8 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Double(200), new Integer(30), new Boolean(false));
         consulta.setMedidasPaciente(mpacientes);
         consulta.setNotas(new Notas("Irritaciones", "Alergia", "Alergin 100gr", "200ml cada 12hrs"));
-        consulta.setDoctor(doctorDao.obtenerPorNombre("admin"));
-        consulta.setPaciente(pacienteDao.getPaciente("user"));
+        consulta.setDoctor(doctorDao.obtenerPorNombre("ghuttemann"));
+        consulta.setPaciente(pacienteDao.getPaciente("fmancia"));
 
         consulta = consultaDao.save(consulta);
 
