@@ -210,4 +210,11 @@ public class ConsultaDaoHibernate
     public void eliminar(Consulta consulta) {
         super.remove(consulta.getId());
     }
+
+    @Override
+    public List<Consulta> getAll() {
+        String query = "from Consulta order by fecha desc";
+        List<Consulta> result = super.getHibernateTemplate().find(query);
+        return result;
+    }
 }
