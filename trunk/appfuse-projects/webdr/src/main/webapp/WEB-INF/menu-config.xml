@@ -4,27 +4,38 @@
         <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
     </Displayers>
     <Menus>
-        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" width="110" roles="ROLE_ADMIN,ROLE_USER"/>
-        <Menu name="UserMenu" title="menu.user" description="User Menu" width="110" page="/editProfile.html" roles="ROLE_ADMIN,ROLE_USER"/>
+        <!-- Menus generales para todos los roles -->
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" roles="ROLE_ADMIN,ROLE_USER" width="110"/>
         <!--Menu name="AdminUsuarioMenu" title="menu.usuario" roles="ROLE_ADMIN,ROLE_USER">
             <Item name="ViewUsers" title="menu.usuario.users" page="/admin/users.html"/>
             <Item name="ActiveUsers" title="menu.usuario.activeUsers" page="/admin/activeUsers.html"/>
         </Menu-->
-        <Menu name="AdminDoctorMenu" title="menu.doctor" description="Admin Menu" width="110" roles="ROLE_ADMIN" page="/admin/users.html">
-            <Item name="VerDoctores" title="menu.doctor.doctores" page="/admin/doctores.html"/>
-            <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/admin/editDoctor.html"/>
-            
-            <!-- Se saca esta parte del menu del administrador
-            <Item name="ReloadContext" title="menu.admin.reload" page="/admin/reload.html"/>
-            <Item name="FileUpload" title="menu.selectFile" page="/uploadFile.html"/>
-            <Item name="FlushCache" title="menu.flushCache" page="/admin/flushCache.html"/>
-            <Item name="Clickstream" title="menu.clickstream" page="/admin/clickstreams.jsp"/>
-            -->
+        
+        <!-- Menus exclusivos del Admin -->
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.html" roles="ROLE_ADMIN" width="90"/>
+        <Menu name="AdminDoctorMenu" title="menu.doctor" description="Doctor Menu" roles="ROLE_ADMIN" width="110">
+            <Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html"/>
+            <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/doctor/editDoctor.html"/>
         </Menu>
-        <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" width="110" roles="ROLE_ADMIN">
+        <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" roles="ROLE_ADMIN" width="110">
+            <Item name="VerPacientes" title="menu.paciente.pacientes" page="/pacientes.html"/>
+            <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/editPaciente.html"/>
+        </Menu>
+        
+        <!-- Menus exclusivos del Doctor -->
+        <Menu name="ReservasRealizadas" title="menu.reserva" page="/mainMenu.html" roles="ROLE_DOCTOR" width="100"/>
+        <Menu name="AdminConsultaMenu" title="menu.consulta" description="Consulta Menu" roles="ROLE_DOCTOR" width="110">
+            <Item name="VerConsultas" title="menu.consulta.consultas" page="/doctor/consultas.html"/>
+            <Item name="CrearConsulta" title="menu.consulta.nuevaConsulta" page="/doctor/editConsulta.html"/>
+        </Menu>
+        <Menu name="AdminPacienteMenu2" title="menu.paciente" description="Paciente Menu" roles="ROLE_DOCTOR" width="110">
             <Item name="VerPacientes" title="menu.paciente.pacientes" page="/admin/pacientes.html"/>
-            <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/admin/editPaciente.html"/>
+            <Item name="HistorialesPacientes" title="menu.paciente.historial" page="/mainMenu.html"/>
         </Menu>
-        <Menu name="Logout" title="user.logout" page="/logout.jsp" width="80" roles="ROLE_ADMIN,ROLE_USER"/>
+        <!-- Menus exclusivos del Paciente -->
+        
+        
+        <!-- Menu general para Logout -->
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" width="60" roles="ROLE_ADMIN,ROLE_USER"/>
     </Menus>
 </MenuConfig>
