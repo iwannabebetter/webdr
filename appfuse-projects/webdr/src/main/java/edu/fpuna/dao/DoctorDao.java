@@ -9,6 +9,8 @@ import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import java.util.List;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Interfaz DAO para Doctor.
@@ -29,4 +31,8 @@ public interface DoctorDao extends GenericDao<Doctor, Long> {
      * @return Una lista de los doctores que cumplen el criterio
      */
     public List<Doctor> obtenerPorEspecialidad(Especialidad especialidad);
+    
+    
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    String getUserPassword(String username);
 }

@@ -6,6 +6,8 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Paciente;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Interfaz DAO de Paciente.
@@ -20,4 +22,7 @@ public interface PacienteDao extends GenericDao<Paciente, Long> {
     public Paciente guardar(Paciente p);
     
     public void eliminar(Paciente p);
+    
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    String getUserPassword(String username);
 }
