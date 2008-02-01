@@ -16,6 +16,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.acegisecurity.providers.dao.DaoAuthenticationProvider;
+import org.acegisecurity.providers.encoding.PasswordEncoder;
+
 
 /**
  * @author fmancia
@@ -26,14 +29,16 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
     private PacienteDao dao;
     private RoleDao roleDao;
     private GenericManager<TipoSangre, Long> tipoSangreManager = null;
+    private DaoAuthenticationProvider authenticationProvider;
     
     /**
      * Constructor
      * @param pacienteDao
      */
-    public PacienteManagerImpl(PacienteDao pacienteDao) {
+    public PacienteManagerImpl(PacienteDao pacienteDao, DaoAuthenticationProvider authenticationProvider) {
         super(pacienteDao);
         this.dao = pacienteDao;
+        this.authenticationProvider = authenticationProvider;
     }
 
     /**
@@ -59,11 +64,68 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
     public Paciente getPaciente(String username) {
         return dao.getPaciente(username);
     }
-    
-    public Paciente guardarPaciente(Paciente p) {
-        return dao.guardar(p);
+   
+    public Paciente guardarPaciente(Paciente paciente){
+        paciente.setAccountLocked(false);
+        paciente.setAccountExpired(false);
+        paciente.setEnabled(true);
+        paciente.setCredentialsExpired(false);
+        
+        if (paciente.getVersion() == null) {
+            // if new paciente, lowercase userId
+            paciente.setUsername(paciente.getUsername().toLowerCase());
+        }
+        
+        // Get and prepare password management-related artifacts
+        boolean passwordChanged = false;
+        if (authenticationProvider != null) {
+            PasswordEncoder passwordEncoder = authenticationProvider.getPasswordEncoder();
+
+            if (passwordEncoder != null) {
+                // Check whether we have to encrypt (or re-encrypt) the password
+                if (paciente.getVersion() == null) {
+                    // New paciente, always encrypt
+                    passwordChanged = true;
+                } else {
+                    // Existing paciente, check password in DB
+                    String currentPassword = dao.getUserPassword(paciente.getUsername());
+                    if (currentPassword == null) {
+                        passwordChanged = true;
+                    } else {
+                        if (!currentPassword.equals(paciente.getPassword())) {
+                            passwordChanged = true;
+                        }
+                    }
+                }
+
+                // If password was changed (or new user), encrypt it
+                if (passwordChanged) {
+                    paciente.setPassword(passwordEncoder.encodePassword(paciente.getPassword(), null));
+                }
+            } else {
+                log.warn("PasswordEncoder not set on AuthenticationProvider, skipping password encryption...");
+            }
+        } else {
+            log.warn("AuthenticationProvider not set, skipping password encryption...");
+        }
+        
+      //  try {
+            return dao.guardar(paciente);
+       /** } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            log.warn(e.getMessage());
+            throw new UserExistsException("paciente '" + paciente.getUsername() + "' already exists!");
+        } catch (EntityExistsException e) { // needed for JPA
+            e.printStackTrace();
+            log.warn(e.getMessage());
+            throw new UserExistsException("paciente '" + paciente.getUsername() + "' already exists!");
+        }**/
     }
 
+    public void setAuthenticationProvider(DaoAuthenticationProvider authenticationProvider) {
+        this.authenticationProvider = authenticationProvider;
+    }
+    
     public void eliminarPaciente(Paciente p) {
         dao.eliminar(p);
     }
@@ -135,4 +197,6 @@ public class PacienteManagerImpl extends GenericManagerImpl<Paciente, Long>
             return null;
         }
     }
+
+
 }

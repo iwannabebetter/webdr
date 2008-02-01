@@ -8,7 +8,12 @@ package edu.fpuna.dao.hibernate;
 import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
+import edu.fpuna.model.User;
 import java.util.List;
+import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import javax.persistence.Table;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
 
 /**
@@ -51,4 +56,17 @@ public class DoctorDaoHibernate
         else
             return result;
     }
+    
+    /** 
+     * {@inheritDoc}
+    */
+    public String getUserPassword(String username) {
+        SimpleJdbcTemplate jdbcTemplate =
+                new SimpleJdbcTemplate(SessionFactoryUtils.getDataSource(getSessionFactory()));
+        Table table = AnnotationUtils.findAnnotation(User.class, Table.class);
+        return jdbcTemplate.queryForObject(
+                "select password from " + table.name() + " where username=?", String.class, username);
+
+    }
+    
 }
