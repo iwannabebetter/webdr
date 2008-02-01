@@ -75,17 +75,17 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
      */
     public void testObtenerConsultasFecha() throws Exception { 
         log.debug("Testing(4) ObtenerConsultasFecha...");
-        Date fecha = new Date(85, 5, 5, 0, 0, 0);
-        Date fecha2 = new Date(103, 5, 5, 0, 0, 0);
+        Date fecha1 = new Date(1, 1, 1);
+        Date fecha2 = new Date();
         
         log.debug("Recuperando doctor(id = -2)...");
         Doctor doctor = doctorDao.get(-2L);
         
         log.debug("Recuperando consultas del doctor(id = -2)...");
-        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(doctor.getUsername(), fecha, fecha2);
+        List<Consulta> consultas = consultaDao.obtenerConsultasFecha(doctor.getUsername(), fecha1, fecha2);
+        log.debug("Cantidad de consultas del doctor(" + doctor.getUsername() + "): " + consultas.size());
         
-        log.debug("Cantidad de consultas del Doctor-fecha: " + consultas.size());
-        assertTrue(consultas.isEmpty() != true);
+        assertFalse(consultas.isEmpty());
         log.debug("Testing ObtenerConsultasFecha ha Finalizado.");
     }
 
@@ -108,8 +108,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
 
         Consulta consulta = new Consulta();
         consulta.setId(new Long(3));
-        consulta.setFechaInicio(new Timestamp(80,10,5,11,30,0,0));
-        consulta.setFechaFin(new Timestamp(80,10,5,12,30,0,0));
+        consulta.setFecha(new Timestamp(80,10,5,11,30,0,0));
         MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Double(200), new Integer(30), new Boolean(false));
         consulta.setMedidasPaciente(mpacientes);
         consulta.setNotas(new Notas("Irritaciones", "Alergia", "Alergin 100gr", "200ml cada 12hrs"));
