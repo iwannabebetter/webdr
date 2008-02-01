@@ -10,11 +10,19 @@
             </a>
         </li>
     </c:if>
+    <!-- Menus Generales para todos los roles -->
     <menu:displayMenu name="MainMenu"/>
     <menu:displayMenu name="UserMenu"/>
-    <!--menu:displayMenu name="AdminUsuarioMenu"/-->
+    <!-- Menus exclusivos del Admin -->
     <menu:displayMenu name="AdminDoctorMenu"/>
     <menu:displayMenu name="AdminPacienteMenu"/>
+    <!--menu:displayMenu name="AdminUsuarioMenu"/-->
+    <!-- Menus exclusivos del Doctor -->
+    <menu:displayMenu name="ReservasRealizadas"/>
+    <menu:displayMenu name="AdminConsultaMenu"/>
+    <menu:displayMenu name="AdminPacienteMenu2"/>
+    <!-- Menus exclusivos del Paciente -->
+    <!-- Menu general para logout -->
     <menu:displayMenu name="Logout"/>
 </ul>
 </menu:useMenuDisplayer>
