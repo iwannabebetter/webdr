@@ -16,8 +16,7 @@ import javax.persistence.*;
 public class Consulta extends BaseObject {
 
     private Long id;
-    private Timestamp fechaInicio;
-    private Timestamp fechaFin;
+    private Timestamp fecha;
     private MedidasPaciente medidasPaciente;
     private Notas notas;
     private Doctor doctor;
@@ -32,22 +31,13 @@ public class Consulta extends BaseObject {
         this.id = id;
     }
 
-    @Column(name="fecha_inicio",nullable=false)
-    public Timestamp getFechaInicio() {
-        return fechaInicio;
+    @Column(name="fecha",nullable=false)
+    public Timestamp getFecha() {
+        return fecha;
     }
 
-    public void setFechaInicio(Timestamp fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    @Column(name="fecha_fin",nullable=false)
-    public Timestamp getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Timestamp fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
     }
 
     @Embedded
