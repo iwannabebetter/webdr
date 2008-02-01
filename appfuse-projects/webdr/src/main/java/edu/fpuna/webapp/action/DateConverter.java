@@ -23,7 +23,7 @@ public class DateConverter extends StrutsTypeConverter {
             log.debug("Clases: "+arg2);
             if (arg2 == Timestamp.class)
                 return DateUtil.convertStringToDateTime(value[0]);
-            else if (arg2 == Date.class)
+            else if (arg2 == Date.class || arg2 == java.sql.Date.class)
                 return DateUtil.convertStringToDate(value[0]);
             else
                 return null;
@@ -38,7 +38,7 @@ public class DateConverter extends StrutsTypeConverter {
         log.debug("Clases: "+ data.getClass());
         if (data.getClass() == Timestamp.class)
             return DateUtil.convertDateTimeToString((Date) data);
-        else if (data.getClass() == Date.class)
+        else if (data.getClass() == Date.class ||  data.getClass() == java.sql.Date.class)
             return DateUtil.convertDateToString((Date) data);
         else
             return null;
