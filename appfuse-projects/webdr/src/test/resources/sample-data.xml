@@ -220,11 +220,6 @@
         <column>fechanac</column>
         <column>registro</column>
         <row>
-            <value description="id">-2</value>
-            <value description="fechanac">1984-05-08</value>
-            <value description="registro">1234</value>
-        </row>
-        <row>
             <value description="id">-3</value>
             <value description="fechanac">1982-04-28</value>
             <value description="registro">6789</value>
@@ -255,8 +250,8 @@
             <value description="diagnostico">murio</value>
             <value description="recetario">cualquiera</value>
             <value description="indicaciones">suicidate</value>
-            <value description="paciente_id">-1</value>
-            <value description="doctor_id">-2</value>
+            <value description="paciente_id">-4</value>
+            <value description="doctor_id">-3</value>
         </row>
         <row>
             <value description="id">-2</value>
@@ -269,8 +264,8 @@
             <value description="diagnostico">Chupo Mucho</value>
             <value description="recetario">Aspirina</value>
             <value description="indicaciones">Tomar dos pastilla por dia</value>
-            <value description="paciente_id">-1</value>
-            <value description="doctor_id">-2</value>
+            <value description="paciente_id">-4</value>
+            <value description="doctor_id">-3</value>
         </row>
         <row>
             <value description="id">-3</value>
@@ -283,8 +278,8 @@
             <value description="diagnostico">Intoxicacion</value>
             <value description="recetario">Aspirina</value>
             <value description="indicaciones">Tomar una pastilla por dia</value>
-            <value description="paciente_id">-1</value>
-            <value description="doctor_id">-2</value>
+            <value description="paciente_id">-4</value>
+            <value description="doctor_id">-3</value>
         </row>
     </table>  
 </dataset>
