@@ -9,6 +9,8 @@ import edu.fpuna.Constants;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
+import edu.fpuna.service.EspecialidadManager;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -18,12 +20,17 @@ import java.util.List;
 public class DoctorAction extends BaseAction {
 
     private DoctorManager doctorManager;
+    private EspecialidadManager especialidadManager;
     private List<Doctor> doctores;
     private Doctor doctor;
     private Long id;
     
     public void setDoctorManager(DoctorManager doctorManager) {
         this.doctorManager = doctorManager;
+    }
+    
+    public void setEspecialidadManager(EspecialidadManager especialidadManager) {
+        this.especialidadManager = especialidadManager;
     }
     
     public List<Doctor> getDoctores() {
@@ -76,10 +83,27 @@ public class DoctorAction extends BaseAction {
             return delete();
         
         boolean isNew = (doctor.getId() == null);
-        
+
+        //Roles del doctor
         doctor.getRoles().clear();
         doctor.addRole(roleManager.getRole(Constants.ID_USER_ROLE));
         doctor.addRole(roleManager.getRole(Constants.ID_DOCTOR_ROLE));
+        
+
+        //Especialidades del doctor
+        doctor.getEspecialidades().clear();
+        String[] docEspecialidades = getRequest().getParameterValues("doctorEspecialidad");
+        for (int i = 0; docEspecialidades != null && i < docEspecialidades.length; i++) {
+            doctor.agregarEspecialidad(especialidadManager.getEspecialidad(docEspecialidades[i]));
+        }
+        /**int n = docEspecialidades != null ? docEspecialidades.length : 0;
+        log.debug("Cantidad de Especialidades = *" + getRequest().getParameter("doctor.especialidades")  + "*");
+        
+        Enumeration paramet = getRequest().getParameterNames();
+        while( paramet.hasMoreElements() ) {
+            log.debug("__PARAMETRO__ = " + paramet.nextElement());
+        }**/
+        
         doctor = doctorManager.guardarDoctor(doctor);
         String key = (isNew) ? "doctor.added" : "doctor.updated";
         saveMessage(getText(key));

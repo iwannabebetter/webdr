@@ -26,7 +26,7 @@
             <value description="password">12dea96fec20593566ab75692c9949596833adc9</value>
             <value description="first_name">Tomcat</value>
             <value description="last_name">User</value>
-            <value description="address"></value>
+            <value description="address">En su casa</value>
             <value description="city">Denver</value>
             <value description="country">US</value>
             <value description="email">matt_raible@yahoo.com</value>
@@ -47,7 +47,7 @@
             <value description="password">d033e22ae348aeb5660fc2140aec35850c4da997</value>
             <value description="first_name">Matt</value>
             <value description="last_name">Raible</value>
-            <value description="address"></value>
+            <value description="address">Cueva</value>
             <value description="city">Denver</value>
             <value description="country">US</value>
             <value description="email">matt@raibledesigns.com</value>
@@ -68,7 +68,7 @@
             <value description="password">d8680aea3e8adf668a249eba62192fa1ed9336f1</value>
             <value description="first_name">Germán</value>
             <value description="last_name">Hüttemann</value>
-            <value description="address"></value>
+            <value description="address">Cerro Porteño</value>
             <value description="city">Asunción</value>
             <value description="country">PY</value>
             <value description="email">ghuttemann@gmail.com</value>
@@ -216,6 +216,15 @@
             <value description="id">-3</value>
             <value description="fechanac">1982-04-28</value>
             <value description="registro">6789</value>
+        </row>
+    </table>
+
+    <table name="doctor_especialidad">
+        <column>doctor_id</column>
+        <column>especialidad_id</column>
+        <row>
+            <value description="doctor_id">-3</value>
+            <value description="especialidad_id">-1</value>
         </row>
     </table>
     

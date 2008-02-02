@@ -46,27 +46,7 @@
     </li>
 
     <s:textfield key="paciente.username" cssClass="text large" required="true"/>
-
-    <li>
-        <label class="desc">Datos Propios del Paciente</label>
-        <div class="group">
-            <div>
-                <s:textfield key="paciente.cedula" cssClass="text large" required="true"/>
-            </div>
-            <div>
-                <s:textfield key="paciente.fechaNacimiento" required="true" cssClass="text large"/><br>
-            </div>
-            <div>
-                <s:textfield key="paciente.fechaIngreso" required="true" cssClass="text large"/><br>
-            </div>
-            <div>
-                <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
-                <s:select key="paciente.tipoSangre.id" list="tipoSangres" listKey="id" listValue="nombre" />
-            </div>            
-        </div>
-    </li>
-
-
+    
     <c:if test="${cookieLogin != 'true'}">
     <li>
         <div>
@@ -95,6 +75,25 @@
         </div>
     </li>
 
+    <li>
+        <label class="desc">Datos Propios del Paciente</label>
+        <div class="group">
+            <div>
+                <s:textfield key="paciente.cedula" cssClass="text large" required="true"/>
+            </div>
+            <div>
+                <s:textfield key="paciente.fechaNacimiento" required="true" cssClass="text large"/><br>
+            </div>
+            <div>
+                <s:textfield key="paciente.fechaIngreso" required="true" cssClass="text large"/><br>
+            </div>
+            <div>
+                <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
+                <s:select key="paciente.tipoSangre.id" list="tipoSangres" listKey="id" listValue="nombre" />
+            </div>            
+        </div>
+    </li>
+    
     <li>
         <div>
             <div class="left">
@@ -137,39 +136,6 @@
             </div>
         </div>
     </li>
-<c:choose>
-    <c:when test="${param.from == 'list'}">
-    <li>
-        <fieldset>
-            <legend><fmt:message key="userProfile.accountSettings"/></legend>
-            <s:checkbox key="paciente.enabled" id="paciente.enabled" fieldValue="true" theme="simple"/>
-            <label for="paciente.enabled" class="choice"><fmt:message key="paciente.enabled"/></label>
-
-            <s:checkbox key="paciente.accountExpired" id="paciente.accountExpired" fieldValue="true" theme="simple"/>
-            <label for="paciente.accountExpired" class="choice"><fmt:message key="paciente.accountExpired"/></label>
-
-            <s:checkbox key="paciente.accountLocked" id="paciente.accountLocked" fieldValue="true" theme="simple"/>
-            <label for="paciente.accountLocked" class="choice"><fmt:message key="paciente.accountLocked"/></label>
-
-            <s:checkbox key="paciente.credentialsExpired" id="paciente.credentialsExpired" fieldValue="true" theme="simple"/>
-            <label for="paciente.credentialsExpired" class="choice"><fmt:message key="paciente.credentialsExpired"/></label>
-        </fieldset>
-    </li>
-    </c:when>
-    <c:otherwise>
-    <li>
-        <strong><fmt:message key="user.roles"/>:</strong>
-        <s:iterator value="paciente.roleList" status="status">
-          <s:property value="label"/><s:if test="!#status.last">,</s:if>
-          <input type="hidden" name="pacienteRoles" value="<s:property value="value"/>"/>
-        </s:iterator>
-        <s:hidden name="paciente.enabled" value="%{paciente.enabled}"/>
-        <s:hidden name="paciente.accountExpired" value="%{paciente.accountExpired}"/>
-        <s:hidden name="paciente.accountLocked" value="%{paciente.accountLocked}"/>
-        <s:hidden name="paciente.credentialsExpired" value="%{paciente.credentialsExpired}"/>
-    </li>
-    </c:otherwise>
-</c:choose>
     <li class="buttonBar bottom">
         <c:out value="${buttons}" escapeXml="false"/>
     </li>
@@ -194,8 +160,6 @@
 
 <!-- This is here so we can exclude the selectAll call when roles is hidden -->
 function onFormSubmit(theForm) {
-<c:if test="${param.from == 'list'}">
-    selectAll('userRoles');
-</c:if>
+
 }
 </script>

@@ -1,6 +1,7 @@
 package edu.fpuna.service.impl;
 
 import edu.fpuna.dao.LookupDao;
+import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.LabelValue;
 import edu.fpuna.model.Role;
 import edu.fpuna.service.LookupManager;
@@ -35,6 +36,20 @@ public class LookupManagerImpl extends UniversalManagerImpl implements LookupMan
 
         for (Role role1 : roles) {
             list.add(new LabelValue(role1.getName(), role1.getName()));
+        }
+
+        return list;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public List<LabelValue> getAllEspecialidades() {
+        List<Especialidad> especialidades = dao.getEspecialidades();
+        List<LabelValue> list = new ArrayList<LabelValue>();
+
+        for (Especialidad esp : especialidades) {
+            list.add(new LabelValue(esp.getNombre(), esp.getNombre()));
         }
 
         return list;

@@ -144,6 +144,7 @@
     <bean id="doctorManager" class="edu.fpuna.service.impl.DoctorManagerImpl">
         <property name="doctorDao" ref="doctorDao"/>
         <property name="authenticationProvider" ref="daoAuthenticationProvider"/>
+        <property name="especialidadManager" ref="especialidadManager"/>
     </bean>
     
 </beans>

@@ -10,6 +10,7 @@ import edu.fpuna.model.Address;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
+import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.RoleManager;
 import java.util.Date;
 import java.util.List;
@@ -32,10 +33,12 @@ public class DoctorActionTest extends BaseActionTestCase {
         log.debug("Recuperando DoctorManager...");
         DoctorManager manager = (DoctorManager) applicationContext.getBean("doctorManager");
         RoleManager roleManager = (RoleManager) applicationContext.getBean("roleManager");
+        EspecialidadManager especialidadManager = (EspecialidadManager) applicationContext.getBean("especialidadManager");
         
         action = new DoctorAction();
         action.setDoctorManager(manager);
         action.setRoleManager(roleManager);
+        action.setEspecialidadManager(especialidadManager);
         
         // Agregar un doctor de prueba
         log.debug("Creando Doctor...");

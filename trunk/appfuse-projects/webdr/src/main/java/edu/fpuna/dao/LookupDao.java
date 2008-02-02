@@ -1,5 +1,6 @@
 package edu.fpuna.dao;
 
+import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.Role;
 
 import java.util.List;
@@ -18,4 +19,10 @@ public interface LookupDao extends UniversalDao {
      * @return populated list of roles
      */
     List<Role> getRoles();
+    
+    /**
+     * Returns all Especialidades ordered by name
+     * @return populated list of roles
+     */
+    List<Especialidad> getEspecialidades();
 }
