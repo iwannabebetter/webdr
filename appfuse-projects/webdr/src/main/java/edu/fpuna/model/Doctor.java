@@ -5,9 +5,11 @@
 
 package edu.fpuna.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -77,6 +79,26 @@ public class Doctor extends User {
         return especialidades;
     }
 
+    
+    /**
+     * Convert user roles to LabelValue objects for convenience.
+     * @return a list of LabelValue objects with role information
+     */
+    @Transient
+    public List<LabelValue> getEspecialidadList() {
+        List<LabelValue> doctorEspecialidades = new ArrayList<LabelValue>();
+
+        if (this.especialidades != null) {
+            for (Especialidad especialidad : especialidades) {
+                // convert the user's roles to LabelValue Objects
+                doctorEspecialidades.add(new LabelValue( especialidad.getNombre(), especialidad.getNombre()));
+            }
+        }
+
+        return doctorEspecialidades;
+    }
+    
+    
     public void setEspecialidades(Set<Especialidad> especialidades) {
         this.especialidades = especialidades;
     }

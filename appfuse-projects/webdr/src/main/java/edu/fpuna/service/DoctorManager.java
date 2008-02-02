@@ -56,4 +56,13 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      * @return Una lista con los doctores recuperados.
      */
     public List<Doctor> obtenerDoctoresPorEspecialidad(Especialidad especialidad);
+    
+    
+    /**
+     * Setea el manager de especialidades, 
+     * @param el manager de especialidades, 
+     * @return void
+     */
+    public void setEspecialidadManager(EspecialidadManager especialidadManager);
+    
 }

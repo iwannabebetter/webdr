@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -172,7 +173,10 @@ public class UserAction extends BaseAction implements Preparable {
                 user.addRole(roleManager.getRole(roleName));
             }
         }
-
+        Enumeration paramet = getRequest().getParameterNames();
+        while( paramet.hasMoreElements() ) {
+            log.debug("__PARAMETRO__ = " + paramet.nextElement());
+        }
         try {
             userManager.saveUser(user);
         } catch (AccessDeniedException ade) {

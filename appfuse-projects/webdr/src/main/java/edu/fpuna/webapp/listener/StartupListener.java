@@ -94,6 +94,7 @@ public class StartupListener implements ServletContextListener {
 
         // get list of possible roles
         context.setAttribute(Constants.AVAILABLE_ROLES, mgr.getAllRoles());
+        context.setAttribute(Constants.AVAILABLE_ESPECIALIDADES, mgr.getAllEspecialidades());
         log.debug("Drop-down initialization complete [OK]");
     }
 

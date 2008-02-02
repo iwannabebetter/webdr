@@ -16,4 +16,10 @@ public interface LookupManager extends UniversalManager {
      * @return List of LabelValue objects
      */
     List<LabelValue> getAllRoles();
+    
+    /**
+     * Retrieves all possible especialidades from persistence layer
+     * @return List of LabelValue objects
+     */
+    List<LabelValue> getAllEspecialidades();
 }

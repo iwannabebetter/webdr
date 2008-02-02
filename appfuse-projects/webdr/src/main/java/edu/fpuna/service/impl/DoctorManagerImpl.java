@@ -9,6 +9,7 @@ import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
+import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.UserExistsException;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import org.acegisecurity.userdetails.UsernameNotFoundException;
 public class DoctorManagerImpl 
     extends GenericManagerImpl<Doctor, Long> implements DoctorManager {
     private DaoAuthenticationProvider authenticationProvider;
+    private EspecialidadManager especialidadManager;
     private DoctorDao doctorDao;
     
     public DoctorManagerImpl(DoctorDao doctorDao,DaoAuthenticationProvider authenticationProvider) {
@@ -91,6 +93,10 @@ public class DoctorManagerImpl
         this.authenticationProvider = authenticationProvider;
     }
     
+
+    public void setEspecialidadManager(EspecialidadManager especialidadManager) {
+        this.especialidadManager = especialidadManager;
+    }
     
     public void eliminarDoctor(Doctor doctor) {
         doctorDao.remove(doctor.getId());

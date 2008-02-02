@@ -83,6 +83,12 @@ public class Constants {
      * when adding/editing a user.
      */
     public static final String AVAILABLE_ROLES = "availableRoles";
+    
+    /**
+     * The name of the available especialidades list, a request-scoped attribute
+     * when adding/editing a user.
+     */
+    public static final String AVAILABLE_ESPECIALIDADES = "availableEspecialidades";
 
     /**
      * The name of the CSS Theme setting.
