@@ -12,7 +12,6 @@
         <c:set var="buttons">     
             <s:submit key="button.cancel" method="cancel"/>
         </c:set>
-        <c:out value="${buttons}" escapeXml="false"/>
     </li>
 
     <s:label key="paciente.username" cssClass="text large"/>
@@ -84,26 +83,3 @@
         <c:out value="${buttons}" escapeXml="false"/>
     </li>
 </s:form>
-
-<script type="text/javascript">
-    Form.focusFirstElement(document.forms["userForm"]);
-    highlightFormElements();
-
-    function passwordChanged(passwordField) {
-        if (passwordField.name == "user.password") {
-            var origPassword = "<s:property value="user.password"/>";
-        } else if (passwordField.name == "user.confirmPassword") {
-            var origPassword = "<s:property value="user.confirmPassword"/>";
-        }
-        
-        if (passwordField.value != origPassword) {
-            createFormElement("input", "hidden",  "encryptPass", "encryptPass",
-                              "true", passwordField.form);
-        }
-    }
-
-<!-- This is here so we can exclude the selectAll call when roles is hidden -->
-function onFormSubmit(theForm) {
-
-}
-</script>
