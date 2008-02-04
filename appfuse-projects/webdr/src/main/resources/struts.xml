@@ -194,7 +194,7 @@
         </action>
 
         <action name="viewDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
-            <interceptor-ref name="drAdminCheck"/>
+            <interceptor-ref name="pacienteAdminCheck"/>
             <result name="success">/WEB-INF/pages/doctor/viewDoctor.jsp</result>
             <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
