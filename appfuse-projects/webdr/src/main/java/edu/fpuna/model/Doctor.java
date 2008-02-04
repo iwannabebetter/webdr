@@ -5,6 +5,7 @@
 
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class Doctor extends User {
      */
     @Transient
     public String getFechaNacimientoString() {
-        return super.formatearFecha(fechaNacimiento, fechaNacimiento.getClass());
+        return super.formatearFecha(fechaNacimiento, FormatoFecha.FECHA);
     }
     
     @Column(name="registro",unique=true,nullable=false)

@@ -4,6 +4,7 @@
  */
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
 import java.sql.Timestamp;
 import javax.persistence.*;
 
@@ -45,7 +46,7 @@ public class Consulta extends BaseObject {
      */
     @Transient
     public String getFechaString() {
-        return super.formatearFecha(fecha, fecha.getClass());
+        return super.formatearFecha(fecha, FormatoFecha.FECHAHORA);
     }
 
     @Embedded

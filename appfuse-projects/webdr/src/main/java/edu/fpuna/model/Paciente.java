@@ -5,6 +5,7 @@
 
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -46,7 +47,7 @@ public class Paciente extends User {
      */
     @Transient
     public String getFechaIngresoString() {
-        return super.formatearFecha(fechaIngreso, fechaIngreso.getClass());
+        return super.formatearFecha(fechaIngreso, FormatoFecha.FECHA);
     }
     
     @Column(name="fechanac",nullable=false)
@@ -64,7 +65,7 @@ public class Paciente extends User {
      */
     @Transient
     public String getFechaNacimientoString() {
-        return formatearFecha(fechaNacimiento, fechaNacimiento.getClass());
+        return formatearFecha(fechaNacimiento, FormatoFecha.FECHA);
     }
     
     @Column(name="cedula",nullable=false)

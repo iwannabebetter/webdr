@@ -1,5 +1,6 @@
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -40,7 +41,7 @@ public abstract class BaseObject implements Serializable {
      * @param fechaHora La fecha a ser convertida.
      * @return La representación texto de la fecha.
      */
-    public String formatearFecha(java.util.Date fechaHora, Class tipo) {
+    public String formatearFecha(java.util.Date fechaHora, FormatoFecha tipo) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(fechaHora);
         String[] valores = {
@@ -66,11 +67,11 @@ public abstract class BaseObject implements Serializable {
                       valores[4];
         
         // Retornamos la cadena según el tipo de fecha
-        if (tipo == java.util.Date.class || tipo == java.sql.Timestamp.class)
+        if (tipo == FormatoFecha.FECHAHORA)
             return fecha + " " + hora;
-        else if (tipo == java.sql.Date.class)
+        else if (tipo == FormatoFecha.FECHA)
             return fecha;
-        else if (tipo == java.sql.Time.class)
+        else if (tipo == FormatoFecha.HORA)
             return hora;
         else
             return null;
