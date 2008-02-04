@@ -14,7 +14,7 @@
         <!-- Menus exclusivos del Admin -->
         <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.html" roles="ROLE_ADMIN" width="90"/>
         <Menu name="AdminDoctorMenu" title="menu.doctor" description="Doctor Menu" roles="ROLE_ADMIN" width="110">
-            <Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html"/>
+            <Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctoresEdit.html"/>
             <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/doctor/editDoctor.html"/>
         </Menu>
         <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" roles="ROLE_ADMIN" width="110">
