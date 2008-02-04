@@ -52,7 +52,7 @@ public class PacienteActionTest extends BaseActionTestCase {
     
     public void testSearch() throws Exception {
         log.debug("__TESTSEARCH__:Probando el listado de pacientes");
-        assertEquals(action.list(), ActionSupport.SUCCESS);
+        assertEquals(action.listView(), ActionSupport.SUCCESS);
         
         log.debug("__TESTSEARCH__:Recuperando pacientes ");
         assertTrue(action.getPacientes().size() != 0);

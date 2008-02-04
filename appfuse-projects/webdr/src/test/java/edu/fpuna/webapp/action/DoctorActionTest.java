@@ -50,7 +50,7 @@ public class DoctorActionTest extends BaseActionTestCase {
     
     public void testList() throws Exception {
         log.debug("Probando lista de Doctores...");
-        assertEquals(action.list(), DoctorAction.SUCCESS);
+        assertEquals(action.listView(), DoctorAction.SUCCESS);
         
         log.debug("Probando cantidad de Doctores...");
         assertTrue(action.getDoctores().size() >= 1);
@@ -63,7 +63,7 @@ public class DoctorActionTest extends BaseActionTestCase {
         Especialidad especialidad = obtenerEspecialidad();
         
         log.debug("\tRecuperando Doctor...");
-        assertEquals(action.list(), DoctorAction.SUCCESS);
+        assertEquals(action.listView(), DoctorAction.SUCCESS);
         assertFalse(action.getDoctores().isEmpty());
         Doctor doctor = action.getDoctores().get(0);
         
