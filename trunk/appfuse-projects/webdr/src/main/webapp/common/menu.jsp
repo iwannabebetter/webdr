@@ -12,10 +12,10 @@
     </c:if>
     <!-- Menus Generales para todos los roles -->
     <menu:displayMenu name="MainMenu"/>
-    <menu:displayMenu name="UserMenu"/>
     <!-- Menus exclusivos del Admin -->
     <menu:displayMenu name="AdminDoctorMenu"/>
     <menu:displayMenu name="AdminPacienteMenu"/>
+    <menu:displayMenu name="PropiedadMenu"/>
     <!--menu:displayMenu name="AdminUsuarioMenu"/-->
     <!-- Menus exclusivos del Doctor -->
     <menu:displayMenu name="ReservasRealizadas"/>
