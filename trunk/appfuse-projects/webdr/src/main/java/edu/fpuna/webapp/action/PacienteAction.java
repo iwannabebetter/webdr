@@ -26,6 +26,7 @@ public class PacienteAction extends BaseAction {
 
     private Paciente paciente;
     private Long id;
+    String soloVista;
     
     public void setPacienteManager(PacienteManager pacienteManager) {
         this.manager = pacienteManager;
@@ -55,9 +56,20 @@ public class PacienteAction extends BaseAction {
         manager.eliminarPaciente(p);
     }
 
-    public String list() {
+    public String listView() {
+        soloVista = "ok";
         pacientes = manager.obtenerTodos();
         return SUCCESS;
+    }
+    
+    public String listEdit() {
+        soloVista = null;
+        pacientes = manager.obtenerTodos();
+        return SUCCESS;
+    }
+    
+    public String getSoloVista(){
+        return this.soloVista;
     }
     
     public void  setId(Long id){

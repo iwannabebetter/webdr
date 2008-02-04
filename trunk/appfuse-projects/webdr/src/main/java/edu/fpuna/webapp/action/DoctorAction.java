@@ -24,6 +24,7 @@ public class DoctorAction extends BaseAction {
     private List<Doctor> doctores;
     private Doctor doctor;
     private Long id;
+    private String soloVista;
     
     public void setDoctorManager(DoctorManager doctorManager) {
         this.doctorManager = doctorManager;
@@ -37,14 +38,26 @@ public class DoctorAction extends BaseAction {
         return doctores;
     }
     
-    public String list() {
+    public String listEdit() {
+        this.soloVista = null;
+        doctores = doctorManager.obtenerDoctores();
+        return SUCCESS;
+    }
+    
+    public String listView(){
+        this.soloVista = "ok";
         doctores = doctorManager.obtenerDoctores();
         return SUCCESS;
     }
     
     public String list(Especialidad especialidad) {
+        this.soloVista = null;
         doctores = doctorManager.obtenerDoctoresPorEspecialidad(especialidad);
         return SUCCESS;
+    }
+    
+    public String getSoloVista(){
+        return this.soloVista;
     }
     
     public void setId(Long id) {
@@ -115,4 +128,6 @@ public class DoctorAction extends BaseAction {
             return SUCCESS;
         }
     }
+    
+
 }
