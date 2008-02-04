@@ -32,9 +32,9 @@
     <display:setProperty name="paging.banner.item_name" value="usuario"/>
     <display:setProperty name="paging.banner.items_name" value="usuarios"/>
 
-    <display:setProperty name="export.excel.filename" value="User List.xls"/>
-    <display:setProperty name="export.csv.filename" value="User List.csv"/>
-    <display:setProperty name="export.pdf.filename" value="User List.pdf"/>
+    <display:setProperty name="export.excel.filename" value="Usuarios.xls"/>
+    <display:setProperty name="export.csv.filename" value="Usuarios.csv"/>
+    <display:setProperty name="export.pdf.filename" value="Usuarios.pdf"/>
 </display:table>
 
 <c:out value="${buttons}" escapeXml="false" />
