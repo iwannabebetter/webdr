@@ -145,10 +145,21 @@
 
     <!-- Actions in this package will be prefixed with /paciente/ -->
     <package name="paciente" extends="default" namespace="/paciente">
-        
-        <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="list"> 
+
+        <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="listView"> 
             <interceptor-ref name="drAdminCheck"/>
             <result>/WEB-INF/pages/paciente/pacienteList.jsp</result> 
+        </action>
+        
+        <action name="pacientesEdit" class="edu.fpuna.webapp.action.PacienteAction" method="listEdit"> 
+            <interceptor-ref name="drAdminCheck"/>
+            <result>/WEB-INF/pages/paciente/pacienteList.jsp</result> 
+        </action>
+        
+        <action name="viewPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
+            <interceptor-ref name="pacienteAdminCheck"/>
+            <result name="success">/WEB-INF/pages/paciente/viewPaciente.jsp</result>
+            <result name="error">/WEB-INF/pages/paciente/pacienteList.jsp</result>
         </action>
         
         <action name="editPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
@@ -169,13 +180,22 @@
     
     <!-- Actions in this package will be prefixed with /doctor/ -->
     <package name="doctor" extends="default" namespace="/doctor">
-        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
+        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">
+            <result name="success">/WEB-INF/pages/doctor/doctorList.jsp</result>
+        </action>
+        <action name="doctoresEdit" class="edu.fpuna.webapp.action.DoctorAction" method="listEdit">
             <result>/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
         
         <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
             <interceptor-ref name="drAdminCheck"/>
             <result name="success">/WEB-INF/pages/doctor/doctorForm.jsp</result>
+            <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
+        </action>
+
+        <action name="viewDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
+            <interceptor-ref name="drAdminCheck"/>
+            <result name="success">/WEB-INF/pages/doctor/viewDoctor.jsp</result>
             <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
         
