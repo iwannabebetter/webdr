@@ -100,4 +100,13 @@ public class Constants {
     public static final Long ID_USER_ROLE = -2L;
     public static final Long ID_DOCTOR_ROLE = -3L;
     public static final Long ID_PACIENTE_ROLE = -4L;
+    
+    /**
+     * Formato para las propiedades del tipo Date, Timestamp, Time.
+     */
+    public enum FormatoFecha {
+        FECHA,
+        HORA,
+        FECHAHORA
+    }
 }
