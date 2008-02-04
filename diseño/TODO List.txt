@@ -2,16 +2,18 @@
   =========
 							      | ESTADO |
 							      ----------
-* Lista de especialidades en el Form de DOCTOR --------------->
+* Lista de especialidades en el Form de DOCTOR ---------------> OK
+
+
 * Mostrar Horarios en el Form de Doctor ---------------------->
 * Agregar Validators para los formularios -------------------->
 * Solucionar parseo de double en los formularios ------------->
 * Hacer Vistas no editables. Para:
-    - Usuario (datos de un usuario) -------------------------->
-    - Paciente (datos de un paciente) ------------------------>
-    - Historial Paciente (historia medica de un paciente) ---->
-    - Doctor (datos de un doctor) ---------------------------->
-    - Consulta (datos de una consulta) ----------------------->
+    - Usuario (datos de un usuario) --------------------------> NO
+    - Paciente (datos de un paciente) ------------------------> OK
+    - Historial Paciente (historia medica de un paciente) ----> 
+    - Doctor (datos de un doctor) ----------------------------> OK
+    - Consulta (datos de una consulta) -----------------------> NO
 * Hacer Reservas (DAO, Manager, Action, JSP) ----------------->
 * Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->
 * Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->
