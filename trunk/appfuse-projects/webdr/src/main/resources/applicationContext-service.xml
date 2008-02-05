@@ -146,5 +146,10 @@
         <property name="authenticationProvider" ref="daoAuthenticationProvider"/>
         <property name="especialidadManager" ref="especialidadManager"/>
     </bean>
+
+    <bean id="horarioAtencionManager" class="edu.fpuna.service.impl.HorarioAtencionManagerImpl">
+        <property name="horarioAtencionDao" ref="horarioAtencionDao"/>
+        <property name="doctorManager" ref="doctorManager"/>
+    </bean>
     
 </beans>
