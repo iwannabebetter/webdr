@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-        "http://struts.apache.org/dtds/struts-2.0.dtd">
+"http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
     <!-- Constants -->
@@ -13,7 +13,7 @@
     <constant name="struts.ui.theme" value="css_xhtml"/>
     <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/pages/"/>
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
-
+    
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <interceptors>
@@ -74,67 +74,67 @@
                 <interceptor-ref name="todos"/>
             </interceptor-stack>
         </interceptors>
-
+        
         <global-results>
             <result name="mainMenu" type="redirect">mainMenu.html</result>
             <result name="dataAccessFailure">/WEB-INF/pages/dataAccessFailure.jsp</result>
         </global-results>
-
+        
         <global-exception-mappings>
             <exception-mapping exception="org.springframework.dao.DataAccessException" result="dataAccessFailure"/>
         </global-exception-mappings>
-
+        
         <action name="mainMenu">
             <result name="success">/WEB-INF/pages/mainMenu.jsp</result>
         </action>
-
+        
         <action name="signup" class="signupAction">
             <result name="cancel" type="redirect">/</result>
             <result name="input">/WEB-INF/pages/signup.jsp</result>
             <result name="success" type="chain">saveSignup</result>
         </action>
-
+        
         <action name="saveSignup" class="signupAction" method="save">
             <result name="input">/WEB-INF/pages/signup.jsp</result>
             <result name="success" type="redirect">/mainMenu.html</result>
         </action>
-
+        
         <action name="editUser" class="userAction" method="edit">
             <interceptor-ref name="adminCheck"/>
             <result name="success">/WEB-INF/pages/userForm.jsp</result>
             <result name="input">/WEB-INF/pages/admin/userList.jsp</result>
         </action>
-
+        
         <action name="editProfile" class="userAction" method="edit">
             <result name="success">/WEB-INF/pages/userForm.jsp</result>
             <result name="error">/WEB-INF/pages/mainMenu.jsp</result>
         </action>
-
+        
         <action name="saveUser" class="userAction" method="save">
             <result name="cancel" type="redirect">admin/users.html</result>
             <result name="input">/WEB-INF/pages/userForm.jsp</result>
             <result name="success" type="redirect">admin/users.html</result>
         </action>
-
+        
         <action name="uploadFile" class="edu.fpuna.webapp.action.FileUploadAction">
             <interceptor-ref name="fileUploadStack"/>
             <result name="input">/WEB-INF/pages/uploadForm.jsp</result>
             <result name="success">/WEB-INF/pages/uploadDisplay.jsp</result>
             <result name="cancel" type="redirect">mainMenu.html</result>
         </action>
-
+        
         <action name="passwordHint" class="passwordHintAction">
             <result name="input">/</result>
             <result name="success">/</result>
         </action>
-
+        
         <!-- Add additional actions here -->  
      
     </package>
-
+    
     <!-- Actions in this package will be prefixed with /paciente/ -->
     <package name="paciente" extends="default" namespace="/paciente">
-
+        
         <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="listView"> 
             <interceptor-ref name="todosCheck"/>
             <result>/WEB-INF/pages/paciente/pacienteList.jsp</result> 
@@ -169,15 +169,15 @@
     
     <!-- Actions in this package will be prefixed with /doctor/ -->
     <package name="doctor" extends="default" namespace="/doctor">
-
+        
         <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">
-			<interceptor-ref name="todosCheck"/>
+            <interceptor-ref name="todosCheck"/>
             <result name="success">/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
-
+        
         <action name="doctoresEdit" class="edu.fpuna.webapp.action.DoctorAction" method="listEdit">
-		    <interceptor-ref name="drAdminCheck"/>
-			<result>/WEB-INF/pages/doctor/doctorList.jsp</result>
+            <interceptor-ref name="drAdminCheck"/>
+            <result>/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
         
         <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
@@ -185,7 +185,7 @@
             <result name="success">/WEB-INF/pages/doctor/doctorForm.jsp</result>
             <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
-
+        
         <action name="viewDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
             <interceptor-ref name="todosCheck"/>
             <result name="success">/WEB-INF/pages/doctor/viewDoctor.jsp</result>
@@ -200,11 +200,22 @@
             <result name="success" type="redirect">doctoresEdit.html</result>
         </action>
         
-        <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="list"> 
+        <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasDoctor">
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/doctor/consultasList.jsp</result>
         </action>
         
+        <action name="consultasEdit" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasDoctorEdit">
+            <interceptor-ref name="doctorCheck"/>
+            <result>/WEB-INF/pages/doctor/consultasList.jsp</result>
+        </action>
+
+        <action name="viewConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
+            <interceptor-ref name="todosCheck"/>
+            <result name="success">/WEB-INF/pages/doctor/viewConsulta.jsp</result>
+            <result name="error">/WEB-INF/pages/doctor/consultaList.jsp</result>
+        </action>
+
         <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <interceptor-ref name="doctorCheck"/>
             <result name="success">/WEB-INF/pages/doctor/consultaForm.jsp</result>
@@ -214,9 +225,9 @@
         <action name="saveConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="save">
             <interceptor-ref name="doctorCheck"/>
             <result name="input">/WEB-INF/pages/doctor/consultaForm.jsp</result>
-            <result name="cancel" type="redirect">consultas.html</result>
-            <result name="delete" type="redirect">consultas.html</result>
-            <result name="success" type="redirect">consultas.html</result>
+            <result name="cancel" type="redirect">consultasEdit.html</result>
+            <result name="delete" type="redirect">consultasEdit.html</result>
+            <result name="success" type="redirect">consultasEdit.html</result>
         </action>
         
     </package>
@@ -226,7 +237,7 @@
         <action name="activeUsers" class="com.opensymphony.xwork2.ActionSupport">
             <result name="success">/WEB-INF/pages/admin/activeUsers.jsp</result>
         </action>
-
+        
         <action name="flushCache" class="com.opensymphony.xwork2.ActionSupport">
             <interceptor-ref name="adminCheck"/>
             <result name="success">/WEB-INF/pages/admin/flushCache.jsp</result>
@@ -237,30 +248,30 @@
             <!-- this should never be used, it's here to prevent warnings -->
             <result name="success">/WEB-INF/pages/mainMenu.jsp</result>
         </action>
-
+        
         <action name="users" class="userAction" method="list">
             <interceptor-ref name="adminCheck"/>
             <result name="success">/WEB-INF/pages/admin/userList.jsp</result>
         </action>
         
-		<action name="especialidades" class="edu.fpuna.webapp.action.EspecialidadAction" method="list">
+        <action name="especialidades" class="edu.fpuna.webapp.action.EspecialidadAction" method="list">
             <interceptor-ref name="adminCheck"/>
-			<result>/WEB-INF/pages/admin/especialidadList.jsp</result>
+            <result>/WEB-INF/pages/admin/especialidadList.jsp</result>
         </action>
         
         <action name="editEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="edit">
             <interceptor-ref name="adminCheck"/>
-			<result name="success">/WEB-INF/pages/admin/especialidadForm.jsp</result>
+            <result name="success">/WEB-INF/pages/admin/especialidadForm.jsp</result>
             <result name="error">/WEB-INF/pages/admin/especialidadList.jsp</result>
         </action>
         
         <action name="saveEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="save">
             <interceptor-ref name="adminCheck"/>
-			<result name="input">/WEB-INF/pages/admin/especialidadForm.jsp</result>
+            <result name="input">/WEB-INF/pages/admin/especialidadForm.jsp</result>
             <result name="cancel" type="redirect">especialidades.html</result>
             <result name="delete" type="redirect">especialidades.html</result>
             <result name="success" type="redirect">especialidades.html</result>
         </action>
-
+        
     </package>
 </struts>
