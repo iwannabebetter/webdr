@@ -25,6 +25,8 @@ public class ConsultaAction extends BaseAction {
     private Long id;
     private Date fechaInicio;
     private Date fechaFin;
+    private String soloVista;
+    
 
     public void setConsultaManager(ConsultaManager consultaManager) {
         this.manager = consultaManager;
@@ -53,19 +55,29 @@ public class ConsultaAction extends BaseAction {
     }
 
     public String listConsultasPaciente() {
+        this.soloVista=null;
         String username = this.getRequest().getRemoteUser();
         consultas = manager.obtenerConsultasPaciente(username);
         return SUCCESS;
     }
 
     public String listConsultasDoctor() {
+        this.soloVista="ok";
         String username = this.getRequest().getRemoteUser();
         consultas = manager.obtenerConsultasDoctor(username);
         return SUCCESS;
     }
 
+    public String listConsultasDoctorEdit() {
+        this.soloVista=null;
+        String username = this.getRequest().getRemoteUser();
+        consultas = manager.obtenerConsultasDoctor(username);
+        return SUCCESS;
+    }
+    
     public String listConsultasFecha(Date fechaInicio, Date fechaFin) {
         try {
+            this.soloVista=null;
             String username = this.getRequest().getRemoteUser();
             consultas = manager.obtenerConsultasFecha(username, fechaInicio, fechaFin);
             return SUCCESS;
@@ -79,8 +91,13 @@ public class ConsultaAction extends BaseAction {
     public List getConsultas() {
         return consultas;
     }
+ 
+    public String getSoloVista(){
+        return this.soloVista;
+    }
 
     public String list() {
+        this.soloVista=null;
         consultas = manager.getAll();
         return SUCCESS;
     }
