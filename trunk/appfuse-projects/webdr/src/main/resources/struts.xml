@@ -169,6 +169,14 @@
     
     <!-- Actions in this package will be prefixed with /doctor/ -->
     <package name="doctor" extends="default" namespace="/doctor">
+
+        <action name="doctorHorarios" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="list">
+            <result name="success">/WEB-INF/pages/doctor/horarios.jsp</result>
+        </action>
+        
+        <action name="doctorHorariosEdit" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="edit">
+            <result name="success">/WEB-INF/pages/doctor/horariosForm.jsp</result>
+        </action>
         
         <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">
             <interceptor-ref name="todosCheck"/>
