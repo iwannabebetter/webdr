@@ -19,7 +19,7 @@ Viernes       08/02          0800 - 1830         fmancia      < E,I,M >         
 
 Sábado        09/02          0800 - 1500         cparra       < J,M,G >                 Todos
 
-*** K y L quedan para la semana entrante. 
+*** K, L y N quedan para la semana entrante. 
 
 =====================================================================================================
 ------------------------------------
@@ -45,5 +45,6 @@ K. Implementar, funcionalidades de Búsqueda para:
    - Doctores. 
 L. Integrar por medio de los menus, las búsquedas a la aplicación. 
 M. Implementar Calendarios Javascript (datepicker de dojo) en donde haga falta. 
+N. Implementar Página de Créditos. 
 
 =====================================================================================================
