@@ -5,6 +5,7 @@
 
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
 import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
@@ -48,6 +49,11 @@ public class HorarioAtencion extends BaseObject {
     public Time getHoraInicio() {
         return horaInicio;
     }
+    
+    @Transient
+    public String getHoraInicioString() {
+        return super.formatearFecha(horaInicio, FormatoFecha.HORA);
+    }
 
     public void setHoraInicio(Time horaInicio) {
         this.horaInicio = horaInicio;
@@ -60,6 +66,11 @@ public class HorarioAtencion extends BaseObject {
 
     public void setHoraFin(Time horaFin) {
         this.horaFin = horaFin;
+    }
+    
+    @Transient
+    public String getHoraFinString() {
+        return super.formatearFecha(horaFin, FormatoFecha.HORA);
     }
     
     @ManyToOne(fetch=FetchType.EAGER,optional=false)
