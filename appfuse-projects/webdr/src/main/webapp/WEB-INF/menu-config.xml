@@ -13,31 +13,32 @@
         
         <!-- Menus exclusivos del Admin -->
         <Menu name="AdminDoctorMenu" title="menu.doctor" description="Doctor Menu" roles="ROLE_ADMIN" width="110">
-			<Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html"/>
+            <Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html"/>
             <Item name="VerDoctoresEdit" title="menu.doctor.doctoresEdit" page="/doctor/doctoresEdit.html"/>
             <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/doctor/editDoctor.html"/>
         </Menu>
         <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" roles="ROLE_ADMIN" width="110">
             <Item name="VerPacientes" title="menu.paciente.pacientes" page="/paciente/pacientes.html"/>
-			<Item name="VerPacientesEdit" title="menu.paciente.pacientesEdit" page="/paciente/pacientesEdit.html"/>
+            <Item name="VerPacientesEdit" title="menu.paciente.pacientesEdit" page="/paciente/pacientesEdit.html"/>
             <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/paciente/editPaciente.html"/>
         </Menu>
         <Menu name="PropiedadMenu" title="menu.propiedad" description="Propiedad Menu" roles="ROLE_ADMIN" width="110">
-			<Item name="VerEspecialidades" title="menu.propiedad.especialidades" page="/admin/especialidades.html"/>
+            <Item name="VerEspecialidades" title="menu.propiedad.especialidades" page="/admin/especialidades.html"/>
             <Item name="VerEspecialidadesEdit" title="menu.propiedad.especialidadesEdit" page="/admin/especialidades.html"/>
             <Item name="CrearEspecialidades" title="menu.propiedad.nuevaEspecialidad" page="/admin/editEspecialidad.html"/>
         </Menu>
-
-		<!-- Menus exclusivos del Doctor -->
+        
+        <!-- Menus exclusivos del Doctor -->
         <Menu name="ReservasRealizadas" title="menu.reserva.reservas" roles="ROLE_DOCTOR" page="/mainMenu.html" width="100"/>
         <Menu name="AdminConsultaMenu" title="menu.consulta" description="Consulta Menu" roles="ROLE_DOCTOR" width="110">
             <Item name="VerConsultas" title="menu.consulta.consultas" page="/doctor/consultas.html"/>
+            <Item name="VerConsultasEdit" title="menu.consulta.consultasEdit" page="/doctor/consultasEdit.html"/>
             <Item name="CrearConsulta" title="menu.consulta.nuevaConsulta" page="/doctor/editConsulta.html"/>
         </Menu>
         <Menu name="AdminPacienteMenu2" title="menu.paciente" description="Paciente Menu" roles="ROLE_DOCTOR" width="110">
             <Item name="VerPacientes" title="menu.paciente.pacientes" page="/paciente/pacientes.html"/>
-			<Item name="VerPacientesEdit" title="menu.paciente.pacientesEdit" page="/paciente/pacientesEdit.html"/>
-			<Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/paciente/editPaciente.html"/>
+            <Item name="VerPacientesEdit" title="menu.paciente.pacientesEdit" page="/paciente/pacientesEdit.html"/>
+            <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/paciente/editPaciente.html"/>
             <Item name="HistorialesPacientes" title="menu.paciente.historial" page="/mainMenu.html"/>
         </Menu>
         
@@ -46,7 +47,7 @@
         <Menu name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html" roles="ROLE_PACIENTE" width="100"/>
         <Menu name="ReservaMenu" title="menu.reserva" description="Reserva Menu" roles="ROLE_PACIENTE" width="110">
             <Item name="VerReservas" title="menu.reserva.reservas" page="/mainMenu.html"/>
-			<Item name="VerReservasEdit" title="menu.reserva.reservasEdit" page="/mainMenu.html"/>
+            <Item name="VerReservasEdit" title="menu.reserva.reservasEdit" page="/mainMenu.html"/>
             <Item name="CrearReservas" title="menu.reserva.nuevaReserva" page="/mainMenu.html"/>
         </Menu>        
         
