@@ -1,21 +1,21 @@
   TODO List
   =========
-							      | ESTADO |
-							      ----------
-* Lista de especialidades en el Form de DOCTOR ---------------> OK
+							      | ESTADO |  | RESP |
+							      ----------  --------
+* Lista de especialidades en el Form de DOCTOR ---------------> OK         
 
 
-* Mostrar Horarios en el Form de Doctor ---------------------->
-* Agregar Validators para los formularios -------------------->
-* Solucionar parseo de double en los formularios -------------> OK
+* Mostrar Horarios en el Form de Doctor ---------------------->            fmancia
+* Agregar Validators para los formularios -------------------->            cparra
+* Solucionar parseo de double en los formularios -------------> OK 
 * Hacer Vistas no editables. Para:
     - Usuario (datos de un usuario) --------------------------> NO
     - Paciente (datos de un paciente) ------------------------> OK
-    - Historial Paciente (historia medica de un paciente) ----> 
+    - Historial Paciente (historia medica de un paciente) ---->            mrodas
     - Doctor (datos de un doctor) ----------------------------> OK
     - Consulta (datos de una consulta) -----------------------> NO
-* Hacer Reservas (DAO, Manager, Action, JSP) ----------------->
-* Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->
-* Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->
-* Agregar un Calendario con JavaScript ----------------------->
-* Agregar alguna Funcionalidad AJAX -------------------------->
+* Hacer Reservas (DAO, Manager, Action, JSP) ----------------->            cparra
+* Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->            cparra
+* Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->            todos
+* Agregar un Calendario con JavaScript ----------------------->            ghuttemann
+* Agregar alguna Funcionalidad AJAX -------------------------->            ghuttemann
