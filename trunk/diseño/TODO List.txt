@@ -15,7 +15,7 @@
     - Doctor (datos de un doctor) ----------------------------> OK
     - Consulta (datos de una consulta) -----------------------> NO
 * Hacer Reservas (DAO, Manager, Action, JSP) ----------------->            cparra
-* Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->            cparra
+* Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->            fmancia
 * Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->            todos
 * Agregar un Calendario con JavaScript ----------------------->            ghuttemann
 * Agregar alguna Funcionalidad AJAX -------------------------->            ghuttemann
