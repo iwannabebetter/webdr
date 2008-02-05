@@ -2,6 +2,7 @@
     <excludes>
         <pattern>/40*.jsp</pattern>
         <pattern>/*ajax=true*</pattern>
+        <pattern>/*decorate=false*</pattern>
         <pattern>/scripts/dojo/*</pattern>
         <pattern>/struts/dojo/*</pattern> 
         <pattern>/resources/*</pattern>
