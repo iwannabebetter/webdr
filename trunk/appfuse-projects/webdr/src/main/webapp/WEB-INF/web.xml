@@ -98,7 +98,7 @@
         <filter-class>edu.fpuna.webapp.filter.StaticFilter</filter-class>
         <init-param>
             <param-name>includes</param-name>
-            <param-value>/scripts/dojo/*,/dwr/*</param-value>
+            <param-value>/struts/dojo/*</param-value>
         </init-param>
     </filter>
     <filter>
