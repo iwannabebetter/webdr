@@ -18,7 +18,9 @@ import java.util.List;
 public class HorarioAtencionAction extends BaseAction {
     private HorarioAtencionManager horarioAtencionManager;
     private DoctorManager doctorManager;
+            
     private List<HorarioAtencion> horariosDoctor;
+    private HorarioAtencion horarioAtencion;
     private Long id;
     private String doctorUsername;
     
@@ -34,6 +36,13 @@ public class HorarioAtencionAction extends BaseAction {
         return this.horariosDoctor;
     }
     
+    public void setHorarioAtencion(HorarioAtencion horarioAtencion) {
+        this.horarioAtencion = horarioAtencion;
+    }
+    
+    public HorarioAtencion getHorarioAtencion(){
+        return this.horarioAtencion;
+    }    
     public void setId(Long id) {
         this.id = id;
     }
@@ -54,8 +63,13 @@ public class HorarioAtencionAction extends BaseAction {
         this.doctorUsername = doctorUsername;
     }
     
-    public String listarHorarios() {
+    public String list() {
         horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
+        return SUCCESS;
+    }
+    
+    public String edit() {
+        horarioAtencion = horarioAtencionManager.getHorarioAtencion(id);
         return SUCCESS;
     }
 }

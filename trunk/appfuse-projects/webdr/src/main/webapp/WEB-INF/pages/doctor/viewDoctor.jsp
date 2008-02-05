@@ -5,6 +5,13 @@
     <meta name="heading" content="<fmt:message key='doctorProfile.heading'/>"/>
 </head>
 
+<s:url id="horarioUrl" action="doctorHorarios">
+    <s:param name="doctorUsername" value="%{doctor.username}" />
+</s:url>
+<s:a href="%{horarioUrl}">
+    <b>-> Ver horarios del Dr/Dra <c:out value="${doctor.firstName}" /> <c:out value="${doctor.lastName}" /> <-</b>
+</s:a>
+<br>
 <s:label key="doctor.username" cssClass="text large"/>
 <s:label key="doctor.passwordHint" cssClass="text large"/>
 <s:label key="doctor.firstName" cssClass="text medium"/>
@@ -22,8 +29,8 @@
 
 <table class="pickList">
     <tr>
-        <th class="pickLabel">
-            <label class="required">Especialidades del Doctor</label>
+        <th>
+            Especialidades del Doctor
         </th>
     </tr>
     <c:forEach var="list" items="${doctor.especialidadList}" varStatus="status">
