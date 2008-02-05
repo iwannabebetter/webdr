@@ -7,7 +7,7 @@
 
 * Mostrar Horarios en el Form de Doctor ---------------------->
 * Agregar Validators para los formularios -------------------->
-* Solucionar parseo de double en los formularios ------------->
+* Solucionar parseo de double en los formularios -------------> OK
 * Hacer Vistas no editables. Para:
     - Usuario (datos de un usuario) --------------------------> NO
     - Paciente (datos de un paciente) ------------------------> OK
