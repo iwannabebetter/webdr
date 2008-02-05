@@ -284,4 +284,33 @@
             <value description="doctor_id">-3</value>
         </row>
     </table>  
+    
+    <table name="horario">
+        <column>id</column>
+        <column>dia</column>
+        <column>hora_inicio</column>
+        <column>hora_fin</column>
+        <column>doctor_id</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="dia">0</value>
+            <value description="hora_inicio">07:30:00</value>
+            <value description="hora_fin">14:00:00</value>
+            <value description="doctor_id">-3</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="dia">1</value>
+            <value description="hora_inicio">08:30:00</value>
+            <value description="hora_fin">16:00:00</value>
+            <value description="doctor_id">-3</value>
+        </row>
+        <row>
+            <value description="id">-3</value>
+            <value description="dia">4</value>
+            <value description="hora_inicio">10:30:00</value>
+            <value description="hora_fin">22:00:00</value>
+            <value description="doctor_id">-3</value>
+        </row>
+    </table>
 </dataset>
