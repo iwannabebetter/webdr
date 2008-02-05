@@ -1,0 +1,49 @@
+CALENDARIO DE ACTIVIDADES EN LA RECTA FINAL
+=====================================================================================================
+
+---------   ---------   ----------------------  -----------  ------------------------  ---------
+|  Dia  |   | Fecha |   | Horario de Reunión |  |  Lugar  |  |      Actividad       |  | Resp. |
+---------   ---------   ----------------------  -----------  ------------------------  ---------
+
+Martes        05/02          ***********         fmancia      A la noche podemos dedicarnos a (AA)			      
+
+Miércoles     06/02          0800 - 2000         ghuttemann   < A,B >                   cp fm mr
+                                                              < C >                     gh
+
+Jueves        07/02          0800 - 1800         cparra       < E,I,B>                     cp mr
+                                                              < D >                     gh
+                                                              < H >                     fm
+
+Viernes       08/02          0800 - 1830         fmancia      < E,I,M >                 cp mr gh
+                                                              < D,F >                   fm gh
+
+Sábado        09/02          0800 - 1500         cparra       < J,M,G >                 Todos
+
+*** K y L quedan para la semana entrante. 
+
+=====================================================================================================
+------------------------------------
+| Descripción de tareas a Realizar |
+------------------------------------
+
+A. Terminar CRUD de Horario, Reservas y Turnos. 
+B. Integrar A (agregar a los menus) a las demás funcionalidades. 
+C. Hacer funcionar AJAX con Dojo (o Prototype en caso de fracaso). 
+D. Implementar (o modificar) funcionalidades con AJAX. 
+E. Implementar VALIDATORS. 
+F. Revisar Páginas y pulir detalles de Visualización. 
+G. Cambiar Imagen de Encabezado y algunos detalles de Estilos para hacer al sistema único. 
+   - Sacarnos las fotos adecuadas para el efecto.
+H. Pulir el despliegue de Horarios en el Form de Doctor. 
+I. Hacer Vistas no editables. Para:
+    - Historial Paciente (historia medica de un paciente)
+    - Consulta (datos de una consulta).
+J. Realizar pruebas generales del Sistema implementado. 
+K. Implementar, funcionalidades de Búsqueda para: 
+   - Consultas. 
+   - Pacientes. 
+   - Doctores. 
+L. Integrar por medio de los menus, las búsquedas a la aplicación. 
+M. Implementar Calendarios Javascript (datepicker de dojo) en donde haga falta. 
+
+=====================================================================================================
