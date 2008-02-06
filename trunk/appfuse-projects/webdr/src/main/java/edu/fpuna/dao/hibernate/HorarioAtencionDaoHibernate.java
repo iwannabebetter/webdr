@@ -31,20 +31,14 @@ public class HorarioAtencionDaoHibernate
     }
     
     public List<HorarioAtencion> getHorarioAtencion(String usernameDoctor) {
-        List result = super.getHibernateTemplate().find("from HorarioAtencion where doctor.username = ?", usernameDoctor);
-        
-        if (result.isEmpty())
-            return null;
-        
+        String query = "from HorarioAtencion where doctor.username=? order by dia";
+        List<HorarioAtencion> result = super.getHibernateTemplate().find(query, usernameDoctor);
         return result;
     }
     
     public List<HorarioAtencion> getAll() {
-        List result = super.getHibernateTemplate().find("from HorarioAtencion ");
-        
-        if (result.isEmpty())
-            return null;
-        
+        String query = "from HorarioAtencion order by dia";
+        List<HorarioAtencion> result = super.getHibernateTemplate().find(query);
         return result;
     }
 
@@ -55,6 +49,4 @@ public class HorarioAtencionDaoHibernate
     public void eliminar(HorarioAtencion p) {
         super.remove(p.getId());
     }
-
-
 }
