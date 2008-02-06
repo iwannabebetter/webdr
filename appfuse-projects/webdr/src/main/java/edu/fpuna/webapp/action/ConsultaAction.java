@@ -56,7 +56,8 @@ public class ConsultaAction extends BaseAction {
 
     public String listConsultasPaciente() {
         this.soloVista=null;
-        String username = this.getRequest().getRemoteUser();
+        String username = this.getRequest().getParameter("username");
+		log.debug("--> PACIENTE: "+username);
         consultas = manager.obtenerConsultasPaciente(username);
         return SUCCESS;
     }
