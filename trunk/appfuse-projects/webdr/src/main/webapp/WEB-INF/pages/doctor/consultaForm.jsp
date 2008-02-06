@@ -12,11 +12,11 @@
 	<s:textfield key="consulta.medidasPaciente.edadActual" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.medidasPaciente.edadEnMeses" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.notas.sintomas" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.notas.diagnostico" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.notas.recetario" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.notas.indicaciones" required="true" cssClass="text medium"/>
+	<s:textarea key="consulta.notas.diagnostico" required="true" cssClass="text medium"/>
+	<s:textarea key="consulta.notas.recetario" required="true" cssClass="text medium"/>
+	<s:textarea key="consulta.notas.indicaciones" required="true" cssClass="text medium"/>
 	<s:textfield key="consulta.paciente.fullName" required="true" cssClass="text medium"/>
-	<s:textfield key="consulta.doctor.fullName" required="true" cssClass="text medium"/>	
+	<s:textfield key="consulta.doctor.fullName" required="true" cssClass="text medium"/>
 
 	<li class="buttonBar bottom">
 		<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
