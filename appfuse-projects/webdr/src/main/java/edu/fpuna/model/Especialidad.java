@@ -44,6 +44,7 @@ public class Especialidad extends BaseObject {
         this.nombre = nombre;
     }
 
+    @Column(nullable=false)
     @Lob
     public String getDescripcion() {
         return descripcion;
