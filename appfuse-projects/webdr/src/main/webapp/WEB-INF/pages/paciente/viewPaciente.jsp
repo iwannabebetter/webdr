@@ -7,11 +7,15 @@
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<c:set var="buttons"> 
-	<input type="button" style="margin-right: 5px"
-		   onclick="location.href='<c:url value="/doctor/historial.html?from=view"> <c:param name="username" value="${paciente.username}"/> </c:url>'"
-		   value="<fmt:message key="button.historial"/>"/>
+<c:set var="buttons">
+	<s:url id="historialUrl" action="historial">
+		<s:param name="username" value="%{paciente.username}" />
+	</s:url>
+	<s:a href="%{historialUrl}">
+		<b> |>Ver Historial del Paciente<| </b>
+	</s:a>
 </c:set>
+
 <s:label key="paciente.username" cssClass="text large"/>
 <s:label key="paciente.passwordHint" cssClass="text large"/>
 
