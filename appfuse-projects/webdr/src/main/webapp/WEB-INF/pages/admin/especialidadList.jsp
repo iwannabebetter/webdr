@@ -5,7 +5,7 @@
 </head>
 <c:set var="buttons">
     <input type="button" style="margin-right: 5px"
-           onclick="location.href='<c:url value="/editEspecialidad.html?from=list"/>'"
+           onclick="location.href='<c:url value="editEspecialidad.html?from=list"/>'"
            value="<fmt:message key="button.add"/>"/>
     <input type="button" onclick="location.href='<c:url value="/mainMenu.html"/>'"
            value="<fmt:message key="button.done"/>"/>
