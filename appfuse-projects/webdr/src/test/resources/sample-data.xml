@@ -314,4 +314,26 @@
         </row>
     </table>
     
+    
+   <table name="turno">
+        <column>id</column>
+        <column>hora</column>
+        <column>horario_id</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="hora">07:30:00</value>
+            <value description="horario_id">-1</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="hora">10:30:00</value>
+            <value description="horario_id">-2</value>
+        </row>
+        <row>
+            <value description="id">-3</value>
+            <value description="hora">11:30:00</value>
+            <value description="horario_id">-3</value>
+        </row>
+    </table>
+
 </dataset>
