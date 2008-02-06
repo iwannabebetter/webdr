@@ -5,6 +5,8 @@
 
 package edu.fpuna.model;
 
+import edu.fpuna.Constants.FormatoFecha;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -17,12 +19,11 @@ import javax.persistence.*;
 public class Reserva extends BaseObject {
     
     private Long id;
-    private Date fechaRealizacion;
-    private Date fechaReservada;
+    private Timestamp fechaRealizacion;
+    private Timestamp fechaReservada;
     private Boolean cancelado;
     private String observacionCancelacion;
     private Paciente paciente;
-    private Turno turno;
     private Consulta consulta;
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -40,7 +41,23 @@ public class Reserva extends BaseObject {
         return fechaRealizacion;
     }
 
-    public void setFechaRealizacion(Date fechaRealizacion) {
+    /*
+     * Retorna la fecha en formato texto
+     */
+    @Transient
+    public String getFechaRealizacionString() {
+        return super.formatearFecha(fechaRealizacion, FormatoFecha.FECHAHORA);
+    }
+    
+    /*
+     * Retorna la fecha en formato texto
+     */
+    @Transient
+    public String getFechaReservadaString() {
+        return super.formatearFecha(fechaReservada, FormatoFecha.FECHAHORA);
+    }
+    
+    public void setFechaRealizacion(Timestamp fechaRealizacion) {
         this.fechaRealizacion = fechaRealizacion;
     }
 
@@ -50,7 +67,7 @@ public class Reserva extends BaseObject {
         return fechaReservada;
     }
 
-    public void setFechaReservada(Date fechaReservada) {
+    public void setFechaReservada(Timestamp fechaReservada) {
         this.fechaReservada = fechaReservada;
     }
 
@@ -81,16 +98,6 @@ public class Reserva extends BaseObject {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
-    }
-
-    @OneToOne(fetch=FetchType.EAGER,optional=false)
-    @JoinColumn(name="turno_id",nullable=false,unique=true)
-    public Turno getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Turno turno) {
-        this.turno = turno;
     }
 
     @OneToOne(fetch=FetchType.EAGER)
