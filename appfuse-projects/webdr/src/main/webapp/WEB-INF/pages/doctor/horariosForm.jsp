@@ -18,7 +18,8 @@
 
 <s:form name="horariosFormDoctor" action="doctorHorariosSave" method="post" validate="true" >
     <s:hidden key="horarioAtencion.id"/>
-        
+    <s:param id="doctorUsername" name="doctorUsername" value="%{doctorUsername}" />
+    
     <s:textfield key="horarioAtencion.dia"  cssClass="text medium"/>
     <s:textfield key="horarioAtencion.HoraInicio" cssClass="text medium"/>
     <s:textfield key="horarioAtencion.HoraFin" cssClass="text medium"/>
@@ -30,8 +31,15 @@
 	<c:if test="${not empty horarioAtencion.id}">
             <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('horarioAtencion')" theme="simple"/>
 	</c:if>
-        <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
+         
+
+<input type="button" style="margin-right: 5px"
+    onclick="location.href='<c:url value="/doctor/doctorHorarios.html?doctorUsername=${doctorUsername}"/>'"
+    value="Volver a horarios"/>
+
+
     </li>
+    
 </s:form>
 
 

@@ -81,17 +81,22 @@ public class HorarioAtencionAction extends BaseAction {
     
     public String delete(){
         log.debug("ANTES DE BORRAR HORARIO ATENCION nro = "+horarioAtencion.getId());
+        
         horarioAtencionManager.remove(horarioAtencion.getId());
         saveMessage(getText("horarioAtencion.deleted"));
+        horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
+        
+        log.debug("El username Doctor es... = "+doctorUsername);
         log.debug("DESPUES DE BORRAR HORARIO ATENCION");
-        return SUCCESS;
+        return listPorDoctor();
     }
     
     public String save() {
-        
-        if (cancel != null)
+        log.debug("El username Doctor es... = "+doctorUsername);
+        if (cancel != null){
+            horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
             return CANCEL;
-        
+        }
         if (delete != null)
             return delete();
         
