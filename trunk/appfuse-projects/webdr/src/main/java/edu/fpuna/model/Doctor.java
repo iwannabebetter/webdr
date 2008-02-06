@@ -104,7 +104,7 @@ public class Doctor extends User {
         this.especialidades = especialidades;
     }
     
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER,mappedBy="doctor")
     @OrderBy(value="dia")
     public Set<HorarioAtencion> getHorarios() {
         return horarios;

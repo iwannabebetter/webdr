@@ -16,11 +16,26 @@
 <b><c:out value="${horarioAtencion.doctor.firstName}" />
 <c:out value="${horarioAtencion.doctor.lastName}" /></b>
 
-<s:form name="horariosFormDoctor" action="saveHorario" method="post" validate="true">
+<s:form name="horariosFormDoctor" action="doctorHorariosSave" method="post" validate="true" >
     <s:hidden key="horarioAtencion.id"/>
         
-    <s:textfield key="horarioAtencion.dia" theme="xhtml" required="true" cssClass="text medium"/>
-    <s:textfield key="horarioAtencion.HoraInicio" theme="xhtml" required="true" cssClass="text medium"/>
-    <s:textfield key="horarioAtencion.HoraFin" theme="xhtml" required="true" cssClass="text medium"/>
-    <s:textfield key="horarioAtencion.doctor.username" theme="xhtml" required="true" cssClass="text medium"/>
+    <s:textfield key="horarioAtencion.dia"  cssClass="text medium"/>
+    <s:textfield key="horarioAtencion.HoraInicio" cssClass="text medium"/>
+    <s:textfield key="horarioAtencion.HoraFin" cssClass="text medium"/>
+    
+    <s:hidden key="doctorUsername" value="%{doctorUsername}" />
+
+    <li class="buttonBar bottom">
+	<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
+	<c:if test="${not empty horarioAtencion.id}">
+            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('horarioAtencion')" theme="simple"/>
+	</c:if>
+        <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
+    </li>
 </s:form>
+
+
+<script type="text/javascript">
+    Form.focusFirstElement(document.forms["horariosFormDoctor"]);
+    highlightFormElements();
+</script>

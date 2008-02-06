@@ -35,7 +35,7 @@ public class HorarioAtencionActionTest extends BaseActionTestCase {
     public void testList() throws Exception {
         log.debug("Probando lista ...");
         action.setDoctorUsername("ghuttemann");
-        assertEquals(action.list(), HorarioAtencionAction.SUCCESS);
+        assertEquals(action.listPorDoctor(), HorarioAtencionAction.SUCCESS);
         
         log.debug("Probando cantidad de Horarios de ghuttemann...");
         assertTrue(action.getHorariosDoctor().size() == 3);

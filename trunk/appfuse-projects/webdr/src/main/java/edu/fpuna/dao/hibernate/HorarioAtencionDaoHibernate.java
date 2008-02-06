@@ -43,7 +43,9 @@ public class HorarioAtencionDaoHibernate
     }
 
     public HorarioAtencion guardar(HorarioAtencion p) {
-        return super.save(p);
+        HorarioAtencion tmp =  super.save(p);
+        super.getHibernateTemplate().flush();
+        return tmp;
     }
 
     public void eliminar(HorarioAtencion p) {
