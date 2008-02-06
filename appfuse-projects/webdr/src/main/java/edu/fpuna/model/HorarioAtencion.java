@@ -83,10 +83,14 @@ public class HorarioAtencion extends BaseObject {
         this.doctor = doctor;
     }
     
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER,mappedBy="horario")
     @OrderBy(value="hora")
     public Set<Turno> getTurnos() {
         return turnos;
+    }
+    
+    public void addTurno(Turno turno) {
+        turnos.add(turno);
     }
     
     public void setTurnos(Set<Turno> turnos) {
