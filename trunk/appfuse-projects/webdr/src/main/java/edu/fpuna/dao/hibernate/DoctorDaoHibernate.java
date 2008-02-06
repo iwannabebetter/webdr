@@ -48,25 +48,19 @@ public class DoctorDaoHibernate
     }
     
     public List<Doctor> getAll(){
-        String query = "from Doctor ";
-        List result = super.getHibernateTemplate().find(query);
-        
-        if (result == null || result.isEmpty())
-            return null;
-        else
-            return result;
+        String query = "from Doctor order by upper(lastName)";
+        List<Doctor> result = super.getHibernateTemplate().find(query);
+        return result;
     }
     
     /** 
      * {@inheritDoc}
-    */
+     */
     public String getUserPassword(String username) {
         SimpleJdbcTemplate jdbcTemplate =
                 new SimpleJdbcTemplate(SessionFactoryUtils.getDataSource(getSessionFactory()));
         Table table = AnnotationUtils.findAnnotation(User.class, Table.class);
         return jdbcTemplate.queryForObject(
                 "select password from " + table.name() + " where username=?", String.class, username);
-
     }
-    
 }
