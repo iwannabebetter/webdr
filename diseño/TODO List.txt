@@ -3,19 +3,19 @@
 							      | ESTADO |  | RESP |
 							      ----------  --------
 * Lista de especialidades en el Form de DOCTOR ---------------> OK         
-
-
-* Mostrar Horarios en el Form de Doctor ---------------------->            fmancia
-* Agregar Validators para los formularios -------------------->            cparra
+* Mostrar Horarios en el Form de Doctor ----------------------> OK         fmancia
 * Solucionar parseo de double en los formularios -------------> OK 
 * Hacer Vistas no editables. Para:
     - Usuario (datos de un usuario) --------------------------> NO
     - Paciente (datos de un paciente) ------------------------> OK
     - Historial Paciente (historia medica de un paciente) ----> OK         mrodas
     - Doctor (datos de un doctor) ----------------------------> OK
-    - Consulta (datos de una consulta) -----------------------> NO
+    - Consulta (datos de una consulta) -----------------------> OK
+
+
 * Hacer Reservas (DAO, Manager, Action, JSP) ----------------->            cparra
 * Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->            fmancia
 * Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->            todos
 * Agregar un Calendario con JavaScript ----------------------->            ghuttemann
 * Agregar alguna Funcionalidad AJAX -------------------------->            ghuttemann
+* Agregar Validators para los formularios -------------------->            cparra
