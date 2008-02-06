@@ -164,22 +164,22 @@
             <result name="delete" type="redirect">pacientesEdit.html</result>
             <result name="success" type="redirect">pacientesEdit.html</result>
         </action>    
-
+        
         <action name="historialDetalle" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/paciente/historialDetalle.jsp</result>
         </action>
-
+        
         <action name="historial" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasPaciente">
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/paciente/historial.jsp</result>
         </action>
-		
+        
     </package>
     
     <!-- Actions in this package will be prefixed with /doctor/ -->
     <package name="doctor" extends="default" namespace="/doctor">
-
+        
         <action name="doctorHorarios" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="listPorDoctor">
             <result name="success">/WEB-INF/pages/doctor/horarios.jsp</result>
         </action>
@@ -234,13 +234,13 @@
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/doctor/consultasList.jsp</result>
         </action>
-
+        
         <action name="viewConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <interceptor-ref name="todosCheck"/>
             <result name="success">/WEB-INF/pages/doctor/viewConsulta.jsp</result>
             <result name="error">/WEB-INF/pages/doctor/consultaList.jsp</result>
         </action>
-
+        
         <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <interceptor-ref name="doctorCheck"/>
             <result name="success">/WEB-INF/pages/doctor/consultaForm.jsp</result>
