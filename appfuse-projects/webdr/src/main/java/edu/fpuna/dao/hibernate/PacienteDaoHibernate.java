@@ -45,11 +45,8 @@ public class PacienteDaoHibernate
     }
     
     public List<Paciente> getAll() {
-        List result = super.getHibernateTemplate().find("from Paciente ");
-        
-        if (result.isEmpty())
-            return null;
-        
+        String query = "from Paciente order by upper(lastName)";
+        List<Paciente> result = super.getHibernateTemplate().find(query);
         return result;
     }
 
