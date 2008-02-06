@@ -170,7 +170,7 @@
             <result>/WEB-INF/pages/paciente/historialDetalle.jsp</result>
         </action>
 
-		<action name="historial" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasPaciente">
+        <action name="historial" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasPaciente">
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/paciente/historial.jsp</result>
         </action>
@@ -180,12 +180,19 @@
     <!-- Actions in this package will be prefixed with /doctor/ -->
     <package name="doctor" extends="default" namespace="/doctor">
 
-        <action name="doctorHorarios" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="list">
+        <action name="doctorHorarios" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="listPorDoctor">
             <result name="success">/WEB-INF/pages/doctor/horarios.jsp</result>
         </action>
         
         <action name="doctorHorariosEdit" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="edit">
             <result name="success">/WEB-INF/pages/doctor/horariosForm.jsp</result>
+        </action>
+        
+        <action name="doctorHorariosSave" class="edu.fpuna.webapp.action.HorarioAtencionAction" method="save">
+            <result name="input">/WEB-INF/pages/doctor/horariosForm.jsp</result>
+            <result name="cancel" type="redirect">doctorHorarios.html</result>
+            <result name="delete" type="redirect">doctorHorarios.html</result>
+            <result name="success" type="redirect">doctorHorarios.html</result>
         </action>
         
         <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">

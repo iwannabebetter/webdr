@@ -63,13 +63,53 @@ public class HorarioAtencionAction extends BaseAction {
         this.doctorUsername = doctorUsername;
     }
     
-    public String list() {
+    public String listPorDoctor() {
         horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
         return SUCCESS;
     }
     
     public String edit() {
-        horarioAtencion = horarioAtencionManager.getHorarioAtencion(id);
+        if (id != null){
+            horarioAtencion = horarioAtencionManager.getHorarioAtencion(id);
+            doctorUsername = horarioAtencion.getDoctor().getUsername();
+        }
+        else{
+            horarioAtencion = new HorarioAtencion();
+        }
         return SUCCESS;
     }
+    
+    public String delete(){
+        log.debug("ANTES DE BORRAR HORARIO ATENCION nro = "+horarioAtencion.getId());
+        horarioAtencionManager.remove(horarioAtencion.getId());
+        saveMessage(getText("horarioAtencion.deleted"));
+        log.debug("DESPUES DE BORRAR HORARIO ATENCION");
+        return SUCCESS;
+    }
+    
+    public String save() {
+        
+        if (cancel != null)
+            return CANCEL;
+        
+        if (delete != null)
+            return delete();
+        
+        boolean isNew = (horarioAtencion.getId() == null);
+        log.debug("ANTES DE GUARDAR HORARIO ATENCION");
+        
+        horarioAtencion.setDoctor(doctorManager.obtenerDoctorPorNombre(doctorUsername));
+        horarioAtencion = horarioAtencionManager.guardar(horarioAtencion);
+        this.doctorUsername = horarioAtencion.getDoctor().getUsername();
+        log.debug("DESPUES DE GUARDAR HORARIO ATENCION");
+        
+        if(!isNew){
+            return INPUT;
+        }else{
+            return SUCCESS;
+        }
+    }
+
+    
+    
 }

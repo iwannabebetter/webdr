@@ -314,20 +314,4 @@
         </row>
     </table>
     
-   <table name="doctor_horario">
-        <column>doctor_id</column>
-        <column>horarios_id</column>
-        <row>
-            <value description="doctor_id">-3</value>
-            <value description="horarios_id">-1</value>
-        </row>
-        <row>
-            <value description="doctor_id">-3</value>
-            <value description="horarios_id">-2</value>
-        </row>
-        <row>
-            <value description="doctor_id">-3</value>
-            <value description="horarios_id">-3</value>
-        </row>
-    </table>    
 </dataset>
