@@ -46,4 +46,10 @@ public class EspecialidadDaoHibernate
     public Especialidad guardar(Especialidad especialidad) {
         return super.save(especialidad);
     }
+    
+    public List<Especialidad> getAll() {
+        String query = "from Especialidad order by upper(nombre)";
+        List<Especialidad> result = super.getHibernateTemplate().find(query);
+        return result;
+    }
 }
