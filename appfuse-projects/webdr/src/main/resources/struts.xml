@@ -224,6 +224,11 @@
             <result name="error">/WEB-INF/pages/doctor/consultaList.jsp</result>
         </action>
 
+		<action name="historial" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasPaciente">
+            <interceptor-ref name="doctorCheck"/>
+            <result>/WEB-INF/pages/doctor/historial.jsp</result>
+        </action>
+
         <action name="editConsulta" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
             <interceptor-ref name="doctorCheck"/>
             <result name="success">/WEB-INF/pages/doctor/consultaForm.jsp</result>
