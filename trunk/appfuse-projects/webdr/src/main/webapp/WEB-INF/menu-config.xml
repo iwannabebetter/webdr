@@ -39,7 +39,7 @@
             <Item name="VerPacientes" title="menu.paciente.pacientes" page="/paciente/pacientes.html"/>
             <Item name="VerPacientesEdit" title="menu.paciente.pacientesEdit" page="/paciente/pacientesEdit.html"/>
             <Item name="CrearPacientes" title="menu.paciente.nuevoPaciente" page="/paciente/editPaciente.html"/>
-            <Item name="HistorialesPacientes" title="menu.paciente.historial" page="/mainMenu.html"/>
+            <!--Item name="HistorialesPacientes" title="menu.paciente.historial" page="/mainMenu.html"/-->
         </Menu>
         
         <!-- Menus exclusivos del Paciente -->
