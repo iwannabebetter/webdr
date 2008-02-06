@@ -62,7 +62,7 @@ public class Turno extends BaseObject {
         
         final Turno turno = (Turno) o;
         
-        if (this.id.equals(turno.getId()))
+        if (this.id !=null && turno.getId() != null && this.id.equals(turno.getId()))
             return true;
         
         return false;
@@ -70,6 +70,9 @@ public class Turno extends BaseObject {
 
     @Override
     public int hashCode() {
+        if (this.id == null)
+            return 0;
+        
         return this.id.hashCode();
-    }   
+    }
 }
