@@ -79,5 +79,12 @@
     <bean id="horarioAtencionDao" class="edu.fpuna.dao.hibernate.HorarioAtencionDaoHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="turnoDao" class="edu.fpuna.dao.hibernate.TurnoDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>  
     
+    <bean id="reservaDao" class="edu.fpuna.dao.hibernate.ReservaDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>    
 </beans>
