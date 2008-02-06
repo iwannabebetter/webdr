@@ -11,7 +11,7 @@
 * Hacer Vistas no editables. Para:
     - Usuario (datos de un usuario) --------------------------> NO
     - Paciente (datos de un paciente) ------------------------> OK
-    - Historial Paciente (historia medica de un paciente) ---->            mrodas
+    - Historial Paciente (historia medica de un paciente) ----> OK         mrodas
     - Doctor (datos de un doctor) ----------------------------> OK
     - Consulta (datos de una consulta) -----------------------> NO
 * Hacer Reservas (DAO, Manager, Action, JSP) ----------------->            cparra
