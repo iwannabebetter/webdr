@@ -111,7 +111,7 @@ public class HorarioAtencionAction extends BaseAction {
         if(!isNew){
             return INPUT;
         }else{
-            return SUCCESS;
+            return listPorDoctor();
         }
     }
 
