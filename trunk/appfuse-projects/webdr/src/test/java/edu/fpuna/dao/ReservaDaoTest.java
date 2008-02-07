@@ -1,18 +1,9 @@
 package edu.fpuna.dao;
 
-import edu.fpuna.Constants;
-import edu.fpuna.model.Address;
-import edu.fpuna.model.Consulta;
-import edu.fpuna.model.MedidasPaciente;
-import edu.fpuna.model.Notas;
 import edu.fpuna.model.Reserva;
-import edu.fpuna.model.Role;
-import edu.fpuna.model.User;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
 
 public class ReservaDaoTest extends BaseDaoTestCase {
     
