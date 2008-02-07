@@ -9,7 +9,11 @@
 package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.Consulta;
+import edu.fpuna.model.Doctor;
+import edu.fpuna.model.Paciente;
 import edu.fpuna.service.ConsultaManager;
+import edu.fpuna.service.DoctorManager;
+import edu.fpuna.service.PacienteManager;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +24,12 @@ import java.util.List;
 public class ConsultaAction extends BaseAction {
 
     private ConsultaManager manager;
+    private DoctorManager doctorManager;
+    private PacienteManager pacienteManager;
     private Consulta consulta;
     private List<Consulta> consultas;
     private Long id;
+    private String userNameDoctor;
     private Date fechaInicio;
     private Date fechaFin;
     private String soloVista;
@@ -32,10 +39,24 @@ public class ConsultaAction extends BaseAction {
         this.manager = consultaManager;
     }
 
+    public void setDoctorManager(DoctorManager doctorManager) {
+        this.doctorManager = doctorManager;
+    }
+
+    public void setPacienteManager(PacienteManager pacienteManager) {
+        this.pacienteManager = pacienteManager;
+    }
     public void setId(Long id) {
         this.id = id;
     }
 
+    public void setUserNameDoctor(String username) {
+        this.userNameDoctor = username;
+    }
+    public String getUserNameDoctor() {
+        return this.userNameDoctor;
+    }
+    
     public Consulta getConsulta() {
         return consulta;
     }
@@ -111,12 +132,15 @@ public class ConsultaAction extends BaseAction {
     }
 
     public String edit() {
+        String username = this.getRequest().getRemoteUser();
+        this.setUserNameDoctor(username);
         if (id != null) {
             log.debug("EDITANDO...");
             consulta = manager.obtenerConsulta(id);
             log.debug("Se obtuvo: " + consulta.getDoctor().getEmail());
         } 
         else {
+            
             consulta = new Consulta();
         }
 
@@ -139,13 +163,17 @@ public class ConsultaAction extends BaseAction {
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
          */
-        Consulta oldConsulta = manager.obtenerConsulta(consulta.getId());
-        log.debug("2.1-)Se obtuvo: " + oldConsulta.getFecha());
+        String username = this.getRequest().getRemoteUser();
+        this.setUserNameDoctor(username);
+        
+        Paciente paciente = this.pacienteManager.getPaciente(consulta.getPaciente().getId());
+        Doctor doctor = this.doctorManager.obtenerDoctorPorNombre(username);
+        //log.debug("2.1-)Se obtuvo: " + oldConsulta.getFecha());
         
         // Se actualizan los datos del Doctor y del Paciente.
 
-        consulta.setDoctor(oldConsulta.getDoctor());
-        consulta.setPaciente(oldConsulta.getPaciente());
+        consulta.setDoctor(doctor);
+        consulta.setPaciente(paciente);
 
         // Se guarda la consulta modificada.
         manager.guardarConsulta(consulta);
