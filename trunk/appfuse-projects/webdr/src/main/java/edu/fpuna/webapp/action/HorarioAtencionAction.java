@@ -97,22 +97,22 @@ public class HorarioAtencionAction extends BaseAction {
             horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
             return CANCEL;
         }
-        if (delete != null)
+        if (delete != null){
             return delete();
+        }
         
         boolean isNew = (horarioAtencion.getId() == null);
-        log.debug("ANTES DE GUARDAR HORARIO ATENCION");
+        if(isNew){
+            saveMessage(getText("horarioAtencion.created"));
+        }else{
+            saveMessage(getText("horarioAtencion.updated"));
+        }
         
         horarioAtencion.setDoctor(doctorManager.obtenerDoctorPorNombre(doctorUsername));
+        //horarioAtencion.setTurnos(turnos);
         horarioAtencion = horarioAtencionManager.guardar(horarioAtencion);
         this.doctorUsername = horarioAtencion.getDoctor().getUsername();
-        log.debug("DESPUES DE GUARDAR HORARIO ATENCION");
-        
-        if(!isNew){
-            return INPUT;
-        }else{
-            return listPorDoctor();
-        }
+        return listPorDoctor();
     }
 
     
