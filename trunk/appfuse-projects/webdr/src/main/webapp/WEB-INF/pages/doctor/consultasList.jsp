@@ -6,7 +6,7 @@
 <s:if test="%{soloVista!='ok'}">
     <c:set var="buttons">
         <input type="button" style="margin-right: 5px"
-               onclick="location.href='<c:url value="/editConsulta.html"/>'"
+               onclick="location.href='<c:url value="editConsulta.html"/>'"
                value="<fmt:message key="button.add"/>"/>
         <input type="button" onclick="location.href='<c:url value="/mainMenu.html"/>'"
                value="<fmt:message key="button.done"/>"/>
