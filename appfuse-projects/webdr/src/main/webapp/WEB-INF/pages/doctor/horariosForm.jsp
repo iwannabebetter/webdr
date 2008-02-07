@@ -26,6 +26,8 @@
     
     <s:hidden key="doctorUsername" value="%{doctorUsername}" />
 
+    
+    
     <li class="buttonBar bottom">
 	<s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
 	<c:if test="${not empty horarioAtencion.id}">
@@ -41,6 +43,13 @@
     </li>
     
 </s:form>
+
+<s:if test="%{horarioAtencion.id != null}" >
+    <display:table name="horarioAtencion.turnos" class="table" requestURI="" id="turnosHorarioList" export="true" pagesize="25">
+        <display:column property="hora" sortable="true" href="doctorHorariosEdit.html" 
+            paramId="id" paramProperty="id" titleKey="turno.hora"/>
+    </display:table>
+</s:if>
 
 
 <script type="text/javascript">
