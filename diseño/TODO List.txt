@@ -1,7 +1,9 @@
   TODO List
   =========
 							      | ESTADO |  | RESP |
-							      ----------  --------
+
+TERMINADO
+---------						      ----------  --------
 * Lista de especialidades en el Form de DOCTOR ---------------> OK         
 * Mostrar Horarios en el Form de Doctor ----------------------> OK         fmancia
 * Solucionar parseo de double en los formularios -------------> OK 
@@ -11,11 +13,22 @@
     - Historial Paciente (historia medica de un paciente) ----> OK         mrodas
     - Doctor (datos de un doctor) ----------------------------> OK
     - Consulta (datos de una consulta) -----------------------> OK
+* Agregar un Calendario con JavaScript -----------------------> OK         ghuttemann
 
+
+PARCIALMENTE
+------------
+* Hacer Horario y Turnos (DAO, Manager, Action, JSP) ---------> OK         fmancia
+                                                                Falta agregar y borrar turno.
+
+* Agregar alguna Funcionalidad AJAX -------------------------->            ghuttemann
 
 * Hacer Reservas (DAO, Manager, Action, JSP) ----------------->            cparra
-* Hacer Horario y Turnos (DAO, Manager, Action, JSP) --------->            fmancia
+
+
+
+NO COMENZADO
+------------
 * Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->            todos
-* Agregar un Calendario con JavaScript ----------------------->            ghuttemann
-* Agregar alguna Funcionalidad AJAX -------------------------->            ghuttemann
 * Agregar Validators para los formularios -------------------->            cparra
+* Mas cosas.
