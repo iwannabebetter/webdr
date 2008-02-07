@@ -82,7 +82,7 @@
             <value description="account_expired">0</value>
             <value description="account_locked">0</value>
             <value description="credentials_expired">0</value>
-        </row>
+        </row>  
         <row>
             <value description="id">-4</value>
             <value description="username">fmancia</value>
@@ -94,6 +94,48 @@
             <value description="country">PY</value>
             <value description="email">fernandomancia@gmail.com</value>
             <value description="phone_number">681012</value>
+            <value description="postal_code">0000</value>
+            <value description="province">ASU</value>
+            <value description="website">-</value>
+            <value description="password_hint"><![CDATA[Same as username.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>        
+        <row>
+            <value description="id">-5</value>
+            <value description="username">cparra</value>
+            <value description="password">49f8a6d8dd2ec83241d511b4a1a001542bdf4440</value>
+            <value description="first_name">Cristhian</value>
+            <value description="last_name">Parra</value>
+            <value description="address">Cap. Bado Nº 21</value>
+            <value description="city">Luque</value>
+            <value description="country">PY</value>
+            <value description="email">cdparra@gmail.com</value>
+            <value description="phone_number">021-642403</value>
+            <value description="postal_code">0000</value>
+            <value description="province">ASU</value>
+            <value description="website">-</value>
+            <value description="password_hint"><![CDATA[Same as username.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">-6</value>
+            <value description="username">hmeyer</value>
+            <value description="password">c17707978d3df96e1f4cd1fa03d62b793925c159</value>
+            <value description="first_name">Hugo</value>
+            <value description="last_name">Meyer</value>
+            <value description="address">Ybyturuzu</value>
+            <value description="city">Asunción</value>
+            <value description="country">PY</value>
+            <value description="email">meyer.hugo@gmail.com</value>
+            <value description="phone_number">021-481298</value>
             <value description="postal_code">0000</value>
             <value description="province">ASU</value>
             <value description="website">-</value>
@@ -156,6 +198,22 @@
         <row>
             <value description="user_id">-4</value>
             <value description="role_id">-2</value>
+        </row>  
+        <row>
+            <value description="user_id">-5</value>
+            <value description="role_id">-4</value>
+        </row>  
+        <row>
+            <value description="user_id">-5</value>
+            <value description="role_id">-2</value>
+        </row>        
+        <row>
+            <value description="user_id">-6</value>
+            <value description="role_id">-4</value>
+        </row>
+        <row>
+            <value description="user_id">-6</value>
+            <value description="role_id">-2</value>
         </row>
     </table>
     <table name="especialidad">
@@ -206,8 +264,21 @@
             <value description="tiposangre_id">-1</value>
             <value description="cedula">3298639</value>
         </row>
-    </table>
-    
+        <row>
+            <value description="id">-5</value>
+            <value description="fechanac">1984-06-21</value>
+            <value description="fecingreso">2007-01-02</value>
+            <value description="tiposangre_id">-4</value>
+            <value description="cedula">2045856</value>
+        </row>
+        <row>
+            <value description="id">-6</value>
+            <value description="fechanac">1984-06-05</value>
+            <value description="fecingreso">2007-01-02</value>
+            <value description="tiposangre_id">-1</value>
+            <value description="cedula">3832548</value>
+        </row>
+    </table>    
     <table name="doctor">
         <column>id</column>
         <column>fechanac</column>
@@ -218,7 +289,6 @@
             <value description="registro">6789</value>
         </row>
     </table>
-
     <table name="doctor_especialidad">
         <column>doctor_id</column>
         <column>especialidad_id</column>
@@ -227,7 +297,6 @@
             <value description="especialidad_id">-1</value>
         </row>
     </table>
-    
     <table name="consulta">
         <column>id</column>
         <column>fecha</column>
@@ -284,7 +353,6 @@
             <value description="doctor_id">-3</value>
         </row>
     </table>  
-    
     <table name="horario">
         <column>id</column>
         <column>dia</column>
@@ -313,9 +381,7 @@
             <value description="doctor_id">-3</value>
         </row>
     </table>
-    
-    
-   <table name="turno">
+    <table name="turno">
         <column>id</column>
         <column>hora</column>
         <column>horario_id</column>
@@ -335,5 +401,36 @@
             <value description="horario_id">-3</value>
         </row>
     </table>
-
+    <table name="reserva">
+        <column>id</column>
+        <column>fecha_realizacion</column>
+        <column>fecha_reservada</column>
+        <column>cancelado</column>
+        <column>observ_cancel</column>
+        <column>paciente_id</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="fecha_realizacion">2008-01-01</value>
+            <value description="fecha_reservada">2008-02-02</value>
+            <value description="cancelado">false</value>
+            <value description="observ_cancel"></value>
+            <value description="paciente_id">-4</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="fecha_realizacion">2008-01-01</value>
+            <value description="fecha_reservada">2008-02-11</value>
+            <value description="cancelado">false</value>
+            <value description="observ_cancel"></value>
+            <value description="paciente_id">-5</value>
+        </row>
+        <row>
+            <value description="id">-3</value>
+            <value description="fecha_realizacion">2008-01-01</value>
+            <value description="fecha_reservada">2008-02-11</value>
+            <value description="cancelado">true</value>
+            <value description="observ_cancel"></value>
+            <value description="paciente_id">-6</value>
+        </row>
+    </table>
 </dataset>
