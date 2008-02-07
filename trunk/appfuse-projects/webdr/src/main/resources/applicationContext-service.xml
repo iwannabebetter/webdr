@@ -152,4 +152,9 @@
         <property name="doctorManager" ref="doctorManager"/>
     </bean>
     
+    
+    <bean id="reservaManager" class="edu.fpuna.service.impl.ReservaManagerImpl">
+        <property name="reservaDao" ref="reservaDao"/>
+    </bean>
+    
 </beans>
