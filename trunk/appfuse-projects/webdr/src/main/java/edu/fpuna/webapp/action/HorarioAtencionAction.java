@@ -9,6 +9,7 @@ import edu.fpuna.model.Doctor;
 import edu.fpuna.model.HorarioAtencion;
 import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.HorarioAtencionManager;
+import edu.fpuna.service.TurnoManager;
 import java.util.List;
 
 /**
@@ -18,10 +19,12 @@ import java.util.List;
 public class HorarioAtencionAction extends BaseAction {
     private HorarioAtencionManager horarioAtencionManager;
     private DoctorManager doctorManager;
+    private TurnoManager turnoManager;
             
     private List<HorarioAtencion> horariosDoctor;
     private HorarioAtencion horarioAtencion;
     private Long id;
+    private Long idTurno;
     private String doctorUsername;
     
     public void setHorarioAtencionManager(HorarioAtencionManager horarioAtencionManager) {
@@ -30,6 +33,10 @@ public class HorarioAtencionAction extends BaseAction {
     
     public void setDoctorManager(DoctorManager doctorManager) {
         this.doctorManager = doctorManager;
+    }
+
+    public void setTurnoManager(TurnoManager turnoManager) {
+        this.turnoManager = turnoManager;
     }
     
     public List<HorarioAtencion> getHorariosDoctor() {
@@ -50,6 +57,15 @@ public class HorarioAtencionAction extends BaseAction {
     public Long getId(){
         return id;
     }
+
+    public Long getIdTurno(){
+        return idTurno;
+    }
+    
+    public void setIdTurno(Long idTurno) {
+        this.idTurno = idTurno;
+    }
+    
     
     public void setHorariosDoctor(List<HorarioAtencion> l) {
         this.horariosDoctor = l;
@@ -82,6 +98,8 @@ public class HorarioAtencionAction extends BaseAction {
     public String delete(){
         log.debug("ANTES DE BORRAR HORARIO ATENCION nro = "+horarioAtencion.getId());
         
+        horarioAtencion = horarioAtencionManager.get(horarioAtencion.getId());
+        this.doctorUsername = horarioAtencion.getDoctor().getUsername();
         horarioAtencionManager.remove(horarioAtencion.getId());
         saveMessage(getText("horarioAtencion.deleted"));
         horariosDoctor = horarioAtencionManager.getHorarioAtencion(doctorUsername);
@@ -101,6 +119,10 @@ public class HorarioAtencionAction extends BaseAction {
             return delete();
         }
         
+        if(idTurno !=null){
+            return borrarTurno();
+        }
+        
         boolean isNew = (horarioAtencion.getId() == null);
         if(isNew){
             saveMessage(getText("horarioAtencion.created"));
@@ -115,6 +137,11 @@ public class HorarioAtencionAction extends BaseAction {
         return listPorDoctor();
     }
 
-    
+    public String borrarTurno(){
+        this.id = turnoManager.getTurno(idTurno).getHorario().getId();
+        turnoManager.remove(idTurno);
+        this.horarioAtencion = horarioAtencionManager.get(this.id);
+        return "turno_borrado";
+    }
     
 }

@@ -36,7 +36,11 @@
         <constructor-arg ref="horarioAtencionDao"/>
     </bean>
 
-	<bean id="reservaManager" class="edu.fpuna.service.impl.ReservaManagerImpl">
+    <bean id="turnoManager" class="edu.fpuna.service.impl.TurnoManagerImpl">
+        <constructor-arg ref="turnoDao"/>
+    </bean>
+    
+    <bean id="reservaManager" class="edu.fpuna.service.impl.ReservaManagerImpl">
         <constructor-arg ref="reservaDao"/>
     </bean>
     <!-- Add new Actions here -->

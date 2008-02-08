@@ -193,6 +193,7 @@
             <result name="cancel" >/WEB-INF/pages/doctor/horarios.jsp</result>
             <result name="delete" >/WEB-INF/pages/doctor/horarios.jsp</result>
             <result name="success">/WEB-INF/pages/doctor/horarios.jsp</result>
+            <result name="turno_borrado">/WEB-INF/pages/doctor/horariosForm.jsp</result>
         </action>
         
         <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">

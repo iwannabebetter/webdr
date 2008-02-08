@@ -151,7 +151,11 @@
         <property name="horarioAtencionDao" ref="horarioAtencionDao"/>
         <property name="doctorManager" ref="doctorManager"/>
     </bean>
-    
+
+    <bean id="turnoManager" class="edu.fpuna.service.impl.TurnoManagerImpl">
+        <property name="turnoDao" ref="turnoDao"/>
+    </bean>
+
     
     <bean id="reservaManager" class="edu.fpuna.service.impl.ReservaManagerImpl">
         <property name="reservaDao" ref="reservaDao"/>
