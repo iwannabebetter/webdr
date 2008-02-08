@@ -45,6 +45,11 @@ public class HorarioAtencion extends BaseObject {
         this.dia = dia;
     }
 
+    @Transient
+    public String getDiaString() {
+        return this.dia.toString();
+    }
+    
     @Column(name="hora_inicio",nullable=false)
     public Time getHoraInicio() {
         return horaInicio;
