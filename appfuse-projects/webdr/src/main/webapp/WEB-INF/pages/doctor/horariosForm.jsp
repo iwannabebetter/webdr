@@ -44,15 +44,34 @@
     
 </s:form>
 
-<s:if test="%{horarioAtencion.id != null}" >
-    <display:table name="horarioAtencion.turnos" class="table" requestURI="" id="turnosHorarioList" export="true" pagesize="25">
-        <display:column property="hora" sortable="true" href="doctorHorariosEdit.html" 
+<%--s:if test="%{horarioAtencion.id != null}" >
+    <b>Turnos </b><br>
+    <s:iterator value="horarioAtencion.turnos">
+        <img src="../../../images/eliminar.ico" alt="Borrar Turno" 
+            onclick="javascript:borrar_turno('<s:property value="id" />', '<s:property value="hora" />')" />
+        <s:property value="hora" />
+        <br>
+    </s:iterator>
+</s:if --%>
+
+
+<display:table name="horarioAtencion.turnos" class="table" id="turnosHorarioList" export="true" pagesize="25">
+        <display:column property="hora" sortable="true" 
             paramId="id" paramProperty="id" titleKey="turno.hora"/>
-    </display:table>
-</s:if>
+            
+        <display:column value="Borrar" sortable="true" href="doctorHorariosSave.html" 
+            paramId="idTurno" paramProperty="id" />
+</display:table>
 
 
 <script type="text/javascript">
     Form.focusFirstElement(document.forms["horariosFormDoctor"]);
     highlightFormElements();
+    
+    function borrar_turno( idturno, nombre){
+        if(confirm('¿Esta seguro que desea borrar el turno de las '+ nombre + '?')){
+            location.href = 'doctorHorariosSave.html?idTurno='+idturno;
+        }
+    }
 </script>
+

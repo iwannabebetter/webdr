@@ -400,6 +400,16 @@
             <value description="hora">11:30:00</value>
             <value description="horario_id">-3</value>
         </row>
+        <row>
+            <value description="id">-4</value>
+            <value description="hora">12:30:00</value>
+            <value description="horario_id">-3</value>
+        </row>
+        <row>
+            <value description="id">-5</value>
+            <value description="hora">13:30:00</value>
+            <value description="horario_id">-3</value>
+        </row>
     </table>
     <table name="reserva">
         <column>id</column>
