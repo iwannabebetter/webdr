@@ -22,7 +22,10 @@
     <bean id="todosInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
         <property name="authorizedRoles" value="ROLE_PACIENTE,ROLE_DOCTOR,ROLE_ADMIN"/>
     </bean>
-
+    
+    <bean id="pacienteInterceptor" class="edu.fpuna.webapp.interceptor.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="ROLE_PACIENTE"/>
+    </bean>
 
     <bean id="signupAction" class="edu.fpuna.webapp.action.SignupAction" scope="prototype">
         <property name="userManager" ref="userManager"/>
