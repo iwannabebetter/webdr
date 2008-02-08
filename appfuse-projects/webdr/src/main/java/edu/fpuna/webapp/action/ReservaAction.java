@@ -92,19 +92,25 @@ public class ReservaAction extends BaseAction {
     }
 
     public String listReservasPaciente() {
-        String username = this.getRequest().getParameter("username");
-        String pendiente = this.getRequest().getParameter("pendiente");
+        String username = this.getRequest().getRemoteUser();
         boolean pendienteBool = false;
         
-        if (pendiente.compareTo("S") == 0) {
-            pendienteBool = true;            
-        }
         log.debug("--> PACIENTE: "+username);
         
         reservas = manager.obtenerReservasPaciente(username, pendienteBool);
         return SUCCESS;
     }
 
+    public String listReservasPacientePend() {
+        String username = this.getRequest().getRemoteUser();
+        boolean pendienteBool = true;
+        
+        log.debug("--> PACIENTE: "+username);
+        
+        reservas = manager.obtenerReservasPaciente(username, pendienteBool);
+        return SUCCESS;
+    }
+    
     public String listReservasDoctor() {
 
         String username = this.getRequest().getParameter("username");

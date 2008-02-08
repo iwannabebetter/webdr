@@ -23,6 +23,7 @@
             <interceptor name="pacienteAndAdmin" class="pacienteAdminInterceptor"/>
             <interceptor name="doctorAndAdmin" class="doctorAdminInterceptor"/>
             <interceptor name="todos" class="todosInterceptor"/>
+            <interceptor name="paciente" class="pacienteInterceptor"/>
             <!-- Copied from struts-default.xml and changed validation exclude methods -->
             <interceptor-stack name="defaultStack">
                 <interceptor-ref name="exception"/>
@@ -72,6 +73,10 @@
             <interceptor-stack name="todosCheck">
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="todos"/>
+            </interceptor-stack>
+            <interceptor-stack name="pacienteCheck">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="paciente"/>
             </interceptor-stack>
         </interceptors>
         
@@ -173,6 +178,11 @@
         <action name="historial" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasPaciente">
             <interceptor-ref name="doctorCheck"/>
             <result>/WEB-INF/pages/paciente/historial.jsp</result>
+        </action>
+        
+        <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasPaciente">
+            <interceptor-ref name="pacienteCheck"/>
+            <result>/WEB-INF/pages/paciente/reservaList.jsp</result>
         </action>
         
     </package>
