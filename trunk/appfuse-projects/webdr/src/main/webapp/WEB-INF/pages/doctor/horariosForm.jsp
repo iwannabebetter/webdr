@@ -6,23 +6,30 @@
 
 <%@ include file="/common/taglibs.jsp"%>
 
-<head>
+<%--head>
     <title><fmt:message key="horariosForm.title"/></title>
     <meta name="heading" content="<fmt:message key='horariosForm.heading'/>"/>
     <meta name="menu" content="UserMenu"/>
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
-</head>
+</head --%>
 
-<b><c:out value="${horarioAtencion.doctor.firstName}" />
+<b>Horario del Doctor <c:out value="${horarioAtencion.doctor.firstName}" />
 <c:out value="${horarioAtencion.doctor.lastName}" /></b>
 
 <s:form name="horariosFormDoctor" action="doctorHorariosSave" method="post" validate="true" >
     <s:hidden key="horarioAtencion.id"/>
     <s:param id="doctorUsername" name="doctorUsername" value="%{doctorUsername}" />
+    <br>
+    <%--s:textfield key="horarioAtencion.dia"  cssClass="text medium"/--%>
+
+    <b>&nbsp;<fmt:message key="horarioAtencion.dia" />  </b>
+    <s:set name="day" value="horarioAtencion.diaString" scope="page" />
+    <appfuse:dias name="horarioAtencion.dia" prompt="" default="${day}"  />
+    <br><br>
     
-    <s:textfield key="horarioAtencion.dia"  cssClass="text medium"/>
-    <s:textfield key="horarioAtencion.HoraInicio" cssClass="text medium"/>
-    <s:textfield key="horarioAtencion.HoraFin" cssClass="text medium"/>
+    
+    <s:textfield key="horarioAtencion.horaInicio" cssClass="text medium"/>
+    <s:textfield key="horarioAtencion.horaFin" cssClass="text medium"/>
     
     <s:hidden key="doctorUsername" value="%{doctorUsername}" />
 
@@ -39,20 +46,10 @@
     onclick="location.href='<c:url value="/doctor/doctorHorarios.html?doctorUsername=${doctorUsername}"/>'"
     value="Volver a horarios"/>
 
-
     </li>
     
 </s:form>
 
-<%--s:if test="%{horarioAtencion.id != null}" >
-    <b>Turnos </b><br>
-    <s:iterator value="horarioAtencion.turnos">
-        <img src="../../../images/eliminar.ico" alt="Borrar Turno" 
-            onclick="javascript:borrar_turno('<s:property value="id" />', '<s:property value="hora" />')" />
-        <s:property value="hora" />
-        <br>
-    </s:iterator>
-</s:if --%>
 
 
 <display:table name="horarioAtencion.turnos" class="table" id="turnosHorarioList" export="true" pagesize="25">
