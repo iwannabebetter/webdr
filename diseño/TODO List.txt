@@ -32,3 +32,12 @@ NO COMENZADO
 * Actualizar Menus (nuevas funcionalidades, nuevos accesos) -->            todos
 * Agregar Validators para los formularios -------------------->            cparra
 * Mas cosas.
+* Ver como hacer la parte de la reserva de acuerdo a los turnos que 
+tiene un Dr...
+
+A CAMBIAR...
+
+* La reserva debe estar relacionada con un Doctor no solo por medio
+  de la consulta, sino que tambien al momento de realizar la reserva
+  se debe poder asignar la reserva relacionandola con un Dr. y a una hora 
+  determinada.
