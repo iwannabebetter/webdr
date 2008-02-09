@@ -70,4 +70,12 @@ public interface ReservaManager {
      * @param id id de Reserva a eliminar.
      */
     public void eliminarReserva(Long id);
+    
+    
+    /**
+     * Metodo para revisar si un turno esta disponible.
+     * @param id id de turno a verificar.
+     */
+    public boolean isTurnoDisponible(Long id, Timestamp fecha);
+    
 }

@@ -102,4 +102,12 @@ public class ReservaManagerImpl  extends GenericManagerImpl<Reserva, Long>
         return reservaDao.getAll();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isTurnoDisponible(Long id, Timestamp fecha) {
+        return reservaDao.isTurnoDisponible(id, fecha);
+    }
+
 }
