@@ -6,9 +6,11 @@
 package edu.fpuna.dao.hibernate;
 
 import edu.fpuna.dao.DoctorDao;
+import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.User;
+import java.sql.Timestamp;
 import java.util.List;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
@@ -62,5 +64,17 @@ public class DoctorDaoHibernate
         Table table = AnnotationUtils.findAnnotation(User.class, Table.class);
         return jdbcTemplate.queryForObject(
                 "select password from " + table.name() + " where username=?", String.class, username);
+    }
+
+    /** 
+     * {@inheritDoc}
+     */
+    public List<Doctor> obtenerPorDia(DiaDeSemana dia) {
+        log.debug("ANTES DE HACER JOIN DEL DOCTOR");
+        String query = "from Doctor as doc join doc.horarios as horarios" +
+                "with horarios.dia = ?";
+        List<Doctor> result = super.getHibernateTemplate().find(query, dia);
+        log.debug("DESPUES DE HACER JOIN DEL DOCTOR");
+        return result;
     }
 }

@@ -6,6 +6,7 @@
 package edu.fpuna.service.impl;
 
 import edu.fpuna.dao.DoctorDao;
+import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
@@ -108,5 +109,9 @@ public class DoctorManagerImpl
 
     public List<Doctor> obtenerDoctoresPorEspecialidad(Especialidad especialidad) {
         return doctorDao.obtenerPorEspecialidad(especialidad);
+    }
+
+    public List<Doctor> obtenerPorDia(DiaDeSemana dia) {
+        return doctorDao.obtenerPorDia(dia);
     }
 }

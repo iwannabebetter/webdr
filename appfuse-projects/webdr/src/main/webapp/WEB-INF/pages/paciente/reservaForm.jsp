@@ -6,6 +6,14 @@
 
 <s:form id="reservaForm" action="saveReserva" method="post" validate="true">
     <s:hidden name="reserva.id" value="%{reserva.id}"/>
+    <div class="group">
+        <li>
+            <div>
+                <s:datetimepicker key="reserva.fechaReservada" theme="ajax" required="true"
+                                  dayWidth="wide" displayFormat="dd/MM/yyyy" toggleType="fade"/>
+            </div>
+        </li>
+    </div>
     <s:textfield key="reserva.fechaRealizacion" required="true" cssClass="text medium"/>
     <s:textfield key="reserva.fecha" required="true" cssClass="text medium"/>
     <s:textfield key="consulta.medidasPaciente.alturaActual" required="true" cssClass="text medium"/>

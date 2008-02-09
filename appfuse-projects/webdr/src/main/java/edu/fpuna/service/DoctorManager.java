@@ -6,6 +6,7 @@
 package edu.fpuna.service;
 
 import edu.fpuna.dao.DoctorDao;
+import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.Especialidad;
 import java.util.List;
@@ -64,5 +65,7 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      * @return void
      */
     public void setEspecialidadManager(EspecialidadManager especialidadManager);
+    
+    public List<Doctor> obtenerPorDia(DiaDeSemana dia);
     
 }

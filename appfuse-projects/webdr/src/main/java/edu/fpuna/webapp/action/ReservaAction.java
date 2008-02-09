@@ -23,6 +23,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Calendar;
 
 /**
  * Action de la clase Reserva.
@@ -47,6 +48,8 @@ public class ReservaAction extends BaseAction {
     private List<Reserva> reservas;
     private List<Turno> turnosDisp;
     private Turno turno;
+    private List<Doctor> doctores;
+    private Doctor doctor;
     
     /* Otras variables importantes */
     private Long id;
@@ -259,6 +262,10 @@ public class ReservaAction extends BaseAction {
 
     public void setTurno(Turno turno) {
         this.turno = turno;
+    }
+    
+    public void getDoctoresFecha(Timestamp fecha){
+        this
     }
     
 }
