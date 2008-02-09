@@ -25,6 +25,7 @@ public class Reserva extends BaseObject {
     private String observacionCancelacion;
     private Paciente paciente;
     private Consulta consulta;
+    private Turno turno;
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
@@ -108,6 +109,16 @@ public class Reserva extends BaseObject {
 
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
+    }
+    
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="turno_id",unique=true)
+    public Turno getTurno() {
+        return turno;
+    }
+    
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 
     @Override
