@@ -1,21 +1,11 @@
 package edu.fpuna.webapp.taglib;
 
 import java.io.IOException;
-
-import java.text.Collator;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
-
 import edu.fpuna.model.LabelValue;
-
 import org.displaytag.tags.el.ExpressionEvaluator;
 
 /**
@@ -29,8 +19,13 @@ public class DiaSemanaTag extends TagSupport {
     private String prompt;
     private String scope;
     private String selected;
-    private String[] diasSemanas ={"Lunes","Martes","Miercoles","Jueves",
-                                    "Viernes","Sabado","Domingo"};
+    private String[] diasSemanas = {"Lunes",
+                                    "Martes",
+                                    "Miércoles",
+                                    "Jueves",
+                                    "Viernes",
+                                    "Sábado",
+                                    "Domingo"};
 
     public void setName(String name) {
         this.name = name;
