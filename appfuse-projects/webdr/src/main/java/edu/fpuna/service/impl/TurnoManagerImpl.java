@@ -18,42 +18,42 @@ import java.util.List;
  */
 public class TurnoManagerImpl 
     extends GenericManagerImpl<Turno, Long> implements TurnoManager {
-    private HorarioAtencionManager HorarioAtencionManager;
-    private TurnoDao TurnoDao;
+    private HorarioAtencionManager horarioAtencionManager;
+    private TurnoDao turnoDao;
     
-    public TurnoManagerImpl(TurnoDao TurnoDao) {
-        super(TurnoDao);
-        this.TurnoDao= TurnoDao;
+    public TurnoManagerImpl(TurnoDao turnoDao) {
+        super(turnoDao);
+        this.turnoDao = turnoDao;
     }
 
     public void setHorarioAtencionManager(HorarioAtencionManager HorarioAtencionManager){
-        this.HorarioAtencionManager = HorarioAtencionManager;
+        this.horarioAtencionManager = HorarioAtencionManager;
     }
     
-    public void setTurnoDao(TurnoDao TurnoDao){
-        this.TurnoDao = TurnoDao;
+    public void setTurnoDao(TurnoDao turnoDao){
+        this.turnoDao = turnoDao;
     }
     
     
     public List<Turno> getTurnos(HorarioAtencion h) {
-        return TurnoDao.getTurnos(h);
+        return turnoDao.getTurnos(h);
     }
     
     public Turno getTurno(Long id) {
-        return TurnoDao.getTurno(id);
+        return turnoDao.getTurno(id);
     }
 
-    public Turno guardar(Turno Turno) {
-        return TurnoDao.guardar(Turno);
+    public Turno guardar(Turno turno) {
+        return turnoDao.guardar(turno);
     }
     
     public Turno guardarConHorario(Turno turno, HorarioAtencion ha) {
         turno.setHorario(ha);
-        return TurnoDao.guardar(turno);
+        return turnoDao.guardar(turno);
     }
 
     public void remove(Turno obj) {
-        TurnoDao.eliminar(obj);
+        turnoDao.eliminar(obj);
     }
 
 }

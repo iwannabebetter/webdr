@@ -203,7 +203,12 @@ public class ReservaDaoHibernate
     }
     
     public Reserva guardar(Reserva p) {
-        return super.save(p);
+        
+        getHibernateTemplate().saveOrUpdate(p);
+        getHibernateTemplate().flush();
+        getHibernateTemplate().clear();
+        
+        return p;
     }
 
     public void eliminar(Reserva p) {

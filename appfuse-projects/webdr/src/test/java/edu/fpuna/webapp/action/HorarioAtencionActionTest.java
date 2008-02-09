@@ -5,8 +5,13 @@
 
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.model.HorarioAtencion;
+import edu.fpuna.model.Turno;
 import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.HorarioAtencionManager;
+import edu.fpuna.service.TurnoManager;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -47,6 +52,66 @@ public class HorarioAtencionActionTest extends BaseActionTestCase {
         log.debug("Hora 0 es .." + action.getHorariosDoctor().get(0).getHoraInicio());
         log.debug("Hora 1 es .." + action.getHorariosDoctor().get(1).getHoraInicio());
         log.debug("Hora 2 es .." + action.getHorariosDoctor().get(2).getHoraInicio());
+
+    }
+    
+    public void testCrearTurnos() throws Exception {
+        log.debug("Probando crear Turno...");
+        
+        HorarioAtencionManager manager = (HorarioAtencionManager) 
+                applicationContext.getBean("horarioAtencionManager");
+        TurnoManager tmanager = (TurnoManager) 
+                applicationContext.getBean("turnoManager");
+        
+        action.setHorarioAtencionManager(manager);
+        action.setTurnoManager(tmanager);                 
+        HorarioAtencion horarioAtencion = manager.getHorarioAtencion(-1L);
+        action.setHorarioAtencion(horarioAtencion);
+        
+        log.debug("Hora de Atención a dividir en turnos de 60 minutos");
+        log.debug("Hora Inicio: "+
+                action.getHorarioAtencion().getHoraInicio().getTime());
+        log.debug("Hora Inicio String: "+
+                action.getHorarioAtencion().getHoraInicioString());
+        
+        log.debug("Hora Fin: "+
+                action.getHorarioAtencion().getHoraFin().getTime());
+        log.debug("Hora Fin String: "+
+                action.getHorarioAtencion().getHoraFinString());
+        
+        float cantTurnos = (action.getHorarioAtencion().getHoraFin().getTime() - 
+                action.getHorarioAtencion().getHoraInicio().getTime())/(60*60*1000);
+        
+        log.debug("Cantidad de Turnos a crear: "+cantTurnos);
+        
+        action.crearTurnos(60);
+        
+        horarioAtencion = manager.getHorarioAtencion(horarioAtencion.getId());
+        
+        action.setHorarioAtencion(horarioAtencion);
+        
+        /*log.debug("Probando cantidad de turnos creado... "+
+                action.getHorarioAtencion().getTurnos().size());
+        */
+        
+        log.debug("Probando cantidad de turnos creado... "+
+                manager.get(-1L).getTurnos().size());
+        
+                
+        assertTrue(manager.get(-1L).getTurnos().size() == 7);
+        
+        
+        Set<Turno> turnos = action.getHorarioAtencion().getTurnos();
+        
+        Iterator<Turno> it = turnos.iterator();
+        
+        int i = 0;
+        while(it.hasNext()) {
+            i++;
+            log.debug("Turno "+i+" es ..." + it.next().getHora().toString());            
+        }
+        
+        
 
     }
 

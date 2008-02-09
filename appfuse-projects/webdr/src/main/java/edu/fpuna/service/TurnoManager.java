@@ -17,7 +17,7 @@ import java.util.List;
 public interface TurnoManager extends GenericManager<Turno, Long> {
 
     
-    public void setTurnoDao(TurnoDao TurnoDao);
+    public void setTurnoDao(TurnoDao turnoDao);
     
     public void setHorarioAtencionManager(HorarioAtencionManager hmgr);
         
@@ -31,10 +31,13 @@ public interface TurnoManager extends GenericManager<Turno, Long> {
      */
     public Turno getTurno(Long id);
     
+    
+    public Turno guardarConHorario(Turno turno, HorarioAtencion ha);
+    
     /**
      * {@inheritDoc}
      */
-    public Turno guardar(Turno especialidad);
+    public Turno guardar(Turno turno);
 
     /**
      * {@inheritDoc}
