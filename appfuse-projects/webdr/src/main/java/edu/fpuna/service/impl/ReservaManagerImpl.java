@@ -106,7 +106,6 @@ public class ReservaManagerImpl  extends GenericManagerImpl<Reserva, Long>
     /**
      * {@inheritDoc}
      */
-    @Override
     public boolean isTurnoDisponible(Turno turno, Timestamp fecha) {
         return reservaDao.isTurnoDisponible(turno, fecha);
     }
