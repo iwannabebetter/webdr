@@ -10,7 +10,9 @@ package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.Reserva;
 import edu.fpuna.model.Doctor;
+import edu.fpuna.model.HorarioAtencion;
 import edu.fpuna.model.Paciente;
+import edu.fpuna.model.Turno;
 import edu.fpuna.service.ConsultaManager;
 import edu.fpuna.service.ReservaManager;
 import edu.fpuna.service.DoctorManager;
@@ -19,6 +21,7 @@ import edu.fpuna.service.PacienteManager;
 import edu.fpuna.service.TurnoManager;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -42,6 +45,8 @@ public class ReservaAction extends BaseAction {
      */
     private Reserva reserva;
     private List<Reserva> reservas;
+    private List<Turno> turnosDisp;
+    private Turno turno;
     
     /* Otras variables importantes */
     private Long id;
@@ -225,4 +230,36 @@ public class ReservaAction extends BaseAction {
     public void setTurnoManager(TurnoManager turnoManager) {
         this.turnoManager = turnoManager;
     }
+    
+    public void getReservasDisp(HorarioAtencion ha, Timestamp fecha){
+        List<Turno> turnos =this.turnoManager.getTurnos(ha);
+        Iterator<Turno> it = turnos.iterator();
+        boolean disponible = true;
+        Long idTurno;
+        while(it.hasNext()){
+            idTurno = it.next().getId();
+            disponible = this.manager.isTurnoDisponible(idTurno, fecha);
+            this.turno = this.turnoManager.get(idTurno);
+            if(disponible){
+                this.turnosDisp.add(turno);
+            }
+        }
+    }
+
+    public List<Turno> getTurnosDisp() {
+        return turnosDisp;
+    }
+
+    public void setTurnosDisp(List<Turno> turnosDisp) {
+        this.turnosDisp = turnosDisp;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+    
 }
