@@ -235,13 +235,12 @@ public class ReservaAction extends BaseAction {
         List<Turno> turnos =this.turnoManager.getTurnos(ha);
         Iterator<Turno> it = turnos.iterator();
         boolean disponible = true;
-        Long idTurno;
+        Turno turnoActual;
         while(it.hasNext()){
-            idTurno = it.next().getId();
-            disponible = this.manager.isTurnoDisponible(idTurno, fecha);
-            this.turno = this.turnoManager.get(idTurno);
+            turnoActual = it.next();
+            disponible = this.manager.isTurnoDisponible(turnoActual, fecha);
             if(disponible){
-                this.turnosDisp.add(turno);
+                this.turnosDisp.add(turnoActual);
             }
         }
     }

@@ -7,6 +7,7 @@ package edu.fpuna.service;
 
 import edu.fpuna.dao.ReservaDao;
 import edu.fpuna.model.Reserva;
+import edu.fpuna.model.Turno;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -76,6 +77,6 @@ public interface ReservaManager {
      * Metodo para revisar si un turno esta disponible.
      * @param id id de turno a verificar.
      */
-    public boolean isTurnoDisponible(Long id, Timestamp fecha);
+    public boolean isTurnoDisponible(Turno turno, Timestamp fecha);
     
 }

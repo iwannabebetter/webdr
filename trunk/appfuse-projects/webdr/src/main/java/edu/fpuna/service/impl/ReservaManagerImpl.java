@@ -7,6 +7,7 @@ package edu.fpuna.service.impl;
 
 import edu.fpuna.dao.ReservaDao;
 import edu.fpuna.model.Reserva;
+import edu.fpuna.model.Turno;
 import edu.fpuna.service.ReservaManager;
 import java.sql.Timestamp;
 import java.util.List;
@@ -106,8 +107,8 @@ public class ReservaManagerImpl  extends GenericManagerImpl<Reserva, Long>
      * {@inheritDoc}
      */
     @Override
-    public boolean isTurnoDisponible(Long id, Timestamp fecha) {
-        return reservaDao.isTurnoDisponible(id, fecha);
+    public boolean isTurnoDisponible(Turno turno, Timestamp fecha) {
+        return reservaDao.isTurnoDisponible(turno, fecha);
     }
 
 }
