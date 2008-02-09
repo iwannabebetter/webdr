@@ -388,7 +388,7 @@
         <row>
             <value description="id">-1</value>
             <value description="hora">07:30:00</value>
-            <value description="horario_id">-1</value>
+            <value description="horario_id">-2</value>
         </row>
         <row>
             <value description="id">-2</value>

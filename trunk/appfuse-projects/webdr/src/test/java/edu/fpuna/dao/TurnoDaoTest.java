@@ -8,6 +8,8 @@ package edu.fpuna.dao;
 import edu.fpuna.model.HorarioAtencion;
 import edu.fpuna.model.Turno;
 import java.sql.Time;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -42,12 +44,35 @@ public class TurnoDaoTest extends BaseDaoTestCase {
         turno.setHora(hora);
         
         HorarioAtencion horario = obtenerHorario();
+        
+        log.debug("Horario de Atencion antes de agregar turno: cantturnos = " +
+                horario.getTurnos().size());
+      
         turno.setHorario(horario);
         log.debug("Guardando turno...");
+        
         turno = turnoDao.guardar(turno);
+        
         assertNotNull(turno.getId());
+        
         log.debug("Turno guardado...");
-             
+        
+        log.debug("Turno es ..." + turno.getHora().toString());            
+        flush();     
+        
+        HorarioAtencion ht = obtenerHorario();
+        
+        Set<Turno> turnos = ht.getTurnos();
+        
+        Iterator<Turno> it = turnos.iterator();
+        
+        int i = 0;
+        while(it.hasNext()) {
+            i++;
+            log.debug("Turno "+i+" es ..." + it.next().getHora().toString());            
+        }
+        
+        
         log.debug("Eliminando turno...");
         turnoDao.eliminar(turno);
         flush();

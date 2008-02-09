@@ -46,7 +46,10 @@ public class TurnoDaoHibernate
     }
 
     public Turno guardar(Turno t) {
-        return super.save(t);
+        getHibernateTemplate().saveOrUpdate(t);
+        getHibernateTemplate().flush();
+        getHibernateTemplate().clear();
+        return t;
     }
 
     public void eliminar(Turno t) {

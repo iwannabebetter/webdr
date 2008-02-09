@@ -7,9 +7,11 @@ package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.HorarioAtencion;
+import edu.fpuna.model.Turno;
 import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.HorarioAtencionManager;
 import edu.fpuna.service.TurnoManager;
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -142,6 +144,43 @@ public class HorarioAtencionAction extends BaseAction {
         turnoManager.remove(idTurno);
         this.horarioAtencion = horarioAtencionManager.get(this.id);
         return "turno_borrado";
+    }
+    /**
+     * 
+     * @param duracion Duracion de cada turno a crear en minutos
+     * @return
+     */
+    public String crearTurnos(int duracion) {
+        
+        Long duracionMili = duracion*60*1000L;
+        Long ini = this.horarioAtencion.getHoraInicio().getTime();
+        Long fin = this.horarioAtencion.getHoraFin().getTime();
+        int i=0;
+        log.debug("Creando Turnos para horario: "+this.horarioAtencion.toString());
+        while (ini < fin) {
+            i++;
+            
+            Time horaTurno = new Time(ini);
+            Turno turnoNew = new Turno();
+            
+            log.debug("Turno "+i+": "+horaTurno.toString());
+            
+            turnoNew.setHora(horaTurno);
+            turnoNew.setHorario(this.horarioAtencion);
+            
+            turnoNew = this.turnoManager.guardar(turnoNew);
+                       
+            log.debug("Turno "+i+": "+horaTurno.toString()+" Creado...");
+            ini += duracionMili;
+        }
+        
+        int size = this.horarioAtencionManager.get(-1L).getTurnos().size();
+        
+        log.debug("Cantidad de Turnos ---> "+size);
+        
+        
+        
+        return "turno_creado";
     }
     
 }
