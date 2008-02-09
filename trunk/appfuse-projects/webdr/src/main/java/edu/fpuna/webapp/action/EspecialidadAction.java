@@ -10,7 +10,7 @@ import edu.fpuna.service.EspecialidadManager;
 import java.util.List;
 
 /**
- *
+ * Action para la clase Especialidad
  * @author Cristhian Parra
  */
 public class EspecialidadAction extends BaseAction {
@@ -20,14 +20,12 @@ public class EspecialidadAction extends BaseAction {
     Especialidad especialidad;
     Long id;
     
-    
-    
     public Especialidad getEspecialidad() {
-        return this.especialidad;
+        return especialidad;
     }
     
     public List<Especialidad> getEspecialidades() {
-        return this.especialidades;
+        return especialidades;
     }
 
     public void setEspecialidad(Especialidad especialidad) {
@@ -58,13 +56,11 @@ public class EspecialidadAction extends BaseAction {
     }
     
     public String edit() {
-       
-        if (id != null){
+        if (id != null)
             especialidad = manager.getEspecialidad(id);
-        }
-        else{
+        else
             especialidad = new Especialidad();
-        }
+
         return SUCCESS;
     }
 
@@ -80,10 +76,9 @@ public class EspecialidadAction extends BaseAction {
         String key = (isNew) ? "especialidad.added" : "especialidad.updated";
         saveMessage(getText(key));
 
-        if (!isNew){
+        if (!isNew)
             return INPUT;
-        }else{
+        else
             return SUCCESS;
-        }
     }
 }
