@@ -9,6 +9,7 @@ import edu.fpuna.Constants;
 import edu.fpuna.dao.ReservaDao;
 import edu.fpuna.model.Reserva;
 import edu.fpuna.model.Role;
+import edu.fpuna.model.Turno;
 import edu.fpuna.model.User;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -180,6 +181,25 @@ public class ReservaDaoHibernate
         log.debug("--> Busqueda Finalizada.");
         
         return result;
+    }
+    
+    public boolean isTurnoDisponible(Turno turno, Timestamp fecha) {
+                
+        log.debug("--> Verificando disponibilidad del Turno: " + turno.toString() + "...");
+        
+        String query = "from Reserva where turno.id    = ?        " +
+                       "     and day(fechareservada)   = day(?)   " +
+                       "     and month(fechareservada) = month(?) " +
+                       "     and year(fechareservada)  = year(?)  ";
+        
+        Object [] args = { turno.getId(), fecha, fecha, fecha };
+        
+        List<Reserva> result = super.getHibernateTemplate()
+                                     .find(query, args );
+
+        log.debug("--> Busqueda Finalizada.");
+        
+        return result.isEmpty();
     }
     
     public Reserva guardar(Reserva p) {
