@@ -8,6 +8,7 @@
  */
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Reserva;
 import edu.fpuna.model.Doctor;
 import edu.fpuna.model.HorarioAtencion;
@@ -265,7 +266,34 @@ public class ReservaAction extends BaseAction {
     }
     
     public void getDoctoresFecha(Timestamp fecha){
-        this
+        DiaDeSemana dia = obtenerDia(fecha);
+        this.doctores = this.doctorManager.obtenerPorDia(dia);
+    }
+
+    private DiaDeSemana obtenerDia(Timestamp fecha) {
+        DiaDeSemana dia = null;
+        if(fecha.getDay() == 0){
+            return dia.DOMINGO;
+        }
+        if(fecha.getDay() == 1){
+            return dia.LUNES;
+        }
+        if(fecha.getDay() == 2){
+            return dia.MARTES;
+        }
+        if(fecha.getDay() == 3){
+            return dia.MIERCOLES;
+        }
+        if(fecha.getDay() == 4){
+            return dia.JUEVES;
+        }
+        if(fecha.getDay() == 5){
+            return dia.VIERNES;
+        }
+        if(fecha.getDay() == 6){
+            return dia.SABADO;
+        }
+        return dia;
     }
     
 }
