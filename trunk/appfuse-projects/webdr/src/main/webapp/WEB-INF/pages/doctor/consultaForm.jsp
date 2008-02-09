@@ -6,17 +6,57 @@
 
 <s:form id="consultaForm" action="saveConsulta" method="post" validate="true">
     <s:hidden name="consulta.id" value="%{consulta.id}"/>
-    <s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.medidasPaciente.pesoActual" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.medidasPaciente.alturaActual" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.medidasPaciente.edadActual" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.medidasPaciente.edadEnMeses" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.notas.sintomas" required="true" cssClass="text medium"/>
-    <s:textarea key="consulta.notas.diagnostico" required="true" cssClass="text medium"/>
-    <s:textarea key="consulta.notas.recetario" required="true" cssClass="text medium"/>
-    <s:textarea key="consulta.notas.indicaciones" required="true" cssClass="text medium"/>
-    <s:textfield key="consulta.paciente.fullName" required="true" cssClass="text medium"/>
-    <s:textfield label="Doctor Consultado" key="userNameDoctor" required="true" disabled="true" cssClass="text medium"/>
+    <li>
+        <s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
+    </li>
+    <li>
+        <div class="left">
+            <s:textfield key="consulta.medidasPaciente.pesoActual" required="true" 
+                cssClass="text medium"/>
+        </div>
+        <div>
+            <s:textfield key="consulta.medidasPaciente.alturaActual" required="true" 
+                cssClass="text medium"/>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <s:textfield key="consulta.medidasPaciente.edadActual" required="true" 
+                cssClass="text medium"/>
+        </div>
+        <div>
+            <s:textfield key="consulta.medidasPaciente.edadEnMeses" required="true" 
+                cssClass="text medium"/>
+        </div>
+    </li>
+    <li>
+        <div>
+            <s:textarea key="consulta.notas.sintomas" required="true" cssClass="text medium" 
+                rows="10" cols="30" wrap="true"/>
+        </div>
+        <div>
+            <s:textarea key="consulta.notas.diagnostico" required="true" cssClass="text medium" 
+                rows="10" cols="30" wrap="true"/>
+        </div>
+        <div>
+            <s:textarea key="consulta.notas.recetario" required="true" cssClass="text medium" 
+                rows="10" cols="30" wrap="true"/>
+        </div>
+        <div>
+            <s:textarea key="consulta.notas.indicaciones" required="true" cssClass="text medium" 
+                rows="10" cols="30" wrap="true"/>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <s:textfield key="consulta.paciente.fullName" required="true" cssClass="text medium"/>
+        </div>
+        <div>
+            <s:textfield label="Doctor Consultado" key="userNameDoctor" required="true" 
+                disabled="true" cssClass="text medium"/>
+        </div>
+    </li>
+    
     <s:hidden name="consulta.paciente.id" value="%{consulta.paciente.id}"/>
     <s:hidden name="consulta.doctor.id" value="%{consulta.doctor.id}"/>
     
@@ -31,4 +71,4 @@
 
 <script type="text/javascript">
     Form.focusFirstElement($("consultaForm"));
-    </script>
+</script>
