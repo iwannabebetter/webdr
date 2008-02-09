@@ -6,6 +6,7 @@
 package edu.fpuna.dao;
 
 import edu.fpuna.model.Reserva;
+import edu.fpuna.model.Turno;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -77,6 +78,8 @@ public interface ReservaDao extends GenericDao<Reserva, Long> {
     public List<Reserva> obtenerReservasFechaDr(String username,Timestamp fechaInicio, Timestamp fechaFin);
    
     public List<Reserva> obtenerReservasFechaPac(String username,Timestamp fechaInicio, Timestamp fechaFin);
+    
+    public boolean isTurnoDisponible(Turno turno, Timestamp fecha);
     
     public Reserva guardar(Reserva p);
     
