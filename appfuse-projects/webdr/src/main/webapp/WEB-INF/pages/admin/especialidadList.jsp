@@ -13,10 +13,12 @@
 
 <c:out value="${buttons}" escapeXml="false" />
 <s:set name="especialidades" value="especialidades" scope="request"/>
-<display:table name="especialidades" class="table" requestURI="" id="especialidadList" export="true"
-               pagesize="25">
-    <display:column property="nombre" sortable="true" titleKey="especialidad.nombre"
-                    url="editEspecialidad.html?from=list" paramId="id" paramProperty="id"/>
+<display:table name="especialidades" class="table" requestURI="" id="especialidadList" export="false" pagesize="10">
+    <display:column titleKey="especialidad.nombre" sortable="true">
+        <a href="javascript:ajaxGet('detalles', 'viewEspecialidad.html', 'id=${especialidadList.id}')">
+            <c:out value="${especialidadList.nombre}"/>
+        </a>
+    </display:column>
     <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
     
     <display:setProperty name="paging.banner.item_name" value="especialidad"/>
@@ -25,8 +27,9 @@
     <display:setProperty name="export.csv.filename" value="Espacialidades.csv"/>
     <display:setProperty name="export.pdf.filename" value="Espacialidades.pdf"/>
 </display:table>
-<c:out value="${buttons}" escapeXml="false" />
 
 <script type="text/javascript">
     highlightTableRows("especialidadList");
 </script>
+
+<div id="detalles" style="display: inline; overflow: auto; display: none;"></div>
