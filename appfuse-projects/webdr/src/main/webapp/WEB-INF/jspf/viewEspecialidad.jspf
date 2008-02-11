@@ -1,0 +1,9 @@
+<%@ include file="/common/taglibs.jsp"%>
+<br><br>
+<h3><fmt:message key="especialidadDetail.heading"/></h3>
+<s:form action="editEspecialidad" >
+    <s:hidden name="id" value="%{especialidad.id}"/>
+    <s:label key="especialidad.nombre" cssClass="text medium"/>
+    <s:label key="especialidad.descripcion" cssClass="text medium"/>
+    <s:submit cssClass="button" key="button.edit" theme="simple"/>
+</s:form>
