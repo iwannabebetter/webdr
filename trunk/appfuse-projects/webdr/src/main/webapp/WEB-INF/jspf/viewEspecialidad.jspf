@@ -5,5 +5,7 @@
     <s:hidden name="id" value="%{especialidad.id}"/>
     <s:label key="especialidad.nombre" cssClass="text medium"/>
     <s:label key="especialidad.descripcion" cssClass="text medium"/>
-    <s:submit cssClass="button" key="button.edit" theme="simple"/>
+    <input type="button" style="margin-right: 5px"
+        onclick="location.href='<c:url value="/admin/editEspecialidad.html?id=${especialidad.id}"/>'"
+        value="<fmt:message key="button.edit"/>"/>
 </s:form>
