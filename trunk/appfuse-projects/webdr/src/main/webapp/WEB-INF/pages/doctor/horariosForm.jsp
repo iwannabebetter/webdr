@@ -39,7 +39,7 @@
     <li class="buttonBar bottom">
         <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
         <c:if test="${not empty horarioAtencion.id}">
-            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('horarioAtencion')" theme="simple"/>
+            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('este horario de atenci&oacute;n')" theme="simple"/>
         </c:if>
 
         <input type="button" style="margin-right: 5px"
