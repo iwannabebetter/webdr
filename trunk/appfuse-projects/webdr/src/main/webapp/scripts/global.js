@@ -265,7 +265,11 @@ function ajaxGet(div_id, url, args) {
     
     // Función callback de fracaso
     var fracaso = function(transport) {
-        var mensaje = "<br><br><p class='error'>Error en la petici&oacute;n</p>";
+        var mensaje = '<br><br>' + 
+                      '<div class="error">' + 
+                      '<img src="/images/iconWarning.gif" class="icon"/>' +
+                      ' Error en la petici&oacute;n'
+                      '</div>';
         contenedor.innerHTML = mensaje;
     };
     
