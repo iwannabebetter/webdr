@@ -17,7 +17,7 @@
     <li class="buttonBar bottom">
         <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
         <c:if test="${not empty especialidad.id}">
-            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('especialidad')" theme="simple"/>
+            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('esta especialidad')" theme="simple"/>
         </c:if>
         <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
     </li>
