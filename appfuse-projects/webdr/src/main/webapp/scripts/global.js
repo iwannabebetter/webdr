@@ -244,6 +244,48 @@ function confirmDelete(obj) {
     }
 }
 
+/* 
+ * Despliega datos recuperados con AJAX en un contenedor 
+ *      div_id --> Id del Div que debe actualizarse.
+ *      url -----> URL que debe recuperarse.
+ *      args ----> Argumentos del método GET
+ */
+function ajaxGet(div_id, url, args) {
+    // Obtenemos el contenedor
+    var contenedor = $(div_id);
+    contenedor.update("<br><br><p>Esperando datos...</p>");
+    contenedor.show();
+    
+    // Función callback de éxito
+    var exito = function(transport) {
+        var respuesta = transport.responseText || "<br><br><p>No se recuperaron datos...</p>";
+        contenedor.innerHTML = respuesta;
+        contenedor.scrollTo();
+    };
+    
+    // Función callback de fracaso
+    var fracaso = function(transport) {
+        var mensaje = "<br><br><p class='error'>Error en la petici&oacute;n</p>";
+        contenedor.innerHTML = mensaje;
+    };
+    
+    // Si no se agregó el argumento "decorate"
+    if (args.toLowerCase().indexOf("decorate=false") < 0)
+        args = args + "&decorate=false";
+    
+    // Parámetros del objeto Ajax.Request
+    var parametros = {
+        method: 'get',
+        parameters: args,
+        evalScripts: true,
+        onSuccess: exito,
+        onFailure: fracaso
+    };
+    
+    // Realizamos la petición
+    var obj = new Ajax.Request(url, parametros);
+}
+
 function highlightTableRows(tableId) {
     var previousClass = null;
     var table = document.getElementById(tableId); 
