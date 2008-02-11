@@ -15,7 +15,7 @@
 <s:set name="especialidades" value="especialidades" scope="request"/>
 <display:table name="especialidades" class="table" requestURI="" id="especialidadList" export="false" pagesize="10">
     <display:column titleKey="especialidad.nombre" sortable="true">
-        <a href="javascript:ajaxGet('detalles', 'viewEspecialidad.html', 'id=${especialidadList.id}')">
+        <a onclick="javascript:ajaxGet('detalles', 'viewEspecialidad.html', 'id=${especialidadList.id}')">
             <c:out value="${especialidadList.nombre}"/>
         </a>
     </display:column>
