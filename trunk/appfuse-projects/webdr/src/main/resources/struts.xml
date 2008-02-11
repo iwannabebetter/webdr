@@ -301,6 +301,11 @@
             <result name="error">/WEB-INF/pages/admin/especialidadList.jsp</result>
         </action>
         
+        <action name="viewEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="edit">
+            <interceptor-ref name="adminCheck"/>
+            <result name="success">/WEB-INF/jspf/viewEspecialidad.jspf</result>
+        </action>
+        
         <action name="saveEspecialidad" class="edu.fpuna.webapp.action.EspecialidadAction" method="save">
             <interceptor-ref name="adminCheck"/>
             <result name="input">/WEB-INF/pages/admin/especialidadForm.jsp</result>
