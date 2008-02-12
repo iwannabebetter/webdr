@@ -109,7 +109,7 @@ public class ConsultaDaoTest extends BaseDaoTestCase {
         Consulta consulta = new Consulta();
         consulta.setId(new Long(3));
         consulta.setFecha(new Timestamp(80,10,5,11,30,0,0));
-        MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Double(200), new Integer(30), new Boolean(false));
+        MedidasPaciente mpacientes = new MedidasPaciente(new Double(100), new Integer(200), new Integer(30), new Boolean(false));
         consulta.setMedidasPaciente(mpacientes);
         consulta.setNotas(new Notas("Irritaciones", "Alergia", "Alergin 100gr", "200ml cada 12hrs"));
         consulta.setDoctor(doctorDao.obtenerPorNombre("ghuttemann"));
