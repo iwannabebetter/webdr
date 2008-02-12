@@ -1,0 +1,50 @@
+<%@ include file="/common/taglibs.jsp"%>
+<br><br>
+<h3><fmt:message key="doctorProfile.heading"/></h3>
+<s:form action="editDoctor">
+    <s:label key="doctor.firstName" cssClass="text medium"/>
+    <s:label key="doctor.lastName" cssClass="text medium"/>
+    <br>
+    <s:label key="doctor.username" cssClass="text large"/>
+    <s:label key="doctor.passwordHint" cssClass="text large"/>
+    <s:label key="doctor.registro" cssClass="text large"/>
+    <s:label key="doctor.fechaNacimiento" cssClass="text large"/>
+    <s:label key="doctor.email" cssClass="text medium"/>
+    <s:label key="doctor.phoneNumber" cssClass="text medium"/>
+    <s:label key="doctor.website" cssClass="text large"/>
+    <s:label key="doctor.address.address" cssClass="text large"/>
+    <s:label key="doctor.address.city" cssClass="text medium" />
+    <s:label key="doctor.address.province"  cssClass="text state" />
+    <s:label key="doctor.address.postalCode"cssClass="text medium" />
+    <s:label key="doctor.address.country" cssClass="text medium" />
+    <s:if test="%{editAccess}">
+        <input type="button" style="margin-right: 5px"
+            onclick="location.href='<c:url value="/doctor/editDoctor.html?id=${doctor.id}"/>'"
+            value="<fmt:message key="button.edit"/>"/>
+    </s:if>
+</s:form>
+
+<br><b>Especialidades del Doctor</b>
+<display:table name="doctor.especialidades" class="table" requestURI="" id="especialidadList" pagesize="10">
+    <display:column property="nombre" sortable="true" titleKey="especialidad.nombre"/>
+    <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
+    
+    <display:setProperty name="paging.banner.item_name" value="especialidad"/>
+    <display:setProperty name="paging.banner.items_name" value="especialidades"/>
+</display:table>
+<br>
+
+<b>Horarios del Doctor</b>
+<display:table name="doctor.horarios" class="table" requestURI="" id="horarioAtencionesList" pagesize="10">
+    <display:column property="dia" sortable="true" titleKey="horarioAtencion.dia"/>
+    <display:column property="horaInicioString" sortable="true" titleKey="horarioAtencion.horaInicio"/>
+    <display:column property="horaFinString" sortable="true" titleKey="horarioAtencion.horaFin"/>
+    <display:column property="doctor.username" sortable="true" titleKey="horarioAtencion.doctor.username"/>
+
+    <display:setProperty name="paging.banner.item_name" value="horario de atención"/>
+    <display:setProperty name="paging.banner.items_name" value="horarios de atención"/>
+
+    <display:setProperty name="export.excel.filename" value="HorarioDr.xls"/>
+    <display:setProperty name="export.csv.filename" value="HorarioDr.csv"/>
+    <display:setProperty name="export.pdf.filename" value="HorarioDr.pdf"/>
+</display:table>
