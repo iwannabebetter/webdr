@@ -13,7 +13,7 @@ import java.util.List;
  * Action para la clase Especialidad
  * @author Cristhian Parra
  */
-public class EspecialidadAction extends BaseAction {
+public class EspecialidadAction extends EditAccessAction {
 
     private EspecialidadManager manager;
     List<Especialidad> especialidades;
