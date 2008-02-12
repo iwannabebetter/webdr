@@ -16,7 +16,7 @@ import javax.persistence.Embeddable;
 public class MedidasPaciente {
     
     private Double pesoActual;      // opcional; en kilogramos
-    private Double alturaActual;    // opcional; en metros
+    private Integer alturaActual;    // opcional; en centímetros
     private Integer edadActual;     // opcional; en años o meses
     private Boolean edadEnMeses;    // indica si la edad está en meses
 
@@ -24,7 +24,7 @@ public class MedidasPaciente {
         
     }
     
-    public MedidasPaciente(Double pesoActual, Double alturaActual, 
+    public MedidasPaciente(Double pesoActual, Integer alturaActual, 
             Integer edadActual, Boolean edadEnMeses) {
         this.pesoActual   = pesoActual;
         this.alturaActual = alturaActual;
@@ -42,15 +42,15 @@ public class MedidasPaciente {
     }
 
     @Column(name="altura_actual")
-    public Double getAlturaActual() {
+    public Integer getAlturaActual() {
         return alturaActual;
     }
 
-    public void setAlturaActual(Double alturaActual) {
+    public void setAlturaActual(Integer alturaActual) {
         this.alturaActual = alturaActual;
     }
 
-    @Column(name="edad_actual")
+    @Column(name="edad_actual",nullable=false)
     public Integer getEdadActual() {
         return edadActual;
     }
@@ -59,7 +59,7 @@ public class MedidasPaciente {
         this.edadActual = edadActual;
     }
 
-    @Column(name="edad_meses")
+    @Column(name="edad_meses",nullable=false)
     public Boolean getEdadEnMeses() {
         return edadEnMeses;
     }
