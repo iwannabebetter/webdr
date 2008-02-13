@@ -8,7 +8,6 @@ package edu.fpuna.service;
 import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
-import edu.fpuna.model.Especialidad;
 import java.util.List;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
 
@@ -56,8 +55,7 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      * @param especialidad La especialidad buscada.
      * @return Una lista con los doctores recuperados.
      */
-    public List<Doctor> obtenerDoctoresPorEspecialidad(Especialidad especialidad);
-    
+    public List<Doctor> obtenerDoctoresPorEspecialidad(String especialidad);
     
     /**
      * Setea el manager de especialidades, 
