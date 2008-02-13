@@ -9,14 +9,17 @@
 package edu.fpuna.webapp.action;
 
 import edu.fpuna.model.DiaDeSemana;
+import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Reserva;
 import edu.fpuna.model.Doctor;
+import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.HorarioAtencion;
 import edu.fpuna.model.Paciente;
 import edu.fpuna.model.Turno;
 import edu.fpuna.service.ConsultaManager;
 import edu.fpuna.service.ReservaManager;
 import edu.fpuna.service.DoctorManager;
+import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.HorarioAtencionManager;
 import edu.fpuna.service.PacienteManager;
 import edu.fpuna.service.TurnoManager;
@@ -25,37 +28,50 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Action de la clase Reserva.
  * @author Hugo Meyer, Marcelo Rodas
  */
 public class ReservaAction extends BaseAction {
+    private Set<HorarioAtencion> horarios;
 
     /*
      * Managers utilizados en las funcionalidades de Reserva
      */
     private ReservaManager manager;
     private DoctorManager doctorManager;
+    private EspecialidadManager especialidadManager;
     private PacienteManager pacienteManager;
     private ConsultaManager consultaManager;
     private HorarioAtencionManager horarioAtencionManager;
     private TurnoManager turnoManager;
     
     /*
-     * POJO de Reserva y Listado
+     * Listados a utilizar
      */
-    private Reserva reserva;
     private List<Reserva> reservas;
     private List<Turno> turnosDisp;
-    private Turno turno;
     private List<Doctor> doctores;
-    private Doctor doctor;
+    private List<Especialidad> especialidades;
+    
+    /*
+     * Otros objetos a utilizar. POJOs singles de los conjuntos sobre los que se opera...
+     * 
+     */
+    private Turno turno;
+    private Doctor doctor;    
+    private Reserva reserva;
+    private Especialidad especialidad; 
     
     /* Otras variables importantes */
     private Long id;
-    private String userNamePaciente;
-    private Timestamp fechaInicio;
+    private String doctorId;
+    private String especialidadId;
+    private String turnoId;
+    private Timestamp fechaReservada;
     private Timestamp fechaFin;
     private String soloVista = null;
     
@@ -76,10 +92,10 @@ public class ReservaAction extends BaseAction {
     }
 
     public void setUserNamePaciente(String username) {
-        this.userNamePaciente = username;
+        this.doctorId = username;
     }
     public String getUserNamePaciente() {
-        return this.userNamePaciente;
+        return this.doctorId;
     }
     
     public Reserva getReserva() {
@@ -87,7 +103,7 @@ public class ReservaAction extends BaseAction {
     }
     
     public void setFechaInicio(Timestamp fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        this.fechaReservada = fechaInicio;
     }
     
     public void setFechaFin(Timestamp fechaFin) {
@@ -272,6 +288,7 @@ public class ReservaAction extends BaseAction {
 
     private DiaDeSemana obtenerDia(Timestamp fecha) {
         DiaDeSemana dia = null;
+                
         if(fecha.getDay() == 0){
             return dia.DOMINGO;
         }
@@ -295,5 +312,99 @@ public class ReservaAction extends BaseAction {
         }
         return dia;
     }
+
+    public List<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidad> especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
     
+    public String actualizarTurnos(){
+        
+        
+        //String doctorIdString = this.getRequest().getParameter("doctoresSelect.value");
+        //String fechaString = this.getRequest().getParameter("fechaReservada");
+        
+        Long doctorIdlong = Long.parseLong(this.doctorId);
+        
+        this.doctor = this.doctorManager.get(doctorIdlong);
+        
+        
+        // obtener el horario de atencion del doctor que coincide con el 
+        // dia dado por fechareservada        
+        // implementa esto vos HUGO
+        
+        //
+        this.setHorarios(this.obtenerHorarioDia(DiaDeSemana.LUNES));
+        Set<HorarioAtencion> listh = this.getHorarios();
+        
+        Iterator<HorarioAtencion> it = listh.iterator();
+        
+        
+        // mejorar separando los turnos de un día de los del otro.
+        // en realidad, creo que no hace falta obtener los turnos puesto que ya estàn 
+        // en los horarios...
+        while (it.hasNext()) {
+            HorarioAtencion current = it.next();
+            List<Turno> turnos = this.turnoManager.getTurnos(current);
+            
+            this.turnosDisp.addAll(turnos);      
+            
+        }
+        
+        return SUCCESS;
+        
+    }
+
+    public String getEspecialidadId() {
+        return especialidadId;
+    }
+
+    public void setEspecialidadId(String especialidadId) {
+        this.especialidadId = especialidadId;
+    }
+
+    public String getTurnoId() {
+        return turnoId;
+    }
+
+    public void setTurnoId(String turnoId) {
+        this.turnoId = turnoId;
+    }
+
+    private Set<HorarioAtencion> obtenerHorarioDia(DiaDeSemana ds) {
+        Set<HorarioAtencion> listh = this.doctor.getHorarios();
+        Set<HorarioAtencion> listReturn = new HashSet<HorarioAtencion>();
+        
+        Iterator<HorarioAtencion> it = listh.iterator();
+        
+        while (it.hasNext()) {
+            HorarioAtencion current = it.next();
+            
+            if (current.getDia().compareTo(ds) == 0) {
+                listReturn.add(current);
+            }                
+        }
+        
+        return listReturn;
+    }
+
+    public Set<HorarioAtencion> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(Set<HorarioAtencion> horarios) {
+        this.horarios = horarios;
+    }
+
 }
