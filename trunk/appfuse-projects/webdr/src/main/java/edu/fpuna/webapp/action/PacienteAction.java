@@ -11,22 +11,21 @@ import edu.fpuna.model.TipoSangre;
 import edu.fpuna.service.GenericManager;
 import edu.fpuna.service.PacienteManager;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Cristhian Parra
  */
-public class PacienteAction extends BaseAction {
+public class PacienteAction extends EditAccessAction {
 
     private GenericManager<TipoSangre,Long> tipoSangreManager;
-    List<TipoSangre> tipoSangres;
-   
+    private List<TipoSangre> tipoSangres;
     private PacienteManager manager;
-    List<Paciente> pacientes;
-
+    private List<Paciente> pacientes;
     private Paciente paciente;
     private Long id;
-    String soloVista;
+    private Boolean viewHistorial;
     
     public void setPacienteManager(PacienteManager pacienteManager) {
         this.manager = pacienteManager;
@@ -56,20 +55,9 @@ public class PacienteAction extends BaseAction {
         manager.eliminarPaciente(p);
     }
 
-    public String listView() {
-        soloVista = "ok";
+    public String list() {
         pacientes = manager.obtenerTodos();
         return SUCCESS;
-    }
-    
-    public String listEdit() {
-        soloVista = null;
-        pacientes = manager.obtenerTodos();
-        return SUCCESS;
-    }
-    
-    public String getSoloVista(){
-        return this.soloVista;
     }
     
     public void  setId(Long id){
@@ -82,6 +70,17 @@ public class PacienteAction extends BaseAction {
     
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+    
+    public Boolean getViewHistorial() {
+        return viewHistorial;
+    }
+    
+    private void setViewHistorial() {
+        if (getRequest().isUserInRole(Constants.DOCTOR_ROLE))
+            viewHistorial = true;
+        else
+            viewHistorial = false;
     }
     
     public String delete() {
@@ -120,11 +119,31 @@ public class PacienteAction extends BaseAction {
         String key = (isNew) ? "paciente.added" : "paciente.updated";
         saveMessage(getText(key));
 
-        if (!isNew){
+        if (!isNew) {
             paciente.setConfirmPassword(paciente.getPassword());
             return INPUT;
-        }else{
+        }
+        else {
             return SUCCESS;
         }
+    }
+    
+    @Override
+    protected void setEditAccess() {
+        HttpServletRequest req = getRequest();
+        boolean hasAccess = req.isUserInRole(Constants.ADMIN_ROLE) ||
+                            req.isUserInRole(Constants.DOCTOR_ROLE);
+        
+        if (hasAccess)
+            editAccess = true;
+        else
+            editAccess = false;
+    }
+    
+    @Override
+    public void prepare() {
+        setEditAccess();
+        setDeleteAccess();
+        setViewHistorial();
     }
 }
