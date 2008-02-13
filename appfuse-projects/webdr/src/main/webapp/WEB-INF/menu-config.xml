@@ -14,7 +14,7 @@
         <!-- Menus exclusivos del Admin -->
         <Menu name="AdminDoctorMenu" title="menu.doctor" description="Doctor Menu" roles="ROLE_ADMIN" width="110">
             <Item name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html"/>
-            <Item name="VerDoctoresEdit" title="menu.doctor.doctoresEdit" page="/doctor/doctoresEdit.html"/>
+            <!-- <Item name="VerDoctoresEdit" title="menu.doctor.doctoresEdit" page="/doctor/doctoresEdit.html"/> -->            
             <Item name="CrearDoctores" title="menu.doctor.nuevoDoctor" page="/doctor/editDoctor.html"/>
         </Menu>
         <Menu name="AdminPacienteMenu" title="menu.paciente" description="Paciente Menu" roles="ROLE_ADMIN" width="110">
@@ -24,7 +24,7 @@
         </Menu>
         <Menu name="PropiedadMenu" title="menu.propiedad" description="Propiedad Menu" roles="ROLE_ADMIN" width="110">
             <Item name="VerEspecialidades" title="menu.propiedad.especialidades" page="/admin/especialidades.html"/>
-            <Item name="VerEspecialidadesEdit" title="menu.propiedad.especialidadesEdit" page="/admin/especialidades.html"/>
+            <!-- <Item name="VerEspecialidadesEdit" title="menu.propiedad.especialidadesEdit" page="/admin/especialidades.html"/> -->            
             <Item name="CrearEspecialidades" title="menu.propiedad.nuevaEspecialidad" page="/admin/editEspecialidad.html"/>
         </Menu>
         
