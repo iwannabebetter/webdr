@@ -413,7 +413,7 @@ public class ReservaAction extends BaseAction {
     }
     
     public Timestamp convertirFecha(String f){
-        Timestamp retorno;
+        Timestamp retorno = null;
         String[] fecha = f.split("/");
         retorno.setDate(Integer.parseInt(fecha[0].trim()));
         retorno.setMonth(Integer.parseInt(fecha[1].trim()));
