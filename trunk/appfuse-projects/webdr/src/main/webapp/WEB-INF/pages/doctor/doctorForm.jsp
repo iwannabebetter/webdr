@@ -1,8 +1,8 @@
 <%@ include file="/common/taglibs.jsp"%>
 
 <head>
-    <title><fmt:message key="userProfile.title"/></title>
-    <meta name="heading" content="<fmt:message key='userProfile.heading'/>"/>
+    <title><fmt:message key="doctorProfile.title"/></title>
+    <meta name="heading" content="<fmt:message key='doctorProfile.heading'/>"/>
     <meta name="menu" content="UserMenu"/>
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
