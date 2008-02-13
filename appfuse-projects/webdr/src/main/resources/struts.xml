@@ -226,14 +226,9 @@
             <result name="turno_borrado">/WEB-INF/pages/doctor/horariosForm.jsp</result>
         </action>
         
-        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="listView">
+        <action name="doctores" class="edu.fpuna.webapp.action.DoctorAction" method="list">
             <interceptor-ref name="todosCheck"/>
             <result name="success">/WEB-INF/pages/doctor/doctorList.jsp</result>
-        </action>
-        
-        <action name="doctoresEdit" class="edu.fpuna.webapp.action.DoctorAction" method="listEdit">
-            <interceptor-ref name="drAdminCheck"/>
-            <result>/WEB-INF/pages/doctor/doctorList.jsp</result>
         </action>
         
         <action name="editDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
@@ -244,16 +239,15 @@
         
         <action name="viewDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="edit">
             <interceptor-ref name="todosCheck"/>
-            <result name="success">/WEB-INF/pages/doctor/viewDoctor.jsp</result>
-            <result name="error">/WEB-INF/pages/doctor/doctorList.jsp</result>
+            <result name="success">/WEB-INF/jspf/viewDoctor.jspf</result>
         </action>
         
         <action name="saveDoctor" class="edu.fpuna.webapp.action.DoctorAction" method="save">
             <interceptor-ref name="drAdminCheck"/>
             <result name="input">/WEB-INF/pages/doctor/doctorForm.jsp</result>
-            <result name="cancel" type="redirect">doctoresEdit.html</result>
-            <result name="delete" type="redirect">doctoresEdit.html</result>
-            <result name="success" type="redirect">doctoresEdit.html</result>
+            <result name="cancel" type="redirect">doctores.html</result>
+            <result name="delete" type="redirect">doctores.html</result>
+            <result name="success" type="redirect">doctores.html</result>
         </action>
         
         <action name="consultas" class="edu.fpuna.webapp.action.ConsultaAction" method="listConsultasDoctor">
