@@ -60,7 +60,6 @@
                 
     </div>
     
-    
     <!-- Selector de Fecha para la reserva -->
     <div id="paso2" class="group" style="display:none;">
         
@@ -71,6 +70,7 @@
                 <s:datetimepicker key="fechaReservada" theme="ajax" 
                                   required="true" dayWidth="wide" 
                                   displayFormat="dd/MM/yyyy" toggleType="fade"
+                                  onselect="javascript:ajaxGet('turnosDisp', 'viewTurnos.html', '')"
                 />
             </div>
         </li>

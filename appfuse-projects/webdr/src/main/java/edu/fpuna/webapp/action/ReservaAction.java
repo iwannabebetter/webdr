@@ -333,7 +333,8 @@ public class ReservaAction extends BaseAction {
         
         
         //String doctorIdString = this.getRequest().getParameter("doctoresSelect.value");
-        //String fechaString = this.getRequest().getParameter("fechaReservada");
+        String fechaString = this.getRequest().getParameter("fechaReservada");
+        Timestamp fecha = this.convertirFecha(fechaString);
         
         Long doctorIdlong = Long.parseLong(this.doctorId);
         
@@ -344,8 +345,8 @@ public class ReservaAction extends BaseAction {
         // dia dado por fechareservada        
         // implementa esto vos HUGO
         
-        //
-        this.setHorarios(this.obtenerHorarioDia(DiaDeSemana.LUNES));
+        DiaDeSemana dia = this.obtenerDia(fecha);
+        this.setHorarios(this.obtenerHorarioDia(dia));
         Set<HorarioAtencion> listh = this.getHorarios();
         
         Iterator<HorarioAtencion> it = listh.iterator();
@@ -357,11 +358,15 @@ public class ReservaAction extends BaseAction {
         while (it.hasNext()) {
             HorarioAtencion current = it.next();
             List<Turno> turnos = this.turnoManager.getTurnos(current);
-            
-            this.turnosDisp.addAll(turnos);      
+            Iterator<Turno> itTurno = turnos.iterator();
+            while(itTurno.hasNext()){
+                Turno t = itTurno.next();
+                if(this.manager.isTurnoDisponible(t,fecha)){
+                    this.turnosDisp.add(t);      
+                }
+            }
             
         }
-        
         return SUCCESS;
         
     }
@@ -405,6 +410,16 @@ public class ReservaAction extends BaseAction {
 
     public void setHorarios(Set<HorarioAtencion> horarios) {
         this.horarios = horarios;
+    }
+    
+    public Timestamp convertirFecha(String f){
+        Timestamp retorno;
+        String[] fecha = f.split("/");
+        retorno.setDate(Integer.parseInt(fecha[0].trim()));
+        retorno.setMonth(Integer.parseInt(fecha[1].trim()));
+        retorno.setYear(Integer.parseInt(fecha[2].trim())-1900);
+        
+        return retorno;
     }
 
 }
