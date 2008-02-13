@@ -16,14 +16,14 @@ import java.util.List;
  * Action de la clase Doctor.
  * @author ghuttemann
  */
-public class DoctorAction extends BaseAction {
+public class DoctorAction extends EditAccessAction {
 
     private DoctorManager doctorManager;
     private EspecialidadManager especialidadManager;
     private List<Doctor> doctores;
+    private String especialidad;
     private Doctor doctor;
     private Long id;
-    private String soloVista;
     
     public void setDoctorManager(DoctorManager doctorManager) {
         this.doctorManager = doctorManager;
@@ -37,26 +37,13 @@ public class DoctorAction extends BaseAction {
         return doctores;
     }
     
-    public String listEdit() {
-        this.soloVista = null;
-        doctores = doctorManager.obtenerDoctores();
+    public String list() {
+        if (especialidad != null)
+            doctores = doctorManager.obtenerDoctoresPorEspecialidad(especialidad);
+        else
+            doctores = doctorManager.obtenerDoctores();
+        
         return SUCCESS;
-    }
-    
-    public String listView(){
-        this.soloVista = "ok";
-        doctores = doctorManager.obtenerDoctores();
-        return SUCCESS;
-    }
-    
-    public String list(Especialidad especialidad) {
-        this.soloVista = null;
-        doctores = doctorManager.obtenerDoctoresPorEspecialidad(especialidad);
-        return SUCCESS;
-    }
-    
-    public String getSoloVista(){
-        return this.soloVista;
     }
     
     public void setId(Long id) {
@@ -70,6 +57,10 @@ public class DoctorAction extends BaseAction {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+    
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
 
     public String delete() {
         doctorManager.eliminarDoctor(doctor);
@@ -81,7 +72,8 @@ public class DoctorAction extends BaseAction {
         if (id != null){
             doctor = doctorManager.get(id);
             doctor.setConfirmPassword(doctor.getPassword());
-        }else{
+        }
+        else {
             doctor = new Doctor();
         }
         return SUCCESS;
@@ -120,13 +112,12 @@ public class DoctorAction extends BaseAction {
         String key = (isNew) ? "doctor.added" : "doctor.updated";
         saveMessage(getText(key));
         
-        if (!isNew){
+        if (!isNew) {
             doctor.setConfirmPassword(doctor.getPassword());
             return INPUT;
-        }else{
+        }
+        else {
             return SUCCESS;
         }
     }
-    
-
 }
