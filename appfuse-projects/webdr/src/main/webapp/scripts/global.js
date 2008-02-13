@@ -246,13 +246,17 @@ function confirmDelete(obj) {
 
 /* 
  * Despliega datos recuperados con AJAX en un contenedor 
- *      div_id --> Id del Div que debe actualizarse.
+ *      contId --> Id del contenedor que debe actualizarse, normalmente un DIV.
  *      url -----> URL que debe recuperarse.
- *      args ----> Argumentos del método GET
+ *      args ----> Argumentos del método GET.
+ *
+ *      Ejemplos del tercer parámetro son:
+ *          id=10
+ *          nombre=jose&id=20
  */
-function ajaxGet(div_id, url, args) {
+function ajaxGet(contId, url, args) {
     // Obtenemos el contenedor
-    var contenedor = $(div_id);
+    var contenedor = $(contId);
     contenedor.update("<br><br><p>Esperando datos...</p>");
     contenedor.show();
     
