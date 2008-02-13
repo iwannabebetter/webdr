@@ -8,9 +8,7 @@ package edu.fpuna.dao.hibernate;
 import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
-import edu.fpuna.model.Especialidad;
 import edu.fpuna.model.User;
-import java.sql.Timestamp;
 import java.util.List;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
@@ -39,14 +37,14 @@ public class DoctorDaoHibernate
             return (Doctor) result.get(0);
     }
 
-    public List<Doctor> obtenerPorEspecialidad(Especialidad especialidad) {
+    public List<Doctor> obtenerPorEspecialidad(String especialidad) {
         String query = "from Doctor as doc " +
                        "join doc.especialidades as esp " +
-                       "with esp.nombre=? " +
+                       "with upper(esp.nombre)=? " +
                        "order by upper(esp.nombre)";
         
         return super.getHibernateTemplate()
-                    .find(query, especialidad.getNombre());
+                    .find(query, especialidad.toUpperCase());
     }
     
     public List<Doctor> getAll(){

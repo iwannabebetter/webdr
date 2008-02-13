@@ -7,8 +7,6 @@ package edu.fpuna.dao;
 
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
-import edu.fpuna.model.Especialidad;
-import java.sql.Timestamp;
 import java.util.List;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Propagation;
@@ -32,7 +30,7 @@ public interface DoctorDao extends GenericDao<Doctor, Long> {
      * @param especialidad La especialidad buscada en los doctores
      * @return Una lista de los doctores que cumplen el criterio
      */
-    public List<Doctor> obtenerPorEspecialidad(Especialidad especialidad);
+    public List<Doctor> obtenerPorEspecialidad(String especialidad);
     
     public List<Doctor> obtenerPorDia(DiaDeSemana dia);
     

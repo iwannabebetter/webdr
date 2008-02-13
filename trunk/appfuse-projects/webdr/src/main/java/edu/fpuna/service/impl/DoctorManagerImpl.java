@@ -8,13 +8,10 @@ package edu.fpuna.service.impl;
 import edu.fpuna.dao.DoctorDao;
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Doctor;
-import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.UserExistsException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.acegisecurity.providers.dao.DaoAuthenticationProvider;
 import org.acegisecurity.providers.encoding.PasswordEncoder;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
@@ -107,7 +104,7 @@ public class DoctorManagerImpl
         return doctorDao.getAll();
     }
 
-    public List<Doctor> obtenerDoctoresPorEspecialidad(Especialidad especialidad) {
+    public List<Doctor> obtenerDoctoresPorEspecialidad(String especialidad) {
         return doctorDao.obtenerPorEspecialidad(especialidad);
     }
 
