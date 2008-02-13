@@ -140,20 +140,14 @@
     <!-- Actions in this package will be prefixed with /paciente/ -->
     <package name="paciente" extends="default" namespace="/paciente">
         
-        <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="listView"> 
+        <action name="pacientes" class="edu.fpuna.webapp.action.PacienteAction" method="list"> 
             <interceptor-ref name="todosCheck"/>
-            <result>/WEB-INF/pages/paciente/pacienteList.jsp</result> 
-        </action>
-        
-        <action name="pacientesEdit" class="edu.fpuna.webapp.action.PacienteAction" method="listEdit"> 
-            <interceptor-ref name="drAdminCheck"/>
             <result>/WEB-INF/pages/paciente/pacienteList.jsp</result> 
         </action>
         
         <action name="viewPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
             <interceptor-ref name="todosCheck"/>
-            <result name="success">/WEB-INF/pages/paciente/viewPaciente.jsp</result>
-            <result name="error">/WEB-INF/pages/paciente/pacienteList.jsp</result>
+            <result name="success">/WEB-INF/jspf/viewPaciente.jspf</result>
         </action>
         
         <action name="editPaciente" class="edu.fpuna.webapp.action.PacienteAction" method="edit">
@@ -165,9 +159,9 @@
         <action name="savePaciente" class="edu.fpuna.webapp.action.PacienteAction" method="save">
             <interceptor-ref name="drAdminCheck"/>
             <result name="input">/WEB-INF/pages/paciente/pacienteForm.jsp</result>
-            <result name="cancel" type="redirect">pacientesEdit.html</result>
-            <result name="delete" type="redirect">pacientesEdit.html</result>
-            <result name="success" type="redirect">pacientesEdit.html</result>
+            <result name="cancel" type="redirect">pacientes.html</result>
+            <result name="delete" type="redirect">pacientes.html</result>
+            <result name="success" type="redirect">pacientes.html</result>
         </action>    
         
         <action name="historialDetalle" class="edu.fpuna.webapp.action.ConsultaAction" method="edit">
