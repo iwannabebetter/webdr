@@ -12,21 +12,25 @@
     <li>
         <div class="left">
             <s:textfield key="consulta.medidasPaciente.pesoActual" required="true" 
-                cssClass="text medium"/>
+                cssClass="text small"/>
         </div>
         <div>
             <s:textfield key="consulta.medidasPaciente.alturaActual" required="true" 
-                cssClass="text medium"/>
+                cssClass="text small"/>
         </div>
     </li>
     <li>
         <div class="left">
             <s:textfield key="consulta.medidasPaciente.edadActual" required="true" 
-                cssClass="text medium"/>
+                cssClass="text small"/>
         </div>
         <div>
-            <s:textfield key="consulta.medidasPaciente.edadEnMeses" required="true" 
-                cssClass="text medium"/>
+            <s:select label="Edad en:"
+                      value="%{consulta.medidasPaciente.edadEnMeses}"
+                      list="#{'true':'Meses', 'false':'Años'}"
+                      required="true"
+                      size="1"
+            />
         </div>
     </li>
     <li>
