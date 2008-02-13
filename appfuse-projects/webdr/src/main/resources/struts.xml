@@ -180,10 +180,30 @@
             <result>/WEB-INF/pages/paciente/historial.jsp</result>
         </action>
         
-        <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasPaciente">
+        
+        <!-- ACCIONES RELACIONADAS A LAS RESERVAS -->
+        <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasPacientePend">
             <interceptor-ref name="pacienteCheck"/>
             <result>/WEB-INF/pages/paciente/reservaList.jsp</result>
+        </action>        
+        
+        <action name="reservasGetTurnos" class="edu.fpuna.webapp.action.ReservaAction" method="actualizarTurnos">
+            <interceptor-ref name="pacienteCheck"/>
+            <result>/WEB-INF/jspf/turnosDisponibles.jspf</result>
         </action>
+        
+        <action name="saveReserva" class="edu.fpuna.webapp.action.ReservaAction" method="saveReserva">
+            <interceptor-ref name="pacienteCheck"/>
+            <result name="input">/WEB-INF/pages/paciente/reservaForm.jsp</result>
+            <result name="cancel" type="redirect">reservasCancel.html</result>
+            <result name="success" type="redirect">reservas.html</result>
+        </action>    
+        
+        <action name="reservasCancel" class="edu.fpuna.webapp.action.ReservaAction" method="cancelReserva"> 
+            <interceptor-ref name="pacienteCheck"/>
+            <result>/WEB-INF/pages/paciente/reservaList.jsp</result> 
+        </action>
+        
         
     </package>
     
