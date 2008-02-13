@@ -25,7 +25,7 @@
     <li class="buttonBar right">
         <c:set var="buttons">
             <s:submit key="button.save" method="save" onclick="onFormSubmit(this.form)"/>
-            <c:if test="${param.from == 'list' and not empty paciente.id}">
+            <c:if test="${deleteAccess and not empty paciente.id}">
                 <s:submit key="button.delete" method="delete" onclick="return confirmDelete('este paciente')"/>
             </c:if>
             <s:submit key="button.cancel" method="cancel"/>
