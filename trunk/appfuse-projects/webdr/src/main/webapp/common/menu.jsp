@@ -3,6 +3,7 @@
 <menu:useMenuDisplayer name="Velocity" config="cssHorizontalMenu.vm" permissions="rolesAdapter">
 <ul id="primary-nav" class="menuList">
     <li class="pad">&nbsp;</li>
+    <%--
     <c:if test="${empty pageContext.request.remoteUser}">
         <li>
             <a href="<c:url value="/login.jsp"/>" class="current">
@@ -10,6 +11,7 @@
             </a>
         </li>
     </c:if>
+    --%>
     <!-- Menus Generales para todos los roles -->
     <menu:displayMenu name="MainMenu"/>
     <!-- Menus exclusivos del Admin -->
