@@ -19,10 +19,29 @@ public class EditAccessAction extends BaseAction implements Preparable {
      * de algún objeto por el usuario logueado que
      * ejecuta el Action.
      */
-    private Boolean editAccess;
+    protected Boolean editAccess;
+    
+    /**
+     * Constante que indica si se permite la eliminación
+     * de algún objeto por el usuario logueado que
+     * ejecuta el Action.
+     */
+    protected Boolean deleteAccess;
         
+    /**
+     * Retorna si se tiene permiso o no de edición
+     * @return true o false
+     */
     public Boolean getEditAccess() {
         return editAccess;
+    }
+    
+    /**
+     * Retorna si se tiene permiso o no de eliminación
+     * @return true o false
+     */
+    public Boolean getDeleteAccess() {
+        return deleteAccess;
     }
     
     /*
@@ -45,13 +64,34 @@ public class EditAccessAction extends BaseAction implements Preparable {
     }
     
     /*
+     * Por defecto, solo se da permiso de eliminación
+     * si el usuario está en el rol ADMIN_ROLE.
+     * Si no es este el caso, debemos sobrescribir
+     * este método para sustituir el rol o agregar
+     * otros roles.
+     * Se pueden construir distintas reglas lógicas
+     * sobre los roles en el que debería estar el
+     * usuario logueado. Por ejemplo:
+     *    1. isUserInRole(admin) && isUserInRole(doctor)
+     *    2. isUserInRole(doctor) || isUserInRole(paciente)
+     */
+    protected void setDeleteAccess() {
+        if (getRequest().isUserInRole(Constants.ADMIN_ROLE))
+            editAccess = true;
+        else
+            editAccess = false;
+    }
+    
+    /*
      * Por defecto, este método establece el permiso
-     * de edición que tiene el usuario logueado.
+     * de edición y eliminación que tiene el usuario 
+     * logueado.
      * Si se debe sobrescribir este método y se desea
      * tener el mismo comportamiento, se debe agregar,
      * en la sobrescritura, el código actual del método.
      */
     public void prepare() throws Exception {
         setEditAccess();
+        setDeleteAccess();
     }
 }
