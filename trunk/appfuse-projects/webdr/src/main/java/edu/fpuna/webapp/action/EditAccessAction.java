@@ -77,9 +77,9 @@ public class EditAccessAction extends BaseAction implements Preparable {
      */
     protected void setDeleteAccess() {
         if (getRequest().isUserInRole(Constants.ADMIN_ROLE))
-            editAccess = true;
+            deleteAccess = true;
         else
-            editAccess = false;
+            deleteAccess = false;
     }
     
     /*
