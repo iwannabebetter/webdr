@@ -7,7 +7,6 @@ package edu.fpuna.webapp.action;
 
 import edu.fpuna.Constants;
 import edu.fpuna.model.Doctor;
-import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.EspecialidadManager;
 import java.util.List;
