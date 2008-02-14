@@ -439,7 +439,11 @@ public class ReservaAction extends BaseAction {
 
         if (delete != null)
             return delete();
-
+        
+        log.debug("TRATANDO DE OBTENER EL ID DE RESERVA");
+        if(reserva == null){
+            log.debug("LA RESERVA ES NULA.....");
+        }
         boolean isNew = (reserva.getId() == null);
         
         log.debug("GUARDANDO...");
@@ -485,7 +489,7 @@ public class ReservaAction extends BaseAction {
         
         
         //String doctorIdString = this.getRequest().getParameter("doctoresSelect.value");
-        String fechaString = this.getRequest().getParameter("fechaReservada");
+        String fechaString = this.getRequest().getParameter("fechaReservadaTimestamp");
         Timestamp fecha = this.convertirFecha(fechaString);
         
         Long doctorIdlong = Long.parseLong(this.doctorId);

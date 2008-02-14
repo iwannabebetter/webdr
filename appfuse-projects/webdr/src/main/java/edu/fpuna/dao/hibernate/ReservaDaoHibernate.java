@@ -118,14 +118,14 @@ public class ReservaDaoHibernate
         
         // ver como incluir el tema de la fecha reservada
         String query = "from Reserva where paciente.id = ? and cancelado=false " +
-                       "     and fechareservada >= ?";
+                       "     and fecha_reservada >= ?";
         
         Object [] args = { paciente.getId(), now };
         
         List<Reserva> result = super.getHibernateTemplate()
                                      .find(query, args );
 
-        log.debug("--> Busqueda Finalizada.");
+        log.debug("--> Busqueda Finalizada." + result.size() + "encontrados");
         
         return result;
     }
