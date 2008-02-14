@@ -462,8 +462,8 @@
         <row>
             <value description="id">-3</value>
             <value description="fecha_realizacion">2008-01-01</value>
-            <value description="fecha_reservada">2008-02-11</value>
-            <value description="cancelado">true</value>
+            <value description="fecha_reservada">2008-02-16</value>
+            <value description="cancelado">false</value>
             <value description="observ_cancel"></value>
             <value description="paciente_id">-6</value>
         </row>

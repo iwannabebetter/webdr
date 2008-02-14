@@ -30,7 +30,7 @@
         <s:select id="especialidadesSelect" label="Especialidades" cssClass="select"
                   list="%{especialidades}" listKey="id" listValue="nombre"
                   headerKey="-999" headerValue="Seleccione la Especialidad"
-                  value="especialidadId"
+                  value="especialidadId" onselect="javascript:void(0)"
         />
         <%-- | Select de Doctores | --%>
         <s:select id="doctoresSelect" label="Doctores" cssClass="select"
@@ -38,7 +38,7 @@
                   headerKey="-999" headerValue="Seleccione el Doctor"
                   value="doctorId"
         />
-        <input type="button" id="siguientePaso" class="button" value="<fmt:message key='reservaForm.botonpaso1'/>"/>       
+        <input type="button" id="siguientePaso" class="button" value="<fmt:message key='reservaForm.botonpaso1'/>" onclick= "javascript:void(0)"/>       
     </div>
     
     <%-- Selector de Fecha para la reserva --%>
@@ -54,7 +54,7 @@
                 />
             </div>
         </li>
-        
+        <!--- ver aka que tratamos de hacer.... no va a funcionar asi -->
         <s:hidden id="horarioId" name="horarioId" value=""/>    
         
         <div id="turnosDisp" class="radio" style="display:none;">
