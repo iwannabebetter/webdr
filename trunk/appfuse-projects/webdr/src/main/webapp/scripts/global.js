@@ -294,6 +294,41 @@ function ajaxGet(contId, url, args) {
     var obj = new Ajax.Request(url, parametros);
 }
 
+/*
+ * Hace que los enlaces de paginación y ordenación de las
+ * tablas DisplayTag se invoquen via AJAX.
+ *      zone --------> Nombre de la zona AjaxAnywhere.
+ *      tableId -----> Id de la tabla DisplayTag.
+ */
+function displayTagAjax(zone, tableId) {
+    ajaxAnywhere.getZonesToReaload = function() { return zone }
+    ajaxAnywhere.onAfterResponseProcessing = function() { replaceLinks() }
+    
+    function replaceLinks() {
+        // replace all the links in <thead> with onclick's that call AjaxAnywhere
+        var sortLinks = $(tableId).getElementsByTagName('thead')[0]
+                                  .getElementsByTagName('a');
+        ajaxifyLinks(sortLinks);
+        
+        if (document.getElementsByClassName('pagelinks').length > 0) {
+            var pagelinks = document.getElementsByClassName('pagelinks')[0]
+                                    .getElementsByTagName('a');
+            ajaxifyLinks(pagelinks);
+        }
+    }
+    
+    function ajaxifyLinks(links) {
+        for (i=0; i < links.length; i++) {
+            links[i].onclick = function() {
+                ajaxAnywhere.getAJAX(this.href); 
+                return false;
+            }
+        }
+    }
+    
+    replaceLinks();
+}
+
 function highlightTableRows(tableId) {
     var previousClass = null;
     var table = document.getElementById(tableId); 
