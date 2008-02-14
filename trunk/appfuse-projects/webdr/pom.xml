@@ -614,6 +614,12 @@
             <artifactId>velocity</artifactId>
             <version>${velocity.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.ajaxanywhere</groupId>
+            <artifactId>ajaxanywhere</artifactId>
+            <version>${ajaxanywhere.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -931,6 +937,7 @@
         <urlrewrite.version>3.0.4</urlrewrite.version>
         <velocity.version>1.4</velocity.version>
         <xfire.version>1.2.6</xfire.version>
+        <ajaxanywhere.version>1.2.1</ajaxanywhere.version>
     
         <!-- Properties calculated by AppFuse when running full-source plugin -->
     </properties>
