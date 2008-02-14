@@ -176,6 +176,13 @@
         
         
         <!-- ACCIONES RELACIONADAS A LAS RESERVAS -->
+        
+        <action name="editReserva" class="edu.fpuna.webapp.action.ReservaAction" method="edit">
+            <interceptor-ref name="pacienteCheck"/>
+            <result name="success">/WEB-INF/pages/paciente/reservaForm.jsp</result>
+            <result name="error">/WEB-INF/pages/paciente/reservaList.jsp</result>
+        </action>    
+        
         <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasPacientePend">
             <interceptor-ref name="pacienteCheck"/>
             <result>/WEB-INF/pages/paciente/reservaList.jsp</result>
@@ -278,6 +285,12 @@
             <result name="delete" type="redirect">consultasEdit.html</result>
             <result name="success" type="redirect">consultasEdit.html</result>
         </action>
+        
+        <!-- ACCIONES RELACIONADAS A LAS RESERVAS -->
+        <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasDoctorPend">
+            <interceptor-ref name="doctorCheck"/>
+            <result>/WEB-INF/pages/doctor/reservaList.jsp</result>
+        </action>        
         
     </package>
     
