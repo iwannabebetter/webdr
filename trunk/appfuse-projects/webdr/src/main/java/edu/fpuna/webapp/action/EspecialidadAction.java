@@ -5,9 +5,12 @@
 
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.Constants;
 import edu.fpuna.model.Especialidad;
 import edu.fpuna.service.EspecialidadManager;
+import edu.fpuna.service.LookupManager;
 import java.util.List;
+import javax.servlet.ServletContext;
 
 /**
  * Action para la clase Especialidad
@@ -16,9 +19,10 @@ import java.util.List;
 public class EspecialidadAction extends EditAccessAction {
 
     private EspecialidadManager manager;
-    List<Especialidad> especialidades;
-    Especialidad especialidad;
-    Long id;
+    private List<Especialidad> especialidades;
+    private Especialidad especialidad;
+    private LookupManager lookupManager;
+    private Long id;
     
     public Especialidad getEspecialidad() {
         return especialidad;
@@ -34,6 +38,10 @@ public class EspecialidadAction extends EditAccessAction {
     
     public void setEspecialidadManager(EspecialidadManager especialidadManager) {
         this.manager = especialidadManager;
+    }
+    
+    public void setLookupManager(LookupManager lookupManager) {
+        this.lookupManager = lookupManager;
     }
 
     public Long getId(){
@@ -75,6 +83,17 @@ public class EspecialidadAction extends EditAccessAction {
         especialidad = manager.saveEspecialidad(especialidad);
         String key = (isNew) ? "especialidad.added" : "especialidad.updated";
         saveMessage(getText(key));
+        
+        /*
+         * Si se agrega una especialidad, debemos
+         * actualizar la lista de especialidades
+         * disponibles.
+         */
+        if (isNew) {
+            ServletContext ctx = getSession().getServletContext();
+            ctx.setAttribute(Constants.AVAILABLE_ESPECIALIDADES,
+                             lookupManager.getAllEspecialidades());
+        }
 
         if (!isNew)
             return INPUT;
