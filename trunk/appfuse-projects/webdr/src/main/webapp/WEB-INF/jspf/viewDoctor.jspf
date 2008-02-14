@@ -25,26 +25,36 @@
 </s:form>
 
 <br><b>Especialidades del Doctor</b>
-<display:table name="doctor.especialidades" class="table" requestURI="" id="especialidadList" pagesize="10">
-    <display:column property="nombre" sortable="true" titleKey="especialidad.nombre"/>
-    <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
-    
-    <display:setProperty name="paging.banner.item_name" value="especialidad"/>
-    <display:setProperty name="paging.banner.items_name" value="especialidades"/>
-</display:table>
+<aa:zone name="doctorEspecialidadesZone">
+    <display:table name="doctor.especialidades" class="table" requestURI="" id="especialidadList" 
+                    pagesize="10" excludedParams="*" sort="list">
+        <display:column property="nombre" sortable="true" titleKey="especialidad.nombre"/>
+        <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
+
+        <display:setProperty name="paging.banner.item_name" value="especialidad"/>
+        <display:setProperty name="paging.banner.items_name" value="especialidades"/>
+    </display:table>
+</aa:zone>
 <br>
 
 <b>Horarios del Doctor</b>
-<display:table name="doctor.horarios" class="table" requestURI="" id="horarioAtencionesList" pagesize="10">
-    <display:column property="dia" sortable="true" titleKey="horarioAtencion.dia"/>
-    <display:column property="horaInicioString" sortable="true" titleKey="horarioAtencion.horaInicio"/>
-    <display:column property="horaFinString" sortable="true" titleKey="horarioAtencion.horaFin"/>
-    <display:column property="doctor.username" sortable="true" titleKey="horarioAtencion.doctor.username"/>
+<aa:zone name="doctorHorariosZone">
+    <display:table name="doctor.horarios" class="table" requestURI="" id="horariosAtencionList" 
+                    pagesize="10" excludedParams="*" sort="list">
+        <display:column property="dia" sortable="true" titleKey="horarioAtencion.dia"/>
+        <display:column property="horaInicioString" sortable="true" titleKey="horarioAtencion.horaInicio"/>
+        <display:column property="horaFinString" sortable="true" titleKey="horarioAtencion.horaFin"/>
 
-    <display:setProperty name="paging.banner.item_name" value="horario de atención"/>
-    <display:setProperty name="paging.banner.items_name" value="horarios de atención"/>
+        <display:setProperty name="paging.banner.item_name" value="horario de atención"/>
+        <display:setProperty name="paging.banner.items_name" value="horarios de atención"/>
 
-    <display:setProperty name="export.excel.filename" value="HorarioDr.xls"/>
-    <display:setProperty name="export.csv.filename" value="HorarioDr.csv"/>
-    <display:setProperty name="export.pdf.filename" value="HorarioDr.pdf"/>
-</display:table>
+        <display:setProperty name="export.excel.filename" value="HorarioDr.xls"/>
+        <display:setProperty name="export.csv.filename" value="HorarioDr.csv"/>
+        <display:setProperty name="export.pdf.filename" value="HorarioDr.pdf"/>
+    </display:table>
+</aa:zone>
+
+<script type="text/javascript">
+    displayTagAjax('doctorEspecialidadesZone', 'especialidadList');
+    displayTagAjax('doctorHorariosZone', 'horariosAtencionList');
+</script>
