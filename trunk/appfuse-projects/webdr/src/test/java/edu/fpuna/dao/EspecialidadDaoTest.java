@@ -19,13 +19,13 @@ public class EspecialidadDaoTest extends BaseDaoTestCase {
     }
     
     public void testObtenerEspecialidadPorNombre() throws Exception {
-        Especialidad especialidad = especialidadDao.obtenerPorNombre("Psiquiatra");
+        Especialidad especialidad = especialidadDao.obtenerPorNombre("Psiquiatría");
         assertTrue(especialidad != null);
     }
     
     public void testGuardarYEliminarEspecialidad() throws Exception {
         Especialidad especialidad = new Especialidad();
-        especialidad.setNombre("Pediatra");
+        especialidad.setNombre("Pediatría");
         especialidad.setDescripcion("Trata los problemas de los niños");
         
         log.debug("Guardando especialidad...");
