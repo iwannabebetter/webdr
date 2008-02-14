@@ -8,6 +8,7 @@
  */
 package edu.fpuna.webapp.action;
 
+import edu.fpuna.Constants;
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.DiaDeSemana;
 import edu.fpuna.model.Reserva;
@@ -22,7 +23,9 @@ import edu.fpuna.service.DoctorManager;
 import edu.fpuna.service.EspecialidadManager;
 import edu.fpuna.service.HorarioAtencionManager;
 import edu.fpuna.service.PacienteManager;
+import edu.fpuna.service.RoleManager;
 import edu.fpuna.service.TurnoManager;
+import edu.fpuna.service.UserManager;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
@@ -65,17 +68,29 @@ public class ReservaAction extends BaseAction {
     private Doctor doctor;    
     private Reserva reserva;
     private Especialidad especialidad; 
+    private Paciente paciente;
     
     /* Otras variables importantes */
     private Long id;
+    
+    private String reservaId;
     private String doctorId;
+    private String pacienteId;
     private String especialidadId;
     private String turnoId;
-    private Timestamp fechaReservada;
-    private Timestamp fechaFin;
+    private String fechaReservada;
+    private String fechaRealizacion;
+    private String fechaRealizacionSoloFecha;
+    
+    private Timestamp fechaReservadaTimestamp;
+    private Timestamp fechaRealizacionTimestamp;
+    
     private String soloVista = null;
     
 
+    /* ---------------------------------------------
+     SETTERS DE LOS MANAGERS 
+     ----------------------------------------------*/
     public void setReservaManager(ReservaManager reservaManager) {
         this.manager = reservaManager;
     }
@@ -87,27 +102,36 @@ public class ReservaAction extends BaseAction {
     public void setPacienteManager(PacienteManager pacienteManager) {
         this.pacienteManager = pacienteManager;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setConsultaManager(ConsultaManager consultaManager) {
+        this.consultaManager = consultaManager;
     }
 
-    public void setUserNamePaciente(String username) {
-        this.doctorId = username;
+    public void setHorarioAtencionManager(HorarioAtencionManager horarioAtencionManager) {
+        this.horarioAtencionManager = horarioAtencionManager;
     }
-    public String getUserNamePaciente() {
-        return this.doctorId;
+
+    public void setTurnoManager(TurnoManager turnoManager) {
+        this.turnoManager = turnoManager;
+    }
+  
+    public void setEspecialidadManager(EspecialidadManager especialidadManager) {
+        this.especialidadManager = especialidadManager;
     }
     
+    /* ---------------------------------------------
+     GETTERS Y SETTERS DE POJOS
+     ----------------------------------------------*/        
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+ 
     public Reserva getReserva() {
         return reserva;
-    }
-    
-    public void setFechaInicio(Timestamp fechaInicio) {
-        this.fechaReservada = fechaInicio;
-    }
-    
-    public void setFechaFin(Timestamp fechaFin) {
-        this.fechaFin = fechaFin;
     }
 
     public void setReserva(Reserva reserva) {
@@ -115,7 +139,193 @@ public class ReservaAction extends BaseAction {
         log.debug("EJECUTANDO 2... "+this.reserva);
         this.reserva = reserva;
     }
+  
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
 
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }  
+      
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doc) {
+        this.doctor = doc;
+    }  
+
+    public Paciente getPaciente() {
+        return this.paciente;
+    }
+
+    public void setPaciente(Paciente pac) {
+        this.paciente = pac;
+    }  
+    
+    /* ---------------------------------------------
+     GETTERS Y SETTERS DE ATRIBUTOS SIMPLES QUE SE TRANSMITEN EN EL REQUEST
+     ----------------------------------------------*/    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getReservaId() {
+        return this.reservaId;
+    }
+    
+    public void setReservaId(String reservaId) {
+        this.reservaId = reservaId;
+    }
+    
+    public void setDoctorId(String Id) {
+        this.doctorId = Id;
+    }
+   
+    public String getDoctorId() {
+        return this.doctorId;
+    }
+      
+    public void setPacienteId(String Id) {
+        this.pacienteId = Id;
+    }
+   
+    public String getPacienteId() {
+        return this.pacienteId;
+    }
+  
+    public void setEspecialidadId(String Id) {
+        this.especialidadId = Id;
+    }
+   
+    public String getEspecialidadId() {
+        return this.especialidadId;
+    }
+        
+    public void setFechaReservada(String fr) {
+        this.fechaReservada = fr;
+    }
+   
+    public String getFechaReservada() {
+        return this.fechaReservada;
+    }
+
+    public void setFechaRealizacion(String fr) {
+        this.fechaRealizacion = fr;
+    }
+   
+    public String getFechaRealizacion() {
+        return this.fechaRealizacion;
+    }
+        
+    public void setFechaRealizacionSoloFecha(String fr) {
+        this.fechaRealizacionSoloFecha = fr;
+    }
+   
+    public String getFechaRealizacionSoloFecha() {
+        return this.fechaRealizacionSoloFecha;
+    }
+    
+    public String getTurnoId() {
+        return turnoId;
+    }
+
+    public void setTurnoId(String turnoId) {
+        this.turnoId = turnoId;
+    }
+
+    
+    /* ---------------------------------------------
+     GETTERS Y SETTERS DE OTROS ATRIBUTOS
+     ----------------------------------------------*/    
+    public List<Turno> getTurnosDisp() {
+        return turnosDisp;
+    }
+
+    public void setTurnosDisp(List<Turno> turnosDisp) {
+        this.turnosDisp = turnosDisp;
+    }
+    
+    public List<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidad> especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public List<Doctor> getDoctores() {
+        return this.doctores;
+    }
+
+    public void setDoctores(List<Doctor> docs) {
+        this.doctores = docs;
+    }
+    
+    public void setHorarios(Set<HorarioAtencion> horarios) {
+        this.horarios = horarios;
+    }
+    
+    public Set<HorarioAtencion> getHorarios() {
+        return horarios;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setFechaReservadaTimestamp(Timestamp fr) {
+        this.fechaReservadaTimestamp = fr;
+    }
+    
+    public void setFechaRealizacion(Timestamp fr) {
+        this.fechaRealizacionTimestamp = fr;
+    }
+    
+    public Timestamp setFechaReservadaTimestamp() {
+        return this.fechaReservadaTimestamp;
+    }
+    
+    public Timestamp setFechaRealizacion() {
+        return this.fechaRealizacionTimestamp;
+    }
+ 
+    public String getSoloVista(){
+        return this.soloVista;
+    }
+
+    public void setSoloVista(String vista){
+        this.soloVista = vista;
+    }
+    
+    public void getDoctoresFecha(Timestamp fecha){
+        DiaDeSemana dia = obtenerDia(fecha);
+        this.doctores = this.doctorManager.obtenerPorDia(dia);
+    }
+
+    public void getReservasDisp(HorarioAtencion ha, Timestamp fecha){
+        List<Turno> turnos =this.turnoManager.getTurnos(ha);
+        Iterator<Turno> it = turnos.iterator();
+        boolean disponible = true;
+        Turno turnoActual;
+        while(it.hasNext()){
+            turnoActual = it.next();
+            disponible = this.manager.isTurnoDisponible(turnoActual, fecha);
+            if(disponible){
+                this.turnosDisp.add(turnoActual);
+            }
+        }
+    }
+
+     /* ---------------------------------------------
+     OTROS MÉTODOS
+     ----------------------------------------------*/    
+   
     public String listReservasPaciente() {
         String username = this.getRequest().getRemoteUser();
         boolean pendienteBool = false;
@@ -163,14 +373,6 @@ public class ReservaAction extends BaseAction {
         }
     }
     
-    public List getReservas() {
-        return reservas;
-    }
- 
-    public String getSoloVista(){
-        return this.soloVista;
-    }
-
     public String list() {
         this.soloVista=null;
         reservas = manager.obtenerReservas();
@@ -185,22 +387,53 @@ public class ReservaAction extends BaseAction {
     }
 
     public String edit() {
-        String username = this.getRequest().getRemoteUser();
-        this.setUserNamePaciente(username);
+        
         if (id != null) {
             log.debug("EDITANDO...");
             reserva = manager.obtenerReserva(id);
-            log.debug("Se obtuvo: " + reserva.getPaciente().getEmail());
+            log.debug("Se obtuvo: " + reserva.getFechaReservadaString());
         } 
         else {
+            log.debug("CREANDO NUEVA RESERVA...");
+            this.reserva = new Reserva();    
+        }
+               
+        
+        // seteamos los atributos que se utilizarán en el formulario de la reserva
+        this.doctores = this.doctorManager.obtenerDoctores();        
+        log.debug(".::NUEVA RESERVA:doctores:-> "+this.doctores.toString());
+        
+        this.especialidades = this.especialidadManager.getEspecialidades();
+        log.debug(".::NUEVA RESERVA:especialidades:-> "+this.especialidades.toString());
+
+        String user = this.getRequest().getRemoteUser();
+        log.debug(".::NUEVA RESERVA:user:-> "+user);
+        
+        if (this.getRequest().isUserInRole(Constants.PACIENTE_ROLE)) {
+            log.debug(".::NUEVA RESERVA:user:-> "+user+" es un PACIENTE");
+            this.paciente = this.pacienteManager.getPaciente(user);
             
-            reserva = new Reserva();
+            log.debug(".::NUEVA RESERVA:paciente.id:-> "+paciente.getId());
+            this.reserva.setPaciente(this.paciente);
+            
         }
 
+        this.fechaRealizacionTimestamp = new Timestamp(System.currentTimeMillis());
+        this.fechaRealizacion = this.fechaRealizacionTimestamp.toString();          
+        this.reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
+        
+        
+        //falta implementar un método para extraer solo la parte de la fecha
+        // de la fecha de realizacion para colocar en fechaRealizacionSoloFecha
+        
+        this.fechaRealizacionSoloFecha = this.fechaRealizacion;
+        
+        log.debug(".::NUEVA RESERVA:reserva.fechaRealizacion:-> "+reserva.getFechaRealizacionString());
+        
         return SUCCESS;
     }
 
-    public String save() throws Exception {
+    public String saveReserva() throws Exception {
         if (cancel != null)
             return CANCEL;
 
@@ -210,23 +443,32 @@ public class ReservaAction extends BaseAction {
         boolean isNew = (reserva.getId() == null);
         
         log.debug("GUARDANDO...");
-        log.debug("1.1-)Se obtuvo: " + reserva.getFechaReservadaString() + "--" +this.getRequest().getParameter("reserva.fechaInicio"));
+        log.debug("1.1-)Se obtuvo: " + reserva.getFechaReservadaString() + "--" +this.getRequest().getParameter("fechaReservadaTimestamp"));
         
         /*
          * Se recupera la reserva modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
+         * 
+         * Se setean los datos a guardar en la reserva
          */
-        String username = this.getRequest().getRemoteUser();
-        this.setUserNamePaciente(username);
         
-        Paciente paciente = this.pacienteManager.getPaciente(reserva.getPaciente().getId());
-        Doctor doctor = this.doctorManager.obtenerDoctorPorNombre(username);
-        //log.debug("2.1-)Se obtuvo: " + oldReserva.getFecha());
+        // 1. obtenemos el paciente de la reserva
+        Long pacienteIdLong = Long.parseLong(this.getPacienteId());
+        this.paciente = this.pacienteManager.getPaciente(pacienteIdLong);       
+        reserva.setPaciente(this.paciente);
         
-        // Se actualizan los datos del Doctor y del Paciente.
-
-        reserva.setPaciente(paciente);
-
+        // 2. obtenemos el turno de la reserva
+        Long turnoIdLong = Long.parseLong(this.getTurnoId());
+        this.turno = this.turnoManager.getTurno(turnoIdLong);
+        reserva.setTurno(this.turno);
+        
+        // 3. seteamos las fechas (de realización y de reserva)        
+        this.fechaRealizacionTimestamp = new Timestamp(System.currentTimeMillis());
+        reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
+                
+        //this.fechaReservadaTimestamp = new Timestamp()
+        reserva.setFechaReservada(this.fechaReservadaTimestamp);  
+       
         // Se guarda la reserva modificada.
         manager.guardarReserva(reserva);
         
@@ -239,96 +481,6 @@ public class ReservaAction extends BaseAction {
             return SUCCESS;
     }
 
-    public void setConsultaManager(ConsultaManager consultaManager) {
-        this.consultaManager = consultaManager;
-    }
-
-    public void setHorarioAtencionManager(HorarioAtencionManager horarioAtencionManager) {
-        this.horarioAtencionManager = horarioAtencionManager;
-    }
-
-    public void setTurnoManager(TurnoManager turnoManager) {
-        this.turnoManager = turnoManager;
-    }
-    
-    public void getReservasDisp(HorarioAtencion ha, Timestamp fecha){
-        List<Turno> turnos =this.turnoManager.getTurnos(ha);
-        Iterator<Turno> it = turnos.iterator();
-        boolean disponible = true;
-        Turno turnoActual;
-        while(it.hasNext()){
-            turnoActual = it.next();
-            disponible = this.manager.isTurnoDisponible(turnoActual, fecha);
-            if(disponible){
-                this.turnosDisp.add(turnoActual);
-            }
-        }
-    }
-
-    public List<Turno> getTurnosDisp() {
-        return turnosDisp;
-    }
-
-    public void setTurnosDisp(List<Turno> turnosDisp) {
-        this.turnosDisp = turnosDisp;
-    }
-
-    public Turno getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Turno turno) {
-        this.turno = turno;
-    }
-    
-    public void getDoctoresFecha(Timestamp fecha){
-        DiaDeSemana dia = obtenerDia(fecha);
-        this.doctores = this.doctorManager.obtenerPorDia(dia);
-    }
-
-    private DiaDeSemana obtenerDia(Timestamp fecha) {
-        DiaDeSemana dia = null;
-                
-        if(fecha.getDay() == 0){
-            return dia.DOMINGO;
-        }
-        if(fecha.getDay() == 1){
-            return dia.LUNES;
-        }
-        if(fecha.getDay() == 2){
-            return dia.MARTES;
-        }
-        if(fecha.getDay() == 3){
-            return dia.MIERCOLES;
-        }
-        if(fecha.getDay() == 4){
-            return dia.JUEVES;
-        }
-        if(fecha.getDay() == 5){
-            return dia.VIERNES;
-        }
-        if(fecha.getDay() == 6){
-            return dia.SABADO;
-        }
-        return dia;
-    }
-
-    public List<Especialidad> getEspecialidades() {
-        return especialidades;
-    }
-
-    public void setEspecialidades(List<Especialidad> especialidades) {
-        this.especialidades = especialidades;
-    }
-
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
-    }
-    
     public String actualizarTurnos(){
         
         
@@ -370,23 +522,7 @@ public class ReservaAction extends BaseAction {
         return SUCCESS;
         
     }
-
-    public String getEspecialidadId() {
-        return especialidadId;
-    }
-
-    public void setEspecialidadId(String especialidadId) {
-        this.especialidadId = especialidadId;
-    }
-
-    public String getTurnoId() {
-        return turnoId;
-    }
-
-    public void setTurnoId(String turnoId) {
-        this.turnoId = turnoId;
-    }
-
+    
     private Set<HorarioAtencion> obtenerHorarioDia(DiaDeSemana ds) {
         Set<HorarioAtencion> listh = this.doctor.getHorarios();
         Set<HorarioAtencion> listReturn = new HashSet<HorarioAtencion>();
@@ -403,14 +539,6 @@ public class ReservaAction extends BaseAction {
         
         return listReturn;
     }
-
-    public Set<HorarioAtencion> getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(Set<HorarioAtencion> horarios) {
-        this.horarios = horarios;
-    }
     
     public Timestamp convertirFecha(String f){
         Timestamp retorno = null;
@@ -422,4 +550,54 @@ public class ReservaAction extends BaseAction {
         return retorno;
     }
 
+        private DiaDeSemana obtenerDia(Timestamp fecha) {
+    /*    DiaDeSemana dia = null;
+                
+        if(fecha.getDay() == 0){
+            return dia.DOMINGO;
+        }
+        if(fecha.getDay() == 1){
+            return dia.LUNES;
+        }
+        if(fecha.getDay() == 2){
+            return dia.MARTES;
+        }
+        if(fecha.getDay() == 3){
+            return dia.MIERCOLES;
+        }
+        if(fecha.getDay() == 4){
+            return dia.JUEVES;
+        }
+        if(fecha.getDay() == 5){
+            return dia.VIERNES;
+        }
+        if(fecha.getDay() == 6){
+            return dia.SABADO;
+        }
+        return dia;
+     */
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fecha);
+        int dia = calendario.get(Calendar.DAY_OF_WEEK);
+
+        switch (dia) {
+            case Calendar.SUNDAY:
+                return DiaDeSemana.DOMINGO;
+            case Calendar.MONDAY:
+                return DiaDeSemana.LUNES;
+            case Calendar.TUESDAY:
+                return DiaDeSemana.MARTES;
+            case Calendar.WEDNESDAY:
+                return DiaDeSemana.MIERCOLES;
+            case Calendar.THURSDAY:
+                return DiaDeSemana.JUEVES;
+            case Calendar.FRIDAY:
+                return DiaDeSemana.VIERNES;
+            case Calendar.SATURDAY:
+                return DiaDeSemana.SABADO;
+        }
+        return null;
+    }
+    
 }

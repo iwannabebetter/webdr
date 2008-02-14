@@ -49,8 +49,7 @@
         <Menu name="VerDoctores" title="menu.doctor.doctores" page="/doctor/doctores.html" roles="ROLE_PACIENTE" width="100"/>
         <Menu name="ReservaMenu" title="menu.reserva" description="Reserva Menu" roles="ROLE_PACIENTE" width="110">
             <Item name="VerReservas" title="menu.reserva.reservas" page="/paciente/reservas.html"/>
-            <Item name="VerReservasEdit" title="menu.reserva.reservasEdit" page="/mainMenu.html"/>
-            <Item name="CrearReservas" title="menu.reserva.nuevaReserva" page="/mainMenu.html"/>
+            <Item name="CrearReservas" title="menu.reserva.nuevaReserva" page="/paciente/editReserva.html"/>
         </Menu>        
         
         <!-- Menu general para Logout -->
