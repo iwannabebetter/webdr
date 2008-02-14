@@ -5,6 +5,16 @@
 </head>
 
 <s:form id="consultaForm" action="saveConsulta" method="post" validate="true">
+    <li class="buttonBar right">
+        <c:set var="buttons">
+            <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
+            <c:if test="${deleteAccess and not empty consulta.id}">
+                <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('esta consulta')" theme="simple"/>
+            </c:if>
+            <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
+        </c:set>
+        <c:out value="${buttons}" escapeXml="false"/>
+    </li>
     <s:hidden name="consulta.id" value="%{consulta.id}"/>
     <li>
         <s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
@@ -65,11 +75,7 @@
     <s:hidden name="consulta.doctor.id" value="%{consulta.doctor.id}"/>
     
     <li class="buttonBar bottom">
-        <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
-        <c:if test="${not empty consulta.id}">
-            <s:submit cssClass="button" method="delete" key="button.delete" onclick="return confirmDelete('esta consulta')" theme="simple"/>
-        </c:if>
-        <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
+        <c:out value="${buttons}" escapeXml="false"/>
     </li>
 </s:form>
 
