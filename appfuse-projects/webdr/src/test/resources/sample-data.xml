@@ -222,13 +222,38 @@
         <column>descripcion</column>
         <row>
             <value description="id">-1</value>
-            <value description="nombre">Psiquiatra</value>
-            <value description="descripcion"><![CDATA[Trata los problemas mentales]]></value>
+            <value description="nombre">Psiquiatría</value>
+            <value description="descripcion"><![CDATA[Trata los problemas de enfermos mentales]]></value>
         </row>
         <row>
             <value description="id">-2</value>
-            <value description="nombre">Dermatologo</value>
+            <value description="nombre">Dermatología</value>
             <value description="descripcion"><![CDATA[Trata problemas de la piel]]></value>
+        </row>
+        <row>
+            <value description="id">-3</value>
+            <value description="nombre">Cardiología</value>
+            <value description="descripcion"><![CDATA[Trata problemas del corazón]]></value>
+        </row>
+        <row>
+            <value description="id">-4</value>
+            <value description="nombre">Hematología</value>
+            <value description="descripcion"><![CDATA[Trata problemas de la sangre]]></value>
+        </row>
+        <row>
+            <value description="id">-5</value>
+            <value description="nombre">Odontología</value>
+            <value description="descripcion"><![CDATA[Trata problemas de la boca y los dientes]]></value>
+        </row>
+        <row>
+            <value description="id">-6</value>
+            <value description="nombre">Oncología</value>
+            <value description="descripcion"><![CDATA[Trata problemas de cáncer y tumores]]></value>
+        </row>
+        <row>
+            <value description="id">-7</value>
+            <value description="nombre">Oftalmología</value>
+            <value description="descripcion"><![CDATA[Trata problemas de la vista]]></value>
         </row>
     </table>
     <table name="tiposangre">
