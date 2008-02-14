@@ -13,23 +13,27 @@
 
 <c:out value="${buttons}" escapeXml="false" />
 <s:set name="especialidades" value="especialidades" scope="request"/>
-<display:table name="especialidades" class="table" requestURI="" id="especialidadList" export="false" pagesize="10">
-    <display:column titleKey="especialidad.nombre" sortable="true">
-        <a onclick="javascript:ajaxGet('detalles', 'viewEspecialidad.html', 'id=${especialidadList.id}')">
-            <c:out value="${especialidadList.nombre}"/>
-        </a>
-    </display:column>
-    <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
-    
-    <display:setProperty name="paging.banner.item_name" value="especialidad"/>
-    <display:setProperty name="paging.banner.items_name" value="especialidades"/>
-    <display:setProperty name="export.excel.filename" value="Espacialidades.xls"/>
-    <display:setProperty name="export.csv.filename" value="Espacialidades.csv"/>
-    <display:setProperty name="export.pdf.filename" value="Espacialidades.pdf"/>
-</display:table>
+<aa:zone name="especialidadesZone">
+    <display:table name="especialidades" class="table" requestURI="" id="especialidadList" 
+                   export="false" pagesize="5" excludedParams="*" sort="list">
+        <display:column titleKey="especialidad.nombre" sortable="true">
+            <a onclick="javascript:ajaxGet('detalles', 'viewEspecialidad.html', 'id=${especialidadList.id}')">
+                <c:out value="${especialidadList.nombre}"/>
+            </a>
+        </display:column>
+        <display:column property="descripcion" sortable="true" titleKey="especialidad.descripcion"/>
+
+        <display:setProperty name="paging.banner.item_name" value="especialidad"/>
+        <display:setProperty name="paging.banner.items_name" value="especialidades"/>
+        <display:setProperty name="export.excel.filename" value="Espacialidades.xls"/>
+        <display:setProperty name="export.csv.filename" value="Espacialidades.csv"/>
+        <display:setProperty name="export.pdf.filename" value="Espacialidades.pdf"/>
+    </display:table>
+</aa:zone>
 
 <script type="text/javascript">
     highlightTableRows("especialidadList");
+    displayTagAjax('especialidadesZone', 'especialidadList');
 </script>
 
 <div id="detalles" style="display: inline; overflow: auto; display: none;"></div>
