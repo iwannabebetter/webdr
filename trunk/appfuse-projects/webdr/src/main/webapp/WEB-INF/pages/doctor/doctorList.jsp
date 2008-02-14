@@ -17,7 +17,8 @@
 
 <s:set name="doctores" value="doctores" scope="request"/>
 <aa:zone name="doctoresZone">
-    <display:table name="doctores" class="table" requestURI="" id="doctorList" pagesize="15">
+    <display:table name="doctores" class="table" requestURI="" id="doctorList" pagesize="15"
+                excludedParams="*" sort="list">
         <display:column titleKey="doctor.registro" sortable="true">
             <a onclick="javascript:ajaxGet('detalles', 'viewDoctor.html', 'id=${doctorList.id}')">
                 <c:out value="${doctorList.registro}"/>
