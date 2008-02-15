@@ -203,15 +203,10 @@
         <action name="saveReserva" class="edu.fpuna.webapp.action.ReservaAction" method="saveReserva">
             <interceptor-ref name="pacienteCheck"/>
             <result name="input">/WEB-INF/pages/paciente/reservaForm.jsp</result>
-            <result name="cancel" type="redirect">reservasCancel.html</result>
+            <result name="cancel" type="redirect">reservas.html</result>
             <result name="success" type="redirect">reservas.html</result>
         </action>    
-        
-        <action name="reservasCancel" class="edu.fpuna.webapp.action.ReservaAction" method="cancelReserva"> 
-            <interceptor-ref name="pacienteCheck"/>
-            <result>/WEB-INF/pages/paciente/reservaList.jsp</result> 
-        </action>
-        
+                
         <action name="viewTurnos" class="edu.fpuna.webapp.action.ReservaAction" method="actualizarTurnos">
             <interceptor-ref name="pacienteCheck"/>
             <result name="success">/WEB-INF/jspf/viewTurnos.jspf</result>

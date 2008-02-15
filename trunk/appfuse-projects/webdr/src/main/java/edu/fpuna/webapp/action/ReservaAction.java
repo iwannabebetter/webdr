@@ -508,11 +508,9 @@ public class ReservaAction extends BaseAction {
 
     public String actualizarTurnos(){
         
-        
         //String doctorIdString = this.getRequest().getParameter("doctoresSelect.value");
         //String fechaString = this.getRequest().getParameter("fechaReservada");
-        log.debug(".::FECHA EN STRING: "+this.fechaReservadaDate);
-        //Timestamp fecha = this.convertirFecha(this.reserva.getFechaReservada());
+        log.debug(".::Doctor Id: "+this.doctorId);
         
         Long doctorIdlong = Long.parseLong(this.doctorId);
         
@@ -522,10 +520,15 @@ public class ReservaAction extends BaseAction {
         // obtener el horario de atencion del doctor que coincide con el 
         // dia dado por fechareservada        
         // implementa esto vos HUGO
+        log.debug(".::FECHA EN STRING: "+this.fechaReservadaTimestamp.toString());
+        this.fechaRealizacionTimestamp = this.convertirFecha(this.fechaReservada);
         
-        DiaDeSemana dia = this.obtenerDia((Timestamp) this.fechaReservadaDate);
+        
+        DiaDeSemana dia = this.obtenerDia(this.fechaReservadaTimestamp);
+        
+        
         this.setHorarios(this.obtenerHorarioDia(dia));
-        Set<HorarioAtencion> listh = this.getHorarios();
+        Set<HorarioAtencion> listh = this.doctor.getHorarios();
         
         Iterator<HorarioAtencion> it = listh.iterator();
         
@@ -539,7 +542,7 @@ public class ReservaAction extends BaseAction {
             Iterator<Turno> itTurno = turnos.iterator();
             while(itTurno.hasNext()){
                 Turno t = itTurno.next();
-                if(this.manager.isTurnoDisponible(t, (Timestamp)this.fechaReservadaDate)){
+                if(this.manager.isTurnoDisponible(t, this.fechaReservadaTimestamp)){
                     this.turnosDisp.add(t);      
                 }
             }
@@ -597,7 +600,7 @@ public class ReservaAction extends BaseAction {
         return retorno;
     }
 
-        private DiaDeSemana obtenerDia(Timestamp fecha) {
+    private DiaDeSemana obtenerDia(Timestamp fecha) {
     /*    DiaDeSemana dia = null;
                 
         if(fecha.getDay() == 0){
