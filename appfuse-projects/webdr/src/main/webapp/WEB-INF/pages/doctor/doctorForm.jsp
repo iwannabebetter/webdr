@@ -3,11 +3,11 @@
 <head>
     <title><fmt:message key="doctorProfile.title"/></title>
     <meta name="heading" content="<fmt:message key='doctorProfile.heading'/>"/>
-    <meta name="menu" content="UserMenu"/>
+    <meta name="menu" content="DoctorMenu"/>
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<s:form name="doctorForm" action="saveDoctor" method="post" validate="true">
+<s:form name="doctorForm" action="saveDoctor" method="post" validate="true" namespace="/doctor">
     <li style="display: none">
         <s:hidden key="doctor.id"/>
         <s:hidden key="doctor.version"/>
