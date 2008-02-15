@@ -493,7 +493,7 @@ public class ReservaAction extends BaseAction {
                 
         //this.fechaReservadaTimestamp = new Timestamp()
         
-        /// ver como finalmente se pasa la fecha reservada
+        /// ver como finalmente se pasa la fecha reservada        
         reserva.setFechaReservada(this.getFechaReservadaTimestamp());  
        
         // Se guarda la reserva modificada.
@@ -524,7 +524,7 @@ public class ReservaAction extends BaseAction {
         // implementa esto vos HUGO
         log.debug(".::FECHA EN STRING: "+this.fechaReservadaTimestamp.toString());
         
-        this.fechaRealizacionTimestamp = this.convertirFecha(this.fechaReservada);
+        //this.fechaRealizacionTimestamp = this.convertirFecha(this.fechaReservada);
         
         
         DiaDeSemana dia = this.obtenerDia(this.fechaReservadaTimestamp);
@@ -545,6 +545,8 @@ public class ReservaAction extends BaseAction {
             Iterator<Turno> itTurno = turnos.iterator();
             while(itTurno.hasNext()){
                 Turno t = itTurno.next();
+                
+                log.debug(".::Turno : "+t.getHora().toString());
                 if(this.manager.isTurnoDisponible(t, this.fechaReservadaTimestamp)){
                     this.turnosDisp.add(t);      
                 }

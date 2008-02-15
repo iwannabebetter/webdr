@@ -8,7 +8,7 @@
     <script type="text/javascript" src="<c:url value='/scripts/reservas.js'/>"></script>
 </head>
 
-<s:form id="reservaForm" action="saveReserva" method="post" validate="true">
+<s:form id="reservaForm" name="saveReserva" action="saveReserva" method="post" validate="true">
     
     <s:hidden id="pasoReservar" value="1"/>
     <s:hidden id="horarioId" name="horarioId" value=""/>    
@@ -78,18 +78,23 @@
             </span>
             <br>
             <span>
-                    <fmt:message key="reservaForm.fechaReservaSeleccione"/>
+                <fmt:message key="reservaForm.fechaReservaSeleccione"/>
             </span>         
             <li>
                 <div>
-                    <s:datetimepicker id="selectorFecha" value="%{fechaReservada}" theme="ajax" 
+                    <%--<s:datetimepicker id="selectorFecha" value="%{fechaReservadaTimestamp}" theme="ajax" 
                                       required="true" dayWidth="wide" label="Fecha a Reservar"  
                                       displayFormat="dd/MM/yyyy" toggleType="fade"
                                       onselect="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
-                                      />
+                                      />--%>
+                                      
+                    <s:textfield id="fechaField" key="fechaReservadaTimestamp" required="true" cssClass="text medium" 
+                                 readonly="true" onchange="agregarSegundos(this);"/>
+                    <input type="button" value="..."
+                           onclick="displayCalendar($('fechaField'), 'dd/mm/yyyy hh:ii', this, true)"/>
                     <input type="button" id="botonFecha" class="button" 
-                     onclick="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
-                     value="Ver Turnos"  />                 
+                           onclick="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
+                           value="Ver Turnos"  />                 
                 </div>
             </li>
             
@@ -113,3 +118,11 @@
 <script type="text/javascript">
     Form.focusFirstElement($("reservaForm"));
     </script>
+    
+    <script type="text/javascript">
+    //Form.focusFirstElement($("consultaForm"));
+    function agregarSegundos(campo) {
+        campo.value = campo.value + ":00";
+    }
+</script>
+
