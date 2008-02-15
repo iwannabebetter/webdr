@@ -539,7 +539,10 @@ public class ReservaAction extends BaseAction {
         // mejorar separando los turnos de un día de los del otro.
         // en realidad, creo que no hace falta obtener los turnos puesto que ya estàn 
         // en los horarios...
+        int i = 0;
         while (it.hasNext()) {
+            
+            log.debug(".::Horario  : "+i);
             HorarioAtencion current = it.next();
             List<Turno> turnos = this.turnoManager.getTurnos(current);
             Iterator<Turno> itTurno = turnos.iterator();
@@ -551,6 +554,8 @@ public class ReservaAction extends BaseAction {
                     this.turnosDisp.add(t);      
                 }
             }
+            
+            log.debug(".::cantidad de turnos : "+this.turnosDisp.size());
             
         }
         return SUCCESS;
