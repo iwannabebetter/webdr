@@ -46,10 +46,12 @@ function volverPasoUno() {
 
 }
 
-function actualizarTurnos() {
+function actualizarTurnos(zona,url) {
     // verificar que se haya seleccionado una fecha
+    //var fechaReservada = dojo.widget.byId("selectorFecha").getValue();
+    //var fechaReservada = document.getElementById("selectorFecha").value;
     
-    //ajaxGet('turnosDisp', 'viewTurnos.html', '');
+    ajaxGet(zona, url, '');
 }
 
 // se ejecuta al seleccionar un turno

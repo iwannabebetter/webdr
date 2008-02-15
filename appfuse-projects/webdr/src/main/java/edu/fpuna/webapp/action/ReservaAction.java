@@ -85,6 +85,7 @@ public class ReservaAction extends BaseAction {
     private String fechaReservadaSoloFecha;
     
     private Timestamp fechaReservadaTimestamp;
+    private Date fechaReservadaDate;
     private Timestamp fechaRealizacionTimestamp;
     
     private String soloVista = null;
@@ -299,7 +300,7 @@ public class ReservaAction extends BaseAction {
     }
     
     public Timestamp setFechaReservadaTimestamp() {
-        return this.fechaReservadaTimestamp;
+        return this.getFechaReservadaTimestamp();
     }
     
     public Timestamp setFechaRealizacion() {
@@ -431,7 +432,7 @@ public class ReservaAction extends BaseAction {
 
         this.fechaRealizacionTimestamp = new Timestamp(System.currentTimeMillis());
         this.fechaReservadaTimestamp = new Timestamp(System.currentTimeMillis());
-        this.fechaReservada = this.fechaReservadaTimestamp.toString();
+        this.fechaReservada = this.getFechaReservadaTimestamp().toString();
         this.fechaRealizacion = this.fechaRealizacionTimestamp.toString();          
         
         
@@ -491,7 +492,7 @@ public class ReservaAction extends BaseAction {
         reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
                 
         //this.fechaReservadaTimestamp = new Timestamp()
-        reserva.setFechaReservada(this.fechaReservadaTimestamp);  
+        reserva.setFechaReservada(this.getFechaReservadaTimestamp());  
        
         // Se guarda la reserva modificada.
         manager.guardarReserva(reserva);
@@ -509,8 +510,9 @@ public class ReservaAction extends BaseAction {
         
         
         //String doctorIdString = this.getRequest().getParameter("doctoresSelect.value");
-        String fechaString = this.getRequest().getParameter("fechaReservadaTimestamp");
-        Timestamp fecha = this.convertirFecha(fechaString);
+        //String fechaString = this.getRequest().getParameter("fechaReservada");
+        log.debug(".::FECHA EN STRING: "+this.fechaReservadaDate);
+        //Timestamp fecha = this.convertirFecha(this.reserva.getFechaReservada());
         
         Long doctorIdlong = Long.parseLong(this.doctorId);
         
@@ -521,7 +523,7 @@ public class ReservaAction extends BaseAction {
         // dia dado por fechareservada        
         // implementa esto vos HUGO
         
-        DiaDeSemana dia = this.obtenerDia(fecha);
+        DiaDeSemana dia = this.obtenerDia((Timestamp) this.fechaReservadaDate);
         this.setHorarios(this.obtenerHorarioDia(dia));
         Set<HorarioAtencion> listh = this.getHorarios();
         
@@ -537,7 +539,7 @@ public class ReservaAction extends BaseAction {
             Iterator<Turno> itTurno = turnos.iterator();
             while(itTurno.hasNext()){
                 Turno t = itTurno.next();
-                if(this.manager.isTurnoDisponible(t,fecha)){
+                if(this.manager.isTurnoDisponible(t, (Timestamp)this.fechaReservadaDate)){
                     this.turnosDisp.add(t);      
                 }
             }
@@ -643,6 +645,18 @@ public class ReservaAction extends BaseAction {
                 return DiaDeSemana.SABADO;
         }
         return null;
+    }
+
+    public Timestamp getFechaReservadaTimestamp() {
+        return fechaReservadaTimestamp;
+    }
+
+    public Date getFechaReservadaDate() {
+        return fechaReservadaDate;
+    }
+
+    public void setFechaReservadaDate(Date fechaReservadaDate) {
+        this.fechaReservadaDate = fechaReservadaDate;
     }
     
 }
