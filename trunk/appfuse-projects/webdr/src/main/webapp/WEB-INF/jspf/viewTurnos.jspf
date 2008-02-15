@@ -1,4 +1,4 @@
 <%@ include file="/common/taglibs.jsp"%>
 <br><br>
 <h3><fmt:message key="turnoDetail.heading"/></h3>
-<s:radio id = "turnosDisp" label="Turnos Disponibles" value="turnoId" name="turnosDisp" list="turnosDisp" listKey="id" listValue="hora"/>
+<s:radio id = "turnosdisponibles" key="turnoId" list="%{turnosDisp}" listKey="id" listValue="hora"/>
