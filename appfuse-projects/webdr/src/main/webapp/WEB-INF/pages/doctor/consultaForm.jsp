@@ -20,7 +20,12 @@
     </li>
     <li>
         <div class="left">
-            <s:textfield key="consulta.paciente.fullName" required="true" cssClass="text medium"/>
+            <c:if test="${not empty consulta.id}">
+                <s:textfield key="consulta.paciente.fullName" required="true" cssClass="text medium"/>
+            </c:if>
+            <c:if test="${empty consulta.id}">
+                <s:textfield key="pacienteId" required="true" cssClass="text medium" readonly="true" />
+            </c:if>
         </div>
         <div>
             <s:textfield label="Doctor Consultado" key="userNameDoctor" required="true" 

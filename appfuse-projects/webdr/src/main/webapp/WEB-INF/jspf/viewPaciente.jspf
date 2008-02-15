@@ -2,15 +2,6 @@
 <br><br>
 <h3><fmt:message key="pacienteProfile.heading"/></h3>
 
-<c:set var="buttons">
-	<s:url id="historialUrl" action="historial">
-		<s:param name="username" value="%{paciente.username}" />
-	</s:url>
-	<s:a href="%{historialUrl}">
-		<b>| Ver Historial del Paciente |</b>
-	</s:a>
-</c:set>
-
 <s:form action="editPaciente">
     <s:label key="paciente.username" cssClass="text large"/>
     <s:label key="paciente.passwordHint" cssClass="text large"/>
@@ -87,4 +78,7 @@
             onclick="location.href='<c:url value="/paciente/historial.html?username=${paciente.username}"/>'"
             value="Ver Historial del Paciente"/>
     </s:if>
+    <input type="button" style="margin-right: 5px"
+            onclick="location.href='<c:url value="/doctor/editConsulta.html?pacienteId=${paciente.username}"/>'"
+            value="Nueva Consulta"/>
 </s:form>

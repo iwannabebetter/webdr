@@ -33,6 +33,7 @@ public class ConsultaAction extends BaseAction {
     private Date fechaInicio;
     private Date fechaFin;
     private String soloVista;
+    private String pacienteId;
     
 
     public void setConsultaManager(ConsultaManager consultaManager) {
@@ -48,6 +49,14 @@ public class ConsultaAction extends BaseAction {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public void setPacienteId(String pacienteId) {
+        this.pacienteId = pacienteId;
+    }
+    
+    public String getPacienteId() {
+        return this.pacienteId ;
     }
 
     public void setUserNameDoctor(String username) {
@@ -157,8 +166,6 @@ public class ConsultaAction extends BaseAction {
         boolean isNew = (consulta.getId() == null);
         
         log.debug("GUARDANDO...");
-        log.debug("1.1-)Se obtuvo: " + consulta.getFecha() + "--" +this.getRequest().getParameter("consulta.fechaInicio"));
-        
         /*
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
@@ -166,11 +173,14 @@ public class ConsultaAction extends BaseAction {
         String username = this.getRequest().getRemoteUser();
         this.setUserNameDoctor(username);
         
-        Paciente paciente = this.pacienteManager.getPaciente(consulta.getPaciente().getId());
-        Doctor doctor = this.doctorManager.obtenerDoctorPorNombre(username);
-        //log.debug("2.1-)Se obtuvo: " + oldConsulta.getFecha());
+        Paciente paciente = null;
+        if(isNew){
+            paciente = this.pacienteManager.getPaciente(pacienteId);
+        }else{
+            paciente = this.pacienteManager.getPaciente(consulta.getPaciente().getId());
+        }
         
-        // Se actualizan los datos del Doctor y del Paciente.
+        Doctor doctor = this.doctorManager.obtenerDoctorPorNombre(username);
 
         consulta.setDoctor(doctor);
         consulta.setPaciente(paciente);
