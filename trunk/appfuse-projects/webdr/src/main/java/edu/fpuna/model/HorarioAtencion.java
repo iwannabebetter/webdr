@@ -109,12 +109,16 @@ public class HorarioAtencion extends BaseObject {
 
     @Override
     public boolean equals(Object o) {
+        if(o == null){
+            return false;
+        }
+        
         if (!(o instanceof HorarioAtencion))
             return false;
         
         final HorarioAtencion horario = (HorarioAtencion) o;
         
-        if (this.id.equals(horario.getId()))
+        if (this.id != null && horario != null && horario.getId() != null && this.id.equals(horario.getId()))
             return true;
         
         return false;
