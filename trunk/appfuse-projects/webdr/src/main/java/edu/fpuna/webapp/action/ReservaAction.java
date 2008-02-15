@@ -492,6 +492,8 @@ public class ReservaAction extends BaseAction {
         reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
                 
         //this.fechaReservadaTimestamp = new Timestamp()
+        
+        /// ver como finalmente se pasa la fecha reservada
         reserva.setFechaReservada(this.getFechaReservadaTimestamp());  
        
         // Se guarda la reserva modificada.
@@ -521,6 +523,7 @@ public class ReservaAction extends BaseAction {
         // dia dado por fechareservada        
         // implementa esto vos HUGO
         log.debug(".::FECHA EN STRING: "+this.fechaReservadaTimestamp.toString());
+        
         this.fechaRealizacionTimestamp = this.convertirFecha(this.fechaReservada);
         
         
