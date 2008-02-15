@@ -82,16 +82,18 @@
             </span>         
             <li>
                 <div>
-                    <s:datetimepicker id="selectorFecha" key="%{fechaReservadaDate}" value = "%{fechaReservadaDate}" theme="ajax" 
+                    <s:datetimepicker id="selectorFecha" value="%{fechaReservada}" theme="ajax" 
                                       required="true" dayWidth="wide" label="Fecha a Reservar"  
-                                      displayFormat="dd-MM-yyyy" toggleType="fade"
+                                      displayFormat="yyyy-MM-dd" toggleType="fade"
                                       onselect="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
                                       />
                     <input type="button" id="botonFecha" class="button" 
-                     onclick="actualizarTurnos('turnosDisp', 'viewTurnos.html')"
-                     value="<fmt:message key='Ver Turnos'/>"  />                 
+                     onclick="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
+                     value="Ver Turnos"  />                 
                 </div>
             </li>
+            
+            
             <div id="turnosDisp" class="radio" style="display:none;" >
                 <%-- Aquí se desplegarán los turnos disponibles
                  en base al horarioId.
