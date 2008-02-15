@@ -58,12 +58,19 @@ public class ConsultaAction extends BaseAction {
     public String getPacienteId() {
         return this.pacienteId ;
     }
-
+    
     public void setUserNameDoctor(String username) {
         this.userNameDoctor = username;
     }
+    
     public String getUserNameDoctor() {
         return this.userNameDoctor;
+    }
+
+    public String getFullNameDoctor() {
+        String username = getRequest().getRemoteUser();
+        Doctor doctor = doctorManager.obtenerDoctorPorNombre(username);
+        return doctor.getFullName();
     }
     
     public Consulta getConsulta() {
@@ -165,7 +172,7 @@ public class ConsultaAction extends BaseAction {
 
         boolean isNew = (consulta.getId() == null);
         
-        log.debug("GUARDANDO...");
+        log.debug("ConsultaAction: GUARDANDO...");
         /*
          * Se recupera la consulta modificada debido a que el form (del edit)
          * no envia los datos del Doctor y del Paciente.
