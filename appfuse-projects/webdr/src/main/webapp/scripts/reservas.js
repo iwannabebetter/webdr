@@ -48,13 +48,13 @@ function volverPasoUno() {
 
 function actualizarTurnos(zona,url) {
     // verificar que se haya seleccionado una fecha
-    var fechaReservada = dojo.widget.byId("selectorFecha").getValue();
-    //var fechaReservada = document.getElementById("selectorFecha").value;
+    //var fechaReservada = dojo.widget.byId("selectorFecha").getValue();
+    var fechaReservada = document.getElementById("fechaField").value;
     
     var urlFinal = url;
     var id = $('doctoresSelect').value;
     
-    ajaxGet(zona, url, 'fechaReservadaDate='+fechaReservada+'&doctorId='+id);
+    ajaxGet(zona, url, 'fechaReservadaTimestamp='+fechaReservada+'&doctorId='+id);
 }
 
 // se ejecuta al seleccionar un turno
