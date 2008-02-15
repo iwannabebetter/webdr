@@ -4,7 +4,7 @@
     <meta name="heading" content="<fmt:message key='consultaDetail.heading'/>"/>
 </head>
 
-<s:form id="consultaForm" action="saveConsulta" method="post" validate="true">
+<s:form id="consultaForm" action="saveConsulta" method="post" validate="true" name="saveConsulta">
     <li class="buttonBar right">
         <c:set var="buttons">
             <s:submit cssClass="button" method="save" key="button.save" theme="simple"/>
@@ -16,7 +16,10 @@
         <c:out value="${buttons}" escapeXml="false"/>
     </li>
     <li>
-        <s:textfield key="consulta.fecha" required="true" cssClass="text medium"/>
+        <s:textfield id="fechaField" key="consulta.fecha" required="true" cssClass="text medium" 
+                     readonly="true" onchange="agregarSegundos(this);"/>
+        <input type="button" value="..."
+               onclick="displayCalendar($('fechaField'), 'dd/mm/yyyy hh:ii', this, true)"/>
     </li>
     <li>
         <div class="left">
@@ -28,7 +31,7 @@
             </c:if>
         </div>
         <div>
-            <s:textfield label="Doctor Consultado" key="userNameDoctor" required="true" 
+            <s:textfield label="Doctor Consultado" value="%{fullNameDoctor}" required="true" 
                          disabled="true" cssClass="text medium"/>
         </div>
     </li>
@@ -85,5 +88,8 @@
 </s:form>
 
 <script type="text/javascript">
-    Form.focusFirstElement($("consultaForm"));
+    //Form.focusFirstElement($("consultaForm"));
+    function agregarSegundos(campo) {
+        campo.value = campo.value + ":00";
+    }
 </script>
