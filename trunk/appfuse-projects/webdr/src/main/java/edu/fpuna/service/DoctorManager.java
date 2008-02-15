@@ -57,6 +57,8 @@ public interface DoctorManager extends GenericManager<Doctor, Long> {
      */
     public List<Doctor> obtenerDoctoresPorEspecialidad(String especialidad);
     
+    public List<Doctor> obtenerDoctoresPorEspecialidadLong(Long especialidad);
+    
     /**
      * Setea el manager de especialidades, 
      * @param el manager de especialidades, 

@@ -104,10 +104,14 @@ public class DoctorManagerImpl
         return doctorDao.getAll();
     }
 
+    public List<Doctor> obtenerDoctoresPorEspecialidadLong(Long especialidad) {
+        return doctorDao.obtenerPorEspecialidadLong(especialidad);
+    }
+
     public List<Doctor> obtenerDoctoresPorEspecialidad(String especialidad) {
         return doctorDao.obtenerPorEspecialidad(especialidad);
     }
-
+    
     public List<Doctor> obtenerPorDia(DiaDeSemana dia) {
         return doctorDao.obtenerPorDia(dia);
     }

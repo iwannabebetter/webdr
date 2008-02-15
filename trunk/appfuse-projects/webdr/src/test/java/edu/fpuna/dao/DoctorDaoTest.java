@@ -35,7 +35,7 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         
         log.debug("Recuperando especialidades...");
         List<Especialidad> especialidades = especialidadDao.getAll();
-        assertTrue(especialidades.size() == 2);
+        assertTrue(especialidades.size() > 0);
         log.debug(especialidades.size() + " especialidades recuperadas...");
         
         log.debug("Creando doctores...");
@@ -72,11 +72,11 @@ public class DoctorDaoTest extends BaseDaoTestCase {
         log.debug("Recuperando doctores con especialidad \"" + esp + "\"...");
         List<Doctor> doctores = doctorDao.obtenerPorEspecialidad(esp.getNombre());
         assertTrue(doctores.size() > 0);
-        /*
+        
         log.debug(doctores.size() + " doctores recuperados con especialidad \"" + esp + "\"...");
         for (int i=0; i < doctores.size(); i++) {
             Doctor doc = doctores.get(i);
             log.debug("\t" + doc.getUsername());
-        }*/
+        }
     }
 }
