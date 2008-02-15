@@ -12,7 +12,7 @@
     
     <s:hidden id="pasoReservar" value="1"/>
     <s:hidden id="horarioId" name="horarioId" value=""/>    
-    <s:hidden id="pacienteId" name="pacienteId" value="%{reserva.paciente.id}"/>
+    <s:hidden id="pacienteId" name="pacienteId" value="%{paciente.id}"/>
     
     <%-- Capas que contienen los datos de formulario del primer --%>
     <li id="paso1cab" >
@@ -84,7 +84,7 @@
                 <div>
                     <s:datetimepicker id="selectorFecha" value="%{fechaReservada}" theme="ajax" 
                                       required="true" dayWidth="wide" label="Fecha a Reservar"  
-                                      displayFormat="yyyy-MM-dd" toggleType="fade"
+                                      displayFormat="dd/MM/yyyy" toggleType="fade"
                                       onselect="actualizarTurnos('turnosDisp', 'viewTurnos.html');"
                                       />
                     <input type="button" id="botonFecha" class="button" 
