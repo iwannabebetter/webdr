@@ -191,8 +191,6 @@
 
 <!-- This is here so we can exclude the selectAll call when roles is hidden -->
 function onFormSubmit(theForm) {
-    <c:if test="${param.from == 'list'}">
     selectAll('doctorEspecialidad');
-    </c:if>
 }
 </script>
