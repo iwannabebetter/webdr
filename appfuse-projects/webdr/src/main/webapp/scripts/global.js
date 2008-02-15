@@ -16,7 +16,7 @@ function checkAll(theForm) { // check all the checkboxes in the list
             (e.type.indexOf("checkbox") == 0)) {
             e.checked = theForm.allbox.checked;        
         }
-    } 
+    }
 }
 
 /* Function to clear a form of all it's values */
@@ -257,7 +257,13 @@ function confirmDelete(obj) {
 function ajaxGet(contId, url, args) {
     // Obtenemos el contenedor
     var contenedor = $(contId);
-    contenedor.update("<br><br><p>Esperando datos...</p>");
+    
+    // Contenido HTML de espera
+    var waitHtml = '<br><br>' + 
+                   '<img src="/images/ajax-loader3.gif"' + 
+                   'alt="Esperando datos..."/>';
+    
+    contenedor.update(waitHtml);
     contenedor.show();
     
     // Función callback de éxito
