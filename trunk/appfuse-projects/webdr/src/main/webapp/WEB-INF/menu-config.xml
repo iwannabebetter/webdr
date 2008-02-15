@@ -35,7 +35,7 @@
         <Menu name="AdminConsultaMenu" title="menu.consulta" description="Consulta Menu" roles="ROLE_DOCTOR" width="110">
             <Item name="VerConsultas" title="menu.consulta.consultas" page="/doctor/consultas.html"/>
             <Item name="VerConsultasEdit" title="menu.consulta.consultasEdit" page="/doctor/consultasEdit.html"/>
-            <Item name="CrearConsulta" title="menu.consulta.nuevaConsulta" page="/doctor/editConsulta.html"/>
+            <!-- <Item name="CrearConsulta" title="menu.consulta.nuevaConsulta" page="/doctor/editConsulta.html"/> -->
         </Menu>
         <Menu name="AdminPacienteMenu2" title="menu.paciente" description="Paciente Menu" roles="ROLE_DOCTOR" width="110">
             <Item name="VerPacientes" title="menu.paciente.pacientes" page="/paciente/pacientes.html"/>
