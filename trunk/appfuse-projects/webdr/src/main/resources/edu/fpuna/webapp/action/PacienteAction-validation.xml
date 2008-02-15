@@ -1,0 +1,62 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN"     
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+    <field name="paciente.username">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    <field name="paciente.password">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    <field name="paciente.confirmPassword">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+        <field-validator type="fieldexpression">
+            <param name="expression">
+                (paciente.confirmPassword.equals(paciente.password))
+            </param> 
+            <message key="errors.twofields"/>
+        </field-validator>
+    </field>
+    <field name="paciente.firstName">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    <field name="paciente.lastName">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    <field name="paciente.cedula">
+        <field-validator type="required">
+            <message key="errors.required"/>
+        </field-validator>
+        <field-validator type="int">
+            <param name="min">1</param>
+            <message key="errors.integer"/>
+        </field-validator>
+    </field>
+    <field name="paciente.email">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+        <field-validator type="email">
+            <message key="errors.email"/>
+        </field-validator>
+    </field>
+    <field name="paciente.address.city">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    <field name="paciente.address.postalCode">
+        <field-validator type="requiredstring">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+</validators>
