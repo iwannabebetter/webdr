@@ -60,7 +60,7 @@
         </li>
     </c:if>
     
-    <s:textfield key="paciente.passwordHint" required="true" cssClass="text large"/>
+    <s:textfield key="paciente.passwordHint" required="false" cssClass="text large"/>
     
     <li>
         <div>
@@ -94,7 +94,7 @@
             <li>
                 <div>
                     <s:set name="tipoSangres" value="tipoSangres" scope="request"/>
-                    <s:select key="paciente.tipoSangre.id" list="tipoSangres" listKey="id" listValue="nombre" />
+                    <s:select key="paciente.tipoSangre.id" list="tipoSangres" listKey="id" listValue="nombre" required="true"/>
                 </div>
             </li>
         </div>
@@ -111,7 +111,7 @@
         </div>
     </li>
     
-    <s:textfield key="paciente.website" required="true" cssClass="text large"/>
+    <s:textfield key="paciente.website" required="false" cssClass="text large"/>
     
     <li>
         <label class="desc"><fmt:message key="paciente.address.address"/></label>
@@ -124,8 +124,7 @@
                              labelposition="bottom"/>
             </div>
             <div>
-                <s:textfield key="paciente.address.province" theme="xhtml" required="true" cssClass="text state" 
-                             labelposition="bottom"/>
+                <s:textfield key="paciente.address.province" theme="xhtml" required="false" cssClass="text state" labelposition="bottom"/>
             </div>
             <div class="left">
                 <s:textfield key="paciente.address.postalCode" theme="xhtml" required="true" cssClass="text medium" 
@@ -136,7 +135,7 @@
                 <appfuse:country name="paciente.address.country" prompt="" default="${country}"/>
                 <p>
                     <label for="paciente.address.country">
-                        <fmt:message key="paciente.address.country"/> <span class="req">*</span>
+                        <fmt:message key="paciente.address.country"/>
                     </label>
                 </p>
             </div>

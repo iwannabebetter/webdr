@@ -60,7 +60,7 @@
         </li>
     </c:if>
     
-    <s:textfield key="doctor.passwordHint" required="true" cssClass="text large"/>
+    <s:textfield key="doctor.passwordHint" required="false" cssClass="text large"/>
     
     <li>
         <div>
@@ -136,7 +136,7 @@
         </div>
     </li>
     
-    <s:textfield key="doctor.website" required="true" cssClass="text large"/>
+    <s:textfield key="doctor.website" required="false" cssClass="text large"/>
     
     <li>
         <label class="desc"><fmt:message key="doctor.address.address"/></label>
@@ -149,7 +149,7 @@
                              labelposition="bottom"/>
             </div>
             <div>
-                <s:textfield key="doctor.address.province" theme="xhtml" required="true" cssClass="text state" 
+                <s:textfield key="doctor.address.province" theme="xhtml" required="false" cssClass="text state" 
                              labelposition="bottom"/>
             </div>
             <div class="left">
@@ -161,7 +161,7 @@
                 <appfuse:country name="doctor.address.country" prompt="" default="${country}"/>
                 <p>
                     <label for="doctor.address.country">
-                        <fmt:message key="doctor.address.country"/> <span class="req">*</span>
+                        <fmt:message key="doctor.address.country"/>
                     </label>
                 </p>
             </div>
