@@ -37,14 +37,30 @@ public class DoctorDaoHibernate
             return (Doctor) result.get(0);
     }
 
-    public List<Doctor> obtenerPorEspecialidad(String especialidad) {
-        String query = "from Doctor as doc " +
+    public List<Doctor> obtenerPorEspecialidadLong(Long especialidad) {
+        String query = "select doc " +
+                       "from Doctor as doc " +
                        "join doc.especialidades as esp " +
-                       "with upper(esp.nombre)=? " +
+                       "with esp.id =? " +
                        "order by upper(esp.nombre)";
         
-        return super.getHibernateTemplate()
+        List<Doctor> result = super.getHibernateTemplate()
+                    .find(query, especialidad);
+        
+        return result;
+    }
+    
+    public List<Doctor> obtenerPorEspecialidad(String especialidad) {
+        String query = "select doc " +
+                       "from Doctor as doc " +
+                       "join doc.especialidades as esp " +
+                       "with upper(esp.nombre) =? " +
+                       "order by upper(esp.nombre)";
+        
+        List<Doctor> result = super.getHibernateTemplate()
                     .find(query, especialidad.toUpperCase());
+        
+        return result;
     }
     
     public List<Doctor> getAll(){

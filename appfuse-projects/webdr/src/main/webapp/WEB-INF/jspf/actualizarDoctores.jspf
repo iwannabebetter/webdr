@@ -1,0 +1,25 @@
+<%@ include file="/common/taglibs.jsp"%>
+
+<s:if test="%{doctores.size>0}">
+    
+    <s:select id="doctoresSelect" label="Doctores" cssClass="select"
+              list="%{doctores}" listKey="id" listValue="fullName"                     
+              value="doctorId" size="10"  onchange="habilitarSegundoPaso();"
+              />
+    
+</s:if>
+<s:else>        
+           <%--        <select id="doctoresSelect" class="select"
+                disabled="true" size="10">
+            <option value="-1"><fmt:message key='reservaForm.error.actualizarDoctores1'/></option>
+            <option value="-2"><fmt:message key='reservaForm.error.actualizarDoctores2'/></option>
+            <option value="-3"><fmt:message key='reservaForm.error.actualizarDoctores3'/></option>
+        </select>
+
+              --%>
+    <s:select id="doctoresSelect" label="Doctores" cssClass="select"
+              headerKey="-999" headerValue="No existen doctores"
+              list="#{'01':'para la', '02':'Especialidad', '03':'seleccionada'}" 
+              value="doctorId" size="10" disabled="true"
+              />
+</s:else>          

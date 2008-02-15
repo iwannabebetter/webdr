@@ -3,68 +3,99 @@
 <head>
     <title><fmt:message key="reservaDetail.title"/></title>
     <meta name="heading" content="<fmt:message key='reservaDetail.heading'/>"/>
-    <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>">
-    </script>
+    <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/scripts/global.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/scripts/reservas.js'/>"></script>
 </head>
 
 <s:form id="reservaForm" action="saveReserva" method="post" validate="true">
     
-    <%-- <s:hidden name="reserva.id" value="%{reserva.id}"/>    --%>
     <s:hidden id="pasoReservar" value="1"/>
-    
-    <%-- Capa que contiene los datos de formulario del primer --%>
-    <div id="paso1" class="group"> 
-        
-        <span><fmt:message key="reservaForm.paso1title"/></span>
-        
-        <%-- 
-        Completar con los nombre de las funciones javascript correspondientes
-        e implementar dichas funciones ajax. 
-        Las funciones serían: actualizarDoctores, actualizarEspecialidades
-        --%>
-        <br>
-        <span ><b><fmt:message key="reservaForm.fechaRealizacion"/>: </b><s:label value="%{fechaRealizacionSoloFecha}"/></span>
-        <br>      
-        
-        <%-- | Select de Epecialidades | --%>
-        <s:select id="especialidadesSelect" label="Especialidades" cssClass="select"
-                  list="%{especialidades}" listKey="id" listValue="nombre"
-                  headerKey="-999" headerValue="Seleccione la Especialidad"
-                  value="especialidadId" onselect="javascript:void(0)"
-        />
-        <%-- | Select de Doctores | --%>
-        <s:select id="doctoresSelect" label="Doctores" cssClass="select"
-                  list="%{doctores}" listKey="id" listValue="fullName"
-                  headerKey="-999" headerValue="Seleccione el Doctor"
-                  value="doctorId"
-        />
-        <input type="button" id="siguientePaso" class="button" value="<fmt:message key='reservaForm.botonpaso1'/>" onclick= "javascript:void(0)"/>       
-    </div>
-    
-    <%-- Selector de Fecha para la reserva --%>
-    <div id="paso2" class="group" style="display:none;">  
-        <%--span><fmt:message key="reservaForm.paso2title"/></span--%>
-        
-        <li>
-            <div>
-                <s:datetimepicker value="%{fechaReservadaTimestamp}" theme="ajax" 
-                                  required="true" dayWidth="wide" 
-                                  displayFormat="dd/MM/yyyy" toggleType="fade"
-                                  onselect="javascript:ajaxGet('turnosDisp', 'viewTurnos.html', '')"
-                />
-            </div>
-        </li>
-        <!--- ver aka que tratamos de hacer.... no va a funcionar asi -->
-        <s:hidden id="horarioId" name="horarioId" value=""/>    
-        
-        <div id="turnosDisp" class="radio" style="display:none;">
-            <%-- Aquí se desplegarán los turnos disponibles
-                 en base al horarioId.
-            --%>
-        </div>
-    </div>
-    
+    <s:hidden id="horarioId" name="horarioId" value=""/>    
     <s:hidden id="pacienteId" name="pacienteId" value="%{reserva.paciente.id}"/>
+    
+    <%-- Capas que contienen los datos de formulario del primer --%>
+    <li id="paso1cab" >
+        <div class="group">             
+            <h3><fmt:message key="reservaForm.paso1title"/></h3>
+            <%-- 
+                    Completar con los nombre de las funciones javascript correspondientes
+                    e implementar dichas funciones ajax. 
+                    Las funciones serían: actualizarDoctores, actualizarEspecialidades
+            --%>            
+            <span >
+                <b>
+                    <fmt:message key="reservaForm.fechaRealizacion"/>: 
+                </b>
+                <s:label value="%{fechaRealizacionSoloFecha}"/>
+            </span>         
+        </div>            
+    </li>  
+    <%-- paso1, selects --%>
+    <li id="paso1" >
+        <%-- | Select de Epecialidades | --%>
+        <div class="left">
+            <s:select id="especialidadesSelect"  label="Especialidades" cssClass="select"
+                      list="%{especialidades}" listKey="id" listValue="nombre"
+                      headerKey="-999" headerValue="Todos los Doctores"
+                      value="%{especialidadId}" size="10" onchange="actualizarDoctores('actualizarDoctores.html','doctoresList')"
+                      />
+        </div>                
+        <%-- | Select de Doctores | --%>        
+        <div id="doctoresList">            
+            <s:select id="doctoresSelect" label="Doctores" cssClass="select"
+                      list="%{doctores}" listKey="id" listValue="fullName"                     
+                      value="doctorId" size="10" onselect="habilitarSegundoPaso();"
+                      />
+        </div>
+    </li>
+    
+    <%-- Boton para continuar al segundo paso --%>
+    <li id="siguientePasoli">
+        <div>
+            <input type="button" id="siguientePaso" class="button" 
+                   onclick="crearReservaPaso2()" disabled="true"
+                   value="<fmt:message key='reservaForm.botonpaso1'/>"  />
+        </div>
+    </li>
+    
+    <li id="volverPaso1li" style="display:none">
+        <div>
+            <input type="button" id="volverPaso1" class="button" 
+                   onclick="volverPasoUno();" disabled="true"
+                   value="<fmt:message key='reservaForm.botonpaso2volver'/>"  />
+        </div>
+    </li>
+    <%-- Selector de Fecha para la reserva --%>
+    <li id="paso2li" style="display:none;">
+        <div id="paso2" class="group">  
+            <h3><fmt:message key="reservaForm.paso2title"/></h3>            
+            <span>
+                <b>
+                    <fmt:message key="reservaForm.doctorSeleccionado"/>: 
+                </b>
+                <div id="docSelected"></div>
+            </span>
+            <br>
+            <span>
+                    <fmt:message key="reservaForm.fechaReservaSeleccione"/>
+            </span>         
+            <li>
+                <div>
+                    <s:datetimepicker value="%{fechaReservadaTimestamp}" theme="ajax" 
+                                      required="true" dayWidth="wide" label="Fecha a Reservar"  
+                                      displayFormat="yyyy-mm-dd" toggleType="fade"
+                                      onselect="actualizarTurnos();"
+                                      />
+                </div>
+            </li>
+            <div id="turnosDisp" class="radio" style="display:none;">
+                <%-- Aquí se desplegarán los turnos disponibles
+                 en base al horarioId.
+                --%>
+            </div>
+        </div>
+    </li>
     
     <li class="buttonBar bottom">
         <s:submit cssClass="button" method="saveReserva" key="button.save" 
@@ -76,4 +107,4 @@
 
 <script type="text/javascript">
     Form.focusFirstElement($("reservaForm"));
-</script>
+    </script>

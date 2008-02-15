@@ -145,6 +145,69 @@
             <value description="account_expired">0</value>
             <value description="account_locked">0</value>
             <value description="credentials_expired">0</value>
+        </row>       
+        <row>
+            <value description="id">-7</value>
+            <value description="username">pmarmol</value>
+            <value description="password">d8680aea3e8adf668a249eba62192fa1ed9336f1</value>
+            <value description="first_name">Pablo</value>
+            <value description="last_name">Mármol</value>
+            <value description="address">Ybyturuzu</value>
+            <value description="city">Asunción</value>
+            <value description="country">PY</value>
+            <value description="email">meyer.hugo1@gmail.com</value>
+            <value description="phone_number">021-481298</value>
+            <value description="postal_code">0000</value>
+            <value description="province">ASU</value>
+            <value description="website">-</value>
+            <value description="password_hint"><![CDATA[Same as username.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">-8</value>
+            <value description="username">ppicapiedra</value>
+            <value description="password">d8680aea3e8adf668a249eba62192fa1ed9336f1</value>
+            <value description="first_name">Pedro</value>
+            <value description="last_name">Picapiedra</value>
+            <value description="address">Ybyturuzu</value>
+            <value description="city">Asunción</value>
+            <value description="country">PY</value>
+            <value description="email">meyer.hugo3@gmail.com</value>
+            <value description="phone_number">021-481298</value>
+            <value description="postal_code">0000</value>
+            <value description="province">ASU</value>
+            <value description="website">-</value>
+            <value description="password_hint"><![CDATA[Same as username.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>        
+        <row>
+            <value description="id">-9</value>
+            <value description="username">bambam</value>
+            <value description="password">d8680aea3e8adf668a249eba62192fa1ed9336f1</value>
+            <value description="first_name">Bambam</value>
+            <value description="last_name">Mármol</value>
+            <value description="address">Ybyturuzu</value>
+            <value description="city">Asunción</value>
+            <value description="country">PY</value>
+            <value description="email">meyer.hugo4@gmail.com</value>
+            <value description="phone_number">021-481298</value>
+            <value description="postal_code">0000</value>
+            <value description="province">ASU</value>
+            <value description="website">-</value>
+            <value description="password_hint"><![CDATA[Same as username.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
         </row>
     </table>
     <table name="role">
@@ -215,6 +278,35 @@
             <value description="user_id">-6</value>
             <value description="role_id">-2</value>
         </row>
+        
+        <row>
+            <value description="user_id">-7</value>
+            <value description="role_id">-3</value>
+        </row>
+        <row>
+            <value description="user_id">-7</value>
+            <value description="role_id">-2</value>
+        </row>
+        
+        <row>
+            <value description="user_id">-8</value>
+            <value description="role_id">-3</value>
+        </row>
+        <row>
+            <value description="user_id">-8</value>
+            <value description="role_id">-2</value>
+        </row>
+        
+        
+        <row>
+            <value description="user_id">-9</value>
+            <value description="role_id">-3</value>
+        </row>
+        <row>
+            <value description="user_id">-9</value>
+            <value description="role_id">-2</value>
+        </row>
+        
     </table>
     <table name="especialidad">
         <column>id</column>
@@ -313,6 +405,21 @@
             <value description="fechanac">1982-04-28</value>
             <value description="registro">6789</value>
         </row>
+        <row>
+            <value description="id">-7</value>
+            <value description="fechanac">1982-04-28</value>
+            <value description="registro">6790</value>
+        </row>
+        <row>
+            <value description="id">-8</value>
+            <value description="fechanac">1982-04-28</value>
+            <value description="registro">6791</value>
+        </row>
+        <row>
+            <value description="id">-9</value>
+            <value description="fechanac">1982-04-28</value>
+            <value description="registro">6792</value>
+        </row>
     </table>
     <table name="doctor_especialidad">
         <column>doctor_id</column>
@@ -321,6 +428,31 @@
             <value description="doctor_id">-3</value>
             <value description="especialidad_id">-1</value>
         </row>
+        
+        <row>
+            <value description="doctor_id">-7</value>
+            <value description="especialidad_id">-2</value>
+        </row>
+        <row>
+            <value description="doctor_id">-7</value>
+            <value description="especialidad_id">-1</value>
+        </row>
+        <row>
+            <value description="doctor_id">-8</value>
+            <value description="especialidad_id">-6</value>
+        </row>
+        <row>
+            <value description="doctor_id">-9</value>
+            <value description="especialidad_id">-2</value>
+        </row>
+        <row>
+            <value description="doctor_id">-9</value>
+            <value description="especialidad_id">-5</value>
+        </row>
+        <row>
+            <value description="doctor_id">-9</value>
+            <value description="especialidad_id">-4</value>
+        </row>        
     </table>
     <table name="consulta">
         <column>id</column>

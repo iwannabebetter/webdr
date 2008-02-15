@@ -30,6 +30,8 @@ public interface DoctorDao extends GenericDao<Doctor, Long> {
      * @param especialidad La especialidad buscada en los doctores
      * @return Una lista de los doctores que cumplen el criterio
      */
+    public List<Doctor> obtenerPorEspecialidadLong(Long especialidad);
+    
     public List<Doctor> obtenerPorEspecialidad(String especialidad);
     
     public List<Doctor> obtenerPorDia(DiaDeSemana dia);

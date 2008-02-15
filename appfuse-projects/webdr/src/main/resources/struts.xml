@@ -182,6 +182,13 @@
             <result name="success">/WEB-INF/pages/paciente/reservaForm.jsp</result>
             <result name="error">/WEB-INF/pages/paciente/reservaList.jsp</result>
         </action>    
+                
+        <action name="actualizarDoctores" class="edu.fpuna.webapp.action.ReservaAction" method="actualizarDoctores">
+            <interceptor-ref name="pacienteCheck"/>
+            <result name="success">/WEB-INF/jspf/actualizarDoctores.jspf</result>
+        </action>
+
+        
         
         <action name="reservas" class="edu.fpuna.webapp.action.ReservaAction" method="listReservasPacientePend">
             <interceptor-ref name="pacienteCheck"/>

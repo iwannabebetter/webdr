@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 /**
  * Action de la clase Reserva.
@@ -76,11 +77,12 @@ public class ReservaAction extends BaseAction {
     private String reservaId;
     private String doctorId;
     private String pacienteId;
-    private String especialidadId;
+    private Long especialidadId;
     private String turnoId;
     private String fechaReservada;
     private String fechaRealizacion;
     private String fechaRealizacionSoloFecha;
+    private String fechaReservadaSoloFecha;
     
     private Timestamp fechaReservadaTimestamp;
     private Timestamp fechaRealizacionTimestamp;
@@ -199,11 +201,11 @@ public class ReservaAction extends BaseAction {
         return this.pacienteId;
     }
   
-    public void setEspecialidadId(String Id) {
+    public void setEspecialidadId(Long Id) {
         this.especialidadId = Id;
     }
    
-    public String getEspecialidadId() {
+    public Long getEspecialidadId() {
         return this.especialidadId;
     }
         
@@ -229,6 +231,15 @@ public class ReservaAction extends BaseAction {
    
     public String getFechaRealizacionSoloFecha() {
         return this.fechaRealizacionSoloFecha;
+    }
+    
+    
+    public void setFechaReservadaSoloFecha(String fr) {
+        this.fechaReservadaSoloFecha = fr;
+    }
+   
+    public String getFechaReservadaSoloFecha() {
+        return this.fechaReservadaSoloFecha;
     }
     
     public String getTurnoId() {
@@ -419,14 +430,23 @@ public class ReservaAction extends BaseAction {
         }
 
         this.fechaRealizacionTimestamp = new Timestamp(System.currentTimeMillis());
+        this.fechaReservadaTimestamp = new Timestamp(System.currentTimeMillis());
+        this.fechaReservada = this.fechaReservadaTimestamp.toString();
         this.fechaRealizacion = this.fechaRealizacionTimestamp.toString();          
-        this.reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
         
+        
+        StringTokenizer tk = new StringTokenizer(this.fechaReservada);
+        this.fechaReservada = tk.nextToken();
+        tk = new StringTokenizer(this.fechaRealizacion);
+        this.fechaRealizacion = tk.nextToken();
+        
+        this.reserva.setFechaRealizacion(this.fechaRealizacionTimestamp);
         
         //falta implementar un método para extraer solo la parte de la fecha
         // de la fecha de realizacion para colocar en fechaRealizacionSoloFecha
         
-        this.fechaRealizacionSoloFecha = this.fechaRealizacion;
+        this.fechaRealizacionSoloFecha = this.fechaRealizacion;        
+        this.fechaReservadaSoloFecha = this.fechaReservada;
         
         log.debug(".::NUEVA RESERVA:reserva.fechaRealizacion:-> "+reserva.getFechaRealizacionString());
         
@@ -523,6 +543,27 @@ public class ReservaAction extends BaseAction {
             }
             
         }
+        return SUCCESS;
+        
+    }
+    
+    public String actualizarDoctores(){
+   
+        log.debug(".::NUEVA RESERVA:actualizando doctores:especialidadId:-> "+this.especialidadId);
+        
+        if (this.especialidadId == -999) {
+            this.doctores = this.doctorManager.obtenerDoctores();                    
+        } else {
+            this.doctores = this.doctorManager.obtenerDoctoresPorEspecialidadLong(this.especialidadId);        
+        }
+        
+        log.debug(".::NUEVA RESERVA:lista doctores: "+this.doctores.size());
+        if(this.doctores.size() > 0) {
+            log.debug(".::NUEVA RESERVA:primero en la lista:");   
+        }
+        
+        log.debug(".::NUEVA RESERVA:actualizando doctores:especialidadId:-> "+this.especialidadId+":EXITO");
+       
         return SUCCESS;
         
     }
