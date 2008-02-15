@@ -84,7 +84,7 @@
                 <div>
                     <s:datetimepicker value="%{fechaReservadaTimestamp}" theme="ajax" 
                                       required="true" dayWidth="wide" label="Fecha a Reservar"  
-                                      displayFormat="yyyy-mm-dd" toggleType="fade"
+                                      displayFormat="yyyy-MM-dd" toggleType="fade"
                                       onselect="actualizarTurnos();"
                                       />
                 </div>
